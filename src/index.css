@@ -1,0 +1,25 @@
+@import "https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap&subset=cyrillic";
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto Slab', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #11161b;
+}
+button, input, textarea {
+  font: inherit;
+  color: #11161b;
+}
+button:focus, input:focus, textarea:focus {
+  -webkit-outline: 0 none;
+  outline: 0 none;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}

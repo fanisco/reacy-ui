@@ -1,0 +1,15 @@
+{
+  "rec": [
+    {"id": 1, "author_id": 1, "comment_id": 0, "text": "I did not hit her! It’s not true! It’s bullshit! I did not hit her! I did not! (he throws a water bottle to the floor) Oh, hi Mark.", "date": 0},
+    {"id": 2, "author_id": 2, "comment_id": 1, "text": "(holding a football) Oh hey Johnny, what’s up?", "date": 0}
+  ],
+  "meta": {
+    "authors": [
+      {"id": 1, "name": "Johnny"},
+      {"id": 2, "name": "Mark"},
+      {"id": 3, "name": "Denny"},
+      {"id": 4, "name": "Lisa"},
+      {"id": 4, "name": "Claudette"}
+    ]
+  }
+}
