@@ -5,8 +5,8 @@
   ],
   "meta": {
     "authors": [
-      {"id": 1, "name": "Johnny"},
-      {"id": 2, "name": "Mark"},
+      {"id": 1, "name": "Johnny", "photo":  "/images/persons/johnny.jpg"},
+      {"id": 2, "name": "Mark", "photo":  "/images/persons/mark.jpg"},
       {"id": 3, "name": "Denny"},
       {"id": 4, "name": "Lisa"},
       {"id": 4, "name": "Claudette"}

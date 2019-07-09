@@ -5,6 +5,7 @@ import Record from './Record';
  */
 export default class Author extends Record {
   public name: string;
+  public photo?: string;
 
   /**
    * @inheritDoc
@@ -12,5 +13,6 @@ export default class Author extends Record {
   constructor(data: any) {
     super(data);
     this.name = this.data.name;
+    this.photo = this.data.photo;
   }
 }

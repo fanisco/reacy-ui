@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { default as Model } from '../../core/entity/Comment';
+import Author from './Author';
 
 interface ICommentProps {
   comment: Model
@@ -14,21 +15,24 @@ export default class Comment extends Component<ICommentProps> {
 
     const
       { comment } = this.props,
-      { author } = comment;
+      { author } = comment,
+      date = comment.date && comment.date.toString();
 
     if (author) {
       return (
-        <div>
-          <div>
-            <div>photo</div>
-            <div>
-              <h5>{author.name}</h5>
-              <time>time</time>
-            </div>
-          </div>
-          <div>{comment.text}</div>
-        </div>
+        <Wrapper>
+          <Author {...author} time={date}/>
+          <Content>{comment.text}</Content>
+        </Wrapper>
       )
     }
   }
 }
+
+const Wrapper = styled.div`
+  margin-bottom: 10px;
+`;
+
+const Content = styled.div`
+  margin-bottom: 5px;
+`;

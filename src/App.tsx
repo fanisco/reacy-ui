@@ -3,14 +3,7 @@ import styled from 'styled-components';
 import Comment from './ui/comments/Comment';
 import data from './data/comments.json';
 import DataSet from './core/source/DataSet';
-
-const colors = {
-  primary: '#ffd71b',
-  primaryLight: '#ffe471',
-  primaryDark: '#febe10',
-  secondary: '#28a3de',
-  border: '#c1c1c1'
-};
+import colors from './ui/colors';
 
 const transition = 'transition: all 0.15s ease-in-out';
 
