@@ -52,7 +52,7 @@ const Name = styled.h5`
   font-weight: 500;
   font-size: 14px;
   line-height: 14px;
-  color: ${colors.grayDark}
+  color: ${colors.dark}
 `;
 
 const Time = styled.time`

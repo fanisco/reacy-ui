@@ -1,10 +1,10 @@
 export default {
-  primary: '#ffd71b',
-  primaryLight: '#ffe471',
-  primaryDark: '#febe10',
-  secondary: '#28a3de',
-  border: '#c1c1c1',
-  gray: '#999999',
-  grayLight: '#eaeaea',
-  grayDark: '#545454',
+  primary: '#5D9CEC',
+  primaryText: '#4287DF',
+  accent: '#FF3D6F',
+  accentText: '#FF245D',
+  base: '#333333',
+  dark: '#5C5C5C',
+  gray: '#7D7D7D',
+  pale: '#9D9D9D',
 }

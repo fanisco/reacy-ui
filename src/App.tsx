@@ -20,38 +20,38 @@ const PostBlock = styled.div`
   padding: 10px;
 `;
 
-const Button = styled.button`
-  ${transition};
-  height: 35px;
-  padding: 5px 20px;
-  background-color: ${colors.primary};
-  border: 1px solid ${colors.primary};
-  border-radius: 40px;
-  cursor: pointer;
-  font-weight: 500;
-  box-shadow: 0 2px 10px ${colors.primaryDark}30;
-  
-  &:hover {
-    background-color: ${colors.primaryLight};
-  }
-`;
+// const Button = styled.button`
+//   ${transition};
+//   height: 35px;
+//   padding: 5px 20px;
+//   background-color: ${colors.primary};
+//   border: 1px solid ${colors.primary};
+//   border-radius: 40px;
+//   cursor: pointer;
+//   font-weight: 500;
+//   box-shadow: 0 2px 10px ${colors.primaryDark}30;
+//
+//   &:hover {
+//     background-color: ${colors.primaryLight};
+//   }
+// `;
 
-const Textarea = styled.textarea`
-  ${transition};
-  width: 100%;
-  height: 100px;
-  padding: 5px 10px;
-  border: 1px solid ${colors.border};
-  border-radius: 2px;
-  resize: vertical;
-  
-  &:hover, &:focus {
-    border-color: ${colors.secondary}
-  }
-  &:focus {
-    box-shadow: 0 5px 15px ${colors.secondary}20;
-  }
-`;
+// const Textarea = styled.textarea`
+//   ${transition};
+//   width: 100%;
+//   height: 100px;
+//   padding: 5px 10px;
+//   border: 1px solid ${colors.border};
+//   border-radius: 2px;
+//   resize: vertical;
+//
+//   &:hover, &:focus {
+//     border-color: ${colors.secondary}
+//   }
+//   &:focus {
+//     box-shadow: 0 5px 15px ${colors.secondary}20;
+//   }
+// `;
 
 /**
  *
