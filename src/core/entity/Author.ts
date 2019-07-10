@@ -1,9 +1,10 @@
 import Record from './Record';
+import IAuthor from '../interface/IAuthor';
 
 /**
  * Class to present author.
  */
-export default class Author extends Record {
+export default class Author extends Record implements IAuthor {
   public name: string;
   public photo?: string;
 

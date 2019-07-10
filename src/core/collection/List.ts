@@ -10,19 +10,17 @@ export default class List extends Array implements IList {
 
   /**
    * Constructor.
-   * @param {any[]} records Array of new raw data.
+   * @param {Record[]} records Array of new raw data.
    * @param {Meta} meta Meta data that may occur in near data set.
    */
-  constructor(records: any[], meta?: IMeta) {
+  constructor(records: Record[] = [], meta?: IMeta) {
     super();
 
     // Create id map
     this._map = new Map();
 
-    // Create records
-    for (let rec of records) {
-      const record = this.record(rec, meta);
-
+    // Map and set records
+    for (let record of records) {
       if (record) {
         if (record.id) {
           this._map.set(record.id, record)
@@ -38,19 +36,32 @@ export default class List extends Array implements IList {
    * @param {any} thisArg
    * @return {U[]}
    */
-  public map<U>(callbackfn: (value: Record, index: number, array: Record[]) => U, thisArg?: any): U[] {
+  public map<U>(callbackfn: (value: any, index: number, array: any[]) => U, thisArg?: any): U[] {
     return [...this].map(callbackfn, thisArg)
   }
 
   /**
    * Creates item from data to record class instance.
    * Here are possible combinations of record classes.
-   * @param {any} data
+   * @param {any} item
    * @param {Meta} meta
    * @return {Record}
    */
-  protected record(data: any, meta?: IMeta) {
-    return new Record(data, meta);
+  public static toRecord(item: any, meta?: IMeta): Record {
+    return new Record(item, meta)
+  }
+
+  /**
+   * Creates list of record instances from sample data.
+   * @param {any[]} items
+   * @param {Meta} meta
+   */
+  public static toRecords(items: any[], meta?: IMeta): Record[] {
+    const list: Record[] = [];
+    for (let item of items) {
+      list.push(List.toRecord(item, meta))
+    }
+    return list
   }
 
   /**

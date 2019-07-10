@@ -2,12 +2,13 @@ import List from '../collection/List';
 import CommentList from '../collection/CommentList';
 import Meta from '../entity/Meta';
 import IDataSet, { IUnmarkedDataSet } from '../interface/IDataSet';
+import IList from '../interface/IList';
 
 /**
  * Class to present a set of data wich may contain a list of records and meta data.
  */
 export default class DataSet implements IDataSet {
-  records?: List;
+  records: IList;
   meta?: Meta;
 
   /**
@@ -18,15 +19,13 @@ export default class DataSet implements IDataSet {
     if (dataSet.meta !== undefined) {
       this.meta = new Meta(dataSet.meta)
     }
-    if (dataSet.rec !== undefined) {
-      switch (listType) {
-        case 'comments':
-          this.records = new CommentList(dataSet.rec, this.meta );
-          break;
-        case 'list':
-        default:
-          this.records = new List(dataSet.rec, this.meta )
-      }
+    switch (listType) {
+      case 'comments':
+        this.records = new CommentList(CommentList.toRecords(dataSet.rec, this.meta), this.meta);
+        break;
+      case 'list':
+      default:
+        this.records = new List(List.toRecords(dataSet.rec, this.meta), this.meta)
     }
   }
 }
