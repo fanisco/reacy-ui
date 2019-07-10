@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { ChangeEvent, Component, ReactNode } from 'react';
 import styled from 'styled-components';
 import CommentList from './ui/comments/CommentList';
 import data from './data/comments.json';
@@ -56,21 +56,46 @@ const PostBlock = styled.div`
 /**
  *
  */
-export default class App extends Component {
+export default class App extends Component<{}, { compact: boolean, stacked: boolean }> {
   public data: DataSet;
 
   constructor(props: any) {
     super(props);
+    this.state = {
+      compact: false,
+      stacked: false
+    };
     this.data = new DataSet(data, 'comments');
 
     console.log('app init', this.data);
   }
 
+  onSettingsChange(ev: ChangeEvent<HTMLInputElement>, name: string) {
+    let newState = {...this.state};
+    const value = ev.target.checked;
+
+    switch (name) {
+      case 'compact':
+        newState.compact = value;
+        break;
+      case 'stacked':
+        newState.stacked = value;
+        break;
+    }
+    this.setState(newState)
+  }
+
   render() {
     return (
       <LayoutBlock>
+        <label>Compact
+          <input type="checkbox" checked={this.state.compact} onChange={(ev: ChangeEvent<HTMLInputElement>) => this.onSettingsChange(ev, 'compact')}/>
+        </label>
+        <label>Stacked
+          <input type="checkbox" checked={this.state.stacked} onChange={(ev: ChangeEvent<HTMLInputElement>) => this.onSettingsChange(ev, 'stacked')}/>
+        </label>
         <CommentsBlock>
-          <CommentList comments={this.data.records}/>
+          <CommentList comments={this.data.records} compact={this.state.compact} stacked={this.state.stacked}/>
         </CommentsBlock>
         {/*<PostBlock>*/}
         {/*  <Textarea placeholder="Type comment here..."/>*/}
