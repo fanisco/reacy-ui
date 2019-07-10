@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { default as Model } from '../../core/entity/Comment';
+import IComment from '../../core/interface/IComment';
 import Author from './Author';
+import CommentList from './CommentList';
 
 interface ICommentProps {
-  comment: Model
+  comment: IComment
 }
 
 /**
  * Component for displaying particular comment and it contents.
  */
-export default class Comment extends Component<ICommentProps> {
-  render() {
-
-    const
-      { comment } = this.props,
-      { author } = comment,
-      date = comment.date && comment.date.toString();
-
-    if (author) {
-      return (
-        <Wrapper>
-          <Author {...author} time={date}/>
-          <Content>{comment.text}</Content>
-        </Wrapper>
-      )
-    }
+const Comment = ({ comment }: ICommentProps) => {
+  let author, children;
+  if (comment.author) {
+    author = <Author {...comment.author} time={comment.date && comment.date.toString()}/>
   }
-}
+  if (comment.children) {
+    children = <Children><CommentList comments={comment.children}/></Children>
+  }
+
+  return (
+    <Wrapper>
+      {author}
+      <Content>{comment.text}</Content>
+      {children}
+    </Wrapper>
+  )
+  // }
+};
 
 const Wrapper = styled.div`
   margin-bottom: 10px;
@@ -36,3 +37,10 @@ const Wrapper = styled.div`
 const Content = styled.div`
   margin-bottom: 5px;
 `;
+
+const Children = styled.div`
+  margin-top: 10px;
+  padding-left: 32px;
+`;
+
+export default Comment;

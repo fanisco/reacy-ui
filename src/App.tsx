@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import styled from 'styled-components';
-import Comment from './ui/comments/Comment';
+import CommentList from './ui/comments/CommentList';
 import data from './data/comments.json';
 import DataSet from './core/source/DataSet';
 import colors from './ui/colors';
@@ -67,11 +67,10 @@ export default class App extends Component {
   }
 
   render() {
-    const { records: comments } = this.data;
     return (
       <LayoutBlock>
         <CommentsBlock>
-          {comments && comments.map<ReactNode>((comment, i) => <Comment key={i} comment={comment}/>)}
+          <CommentList comments={this.data.records}/>
         </CommentsBlock>
         {/*<PostBlock>*/}
         {/*  <Textarea placeholder="Type comment here..."/>*/}

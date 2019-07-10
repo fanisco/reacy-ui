@@ -29,7 +29,7 @@ const Author = (props: IAuthorProps) => {
 };
 
 const Wrapper = styled.div`
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   display: flex;
   width: 100%;
 `;
