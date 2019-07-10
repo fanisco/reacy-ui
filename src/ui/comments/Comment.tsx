@@ -6,18 +6,21 @@ import CommentList from './CommentList';
 
 interface ICommentProps {
   comment: IComment
+  depth?: number
 }
+
+const stackDepth = 4;
 
 /**
  * Component for displaying particular comment and it contents.
  */
-const Comment = ({ comment }: ICommentProps) => {
+const Comment = ({ comment, depth = 0 }: ICommentProps) => {
   let author, children;
   if (comment.author) {
-    author = <Author {...comment.author} time={comment.date && comment.date.toString()}/>
+    author = <Author {...comment.author} time={comment.date} stacked={depth >= stackDepth}/>
   }
-  if (comment.children) {
-    children = <Children><CommentList comments={comment.children}/></Children>
+  if (comment.children && comment.children.length) {
+    children = <Children><CommentList comments={comment.children} depth={depth + 1}/></Children>
   }
 
   return (

@@ -5,16 +5,17 @@ import ICommentList from '../../core/interface/ICommentList';
 
 interface ICommentListProps {
   comments: ICommentList
+  depth?: number
 }
 
 /**
  * Component for displaying list of comments.
  */
-const CommentList = ({ comments }: ICommentListProps) => {
+const CommentList = ({ comments, depth = 0 }: ICommentListProps) => {
   return (
     <Wrapper>
       {comments.map<ReactNode>((comment, i) => {
-        return <Comment key={i} comment={comment}/>
+        return <Comment key={i} comment={comment} depth={depth}/>
       })}
     </Wrapper>
   )
