@@ -1,6 +1,8 @@
-import React, { ChangeEvent, Component, ReactNode } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import CommentList from './ui/comments/CommentList';
+import Textarea from './ui/input/Textarea';
+import Switch from './ui/input/Switch';
 import data from './data/comments.json';
 import DataSet from './core/source/DataSet';
 import colors from './ui/colors';
@@ -20,38 +22,26 @@ const PostBlock = styled.div`
   padding: 10px;
 `;
 
-// const Button = styled.button`
-//   ${transition};
-//   height: 35px;
-//   padding: 5px 20px;
-//   background-color: ${colors.primary};
-//   border: 1px solid ${colors.primary};
-//   border-radius: 40px;
-//   cursor: pointer;
-//   font-weight: 500;
-//   box-shadow: 0 2px 10px ${colors.primaryDark}30;
-//
-//   &:hover {
-//     background-color: ${colors.primaryLight};
-//   }
-// `;
+const Button = styled.button`
+  ${transition};
+  height: 35px;
+  padding: 5px 20px;
+  background-color: ${colors.primary};
+  border: 1px solid ${colors.primary};
+  border-radius: 40px;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 2px 10px ${colors.primary}30;
 
-// const Textarea = styled.textarea`
-//   ${transition};
-//   width: 100%;
-//   height: 100px;
-//   padding: 5px 10px;
-//   border: 1px solid ${colors.border};
-//   border-radius: 2px;
-//   resize: vertical;
-//
-//   &:hover, &:focus {
-//     border-color: ${colors.secondary}
-//   }
-//   &:focus {
-//     box-shadow: 0 5px 15px ${colors.secondary}20;
-//   }
-// `;
+  &:hover {
+    background-color: ${colors.primary};
+  }
+`;
+
+const FormGrid = styled.div`
+  display: flex;
+  padding: 10px;
+`;
 
 /**
  *
@@ -67,40 +57,27 @@ export default class App extends Component<{}, { compact: boolean, stacked: bool
     };
     this.data = new DataSet(data, 'comments');
 
-    console.log('app init', this.data);
+    this.onSettingsChange = this.onSettingsChange.bind(this)
   }
 
-  onSettingsChange(ev: ChangeEvent<HTMLInputElement>, name: string) {
-    let newState = {...this.state};
-    const value = ev.target.checked;
-
-    switch (name) {
-      case 'compact':
-        newState.compact = value;
-        break;
-      case 'stacked':
-        newState.stacked = value;
-        break;
-    }
-    this.setState(newState)
+  onSettingsChange(name: string, value: any) {
+    this.setState({...this.state, [name]: value})
   }
 
   render() {
     return (
       <LayoutBlock>
-        <label>Compact
-          <input type="checkbox" checked={this.state.compact} onChange={(ev: ChangeEvent<HTMLInputElement>) => this.onSettingsChange(ev, 'compact')}/>
-        </label>
-        <label>Stacked
-          <input type="checkbox" checked={this.state.stacked} onChange={(ev: ChangeEvent<HTMLInputElement>) => this.onSettingsChange(ev, 'stacked')}/>
-        </label>
+        <FormGrid>
+          <Switch name="compact" value={this.state.compact} caption="Compact" onChange={this.onSettingsChange}/>
+          <Switch name="stacked" value={this.state.stacked} caption="Stacked" onChange={this.onSettingsChange}/>
+        </FormGrid>
         <CommentsBlock>
           <CommentList comments={this.data.records} compact={this.state.compact} stacked={this.state.stacked}/>
         </CommentsBlock>
-        {/*<PostBlock>*/}
-        {/*  <Textarea placeholder="Type comment here..."/>*/}
-        {/*  <Button>Submit</Button>*/}
-        {/*</PostBlock>*/}
+        <PostBlock>
+          <Textarea name="comment" value="" caption="Your comment goes here..."/>
+          <Button>Submit</Button>
+        </PostBlock>
       </LayoutBlock>
     );
   }

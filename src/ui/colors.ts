@@ -3,8 +3,13 @@ export default {
   primaryText: '#4287DF',
   accent: '#FF3D6F',
   accentText: '#FF245D',
+  successLight: '#6dec5b',
+  success: '#48c836',
+  successText: '#249112',
   base: '#333333',
   dark: '#5C5C5C',
   gray: '#7D7D7D',
   pale: '#9D9D9D',
+  silv: '#CACACA',
+  alum: '#ECECEC',
 }
