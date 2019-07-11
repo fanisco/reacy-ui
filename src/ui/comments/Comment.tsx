@@ -60,6 +60,7 @@ const Content = styled.div`
 const Children = styled.div<StyledProps>`
   margin-top: 10px;
   padding-left: ${props => props.compact ? 0 : props.stacked ? 29 : 37}px;
+  transition: padding-left 0.15s ease-in-out;
 `;
 
 export default Comment;

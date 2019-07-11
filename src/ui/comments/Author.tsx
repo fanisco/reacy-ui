@@ -51,6 +51,7 @@ const Photo = styled.img<StyledProps>`
   height: ${props => props.photoSize}px;
   border: 0 none;
   border-radius: 2px;
+  transition: width, height 0.15s ease-in-out;
 `;
 
 const NameWrapper = styled.div<StyledProps>`
