@@ -15,16 +15,17 @@ export default class Textarea extends Input {
 }
 
 const TextArea = styled.textarea`
+  display: block;
   width: 100%;
   height: 100px;
-  padding: 5px 10px;
-  border: 1px solid ${colors.pale};
+  padding: 10px 10px;
+  border: 1px solid ${colors.silver};
   border-radius: 2px;
   resize: none;
   transition: all 0.15s ease-in-out;
 
   &:hover, &:focus {
-    border-color: ${colors.primary}
+    border-color: ${colors.ferrum}
   }
   &:focus {
     box-shadow: 0 5px 15px ${colors.primary}20;

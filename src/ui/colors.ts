@@ -1,4 +1,5 @@
 export default {
+  primaryLight: '#5ea7f8',
   primary: '#5D9CEC',
   primaryText: '#4287DF',
   accent: '#FF3D6F',
@@ -9,7 +10,8 @@ export default {
   base: '#333333',
   dark: '#5C5C5C',
   gray: '#7D7D7D',
-  pale: '#9D9D9D',
-  silv: '#CACACA',
-  alum: '#ECECEC',
+  ferrum: '#9D9D9D',
+  silver: '#CACACA',
+  alumie: '#ECECEC',
+  platin: '#f9f9f9',
 }

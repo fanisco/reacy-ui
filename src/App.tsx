@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import CommentList from './ui/comments/CommentList';
-import Textarea from './ui/input/Textarea';
+import Form from './ui/comments/Form';
 import Switch from './ui/input/Switch';
 import data from './data/comments.json';
 import DataSet from './core/source/DataSet';
-import colors from './ui/colors';
-
-const transition = 'transition: all 0.15s ease-in-out';
 
 const LayoutBlock = styled.div`
   max-width: 900px;
@@ -20,22 +17,6 @@ const CommentsBlock = styled.div`
 
 const PostBlock = styled.div`
   padding: 10px;
-`;
-
-const Button = styled.button`
-  ${transition};
-  height: 35px;
-  padding: 5px 20px;
-  background-color: ${colors.primary};
-  border: 1px solid ${colors.primary};
-  border-radius: 40px;
-  cursor: pointer;
-  font-weight: 500;
-  box-shadow: 0 2px 10px ${colors.primary}30;
-
-  &:hover {
-    background-color: ${colors.primary};
-  }
 `;
 
 const FormGrid = styled.div`
@@ -75,8 +56,7 @@ export default class App extends Component<{}, { compact: boolean, stacked: bool
           <CommentList comments={this.data.records} compact={this.state.compact} stacked={this.state.stacked}/>
         </CommentsBlock>
         <PostBlock>
-          <Textarea name="comment" value="" caption="Your comment goes here..."/>
-          <Button>Submit</Button>
+          <Form/>
         </PostBlock>
       </LayoutBlock>
     );

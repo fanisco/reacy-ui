@@ -39,7 +39,7 @@ const Trigger = styled.div<StyledProps>`
   width: 40px;
   height: 20px;
   border-radius: 20px;
-  background-color: ${props => props.active ? colors.successLight : colors.alum};
+  background-color: ${props => props.active ? colors.successLight : colors.alumie};
   cursor: pointer;
   transition: background-color 0.15s ease-in-out;
   
