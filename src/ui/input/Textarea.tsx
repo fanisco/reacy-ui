@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../colors';
-import Input from './Input';
+import Input, { IInputProps } from './Input';
 
 /**
  * Component for displaying switch wich replaces by it self the boolean checkbox input.
  */
-export default class Textarea extends Input {
+export default class Textarea extends Input<IInputProps> {
   render() {
     return (
       <TextArea value={this.props.value} placeholder={this.props.caption}/>

@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Input, { IInputProps } from './Input';
 import styled from 'styled-components';
 import colors from '../colors';
-import Input from './Input';
+
+interface ISwitchProps extends IInputProps {
+  value: boolean
+}
 
 /**
  * Component for displaying switch wich replaces by it self the boolean checkbox input.
  */
-export default class Switch extends Input {
+export default class Switch extends Component<ISwitchProps> {
   render() {
     return (
       <Wrapper>{this.props.caption}
         <Trigger active={this.props.value}/>
-        <InputHidden
-          type="checkbox"
-          checked={this.props.value}
-          onChange={this.onChange}
-        />
+        <Hidden>
+          <Input
+            type="checkbox"
+            name={this.props.name}
+            value={this.props.value}
+            onChange={this.props.onChange}
+          />
+        </Hidden>
       </Wrapper>
     )
   }
@@ -58,7 +65,7 @@ const Trigger = styled.div<StyledProps>`
   }
 `;
 
-const InputHidden = styled.input`
+const Hidden = styled.div`
   margin: 0;
   position: absolute;
   visibility: hidden;

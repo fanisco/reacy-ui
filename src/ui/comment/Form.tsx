@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import { observable } from 'mobx';
+import { observer } from 'mobx-react';
 import styled from 'styled-components';
 import Textarea from '../input/Textarea';
 import Button from '../button/Button';
-// import colors from '../colors';
 
-// interface IProps {
-//   children: string
-// }
+interface IFormProps {
+  text: string
+}
 
 /**
  * Component for displaying button.
  */
+@observer
 export default class Form extends Component {
   render() {
     return (
@@ -26,7 +28,7 @@ export default class Form extends Component {
   }
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   position: relative;
 `;
 
