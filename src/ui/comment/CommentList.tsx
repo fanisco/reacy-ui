@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
-import Comment from './Comment';
-import ICommentList from '../../core/interface/ICommentList';
+import React, { ReactNode } from "react";
+import styled from "styled-components";
+import Comment from "./Comment";
+import IList from "../../core/interface/IList";
 
 interface ICommentListProps {
-  comments: ICommentList
+  comments: IList
   compact?: boolean
   stacked?: boolean
   depth?: number

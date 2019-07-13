@@ -1,12 +1,17 @@
 import React, { Component, ReactNode } from 'react';
-import Form, { IFieldProps } from '../input/Form';
+
 import { observable } from 'mobx';
 import { observer } from 'mobx-react';
-import Button from '../button/Button';
+
 import styled from 'styled-components';
 
-interface IComformProps {
+import Form, { IFieldProps } from '../input/Form';
+import Button from '../button/Button';
 
+import IDataSet from '../../core/interface/IDataSet';
+
+interface IComformProps {
+  data: IDataSet
 }
 
 /**
@@ -21,16 +26,31 @@ export default class Comform extends Component<IComformProps> {
     { name: 'comment', caption: 'Comment', type: 'textarea' }
   ];
 
+  constructor(props: IComformProps) {
+    super(props);
+    this.onButtonClick = this.onButtonClick.bind(this);
+  }
+
+  protected onButtonClick() {
+    this.props.data.records.create({
+      text: this.data.comment,
+      author_id: 1,
+      comment_id: 0,
+      date: (new Date()).getTime()
+    });
+    console.log(this.props.data.records, this.props.data.records.length());
+  }
+
   /**
    * */
-  render(): ReactNode {
+  public render(): ReactNode {
     return (
       <Wrapper>
         <FormWrapper>
           <Form fields={this.fields} data={this.data}/>
         </FormWrapper>
         <ButtonWrapper>
-          <Button>Send</Button>
+          <Button onClick={this.onButtonClick}>Send</Button>
         </ButtonWrapper>
       </Wrapper>
     )

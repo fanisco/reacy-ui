@@ -1,6 +1,6 @@
-import Thing from './Thing';
-import IRecord from '../interface/IRecord';
-import IMeta from '../interface/IMeta';
+import Thing from "./Thing";
+import IRecord from "../interface/IRecord";
+import IMeta from "../interface/IMeta";
 
 interface IUmarkedData {
   id: number

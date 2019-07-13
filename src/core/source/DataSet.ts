@@ -1,8 +1,9 @@
-import List from '../collection/List';
-import CommentList from '../collection/CommentList';
-import Meta from '../entity/Meta';
-import IDataSet, { IUnmarkedDataSet } from '../interface/IDataSet';
-import IList from '../interface/IList';
+import { observable } from 'mobx';
+import List from "../collection/List";
+import CommentList from "../collection/CommentList";
+import Meta from "../entity/Meta";
+import IDataSet, { IUnmarkedDataSet } from "../interface/IDataSet";
+import IList from "../interface/IList";
 
 /**
  * Class to present a set of data wich may contain a list of records and meta data.

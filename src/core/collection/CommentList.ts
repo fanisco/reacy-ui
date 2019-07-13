@@ -1,8 +1,9 @@
-import List from './List';
-import ICommentList from '../interface/ICommentList';
-import Comment from '../entity/Comment';
-import IMeta from '../interface/IMeta';
-import mktree from '../../helpers/mktree';
+import List from "./List";
+import ICommentList from "../interface/ICommentList";
+import Comment from "../entity/Comment";
+import IMeta from "../interface/IMeta";
+import mktree from "../../helpers/mktree";
+import IData from "../interface/IData";
 
 /**
  * Class to present a list of comments.
@@ -14,6 +15,16 @@ export default class CommentList extends List implements ICommentList {
    */
   constructor(records: Comment[] = [], meta?: IMeta) {
     super(mktree(records), meta);
+  }
+
+  /**
+   * Add comment to the list.
+   * @param {IData} data
+   * @return boolean
+   */
+  public create(data: IData): boolean {
+    this._list.push(CommentList.toRecord(data, this._meta));
+    return true
   }
 
   /**

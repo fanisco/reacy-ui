@@ -29,24 +29,26 @@ export default class App extends Component<{}, { compact: boolean, stacked: bool
   };
 
   /**
+   * Data that contains commentary list with their meta data.
    */
-  public data: DataSet;
+  protected data = new DataSet(data, 'comments');
 
   /**
    */
   constructor(props: any) {
     super(props);
-    this.data = new DataSet(data, 'comments')
+    console.log(this.settings, this.data);
   }
 
   /**
+   * @return {ReactNode}
    */
   public render(): ReactNode {
     return (
       <LayoutBlock>
         <Settings data={this.settings}/>
         <CommentList comments={this.data.records} {...this.settings}/>
-        <Comform/>
+        <Comform data={this.data}/>
       </LayoutBlock>
     );
   }

@@ -2,7 +2,7 @@ import IList from './IList';
 import IMeta from './IMeta';
 
 export default interface IDataSet {
-  records: IList,
+  records: IList
   meta?: IMeta
 }
 

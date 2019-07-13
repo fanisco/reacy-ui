@@ -28,7 +28,7 @@ export default function mktree(list: Array<IRecordNode>, rootId: number = 0): Ar
     }
     else if (item.parentId) {
       if (map[item.parentId]) {
-        map[item.parentId].children.push(item);
+        map[item.parentId].children.add(item);
       }
     }
   }
