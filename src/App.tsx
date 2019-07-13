@@ -6,21 +6,13 @@ import styled from 'styled-components';
 import data from './data/comments.json';
 import DataSet from './core/source/DataSet';
 
-import Form from './ui/input/Form';
+import Comform from './ui/comment/Comform';
 import Settings from './ui/settings/Settings';
 import CommentList from './ui/comment/CommentList';
 
 const LayoutBlock = styled.div`
   max-width: 900px;
   margin: 0 auto;
-`;
-
-const CommentsBlock = styled.div`
-  padding: 10px;
-`;
-
-const PostBlock = styled.div`
-  padding: 10px;
 `;
 
 /**
@@ -53,12 +45,8 @@ export default class App extends Component<{}, { compact: boolean, stacked: bool
     return (
       <LayoutBlock>
         <Settings data={this.settings}/>
-        <CommentsBlock>
-          <CommentList comments={this.data.records} {...this.settings}/>
-        </CommentsBlock>
-        <PostBlock>
-          {/*<Form/>*/}
-        </PostBlock>
+        <CommentList comments={this.data.records} {...this.settings}/>
+        <Comform/>
       </LayoutBlock>
     );
   }

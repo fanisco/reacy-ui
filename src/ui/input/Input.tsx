@@ -16,6 +16,7 @@ export interface IInputProps {
 export default class Input<T extends IInputProps> extends Component<T> {
 
   /**
+   * Handle input's change.
    */
   constructor(props: T) {
     super(props);
@@ -23,21 +24,23 @@ export default class Input<T extends IInputProps> extends Component<T> {
   }
 
   /**
+   * Handle input's change.
    */
-  public onChange(ev: ChangeEvent<HTMLInputElement>) {
-    this.props.onChange && this.props.onChange(this.props.name, ev.target.checked)
+  public onChange(ev: ChangeEvent<any>) {
+    const isBoolean = this.props.type === 'checkbox';
+    this.props.onChange && this.props.onChange(this.props.name, isBoolean ? ev.target.checked : ev.target.value)
   }
 
   /**
    * @return {ReactNode}
    */
   public render(): ReactNode {
-    return <input
+    return <div>{typeof this.props.value}<input
       type={this.props.type}
       name={this.props.name}
       value={this.props.value}
       onChange={this.onChange}
-    />
+    /></div>
   }
 
   public static defaultProps = {

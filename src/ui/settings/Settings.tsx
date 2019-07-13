@@ -14,7 +14,7 @@ interface ISettingsProps {
 export default class Settings extends Component<ISettingsProps> {
   protected fields: IFieldProps[] = [
     { name: 'compact', caption: 'Compact', type: 'switch' },
-    { name: 'stacked', caption: 'stacked', type: 'switch' }
+    { name: 'stacked', caption: 'Stacked', type: 'switch' }
   ];
 
   constructor(props: ISettingsProps) {

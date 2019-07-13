@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { ChangeEvent, ReactNode } from 'react';
 import styled from 'styled-components';
+import { observer } from "mobx-react";
 import colors from '../colors';
 import Input, { IInputProps } from './Input';
 
 /**
  * Component for displaying switch wich replaces by it self the boolean checkbox input.
  */
+@observer
 export default class Textarea extends Input<IInputProps> {
-  render() {
+
+  /**
+   * @return {ReactNode}
+   */
+  public render(): ReactNode {
     return (
-      <TextArea value={this.props.value} placeholder={this.props.caption}/>
+      <TextArea
+        name={this.props.name}
+        value={this.props.value}
+        onChange={this.onChange}
+        placeholder={this.props.caption}
+      />
     )
   }
 }

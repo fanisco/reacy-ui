@@ -1,7 +1,7 @@
 import React, { Component, ReactNode } from 'react';
-import { observer } from 'mobx-react';
-import Switch from './Switch';
 import Input, { IInputProps } from './Input';
+import Switch from './Switch';
+import Textarea from './Textarea';
 import styled from 'styled-components';
 
 interface IFormProps {
@@ -16,7 +16,6 @@ export interface IFieldProps extends IInputProps {
 /**
  * Component for displaying form.
  */
-@observer
 export default class Form extends Component<IFormProps> {
 
   constructor(props: IFormProps) {
@@ -49,9 +48,11 @@ export default class Form extends Component<IFormProps> {
       switch (field.type) {
         case 'switch':
           return <Switch {...props} onChange={this.updateProperty}/>;
+        case 'textarea':
+          return <Textarea {...props} onChange={this.updateProperty}/>;
         case 'text':
         default:
-          return <Input {...props}/>
+          return <Input {...props} onChange={this.updateProperty}/>
       }
     })
   }

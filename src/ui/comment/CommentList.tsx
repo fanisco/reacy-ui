@@ -15,7 +15,7 @@ interface ICommentListProps {
  */
 const CommentList = ({ comments, compact, stacked, depth = 0 }: ICommentListProps) => {
   return (
-    <Wrapper>
+    <Wrapper depth={depth}>
       {comments.map<ReactNode>((comment, i) => {
         return <Comment key={i} comment={comment} compact={compact} stacked={stacked} depth={depth}/>
       })}
@@ -23,8 +23,12 @@ const CommentList = ({ comments, compact, stacked, depth = 0 }: ICommentListProp
   )
 };
 
-export default CommentList;
+interface StyledProps {
+  depth: number
+}
 
-const Wrapper = styled.div`
-  
+const Wrapper = styled.div<StyledProps>`
+  padding: ${props => props.depth === 0 ? 10 : 0}px;
 `;
+
+export default CommentList;
