@@ -32,12 +32,17 @@ export default class Comform extends Component<IComformProps> {
   }
 
   protected onButtonClick() {
+
+    // Create a new comment
     this.props.data.records.create({
       text: this.data.comment,
       author_id: 1,
       comment_id: 0,
       date: (new Date()).getTime()
     });
+
+    // Empty the textbox
+    this.data.comment = '';
   }
 
   /**
