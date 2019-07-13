@@ -48,6 +48,6 @@ const FormWrapper = styled.div`
 
 const ButtonWrapper = styled.div`
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 20px;
+  bottom: 20px;
 `;
