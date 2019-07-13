@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from 'react';
-import Form, { IFieldProps } from '../input/Form';
 import styled from 'styled-components';
+import Form, { IFieldProps } from '../input/Form';
 
 interface ISettingsProps {
   data: {

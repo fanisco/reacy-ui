@@ -35,12 +35,12 @@ export default class Input<T extends IInputProps> extends Component<T> {
    * @return {ReactNode}
    */
   public render(): ReactNode {
-    return <div>{typeof this.props.value}<input
+    return <input
       type={this.props.type}
       name={this.props.name}
       value={this.props.value}
       onChange={this.onChange}
-    /></div>
+    />
   }
 
   public static defaultProps = {

@@ -38,7 +38,6 @@ export default class Comform extends Component<IComformProps> {
       comment_id: 0,
       date: (new Date()).getTime()
     });
-    console.log(this.props.data.records, this.props.data.records.length());
   }
 
   /**

@@ -1,8 +1,9 @@
-import React, { Component, ReactNode } from 'react';
-import Input, { IInputProps } from './Input';
-import Switch from './Switch';
-import Textarea from './Textarea';
-import styled from 'styled-components';
+import React, { Component, ReactNode } from "react";
+import { observer } from "mobx-react";
+import Input, { IInputProps } from "./Input";
+import Switch from "./Switch";
+import Textarea from "./Textarea";
+import styled from "styled-components";
 
 interface IFormProps {
   fields: Array<any>
@@ -16,6 +17,7 @@ export interface IFieldProps extends IInputProps {
 /**
  * Component for displaying form.
  */
+@observer
 export default class Form extends Component<IFormProps> {
 
   constructor(props: IFormProps) {
@@ -26,7 +28,9 @@ export default class Form extends Component<IFormProps> {
   /**
    * */
   public updateProperty (key: string, value: any) {
+    console.log(key, value);
     this.props.data[key] = value
+    console.log(this.props.data);
   }
 
   /**

@@ -22,6 +22,7 @@ const LayoutBlock = styled.div`
 export default class App extends Component<{}, { compact: boolean, stacked: boolean }> {
 
   /**
+   * Display mode configurations.
    */
   @observable protected settings = {
     compact: false,
