@@ -6,7 +6,7 @@ interface IProps {
     onClick?: Function
 }
 
-export const Button: React.FC<IProps> = (props: IProps) => {
+export const Button: React.FC<IProps> = (props) => {
     const Button = styled.button`
         height: ${sizes.buttonHeight};
         padding: 0 ${sizes.buttonPadding};
@@ -22,6 +22,6 @@ export const Button: React.FC<IProps> = (props: IProps) => {
         &:active:focus { background: ${colors.baseL3}; }
     `;
     return (
-        <Button onClick={() => props.onClick && props.onClick()}>Button</Button>
+        <Button onClick={() => props.onClick && props.onClick()}>{props.children}</Button>
     );
 };

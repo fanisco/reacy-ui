@@ -7,11 +7,13 @@ export const colors = {
 
 export const fonts = {
     ff: 'Open Sans',
+    ms: '12px',
     fs: '14px',
 };
 
 export const sizes = {
     buttonHeight: '36px',
     buttonPadding: '20px',
-    borderRadius: '3px'
+    borderRadius: '3px',
+    panelPadding: '20px'
 };
