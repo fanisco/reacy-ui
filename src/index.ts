@@ -1,1 +1,1 @@
-export const test = () => `test ${1}`;
+export { Button } from './Button';
