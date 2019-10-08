@@ -1,45 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, fonts, sizes } from './constants';
-
-enum Styles {
-    default = 'default'
-}
+import { Colors, Fonts, Dims } from './constants';
+import { Styles, Sizes } from './enums';
 
 interface IProps {
     onClick?: Function;
     disabled?: boolean;
-    style?: string;
+    style?: Styles;
+    size?: Sizes;
 }
 
-export const Button: React.FC<IProps> = ({ style = Styles.default, onClick, disabled, children }) => {
-    const styleColors = colors[style];
+export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, onClick, disabled, children }) => {
+    const colors = Colors[style];
+    const sizes = Dims[size];
     const Button = styled.button`
-        height: ${sizes.buttonHeight};
-        padding: 0 ${sizes.buttonPadding};
-        background: ${styleColors.baseL1};
-        border: 1px solid ${styleColors.baseL3};
+        height: ${sizes.elementHeight};
+        padding: 0 ${sizes.elementPadding};
+        background: ${colors.baseL1};
+        border: 1px solid ${colors.baseL3};
         border-radius: ${sizes.borderRadius};
-        color: ${styleColors.text};
+        color: ${colors.text};
         cursor: pointer;
-        font: ${fonts.fs}/1 "${fonts.ff}";
+        font: ${Fonts.fs}/1 "${Fonts.ff}";
         font-weight: 600;
         
         &:hover {
-            background: ${styleColors.baseL2};
+            background: ${colors.baseL2};
         }
         &:focus {
             outline: 0 none;
         }
         &:active:focus {
-            background: ${styleColors.baseL3};
+            background: ${colors.baseL3};
         }
         &:disabled {
-            color: ${styleColors.baseL3};
+            color: ${colors.baseL3};
             cursor: default;
         }
         &:disabled:hover {
-            background: ${styleColors.baseL1}
+            background: ${colors.baseL1}
         }
     `;
     return (

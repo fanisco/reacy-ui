@@ -1,21 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors, fonts, sizes } from './constants';
+import { Colors, Fonts, Dims } from './constants';
+import { Styles, Sizes } from './enums';
 
 interface IProps {
     caption?: string;
 }
 
 export const Panel: React.FC<IProps> = (props) => {
+    const colors = Colors[Styles.default];
+    const sizes = Dims[Sizes.md];
     const Panel = styled.div`
-        padding: ${sizes.panelPadding};
-        border: 1px solid ${colors.default.baseL1};
+        padding: ${sizes.elementPadding};
+        border: 1px solid ${colors.baseL1};
         border-radius: ${sizes.borderRadius};
-        color: ${colors.default.text};
-        font: ${fonts.fs}/${fonts.lh} '${fonts.ff}';
+        color: ${colors.text};
+        font: ${Fonts.fs}/${Fonts.lh} '${Fonts.ff}';
     `;
     const Caption = styled.div`
-        margin-bottom: ${sizes.ySpacing};
+        margin-bottom: ${sizes.spacing};
     `;
     return (
         <Panel>{props.caption ? <Caption>{props.caption}</Caption> : null}{props.children}</Panel>

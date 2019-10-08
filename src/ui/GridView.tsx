@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { sizes } from './constants';
+import { Dims } from './constants';
+import { Sizes } from './enums';
 
 interface IProps {
 
 }
 
 export const GridView: React.FC<IProps> = (props) => {
+    const sizes = Dims[Sizes.md];
     const GridView = styled.div`
         display: flex;
         margin: -${sizes.spacing};
