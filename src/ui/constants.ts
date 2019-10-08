@@ -16,9 +16,27 @@ const successColors = {
     baseL3: '#39b54a',
 };
 
+const dangerColors = {
+    text: '#fff',
+    baseL0: '#bd0d13',
+    baseL1: '#cd1f26',
+    baseL2: '#e53a40',
+    baseL3: '#f75157',
+};
+
+const warningColors = {
+    text: '#fff',
+    baseL0: '#e75d09',
+    baseL1: '#e8700d',
+    baseL2: '#f7791c',
+    baseL3: '#f7971c',
+};
+
 export const Colors = {
     [Styles.default]: defaultColors,
-    [Styles.success]: successColors
+    [Styles.success]: successColors,
+    [Styles.warning]: warningColors,
+    [Styles.danger]: dangerColors,
 };
 
 export const Fonts = {

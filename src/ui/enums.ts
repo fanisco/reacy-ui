@@ -1,6 +1,8 @@
 export enum Styles {
     default = 'default',
-    success = 'success'
+    success = 'success',
+    danger = 'danger',
+    warning = 'warning'
 }
 
 export enum Sizes {

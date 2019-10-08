@@ -16,7 +16,7 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
     const Button = styled.button`
         height: ${sizes.elementHeight};
         padding: 0 ${sizes.elementPadding};
-        background: ${colors.baseL1};
+        background: ${colors.baseL1} linear-gradient(to bottom, rgba(255, 255, 255, ${style === Styles.default ? 0.03 : 0.15}), rgba(255, 255, 255, 0));
         border: 1px solid ${colors.baseL3};
         border-radius: ${sizes.borderRadius};
         color: ${colors.text};
@@ -31,14 +31,14 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
             outline: 0 none;
         }
         &:active:focus {
-            background: ${colors.baseL3};
+            background-color: ${colors.baseL3};
         }
         &:disabled {
             color: ${colors.baseL3};
             cursor: default;
         }
         &:disabled:hover {
-            background: ${colors.baseL1}
+            background-color: ${colors.baseL1}
         }
     `;
     return (

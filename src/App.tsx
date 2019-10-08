@@ -11,6 +11,8 @@ const App: React.FC = () => {
                         <GridView>
                             <Button>Default</Button>
                             <Button style={Styles.success}>Success</Button>
+                            <Button style={Styles.warning}>Warning</Button>
+                            <Button style={Styles.danger}>Danger</Button>
                             <Button disabled={true}>Disabled</Button>
                         </GridView>
                     </Panel>
