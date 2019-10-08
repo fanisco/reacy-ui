@@ -1,11 +1,15 @@
 import React from 'react';
-import { Button, Panel } from './ui';
+import { Button, Panel, GridView } from './ui';
 
 const App: React.FC = () => {
     return (
         <div className="App">
-            <Panel>Panel
-                <Button>Button</Button>
+            <Panel caption="Panel">
+                <GridView>
+                    <Button>Button</Button>
+                    <Button style="success">Button</Button>
+                    <Button disabled={true}>Button</Button>
+                </GridView>
             </Panel>
         </div>
     );
