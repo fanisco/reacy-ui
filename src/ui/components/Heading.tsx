@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Dims, Fonts } from './constants';
-import { Sizes } from './enums';
+import { Dims, Fonts } from '../constants';
+import { Sizes } from '../enums';
 
 interface IProps {
     size?: Sizes
