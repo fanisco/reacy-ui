@@ -1,8 +1,8 @@
-export { Button } from './Button';
-export { Panel } from './Panel';
-export { Heading } from './Heading';
-export { GridView } from './GridView';
-export { Container } from './Container';
-export { Presentation } from './Presentation';
+export { Button } from './components/Button';
+export { Panel } from './components/Panel';
+export { Heading } from './components/Heading';
+export { GridView } from './components/GridView';
+export { Container } from './components/Container';
+export { Presentation } from './components/Presentation';
 export { Colors, Fonts } from './constants';
 export { Styles, Sizes } from './enums';
