@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Colors, Dims} from '../constants';
+import { Colors, Dims } from '../constants';
 import { Sizes, Styles } from '../enums';
 
 interface IProps {

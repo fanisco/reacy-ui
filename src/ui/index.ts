@@ -1,5 +1,6 @@
 export { Button } from './components/Button';
 export { List } from './components/List';
+export { Select } from './components/Select';
 export { Panel } from './components/Panel';
 export { Heading } from './components/Heading';
 export { GridView } from './components/GridView';

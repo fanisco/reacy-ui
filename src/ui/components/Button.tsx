@@ -8,9 +8,11 @@ interface IProps {
     disabled?: boolean;
     style?: Styles;
     size?: Sizes;
+    fullWidth?: boolean;
+    bottomOpen?: boolean;
 }
 
-export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, onClick, disabled, children }) => {
+export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, ...props }) => {
     const colors = Colors[style];
     const sizes = Dims[size];
     const Button = styled.button`
@@ -41,8 +43,18 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
                 background: ${colors.baseL1};
             }
         }
+        
+        ${props.bottomOpen && `
+            border-bottom: 0 none;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        `}
+        ${props.fullWidth && `
+            width: 100%;
+        `}
     `;
+
     return (
-        <Button onClick={() => onClick && onClick()} disabled={disabled}>{children}</Button>
+        <Button onClick={() => props.onClick && props.onClick()} disabled={props.disabled}>{props.children}</Button>
     );
 };

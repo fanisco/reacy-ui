@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Button, List,
+    Button, List, Select,
     Panel,
     Heading,
     GridView,
@@ -50,6 +50,10 @@ const App: React.FC = () => {
                             <div>
                                 <Heading>List</Heading>
                                 <List items={items} onClick={onListClick}/>
+                            </div>
+                            <div>
+                                <Heading>Select</Heading>
+                                <Select items={items} onChange={onListClick}/>
                             </div>
                         </GridView>
                     </Panel>
