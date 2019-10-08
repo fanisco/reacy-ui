@@ -49,6 +49,7 @@ export const Fonts = {
 type Dims = {
     font: string,
     spacing: string,
+    spacingHalf: string,
     elementPadding: string,
     elementHeight: string,
     borderRadius: string,
@@ -59,6 +60,7 @@ const dims = (factor: number): Dims => {
     return {
         font: `${factor + 2}px`,
         spacing: `${factor}px`,
+        spacingHalf: `${factor / 2}px`,
         elementPadding: `${factor * 2}px`,
         elementHeight: `${factor * 3}px`,
         borderRadius: '3px',
