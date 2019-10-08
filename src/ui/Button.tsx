@@ -21,7 +21,7 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
         border-radius: ${sizes.borderRadius};
         color: ${colors.text};
         cursor: pointer;
-        font: ${Fonts.fs}/1 "${Fonts.ff}";
+        font: ${sizes.font}/1 "${Fonts.ff}";
         font-weight: 600;
         
         &:hover {

@@ -29,18 +29,22 @@ export const Fonts = {
 };
 
 type Dims = {
+    font: string,
     spacing: string,
     elementPadding: string,
     elementHeight: string,
-    borderRadius: string
+    borderRadius: string,
+    containerWidth: string
 }
 
 const dims = (factor: number): Dims => {
     return {
+        font: `${factor + 2}px`,
         spacing: `${factor}px`,
         elementPadding: `${factor * 2}px`,
         elementHeight: `${factor * 3}px`,
-        borderRadius: '3px'
+        borderRadius: '3px',
+        containerWidth: `${factor * 54}px`
     }
 };
 

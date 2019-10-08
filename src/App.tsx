@@ -1,23 +1,31 @@
 import React from 'react';
-import { Button, Panel, GridView, Styles, Sizes } from './ui';
+import { Button, Panel, Heading, GridView, Container, Presentation, Styles, Sizes } from './ui';
 
 const App: React.FC = () => {
     return (
         <div className="App">
-            <Panel caption="Panel">
-                <GridView>
-                    <Button>Button</Button>
-                    <Button style={Styles.success}>Button</Button>
-                    <Button disabled={true}>Button</Button>
-                </GridView>
-                <GridView>
-                    <Button size={Sizes.xs}>XS</Button>
-                    <Button size={Sizes.sm}>SM</Button>
-                    <Button size={Sizes.md}>MD</Button>
-                    <Button size={Sizes.lg}>LG</Button>
-                    <Button size={Sizes.xl}>XL</Button>
-                </GridView>
-            </Panel>
+            <Presentation>
+                <Container size={Sizes.xl}>
+                    <Panel>
+                        <Heading>Button types</Heading>
+                        <GridView>
+                            <Button>Default</Button>
+                            <Button style={Styles.success}>Success</Button>
+                            <Button disabled={true}>Disabled</Button>
+                        </GridView>
+                    </Panel>
+                    <Panel>
+                        <Heading>Button sizes</Heading>
+                        <GridView>
+                            <Button size={Sizes.xs}>XS</Button>
+                            <Button size={Sizes.sm}>SM</Button>
+                            <Button size={Sizes.md}>MD</Button>
+                            <Button size={Sizes.lg}>LG</Button>
+                            <Button size={Sizes.xl}>XL</Button>
+                        </GridView>
+                    </Panel>
+                </Container>
+            </Presentation>
         </div>
     );
 };
