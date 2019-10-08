@@ -4,12 +4,13 @@ import {Colors, Dims} from '../constants';
 import { Sizes, Styles } from '../enums';
 
 interface IProps {
+    onClick?: Function;
     style?: Styles;
     size?: Sizes,
     items: any[]
 }
 
-export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, items}) => {
+export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, items, onClick}) => {
     const colors = Colors[style];
     const sizes = Dims[size];
     const List = styled.ul`
@@ -36,7 +37,7 @@ export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md
     return (
         <List>
             {items.map((item) => {
-                return <Item>{item.title}</Item>
+                return <Item onClick={() => onClick && onClick(item)}>{item.title}</Item>
             })}
         </List>
     );

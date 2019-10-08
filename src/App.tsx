@@ -18,6 +18,9 @@ const items = [
 ];
 
 const App: React.FC = () => {
+    function onListClick(item: any) {
+        alert(`Clicked on item #${item.id}`);
+    }
     return (
         <div className="App">
             <Presentation>
@@ -46,7 +49,7 @@ const App: React.FC = () => {
                             </div>
                             <div>
                                 <Heading>List</Heading>
-                                <List items={items}/>
+                                <List items={items} onClick={onListClick}/>
                             </div>
                         </GridView>
                     </Panel>
