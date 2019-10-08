@@ -36,9 +36,10 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
         &:disabled {
             color: ${colors.baseL3};
             cursor: default;
-        }
-        &:disabled:hover {
-            background-color: ${colors.baseL1}
+            
+            &, &:hover {
+                background: ${colors.baseL1};
+            }
         }
     `;
     return (
