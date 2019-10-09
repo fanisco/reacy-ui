@@ -10,7 +10,6 @@ interface IProps {
     size?: Sizes;
     textAlign?: 'left' | 'center' | 'right'
     fullWidth?: boolean;
-    bottomOpen?: boolean;
 }
 
 export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'center', ...props }) => {
@@ -18,14 +17,14 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
     const sizes = Dims[size];
     const Button = styled.button`
         height: ${sizes.elementHeight}px;
-        padding: 0 ${sizes.elementPadding}px;
+        padding: ${sizes.spacings}px ${sizes.elementPadding}px;
         background: ${colors.baseL1} linear-gradient(to bottom, rgba(255, 255, 255, ${style === Styles.default ? 0.03 : 0.15}), rgba(255, 255, 255, 0));
         border: 1px solid ${colors.baseL3};
         border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};
         cursor: pointer;
         text-align: ${textAlign};
-        font: ${sizes.font}px/1 "${Fonts.ff}";
+        font: ${sizes.font}px/${Fonts.mh} "${Fonts.ff}";
         font-weight: 600;
         
         &:hover {
@@ -46,11 +45,6 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
             }
         }
         
-        ${props.bottomOpen && `
-            border-bottom: 0 none;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        `}
         ${props.fullWidth && `
             width: 100%;
         `}

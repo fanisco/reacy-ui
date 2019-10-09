@@ -41,16 +41,16 @@ export const Colors = {
 
 export const Fonts = {
     ff: 'Open Sans',
-    ms: '12px',
-    fs: '14px',
-    lh: '1.5'
+    mh: 1.3,
+    lh: 1.5
 };
 
 type Dims = {
     font: number,
     spacing: number,
-    spacingHalf: number,
+    spacings: number,
     elementPadding: number,
+    elementWidth: number,
     elementHeight: number,
     borderRadius: number,
     containerWidth: number
@@ -60,8 +60,9 @@ const dims = (factor: number): Dims => {
     return {
         font: factor + 2,
         spacing: factor,
-        spacingHalf: factor / 2,
+        spacings: factor * 0.75,
         elementPadding: factor * 2,
+        elementWidth: factor * 10,
         elementHeight: factor * 3,
         borderRadius: 3,
         containerWidth: factor * 54

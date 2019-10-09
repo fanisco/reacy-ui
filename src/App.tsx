@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Button, List, Select,
     Panel,
@@ -18,9 +18,12 @@ const items = [
 ];
 
 const App: React.FC = () => {
+    const [select1Value, setSelect1Value] = useState(1);
+
     function onListClick(item: any) {
         alert(`Clicked on item #${item.id}`);
     }
+
     return (
         <div className="App">
             <Presentation>
@@ -53,7 +56,9 @@ const App: React.FC = () => {
                             </div>
                             <div>
                                 <Heading>Select</Heading>
-                                <Select items={items} onChange={onListClick}/>
+                                <Select items={items} value={select1Value} onChange={(item) => {
+                                    setSelect1Value(item.id);
+                                }}/>
                             </div>
                         </GridView>
                     </Panel>
