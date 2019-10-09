@@ -11,12 +11,12 @@ export const Panel: React.FC<IProps> = (props) => {
     const colors = Colors[Styles.default];
     const sizes = Dims[Sizes.md];
     const Panel = styled.div`
-        margin: ${sizes.spacing};
-        padding: ${sizes.elementPadding};
+        margin: ${sizes.spacing}px;
+        padding: ${sizes.elementPadding}px;
         border: 1px solid ${colors.baseL1};
-        border-radius: ${sizes.borderRadius};
+        border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};
-        font: ${sizes.font}/${Fonts.lh} '${Fonts.ff}';
+        font: ${sizes.font}px/${Fonts.lh} '${Fonts.ff}';
     `;
     return (
         <Panel>{props.children}</Panel>

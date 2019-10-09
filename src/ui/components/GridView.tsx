@@ -11,10 +11,10 @@ export const GridView: React.FC<IProps> = (props) => {
     const sizes = Dims[Sizes.md];
     const GridView = styled.div`
         display: flex;
-        margin: -${sizes.spacing};
+        margin: -${sizes.spacing}px;
     `;
     const Item = styled.div`
-        padding: ${sizes.spacing};
+        padding: ${sizes.spacing}px;
     `;
     return (
         <GridView>

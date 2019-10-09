@@ -12,7 +12,7 @@ export const Container: React.FC<IProps> = ({ size = Sizes.md, children }) => {
     const Container = styled.div`
         margin: 0 auto;
         width: 100%;
-        max-width: ${sizes.containerWidth};
+        max-width: ${sizes.containerWidth}px;
     `;
     return (
         <Container>{children}</Container>

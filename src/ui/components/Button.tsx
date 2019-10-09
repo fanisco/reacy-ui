@@ -8,22 +8,24 @@ interface IProps {
     disabled?: boolean;
     style?: Styles;
     size?: Sizes;
+    textAlign?: 'left' | 'center' | 'right'
     fullWidth?: boolean;
     bottomOpen?: boolean;
 }
 
-export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, ...props }) => {
+export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'center', ...props }) => {
     const colors = Colors[style];
     const sizes = Dims[size];
     const Button = styled.button`
-        height: ${sizes.elementHeight};
-        padding: 0 ${sizes.elementPadding};
+        height: ${sizes.elementHeight}px;
+        padding: 0 ${sizes.elementPadding}px;
         background: ${colors.baseL1} linear-gradient(to bottom, rgba(255, 255, 255, ${style === Styles.default ? 0.03 : 0.15}), rgba(255, 255, 255, 0));
         border: 1px solid ${colors.baseL3};
-        border-radius: ${sizes.borderRadius};
+        border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};
         cursor: pointer;
-        font: ${sizes.font}/1 "${Fonts.ff}";
+        text-align: ${textAlign};
+        font: ${sizes.font}px/1 "${Fonts.ff}";
         font-weight: 600;
         
         &:hover {

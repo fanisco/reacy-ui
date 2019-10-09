@@ -10,8 +10,8 @@ interface IProps {
 export const Heading: React.FC<IProps> = ({ size = Sizes.md, children }) => {
     const sizes = Dims[size];
     const Heading = styled.div`
-        margin-bottom: ${sizes.spacing};
-        font: ${sizes.font}/${Fonts.lh} "${Fonts.ff}";
+        margin-bottom: ${sizes.spacing}px;
+        font: ${sizes.font}px/${Fonts.lh} "${Fonts.ff}";
         font-weight: 300;
     `;
     return (
