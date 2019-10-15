@@ -20,10 +20,6 @@ const items = [
 const App: React.FC = () => {
     const [select1Value, setSelect1Value] = useState(1);
 
-    function onListClick(item: any) {
-        alert(`Clicked on item #${item.id}`);
-    }
-
     return (
         <div className="App">
             <Presentation>
@@ -52,12 +48,14 @@ const App: React.FC = () => {
                             </div>
                             <div>
                                 <Heading>List</Heading>
-                                <List items={items} onClick={onListClick}/>
+                                <List items={items} onClick={(item: any) => {
+                                    alert(`Clicked on item #${item.id}`);
+                                }}/>
                             </div>
                             <div>
                                 <Heading>Select</Heading>
-                                <Select items={items} value={select1Value} onChange={(item) => {
-                                    setSelect1Value(item.id);
+                                <Select items={items} value={select1Value} onChange={(value) => {
+                                    setSelect1Value(value);
                                 }}/>
                             </div>
                         </GridView>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Colors, Dims } from '../constants';
 import { Sizes, Styles } from '../enums';
@@ -8,7 +8,7 @@ import { Dropdown } from './Dropdown';
 import { ListItem } from './List';
 
 interface IProps {
-    onChange?: (item: ListItem) => void;
+    onChange?: (value: number) => void;
     style?: Styles;
     size?: Sizes,
     value?: any;
@@ -36,14 +36,22 @@ export const Select: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
         background: url("${arrowImage.src}") center no-repeat;
     `;
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+    const [value, setValue] = useState(props.value);
+
     const onButtonClick = () => {
         setIsOpen(!isOpen);
     };
     const onDropdownClick = (item: ListItem) => {
-        props.onChange && props.onChange(item);
-        setIsOpen(false);
+        setIsOpen(!isOpen);
+        setValue(item.id);
     };
+
+    useEffect(() => {
+        if (value !== props.value) {
+            props.onChange && props.onChange(value);
+        }
+    });
 
     return (
         <Select>
@@ -54,7 +62,7 @@ export const Select: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
                 fullWidth={true}
                 textAlign="left" onClick={onButtonClick}
             >
-                {getCaption(props.items, props.value)}<Arrow/>
+                {getCaption(props.items, value)}<Arrow/>
             </Button>
             <Dropdown
                 style={style}
