@@ -18,7 +18,7 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
     const Button = styled.button`
         height: ${sizes.elementHeight}px;
         padding: ${sizes.spacings}px ${sizes.elementPadding}px;
-        background: ${colors.baseL1} linear-gradient(to bottom, rgba(255, 255, 255, ${style === Styles.default ? 0.03 : 0.15}), rgba(255, 255, 255, 0));
+        background: ${colors.baseL1} linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
         border: 1px solid ${colors.baseL3};
         border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};

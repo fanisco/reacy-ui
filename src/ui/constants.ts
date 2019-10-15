@@ -1,42 +1,11 @@
 import { Styles, Sizes } from './enums';
-
-const defaultColors = {
-    text: '#fff',
-    baseL0: '#1b2431',
-    baseL1: '#222c3c',
-    baseL2: '#293546',
-    baseL3: '#313d4f',
-};
-
-const successColors = {
-    text: '#fff',
-    baseL0: '#1a740b',
-    baseL1: '#1b8c09',
-    baseL2: '#29a326',
-    baseL3: '#39b54a',
-};
-
-const dangerColors = {
-    text: '#fff',
-    baseL0: '#bd0d13',
-    baseL1: '#cd1f26',
-    baseL2: '#e53a40',
-    baseL3: '#f75157',
-};
-
-const warningColors = {
-    text: '#fff',
-    baseL0: '#e75d09',
-    baseL1: '#e8700d',
-    baseL2: '#f7791c',
-    baseL3: '#f7971c',
-};
+import * as colors from './colors.light';
 
 export const Colors = {
-    [Styles.default]: defaultColors,
-    [Styles.success]: successColors,
-    [Styles.warning]: warningColors,
-    [Styles.danger]: dangerColors,
+    [Styles.default]: colors.defaultColors,
+    [Styles.success]: colors.successColors,
+    [Styles.warning]: colors.warningColors,
+    [Styles.danger]: colors.dangerColors,
 };
 
 export const Fonts = {
