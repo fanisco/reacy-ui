@@ -20,7 +20,7 @@ export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md
         padding: ${sizes.spacings}px ${sizes.elementPadding}px;
         border-top: 1px solid ${colors.baseL2};
         cursor: pointer;
-        font: ${sizes.font}px/${Fonts.mh} "${Fonts.ff}";
+        font: ${sizes.fontSize}px/${Fonts.mh} "${Fonts.ff}";
         
         &:first-child {
             border-top: 0 none;

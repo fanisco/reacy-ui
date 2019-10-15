@@ -11,7 +11,7 @@ export const Heading: React.FC<IProps> = ({ size = Sizes.md, children }) => {
     const sizes = Dims[size];
     const Heading = styled.div`
         margin-bottom: ${sizes.spacing}px;
-        font: ${sizes.font}px/${Fonts.lh} "${Fonts.ff}";
+        font: ${sizes.fontSize}px/${Fonts.lh} "${Fonts.ff}";
         font-weight: 300;
     `;
     return (

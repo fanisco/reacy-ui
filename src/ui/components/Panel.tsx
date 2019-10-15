@@ -16,7 +16,7 @@ export const Panel: React.FC<IProps> = (props) => {
         border: 1px solid ${colors.baseL1};
         border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};
-        font: ${sizes.font}px/${Fonts.lh} '${Fonts.ff}';
+        font: ${sizes.fontSize}px/${Fonts.lh} '${Fonts.ff}';
     `;
     return (
         <Panel>{props.children}</Panel>

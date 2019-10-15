@@ -18,23 +18,23 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
     const Button = styled.button`
         height: ${sizes.elementHeight}px;
         padding: ${sizes.spacings}px ${sizes.elementPadding}px;
-        background: ${colors.baseL1} linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+        background: ${colors.baseL1} ${gradient(style === 'default')};
         border: 1px solid ${colors.baseL3};
         border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};
         cursor: pointer;
         text-align: ${textAlign};
-        font: ${sizes.font}px/${Fonts.mh} "${Fonts.ff}";
+        font: ${sizes.fontSize}px/${sizes.lineHeight}px "${Fonts.ff}";
         font-weight: 600;
         
         &:hover {
-            background: ${colors.baseL2};
+            background: ${colors.baseL2} ${gradient()};
         }
         &:focus {
             outline: 0 none;
         }
         &:active:focus {
-            background-color: ${colors.baseL3};
+            background: ${colors.baseL3};
         }
         &:disabled {
             color: ${colors.baseL3};
@@ -53,4 +53,8 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
     return (
         <Button onClick={() => props.onClick && props.onClick()} disabled={props.disabled}>{props.children}</Button>
     );
+};
+
+const gradient = (lighter: boolean = false) => {
+    return `linear-gradient(to bottom, rgba(255, 255, 255, ${lighter ? 0.75 : 0.25}), rgba(255, 255, 255, 0))`;
 };

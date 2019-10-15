@@ -15,7 +15,8 @@ export const Fonts = {
 };
 
 type Dims = {
-    font: number,
+    fontSize: number,
+    lineHeight: number,
     spacing: number,
     spacings: number,
     elementPadding: number,
@@ -27,7 +28,8 @@ type Dims = {
 
 const dims = (factor: number): Dims => {
     return {
-        font: factor + 2,
+        fontSize: factor + 2,
+        lineHeight: factor + 2,
         spacing: factor,
         spacings: factor * 0.75,
         elementPadding: factor * 2,

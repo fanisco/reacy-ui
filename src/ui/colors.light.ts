@@ -1,8 +1,8 @@
 export const defaultColors = {
     text: '#354052',
     baseL0: '#f3f5f7',
-    baseL1: '#eff3f6',
-    baseL2: '#dfe2e5',
+    baseL1: '#ebeff4',
+    baseL2: '#e1e5e9',
     baseL3: '#ced0da',
 };
 
