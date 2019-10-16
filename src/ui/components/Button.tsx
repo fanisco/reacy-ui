@@ -24,8 +24,8 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
         color: ${colors.text};
         cursor: pointer;
         text-align: ${textAlign};
-        font: ${sizes.fontSize}px/${sizes.lineHeight}px "${Fonts.ff}";
-        font-weight: 600;
+        font: ${sizes.fontSize}px/${sizes.lineHeight} "${Fonts.ff}";
+        font-weight: 500;
         
         &:hover {
             background: ${colors.baseL2} ${gradient()};

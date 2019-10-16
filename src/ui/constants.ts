@@ -9,7 +9,7 @@ export const Colors = {
 };
 
 export const Fonts = {
-    ff: 'Open Sans',
+    ff: 'Roboto',
     mh: 1.3,
     lh: 1.5
 };
@@ -29,7 +29,7 @@ type Dims = {
 const dims = (factor: number): Dims => {
     return {
         fontSize: factor + 2,
-        lineHeight: factor + 2,
+        lineHeight: factor >= 12 ? 1.4 : 1.25,
         spacing: factor,
         spacings: factor * 0.75,
         elementPadding: factor * 2,
