@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Colors, Dims } from '../constants';
+// import { Colors, Dims } from '../constants';
 import { Sizes, Styles } from '../enums';
 import { List, ListItem } from './List';
-import {Button} from "./Button";
 
 interface IProps {
     onClick?: (item: ListItem) => void;
-    isOpen?: boolean;
+    open?: boolean;
     position?: 'bl'
     items: any[];
     style?: Styles;
@@ -15,8 +14,12 @@ interface IProps {
 }
 
 export const Dropdown: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, position = 'bl', ...props}) => {
-    const colors = Colors[style];
-    const sizes = Dims[size];
+    const onListClick = (item: ListItem) => {
+        props.onClick && props.onClick(item);
+    };
+
+    // const colors = Colors[style];
+    // const sizes = Dims[size];
     const Dropdown = styled.div`
         position: absolute;
         width: 100%;
@@ -27,14 +30,9 @@ export const Dropdown: React.FC<IProps> = ({ style = Styles.default, size = Size
             margin-top: 1px;
         `}
     `;
-
     const ListWrapper = styled.div`
-        ${!props.isOpen && 'display: none;'};
+        ${!props.open && 'display: none;'};
     `;
-
-    const onListClick = (item: ListItem) => {
-        props.onClick && props.onClick(item);
-    };
 
     return (
         <Dropdown>
