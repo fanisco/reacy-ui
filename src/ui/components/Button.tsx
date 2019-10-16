@@ -16,16 +16,17 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
     const colors = Colors[style];
     const sizes = Dims[size];
     const Button = styled.button`
+        box-sizing: border-box;
         height: ${sizes.elementHeight}px;
         padding: ${sizes.spacings}px ${sizes.elementPadding}px;
         background: ${colors.baseL1} ${gradient(style === 'default')};
         border: 1px solid ${colors.baseL3};
         border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};
-        cursor: pointer;
         text-align: ${textAlign};
         font: ${sizes.fontSize}px/${sizes.lineHeight} "${Fonts.ff}";
         font-weight: 500;
+        cursor: pointer;
         
         &:hover {
             background: ${colors.baseL2} ${gradient()};

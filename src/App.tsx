@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    Button, List, Select,
+    Button, Input, List, Select,
     Panel,
     Heading,
     GridView,
@@ -8,6 +8,7 @@ import {
     Presentation,
     Styles, Sizes
 } from './ui';
+import styled from "styled-components";
 
 const items = [
     { id: 1, title: 'List item 1' },
@@ -19,11 +20,12 @@ const items = [
 
 const App: React.FC = () => {
     const [select1Value, setSelect1Value] = useState(1);
+    const [input1Value, setInput1Value] = useState();
 
     return (
         <div className="App">
-            <Presentation>
-                <Container size={Sizes.xl}>
+            <Presentation key="presentation">
+                <Container key="container" size={Sizes.xl}>
                     <Panel>
                         <Heading>Button types</Heading>
                         <GridView>
@@ -34,8 +36,8 @@ const App: React.FC = () => {
                             <Button disabled={true}>Disabled</Button>
                         </GridView>
                     </Panel>
-                    <Panel>
-                        <GridView>
+                    <Panel key="panel">
+                        <GridView key="grid">
                             <div>
                                 <Heading>Button sizes</Heading>
                                 <GridView>
@@ -56,6 +58,9 @@ const App: React.FC = () => {
                                 <Heading>Select</Heading>
                                 <Select items={items} value={select1Value} onChange={(value) => {
                                     setSelect1Value(value);
+                                }}/>
+                                <Input value={input1Value} onChange={(value) => {
+                                    setInput1Value(value);
                                 }}/>
                             </div>
                         </GridView>

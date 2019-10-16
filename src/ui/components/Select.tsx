@@ -10,7 +10,7 @@ import { ListItem } from './List';
 interface IProps {
     onChange?: (value: number) => void;
     style?: Styles;
-    size?: Sizes,
+    size?: Sizes;
     value?: any;
     items: any[]
 }
