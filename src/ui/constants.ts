@@ -6,6 +6,8 @@ export const Colors = {
     [Styles.success]: colors.successColors,
     [Styles.warning]: colors.warningColors,
     [Styles.danger]: colors.dangerColors,
+    [Styles.primary]: colors.primaryColors,
+    [Styles.secondary]: colors.secondaryColors
 };
 
 export const Fonts = {
@@ -29,7 +31,7 @@ type Dims = {
 const dims = (factor: number): Dims => {
     return {
         fontSize: factor + 2,
-        lineHeight: factor >= 12 ? 1.4 : 1.25,
+        lineHeight: factor >= 14 ? 1.5 : factor >= 12 ? 1.4 : factor >= 10 ? 1.3 : 1.2,
         spacing: factor,
         spacings: factor * 0.75,
         elementPadding: factor * 2,
@@ -40,10 +42,11 @@ const dims = (factor: number): Dims => {
     }
 };
 
-export const Dims = {
-    [Sizes.xs]: dims(8),
-    [Sizes.sm]: dims(10),
-    [Sizes.md]: dims(12),
-    [Sizes.lg]: dims(16),
-    [Sizes.xl]: dims(20),
-};
+export const Dims: { [x:string]: Dims } =
+    {
+        [Sizes.xs]: dims(8),
+        [Sizes.sm]: dims(10),
+        [Sizes.md]: dims(12),
+        [Sizes.lg]: dims(14),
+        [Sizes.xl]: dims(16),
+    };

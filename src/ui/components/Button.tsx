@@ -19,7 +19,7 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
         box-sizing: border-box;
         height: ${sizes.elementHeight}px;
         padding: ${sizes.spacings}px ${sizes.elementPadding}px;
-        background: ${colors.baseL1} ${gradient(style === 'default')};
+        background: ${colors.baseL0} ${gradient(style === 'default')};
         border: 1px solid ${colors.baseL3};
         border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};
@@ -29,20 +29,21 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
         cursor: pointer;
         
         &:hover {
-            background: ${colors.baseL2} ${gradient()};
+            background: ${colors.baseL1} ${gradient()};
         }
         &:focus {
             outline: 0 none;
         }
         &:active:focus {
-            background: ${colors.baseL3};
+            background: ${colors.baseL1};
+            box-shadow: inset 0 0 10px ${colors.baseL3};
         }
         &:disabled {
             color: ${colors.baseL3};
             cursor: default;
             
             &, &:hover {
-                background: ${colors.baseL1};
+                background: ${colors.baseL0};
             }
         }
         
@@ -57,5 +58,5 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
 };
 
 const gradient = (lighter: boolean = false) => {
-    return `linear-gradient(to bottom, rgba(255, 255, 255, ${lighter ? 0.75 : 0.25}), rgba(255, 255, 255, 0))`;
+    return `linear-gradient(to bottom, rgba(255, 255, 255, ${lighter ? 0.45 : 0.15}), rgba(255, 255, 255, 0))`;
 };

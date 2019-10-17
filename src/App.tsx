@@ -30,6 +30,10 @@ const App: React.FC = () => {
                         <Heading>Button types</Heading>
                         <GridView>
                             <Button>Default</Button>
+                            <Button style={Styles.primary}>Primary</Button>
+                            <Button style={Styles.secondary}>Secondary</Button>
+                        </GridView>
+                        <GridView>
                             <Button style={Styles.success}>Success</Button>
                             <Button style={Styles.warning}>Warning</Button>
                             <Button style={Styles.danger}>Danger</Button>

@@ -13,6 +13,7 @@ export const Panel: React.FC<IProps> = (props) => {
     const Panel = styled.div`
         margin: ${sizes.spacing}px;
         padding: ${sizes.elementPadding}px;
+        background-color: ${colors.baseL0};
         border: 1px solid ${colors.baseL3};
         border-radius: ${sizes.borderRadius}px;
         color: ${colors.text};
