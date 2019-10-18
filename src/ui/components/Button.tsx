@@ -8,14 +8,16 @@ interface IProps {
     disabled?: boolean;
     style?: Styles;
     size?: Sizes;
-    textAlign?: 'left' | 'center' | 'right'
+    mode?: 'default' | 'link' | 'outline';
+    textAlign?: 'left' | 'center' | 'right';
     fullWidth?: boolean;
 }
 
-export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'center', ...props }) => {
+export const Button: React.FC<IProps> =
+    ({ style = Styles.default, size = Sizes.md, mode = 'default', textAlign = 'center', ...props }) => {
     const colors = Colors[style];
     const sizes = Dims[size];
-    const Button = styled.button`
+    let Button = styled.button`
         box-sizing: border-box;
         height: ${sizes.elementHeight}px;
         padding: ${sizes.spacings}px ${sizes.elementPadding}px;
@@ -51,6 +53,40 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
             width: 100%;
         `}
     `;
+
+    if (mode === 'link') {
+        Button = styled(Button)`
+            height: auto;
+            padding: 0;
+            background: none;
+            border: 0 none;
+            font-weight: 400;
+            
+            &:hover {
+                background: none;
+                color: ${colors.baseL1};
+                text-decoration: underline;
+            }
+            &:active:focus {
+                background: none;
+                box-shadow: none;
+                color: ${colors.baseL3};
+            }
+        `;
+    }
+
+    if (mode === 'outline') {
+        Button = styled(Button)`
+            background: none;
+            border-radius: 50px;
+            color: ${colors.baseL0};
+            
+            &:hover {
+                border-color: ${colors.baseL1};
+                color: ${colors.text};
+            }
+        `;
+    }
 
     return (
         <Button onClick={() => props.onClick && props.onClick()} disabled={props.disabled}>{props.children}</Button>
