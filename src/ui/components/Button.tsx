@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors, Fonts, Dims } from '../constants';
-import { Styles, Sizes } from '../enums';
+import { Colors, Dims, Fonts } from '../constants';
+import { Sizes, Styles } from '../enums';
 
 interface IProps {
     onClick?: Function;
@@ -15,40 +15,34 @@ interface IProps {
 
 export const Button: React.FC<IProps> =
     ({ style = Styles.default, size = Sizes.md, mode = 'default', textAlign = 'center', ...props }) => {
-    const colors = Colors[style];
+    const colors = getColors(style, Colors[style]);
     const sizes = Dims[size];
     let Button = styled.button`
         box-sizing: border-box;
         height: ${sizes.elementHeight}px;
         padding: ${sizes.spacings}px ${sizes.elementPadding}px;
-        background: ${colors.baseL0} ${gradient(style === 'default')};
-        border: 1px solid ${colors.baseL3};
+        background: ${colors.idleColor} ${gradient(style === 'default')};
+        border: 1px solid ${colors.borderColor};
         border-radius: ${sizes.borderRadius}px;
-        color: ${colors.text};
+        color: ${colors.textColor};
         text-align: ${textAlign};
         font: ${sizes.fontSize}px/${sizes.lineHeight} "${Fonts.ff}";
         font-weight: 500;
         cursor: pointer;
         
         &:hover {
-            background: ${colors.baseL1} ${gradient()};
+            border-color: ${colors.borderHoverColor};
+            background: ${colors.hoverColor} ${gradient()};
         }
         &:focus {
             outline: 0 none;
         }
         &:active:focus {
-            background: ${colors.baseL1};
-            box-shadow: inset 0 0 10px ${colors.baseL3};
+            background: ${colors.activeColor};
+            border-color: ${colors.borderColor};
+            box-shadow: inset 0 0 10px ${colors.shadowColor};
         }
-        &:disabled {
-            color: ${colors.baseL3};
-            cursor: default;
-            
-            &, &:hover {
-                background: ${colors.baseL0};
-            }
-        }
-        
+      
         ${props.fullWidth && `
             width: 100%;
         `}
@@ -61,16 +55,17 @@ export const Button: React.FC<IProps> =
             background: none;
             border: 0 none;
             font-weight: 400;
-            
+            color: ${colors.idleColor};
+
             &:hover {
                 background: none;
-                color: ${colors.baseL1};
+                color: ${colors.hoverColor};
                 text-decoration: underline;
             }
             &:active:focus {
                 background: none;
                 box-shadow: none;
-                color: ${colors.baseL3};
+                color: ${colors.activeColor};
             }
         `;
     }
@@ -79,14 +74,32 @@ export const Button: React.FC<IProps> =
         Button = styled(Button)`
             background: none;
             border-radius: 50px;
-            color: ${colors.baseL0};
-            
+            color: ${colors.idleColor};
+
             &:hover {
-                border-color: ${colors.baseL1};
-                color: ${colors.text};
+                background: ${colors.hoverColor};
+                border-color: ${colors.borderHoverColor};
+                color: ${colors.textColor};
+            }
+            &:active:focus {
+                background: ${colors.activeColor};
+                border-color: ${colors.borderColor};
+                color: ${colors.textColor};
             }
         `;
     }
+
+    // if () {
+    //
+    // &:disabled {
+    //         color: ${Colors[Styles.default].baseL0};
+    //         cursor: default;
+    //
+    //     &, &:hover {
+    //             background: ${Colors[Styles.default].baseL1};
+    //         }
+    //     }
+    // }
 
     return (
         <Button onClick={() => props.onClick && props.onClick()} disabled={props.disabled}>{props.children}</Button>
@@ -96,3 +109,37 @@ export const Button: React.FC<IProps> =
 const gradient = (lighter: boolean = false) => {
     return `linear-gradient(to bottom, rgba(255, 255, 255, ${lighter ? 0.45 : 0.15}), rgba(255, 255, 255, 0))`;
 };
+
+const getColors = (style: string, colors: any): Scheme => {
+    if (style !== 'default') {
+        return {
+            textColor: colors.text,
+            idleColor: colors.baseL2,
+            hoverColor: colors.baseL3,
+            activeColor: colors.baseL2,
+            borderColor: colors.baseL0,
+            borderHoverColor: colors.baseL2,
+            shadowColor: colors.baseL0
+        };
+    } else {
+        return {
+            textColor: colors.text,
+            idleColor: colors.baseL2,
+            hoverColor: colors.baseL3,
+            activeColor: colors.baseL2,
+            borderColor: colors.baseL0,
+            borderHoverColor: colors.baseL0,
+            shadowColor: colors.baseL0
+        };
+    }
+};
+
+type Scheme = {
+    textColor: string;
+    idleColor: string;
+    hoverColor: string;
+    activeColor: string;
+    borderColor: string;
+    borderHoverColor: string;
+    shadowColor: string;
+}

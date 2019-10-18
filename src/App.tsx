@@ -30,7 +30,6 @@ const App: React.FC = () => {
                         <Heading>Button types</Heading>
                         <GridView>
                             <Button>Default</Button>
-                            <Button mode="link">Default link</Button>
                             <Button style={Styles.primary}>Primary</Button>
                             <Button style={Styles.primary} mode="link">Primary link</Button>
                             <Button style={Styles.secondary}>Secondary</Button>
@@ -40,13 +39,13 @@ const App: React.FC = () => {
                             <Button style={Styles.success}>Success</Button>
                             <Button style={Styles.warning}>Warning</Button>
                             <Button style={Styles.danger}>Danger</Button>
-                            <Button disabled={true}>Disabled</Button>
                         </GridView>
                         <GridView>
                             <Button style={Styles.success} mode="outline">Success outline</Button>
-                            <Button style={Styles.success}>Success outline</Button>
-                            <Button style={Styles.warning}>Warning</Button>
-                            <Button style={Styles.danger}>Danger</Button>
+                            <Button style={Styles.danger} mode="outline">Danger outline</Button>
+                            <Button style={Styles.warning} mode="outline">Warning outline</Button>
+                        </GridView>
+                        <GridView>
                             <Button disabled={true}>Disabled</Button>
                         </GridView>
                     </Panel>
