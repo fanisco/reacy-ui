@@ -9,12 +9,18 @@ interface IProps {
 
 export const Container: React.FC<IProps> = ({ size = Sizes.md, children }) => {
     const sizes = Dims[size];
-    const Container = styled.div`
-        margin: 0 auto;
-        width: 100%;
-        max-width: ${sizes.containerWidth}px;
-    `;
     return (
-        <Container>{children}</Container>
+        <ContainerElement sizes={sizes}>{children}</ContainerElement>
     );
 };
+
+interface StyledProps {
+    sizes?: any
+    colors?: any
+}
+
+const ContainerElement = styled.div<StyledProps>`
+    margin: 0 auto;
+    width: 100%;
+    max-width: ${props => props.sizes.containerWidth}px;
+`;

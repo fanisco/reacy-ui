@@ -29,8 +29,8 @@ export default interface IInputProps {
 }
 
 interface StyledProps {
-    sizes: any
-    colors: any
+    sizes?: any
+    colors?: any
 }
 
 const InputElement = styled.input<StyledProps>`

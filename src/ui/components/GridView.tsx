@@ -9,18 +9,24 @@ interface IProps {
 
 export const GridView: React.FC<IProps> = (props) => {
     const sizes = Dims[Sizes.md];
-    const GridView = styled.div`
-        display: flex;
-        margin: -${sizes.spacing}px;
-    `;
-    const Item = styled.div`
-        padding: ${sizes.spacing}px;
-    `;
     return (
-        <GridView>
+        <GridViewElement sizes={sizes}>
             {React.Children.map(props.children, (child) => {
-                return <Item>{child}</Item>
+                return <ItemElement sizes={sizes}>{child}</ItemElement>
             })}
-        </GridView>
+        </GridViewElement>
     );
 };
+
+interface StyledProps {
+    sizes?: any
+    colors?: any
+}
+
+const GridViewElement = styled.div<StyledProps>`
+    display: flex;
+    margin: -${props => props.sizes.spacing}px;
+`;
+const ItemElement = styled.div<StyledProps>`
+    padding: ${props => props.sizes.spacing}px;
+`;

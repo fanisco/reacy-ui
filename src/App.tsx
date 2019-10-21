@@ -18,7 +18,7 @@ const items = [
 
 const App: React.FC = () => {
     const [select1Value, setSelect1Value] = useState(1);
-    const [input1Value, setInput1Value] = useState();
+    const [input1Value, setInput1Value] = useState('');
 
     return (
         <div>

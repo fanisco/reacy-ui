@@ -16,100 +16,100 @@ interface IProps {
 export const Button: React.FC<IProps> =
     ({ style = Styles.default, size = Sizes.md, mode = 'default', textAlign = 'center', ...props }) => {
     const colors = getColors(style, Colors[style]);
-    const sizes = Dims[size];
-    let Button = styled.button`
-        box-sizing: border-box;
-        height: ${sizes.elementHeight}px;
-        padding: ${sizes.spacings}px ${sizes.elementPadding}px;
-        background: ${colors.idleColor} ${gradient(style === 'default')};
-        border: 1px solid ${colors.borderColor};
-        border-radius: ${sizes.borderRadius}px;
-        color: ${colors.textColor};
-        text-align: ${textAlign};
-        font: ${sizes.fontSize}px/${sizes.lineHeight} "${Fonts.ff}";
-        font-weight: 500;
-        cursor: pointer;
-        
-        &:hover {
-            border-color: ${colors.borderHoverColor};
-            background: ${colors.hoverColor} ${gradient()};
-        }
-        &:focus {
-            outline: 0 none;
-        }
-        &:active:focus {
-            background: ${colors.activeColor};
-            border-color: ${colors.borderColor};
-            box-shadow: inset 0 0 10px ${colors.shadowColor};
-        }
-    `;
-
-    if (mode === 'link') {
-        Button = styled(Button)`
-            height: auto;
-            padding: 0;
-            background: none;
-            border: 0 none;
-            font-weight: 400;
-            color: ${colors.idleColor};
-
-            &:hover {
-                background: none;
-                color: ${colors.hoverColor};
-                text-decoration: underline;
-            }
-            &:active:focus {
-                background: none;
-                box-shadow: none;
-                color: ${colors.activeColor};
-            }
-        `;
-    }
-
-    if (mode === 'outline') {
-        Button = styled(Button)`
-            background: none;
-            border-radius: 50px;
-            color: ${colors.idleColor};
-
-            &:hover {
-                background: ${colors.hoverColor};
-                border-color: ${colors.borderHoverColor};
-                color: ${colors.textColor};
-            }
-            &:active:focus {
-                background: ${colors.activeColor};
-                border-color: ${colors.borderColor};
-                color: ${colors.textColor};
-            }
-        `;
-    }
-
-    if (props.disabled) {
-        Button = styled(Button)`
-            &:disabled, &:disabled:hover, &:disabled:active:focus {
-                background: none;
-                border-color: ${Colors[Styles.default].baseL0};
-                color: ${Colors[Styles.default].baseL0};
-                cursor: default;
-            }
-        `;
-    }
-
-    if (props.fullWidth) {
-        Button = styled(Button)`
-            width: 100%;
-        `;
-    }
-
+    const dims = Dims[size];
     return (
-        <Button onClick={() => props.onClick && props.onClick()} disabled={props.disabled}>{props.children}</Button>
+        <ButtonElement
+            dims={dims}
+            colors={colors}
+            mode={mode}
+            textAlign={textAlign}
+            fullWidth={props.fullWidth}
+            onClick={() => props.onClick && props.onClick()}
+            disabled={props.disabled}
+        >{Math.ceil(Math.random() * 1000)}</ButtonElement>
     );
 };
 
-const gradient = (lighter: boolean = false) => {
-    return `linear-gradient(to bottom, rgba(255, 255, 255, ${lighter ? 0.45 : 0.15}), rgba(255, 255, 255, 0))`;
-};
+interface StyledProps {
+    dims?: any;
+    colors?: any;
+    mode?: string;
+    textAlign?: string;
+    fullWidth?: boolean;
+}
+
+const ButtonElement = styled.button<StyledProps>`
+    box-sizing: border-box;
+    height: ${props => props.dims.elementHeight}px;
+    padding: ${props => props.dims.spacings}px ${props => props.dims.elementPadding}px;
+    background: ${props => props.colors.idleColor} linear-gradient(to bottom, rgba(255, 255, 255, ${props => props.colors.gradient}), rgba(255, 255, 255, 0));
+    border: 1px solid ${props => props.colors.borderColor};
+    border-radius: ${props => props.dims.borderRadius}px;
+    color: ${props => props.colors.textColor};
+    text-align: ${props => props.textAlign};
+    font: ${props => props.dims.fontSize}px/${props => props.dims.lineHeight} "${Fonts.ff}";
+    font-weight: 500;
+    cursor: pointer;
+    
+    &:hover {
+        border-color: ${props => props.colors.borderHoverColor};
+        background-color: ${props => props.colors.hoverColor};
+    }
+    &:focus {
+        outline: 0 none;
+    }
+    &:active:focus {
+        background: ${props => props.colors.activeColor};
+        border-color: ${props => props.colors.borderColor};
+        box-shadow: inset 0 0 10px ${props => props.colors.shadowColor};
+    }
+    
+    ${props => props.fullWidth && `
+        width: 100%;
+    `}
+    
+    ${props => props.mode === 'link' ? `
+        height: auto;
+        padding: 0;
+        background: none;
+        border: 0 none;
+        font-weight: 400;
+        color: ${props.colors.idleColor};
+
+        &:hover {
+            background: none;
+            color: ${props.colors.hoverColor};
+            text-decoration: underline;
+        }
+        &:active:focus {
+            background: none;
+            box-shadow: none;
+            color: ${props.colors.activeColor};
+        }
+    ` : props.mode === 'outline' && `
+        background: none;
+        border-radius: 50px;
+        color: ${props.colors.idleColor};
+
+        &:hover {
+            background: ${props.colors.hoverColor};
+            border-color: ${props.colors.borderHoverColor};
+            color: ${props.colors.textColor};
+        }
+        &:active:focus {
+            background: ${props.colors.activeColor};
+            border-color: ${props.colors.borderColor};
+            color: ${props.colors.textColor};
+            }
+    `}
+    
+    &:disabled, &:disabled:hover, &:disabled:active:focus {
+        background: none;
+        border-color: ${Colors[Styles.default].baseL0};
+        color: ${Colors[Styles.default].baseL0};
+        cursor: default;
+    }
+`;
 
 const getColors = (style: string, colors: any): Scheme => {
     if (style !== 'default') {
@@ -120,7 +120,8 @@ const getColors = (style: string, colors: any): Scheme => {
             activeColor: colors.baseL2,
             borderColor: colors.baseL0,
             borderHoverColor: colors.baseL2,
-            shadowColor: colors.baseL0
+            shadowColor: colors.baseL0,
+            gradient: 0.15
         };
     } else {
         return {
@@ -130,7 +131,8 @@ const getColors = (style: string, colors: any): Scheme => {
             activeColor: colors.baseL2,
             borderColor: colors.baseL0,
             borderHoverColor: colors.baseL0,
-            shadowColor: colors.baseL0
+            shadowColor: colors.baseL0,
+            gradient: 0.15
         };
     }
 };
@@ -143,4 +145,5 @@ type Scheme = {
     borderColor: string;
     borderHoverColor: string;
     shadowColor: string;
+    gradient: number;
 }
