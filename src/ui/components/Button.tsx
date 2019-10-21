@@ -26,7 +26,7 @@ export const Button: React.FC<IProps> =
             fullWidth={props.fullWidth}
             onClick={() => props.onClick && props.onClick()}
             disabled={props.disabled}
-        >{Math.ceil(Math.random() * 1000)}</ButtonElement>
+        >{props.children}</ButtonElement>
     );
 };
 
