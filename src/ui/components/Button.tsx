@@ -42,10 +42,6 @@ export const Button: React.FC<IProps> =
             border-color: ${colors.borderColor};
             box-shadow: inset 0 0 10px ${colors.shadowColor};
         }
-      
-        ${props.fullWidth && `
-            width: 100%;
-        `}
     `;
 
     if (mode === 'link') {
@@ -89,17 +85,22 @@ export const Button: React.FC<IProps> =
         `;
     }
 
-    // if () {
-    //
-    // &:disabled {
-    //         color: ${Colors[Styles.default].baseL0};
-    //         cursor: default;
-    //
-    //     &, &:hover {
-    //             background: ${Colors[Styles.default].baseL1};
-    //         }
-    //     }
-    // }
+    if (props.disabled) {
+        Button = styled(Button)`
+            &:disabled, &:disabled:hover, &:disabled:active:focus {
+                background: none;
+                border-color: ${Colors[Styles.default].baseL0};
+                color: ${Colors[Styles.default].baseL0};
+                cursor: default;
+            }
+        `;
+    }
+
+    if (props.fullWidth) {
+        Button = styled(Button)`
+            width: 100%;
+        `;
+    }
 
     return (
         <Button onClick={() => props.onClick && props.onClick()} disabled={props.disabled}>{props.children}</Button>

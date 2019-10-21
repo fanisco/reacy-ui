@@ -10,9 +10,9 @@ export const Input: React.FC<IInputProps> = ({ style = Styles.default, size = Si
         <InputElement
             sizes={sizes}
             colors={colors}
-            value={props.value || ''}
-            onChange={(event) => {
-                props.onChange && props.onChange(event.target.value);
+            value={props.value}
+            onChange={(e) => {
+                props.onChange && props.onChange(e.target.value);
             }}
         />
     );
@@ -38,7 +38,7 @@ const InputElement = styled.input<StyledProps>`
     height: ${props => props.sizes.elementHeight}px;
     padding: ${props => props.sizes.spacings}px ${props => props.sizes.elementPadding}px;
     background: ${props => props.colors.baseL2};
-    border: 1px solid ${props => props.colors.baseL3};
+    border: 1px solid ${props => props.colors.baseL0};
     border-radius: ${props => props.sizes.borderRadius}px;
     color: ${props => props.colors.text};
     text-align: ${props => props.sizes.textAlign};
@@ -46,10 +46,10 @@ const InputElement = styled.input<StyledProps>`
     font-weight: 400;
     
     &:hover {
-        background: ${props => props.colors.baseL1};
+        background: ${props => props.colors.baseL3};
     }
     &:focus {
-        background: ${props => props.colors.baseL0};
+        background: ${props => props.colors.baseL3};
         outline: 0 none;
     }
 `;
