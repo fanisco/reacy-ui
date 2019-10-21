@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import {
-    Button, Input, List, Select,
+    Button,
+    Input, Switch,
+    List, Select,
     Panel,
     Heading,
     Row,
@@ -19,6 +21,7 @@ const items = [
 const App: React.FC = () => {
     const [select1Value, setSelect1Value] = useState(1);
     const [input1Value, setInput1Value] = useState('');
+    const [switch1Value, setSwitch1Value] = useState(true);
 
     return (
         <div>
@@ -71,6 +74,9 @@ const App: React.FC = () => {
                             }}/>
                             <Input value={input1Value} onChange={(value) => {
                                 setInput1Value(value);
+                            }}/>
+                            <Switch size={Sizes.xs} name="switch" caption="Switch" value={switch1Value} onChange={(value) => {
+                                setSwitch1Value(value);
                             }}/>
                         </div>
                     </Row>

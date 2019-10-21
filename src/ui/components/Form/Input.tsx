@@ -1,9 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors, Fonts, Dims } from '../constants';
-import { Styles, Sizes } from '../enums';
+import IInputProps from './IInputProps';
+import { Colors, Fonts, Dims } from '../../constants';
+import { Styles, Sizes } from '../../enums';
 
-export const Input: React.FC<IInputProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'left', ...props }) => {
+interface IProps extends IInputProps {
+    onChange: (value: string) => void;
+    value: any;
+    style?: Styles;
+    size?: Sizes;
+    textAlign?: 'left' | 'center' | 'right'
+    fullWidth?: boolean;
+}
+
+export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'left', ...props }) => {
     const colors = Colors[style];
     const sizes = Dims[size];
     return (
@@ -17,16 +27,6 @@ export const Input: React.FC<IInputProps> = ({ style = Styles.default, size = Si
         />
     );
 };
-
-export default interface IInputProps {
-    onChange?: (value: string) => void;
-    value?: any;
-    disabled?: boolean;
-    style?: Styles;
-    size?: Sizes;
-    textAlign?: 'left' | 'center' | 'right'
-    fullWidth?: boolean;
-}
 
 interface StyledProps {
     sizes?: any

@@ -1,5 +1,6 @@
 export { Button } from './components/Button';
-export { Input } from './components/Input';
+export { Input } from './components/Form/Input';
+export { Switch } from './components/Form/Switch';
 export { List } from './components/List';
 export { Dropdown } from './components/Dropdown';
 export { Select } from './components/Select';
