@@ -10,10 +10,7 @@ export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md
         margin: 0;
         padding: 0;
         list-style: none;
-        background: ${colors.baseL3};
-        border: 1px solid ${colors.baseL0};
         border-radius: ${sizes.borderRadius}px;
-        box-shadow: 0 1px 5px ${colors.baseL0};
     `;
     const Item = styled.li`
         box-sizing: border-box;

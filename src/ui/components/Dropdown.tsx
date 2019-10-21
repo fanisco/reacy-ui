@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import { Colors, Dims } from '../constants';
+import { Colors, Dims } from '../constants';
 import { Sizes, Styles } from '../enums';
 import { List, ListItem } from './List';
 
@@ -18,32 +18,34 @@ export const Dropdown: React.FC<IProps> = ({ style = Styles.default, size = Size
         props.onClick && props.onClick(item);
     };
 
-    // const colors = Colors[style];
-    // const sizes = Dims[size];
+    const colors = Colors[style];
+    const sizes = Dims[size];
     const Dropdown = styled.div`
+        box-sizing: border-box;
         position: absolute;
         width: 100%;
+        background: ${colors.baseL3};
+        border: 1px solid ${colors.baseL0};
+        border-radius: ${sizes.borderRadius}px;
+        box-shadow: 0 1px 5px ${colors.baseL0};
         
         ${position === 'bl' && `
             top: 100%;
             left: 0;
-            margin-top: 1px;
+            margin-top: -1px;
         `}
-    `;
-    const ListWrapper = styled.div`
+        
         ${!props.open && 'display: none;'};
     `;
 
     return (
         <Dropdown>
-            <ListWrapper>
-                <List
-                    style={style}
-                    size={size}
-                    items={props.items}
-                    onClick={onListClick}
-                />
-            </ListWrapper>
+            <List
+                style={style}
+                size={size}
+                items={props.items}
+                onClick={onListClick}
+            />
         </Dropdown>
     );
 };
