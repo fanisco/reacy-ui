@@ -3,7 +3,7 @@ import {
     Button, Input, List, Select,
     Panel,
     Heading,
-    GridView,
+    Row,
     Container,
     Styles, Sizes
 } from './ui';
@@ -25,38 +25,38 @@ const App: React.FC = () => {
             <Container size={Sizes.xl}>
                 <Panel>
                     <Heading>Button types</Heading>
-                    <GridView>
+                    <Row>
                         <Button>Default</Button>
                         <Button style={Styles.primary}>Primary</Button>
                         <Button style={Styles.primary} mode="link">Primary link</Button>
                         <Button style={Styles.secondary}>Secondary</Button>
                         <Button style={Styles.secondary} mode="link">Secondary link</Button>
-                    </GridView>
-                    <GridView>
+                    </Row>
+                    <Row>
                         <Button style={Styles.success}>Success</Button>
                         <Button style={Styles.warning}>Warning</Button>
                         <Button style={Styles.danger}>Danger</Button>
-                    </GridView>
-                    <GridView>
+                    </Row>
+                    <Row>
                         <Button style={Styles.success} mode="outline">Success outline</Button>
                         <Button style={Styles.danger} mode="outline">Danger outline</Button>
                         <Button style={Styles.warning} mode="outline">Warning outline</Button>
-                    </GridView>
-                    <GridView>
+                    </Row>
+                    <Row>
                         <Button disabled={true}>Disabled</Button>
-                    </GridView>
+                    </Row>
                 </Panel>
                 <Panel key="panel">
-                    <GridView key="grid">
+                    <Row key="grid">
                         <div>
                             <Heading>Button sizes</Heading>
-                            <GridView>
+                            <Row>
                                 <Button size={Sizes.xs}>XS</Button>
                                 <Button size={Sizes.sm}>SM</Button>
                                 <Button size={Sizes.md}>MD</Button>
                                 <Button size={Sizes.lg}>LG</Button>
                                 <Button size={Sizes.xl}>XL</Button>
-                            </GridView>
+                            </Row>
                         </div>
                         <div>
                             <Heading>List</Heading>
@@ -73,7 +73,7 @@ const App: React.FC = () => {
                                 setInput1Value(value);
                             }}/>
                         </div>
-                    </GridView>
+                    </Row>
                 </Panel>
             </Container>
         </div>
