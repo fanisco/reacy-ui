@@ -7,7 +7,7 @@ import { Styles, Sizes } from '../../enums';
 interface IProps extends IInputProps {
     value: boolean;
     onChange: (value: boolean) => void;
-    caption: string;
+    caption?: string;
     size?: Sizes;
 }
 
