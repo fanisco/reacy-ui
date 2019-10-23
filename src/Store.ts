@@ -1,30 +1,25 @@
-const Elements = [
-    { name: 'color', type: 'string', value: 'Green' },
-    { name: 'bold', type: 'boolean', value: true }
-];
+import { observable, computed } from 'mobx';
+import { FormItem } from './ui/components/Types/Item';
 
-export const createStore = () => {
-    return {
-        get allElements() {
-            return Elements;
-        },
-        getElementByName(name: string) {
-            for (const element of Elements) {
-                if (element.name === name) {
-                    return element;
-                }
+export default class Store {
+    @observable items: FormItem[] = [
+        { id: 'color', name: 'Color', type: 'string', value: 'Green' },
+        { id: 'bold', name: 'Bold', type: 'boolean', value: true }
+    ];
+    @computed get allItems(): FormItem[] {
+        return this.items;
+    }
+    getItemById(id: string) {
+        for (const element of this.items) {
+            if (element.id === id) {
+                return element;
             }
-        },
-        // setElementValue(name: string, value: any) {
-        //     const element = this.getElementByName(name);
-        //     element.value = value;
-        //     // for (let i = 0; i < Elements.length; i++) {
-        //     //     if (Elements[i].name === element.name) {
-        //     //         Elements[i] = element;
-        //     //     }
-        //     // }
-        // }
-    };
-};
-
-export type TStore = ReturnType<typeof createStore>
+        }
+    }
+    setItem(id: string, value: any) {
+        let elem = this.getItemById(id);
+        if (elem) {
+            elem.value = value;
+        }
+    }
+}

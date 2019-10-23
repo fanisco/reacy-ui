@@ -1,15 +1,17 @@
-import React, { createContext } from 'react';
-import { useLocalStore } from 'mobx-react-lite';
-import { createStore, TStore } from './Store';
+// import React, { createContext } from 'react';
+// import { useLocalStore } from 'mobx-react-lite';
+// import Store from './Store';
+//
+// export const Context = createContext<Store | null>(null);
+//
+// export const StoreProvider: React.FC = ({ children }) => {
+//     const store = useLocalStore(new Store());
+//
+//     return (
+//         <Context.Provider value={store}>
+//             {children}
+//         </Context.Provider>
+//     );
+// };
 
-export const storeContext = createContext<TStore | null>(null);
-
-export const StoreProvider: React.FC = ({ children }) => {
-    const store = useLocalStore(createStore);
-
-    return (
-        <storeContext.Provider value={store}>
-            {children}
-        </storeContext.Provider>
-    );
-};
+export const Context = 1;

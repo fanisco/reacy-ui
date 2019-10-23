@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
-import { useObserver } from 'mobx-react-lite';
-import { StoreProvider, storeContext } from './Context';
+import React from 'react';
+import { useLocalStore, useObserver, observer } from 'mobx-react-lite';
+import Store from './Store';
+// import { StoreProvider, Context } from './Context';
 import {
     Button,
     Input, Textarea, Switch, Controller,
@@ -12,23 +13,20 @@ import {
     Styles, Sizes
 } from './ui';
 
-export const Demo: React.FC = () => {
-    const store = useContext(storeContext);
-    if (!store) {
-        throw Error('Store shouldn\'t be null.');
-    }
-    return useObserver(() => {
-        return (
-            <Container size={Sizes.xl}>
-                <Controller items={store.allElements} onChange={(name, value) => {
-                    const elem = store.getElementByName(name);
-                    if (!elem) {
-                        return;
-                    }
-                    console.log(name, value, elem);
-                    elem.value = value;
+export const Demo: React.FC = observer(() => {
+    const store = useLocalStore(() => new Store());
+    const items = store.allItems;
+    return (
+        <Container size={Sizes.xl}>
+            <List items={items}/>
+            <Controller items={items} onChange={(id, value) => {
+                store.setItem(id, value);
+            }}/>
+            {items.map((item, i) => {
+                return <input key={i} value={item.value} onChange={(e) => {
+                    console.log(e.target.value);
                 }}/>
-            </Container>
-        );
-    });
-};
+            })}
+        </Container>
+    );
+});
