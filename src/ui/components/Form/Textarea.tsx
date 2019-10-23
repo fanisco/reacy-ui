@@ -21,6 +21,7 @@ export const Textarea: React.FC<IProps> = ({ style = Styles.default, size = Size
             sizes={sizes}
             colors={colors}
             value={props.value}
+            placeholder={props.placeholder}
             onChange={(e) => {
                 props.onChange && props.onChange(e.target.value);
             }}

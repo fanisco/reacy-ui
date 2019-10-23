@@ -20,6 +20,7 @@ export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.m
             sizes={sizes}
             colors={colors}
             value={props.value}
+            placeholder={props.placeholder}
             onChange={(e) => {
                 props.onChange && props.onChange(e.target.value);
             }}

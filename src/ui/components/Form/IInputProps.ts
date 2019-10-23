@@ -5,5 +5,6 @@ export default interface IInputProps {
     name: FormItem['name'];
     value: FormItem['value'];
     onChange: (value: any) => void;
+    placeholder?: string;
     disabled?: boolean;
 }
