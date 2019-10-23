@@ -14,8 +14,10 @@ interface IProps extends IInputProps {
  */
 export const Switch: React.FC<IProps> = ({ size = Sizes.xs, ...props }) => {
     const dims = Dims[size];
+    const captionDims = Dims.md;
     return (
-        <Wrapper>{props.name}
+        <Wrapper>
+            <Caption active={props.value} dims={captionDims}>{props.name}</Caption>
             <Trigger
                 active={props.value}
                 dims={dims}
@@ -41,10 +43,15 @@ interface StyledProps {
 
 const Wrapper = styled.label`
     display: flex;
+    align-items: center;
     
     & + & {
         margin-left: 10px;
     }
+`;
+
+const Caption = styled.span<StyledProps>`
+    font: ${props => props.dims.fontSize}px/${props => props.dims.lineHeight} "${Fonts.ff}";
 `;
 
 const Trigger = styled.div<StyledProps>`

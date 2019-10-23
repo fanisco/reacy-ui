@@ -28,29 +28,37 @@ export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.m
     );
 };
 
-interface StyledProps {
+interface IStyledProps {
     sizes?: any
     colors?: any
 }
 
-const InputElement = styled.input<StyledProps>`
+export const stylize = (props: IStyledProps) => `
     box-sizing: border-box;
-    height: ${props => props.sizes.elementHeight}px;
-    padding: ${props => props.sizes.spacings}px ${props => props.sizes.spacings}px;
-    background: ${props => props.colors.baseL2};
-    border: 1px solid ${props => props.colors.baseL0};
-    border-radius: ${props => props.sizes.borderRadius}px;
-    color: ${props => props.colors.text};
-    text-align: ${props => props.sizes.textAlign};
-    font: ${props => props.sizes.fontSize}px/${props => props.sizes.lineHeight} "${Fonts.ff}";
+    padding: ${props.sizes.spacings}px ${props.sizes.spacings}px;
+    background: ${props.colors.baseL3};
+    color: ${props.colors.text};
+    border: 1px solid ${props.colors.baseL0};
+    border-radius: ${props.sizes.borderRadius}px;
+    text-align: ${props.sizes.textAlign};
+    font: ${props.sizes.fontSize}px/${props.sizes.lineHeight} "${Fonts.ff}";
     font-weight: 400;
+    transition: all 0.15s ease-in-out;
     
     &:hover {
-        background: ${props => props.colors.baseL3};
+        background: #fff;
+        border-color: ${Colors[Styles.secondary].baseL0};
+        transition: all 0.15s ease-in-out 0.15s;
     }
     &:focus {
-        border-color: ${Colors[Styles.secondary].baseL0};
-        background: ${props => props.colors.baseL3};
+        background: #fff;
         outline: 0 none;
+        border-color: ${Colors[Styles.secondary].baseL3};
+        box-shadow: 0 0 0 1px ${Colors[Styles.secondary].baseL3}50;
     }
+`;
+
+const InputElement = styled.input<IStyledProps>`
+    ${stylize};
+    height: ${props => props.sizes.elementHeight}px;
 `;

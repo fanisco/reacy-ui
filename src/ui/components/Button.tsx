@@ -132,7 +132,7 @@ const getColors = (style: string, colors: any): Scheme => {
             borderColor: colors.baseL0,
             borderHoverColor: colors.baseL0,
             shadowColor: colors.baseL0,
-            gradient: 0.15
+            gradient: 0.75
         };
     }
 };
