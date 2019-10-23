@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite';
 import { Input } from './Input';
 import { Switch } from './Switch';
 import { FormItem } from '../Types/Item';
+import { Textarea } from './Textarea';
+import { Select } from './Select';
 
 interface IProps {
     items: FormItem[];
@@ -23,8 +25,12 @@ export const Controller: React.FC<IProps> = observer(({ ...props }) => {
                 switch (item.type) {
                     case 'string':
                         return <Input {...properties}/>;
+                    case 'text':
+                        return <Textarea {...properties}/>;
                     case 'boolean':
                         return <Switch {...properties}/>;
+                    case 'select':
+                        return <Select {...properties}/>;
                 }
             })}
         </div>

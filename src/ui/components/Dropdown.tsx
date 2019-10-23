@@ -9,7 +9,7 @@ interface IProps {
     onClick?: (item: ListItem) => void;
     open?: boolean;
     position?: 'bl'
-    items: any[];
+    items?: any[];
     style?: Styles;
     size?: Sizes;
 }

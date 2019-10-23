@@ -1,43 +1,17 @@
 import React, { useReducer, useEffect } from 'react';
 import styled from 'styled-components';
-import { Colors, Dims } from '../constants';
-import { Sizes, Styles } from '../enums';
-import { Images } from '../images';
-import { Button } from './Button';
-import { Dropdown } from './Dropdown';
-import { ListItem } from './Types/Item';
+import { Colors, Dims } from '../../constants';
+import { Sizes, Styles } from '../../enums';
+import { Images } from '../../images';
+import { Button } from '../Button';
+import { Dropdown } from '../Dropdown';
+import { ListItem } from '../Types/Item';
+import IInputProps from './IInputProps';
 
-interface IProps {
-    onChange?: (value: number) => void;
+interface IProps extends IInputProps {
+    values?: any[];
     style?: Styles;
     size?: Sizes;
-    value?: any;
-    items: any[]
-}
-
-type State = {
-    open: boolean;
-    value?: number;
-}
-
-type Action =
- | {type: 'open', value: any}
- | {type: 'value', value: any}
-
-function init({ open = false, ...init }): State {
-    return {
-        open: open,
-        value: init.value
-    }
-}
-
-function reducer(state: State, action: Action) {
-    switch (action.type) {
-        case 'open':
-            return {...state, open: action.value};
-        case 'value':
-            return {...state, value: action.value};
-    }
 }
 
 /**
@@ -100,12 +74,12 @@ export const Select: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
                 textAlign="left"
                 onClick={onButtonClick}
             >
-                {getCaption(props.items, state.value)}<Arrow/>
+                {getCaption(props.values, state.value)}<Arrow/>
             </Button>
             <Dropdown
                 style={style}
                 size={size}
-                items={props.items}
+                items={props.values}
                 open={state.open}
                 onClick={onDropdownClick}
             />
@@ -113,11 +87,38 @@ export const Select: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
     );
 };
 
-function getCaption(items: ListItem[], value?: number): string {
-    for (const item of items) {
-        if (item.id === value) {
-            return item.name;
+function getCaption(items?: ListItem[], value?: number): string {
+    if (items) {
+        for (const item of items) {
+            if (item.id === value) {
+                return item.name;
+            }
         }
     }
     return '';
+}
+
+type State = {
+    open: boolean;
+    value?: number;
+}
+
+type Action =
+    | {type: 'open', value: any}
+    | {type: 'value', value: any}
+
+function init({ open = false, ...init }): State {
+    return {
+        open: open,
+        value: init.value
+    }
+}
+
+function reducer(state: State, action: Action) {
+    switch (action.type) {
+        case 'open':
+            return {...state, open: action.value};
+        case 'value':
+            return {...state, value: action.value};
+    }
 }

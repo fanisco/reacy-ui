@@ -6,7 +6,6 @@ import { Styles, Sizes } from '../../enums';
 
 interface IProps extends IInputProps {
     onChange: (value: string) => void;
-    value: any;
     style?: Styles;
     size?: Sizes;
     textAlign?: 'left' | 'center' | 'right'

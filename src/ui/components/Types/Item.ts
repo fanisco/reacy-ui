@@ -6,7 +6,7 @@ export type ListItem = Item & {
 
 }
 export type FormItem = Item & {
-    type: string;
+    type: 'number' | 'string' | 'text' | 'boolean' | 'select'
     value: any;
     values?: any[];
 }

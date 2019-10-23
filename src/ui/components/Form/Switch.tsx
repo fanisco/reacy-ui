@@ -5,9 +5,7 @@ import { Colors, Fonts, Dims } from '../../constants';
 import { Styles, Sizes } from '../../enums';
 
 interface IProps extends IInputProps {
-    value: boolean;
     onChange: (value: boolean) => void;
-    caption?: string;
     size?: Sizes;
 }
 
@@ -17,7 +15,7 @@ interface IProps extends IInputProps {
 export const Switch: React.FC<IProps> = ({ size = Sizes.xs, ...props }) => {
     const dims = Dims[size];
     return (
-        <Wrapper>{props.caption}
+        <Wrapper>{props.name}
             <Trigger
                 active={props.value}
                 dims={dims}
@@ -25,7 +23,7 @@ export const Switch: React.FC<IProps> = ({ size = Sizes.xs, ...props }) => {
             <Hidden>
                 <input
                     type="checkbox"
-                    name={props.name}
+                    name={props.id + ''}
                     checked={props.value}
                     onChange={() => {
                         props.onChange && props.onChange(!props.value);
