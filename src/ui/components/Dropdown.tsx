@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors, Dims } from '../constants';
 import { Sizes, Styles } from '../enums';
-import { List, ListItem } from './List';
+import { List } from './List';
+import { ListItem } from './Types/Item';
 
 interface IProps {
     onClick?: (item: ListItem) => void;

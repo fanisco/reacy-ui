@@ -5,7 +5,7 @@ import { Sizes, Styles } from '../enums';
 import { Images } from '../images';
 import { Button } from './Button';
 import { Dropdown } from './Dropdown';
-import { ListItem } from './List';
+import { ListItem } from './Types/Item';
 
 interface IProps {
     onChange?: (value: number) => void;
@@ -21,8 +21,8 @@ type State = {
 }
 
 type Action =
- | {type: 'open', value: boolean}
- | {type: 'value', value: number}
+ | {type: 'open', value: any}
+ | {type: 'value', value: any}
 
 function init({ open = false, ...init }): State {
     return {
@@ -116,7 +116,7 @@ export const Select: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
 function getCaption(items: ListItem[], value?: number): string {
     for (const item of items) {
         if (item.id === value) {
-            return item.title;
+            return item.name;
         }
     }
     return '';

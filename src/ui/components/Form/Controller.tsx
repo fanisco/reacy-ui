@@ -1,10 +1,11 @@
 import React from 'react';
-import {Input} from "./Input";
-import {Switch} from "./Switch";
+import { Input } from './Input';
+import { Switch } from './Switch';
+import { FormItem } from '../Types/Item';
 
 interface IProps {
-    items: FormElement[];
-    onChange: (name: string, value: any) => void
+    items: FormItem[];
+    onChange: (name: any, value: any) => void
 }
 
 export const Controller: React.FC<IProps> = ({ ...props }) => {
@@ -15,7 +16,7 @@ export const Controller: React.FC<IProps> = ({ ...props }) => {
                     key: i,
                     ...item,
                     onChange: (value: any) => {
-                        props.onChange(item.name, value);
+                        props.onChange(item.id, value);
                     }
                 };
                 switch (item.type) {
@@ -28,11 +29,3 @@ export const Controller: React.FC<IProps> = ({ ...props }) => {
         </div>
     );
 };
-
-export type FormElement = {
-    name: string;
-    type: string;
-    value: any;
-    values?: any[];
-    caption?: string;
-}
