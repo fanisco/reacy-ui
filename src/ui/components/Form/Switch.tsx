@@ -14,7 +14,7 @@ interface IProps extends IInputProps {
 /**
  * Component for displaying switch wich replaces by it self the boolean checkbox input.
  */
-export const Switch: React.FC<IProps> = ({ size = Sizes.md, ...props }) => {
+export const Switch: React.FC<IProps> = ({ size = Sizes.xs, ...props }) => {
     const dims = Dims[size];
     return (
         <Wrapper>{props.caption}
