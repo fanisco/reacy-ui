@@ -1,4 +1,5 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 import { Input } from './Input';
 import { Switch } from './Switch';
 import { FormItem } from '../Types/Item';
@@ -8,7 +9,7 @@ interface IProps {
     onChange: (name: any, value: any) => void
 }
 
-export const Controller: React.FC<IProps> = ({ ...props }) => {
+export const Controller: React.FC<IProps> = observer(({ ...props }) => {
     return (
         <div>
             {props.items.map((item, i) => {
@@ -28,4 +29,4 @@ export const Controller: React.FC<IProps> = ({ ...props }) => {
             })}
         </div>
     );
-};
+});
