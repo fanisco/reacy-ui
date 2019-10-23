@@ -6,12 +6,10 @@ import { Images } from '../../images';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 import { ListItem } from '../Types/Item';
-import IInputProps from './IInputProps';
+import IInputProps from '../IInputProps';
 
 interface IProps extends IInputProps {
     values?: any[];
-    style?: Styles;
-    size?: Sizes;
 }
 
 /**

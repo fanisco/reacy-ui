@@ -1,6 +1,7 @@
-import { FormItem } from '../Types/Item';
+import IComponentProps from './IComponentProps';
+import { FormItem } from './Types/Item';
 
-export default interface IInputProps {
+export default interface IInputProps extends IComponentProps {
     id: FormItem['id'];
     name: FormItem['name'];
     value: FormItem['value'];

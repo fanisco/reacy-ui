@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import IInputProps from './IInputProps';
+import IInputProps from '../IInputProps';
 import { Colors, Fonts, Dims } from '../../constants';
 import { Styles, Sizes } from '../../enums';
 import { stylize } from './Input';

@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import IInputProps from './IInputProps';
+import IInputProps from '../IInputProps';
 import { Colors, Fonts, Dims } from '../../constants';
 import { Styles, Sizes } from '../../enums';
 
 interface IProps extends IInputProps {
     onChange: (value: string) => void;
-    style?: Styles;
-    size?: Sizes;
     textAlign?: 'left' | 'center' | 'right'
     fullWidth?: boolean;
 }
