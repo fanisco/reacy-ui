@@ -28,7 +28,7 @@ export const Dropdown: React.FC<IProps> = ({ style = Styles.default, size = Size
         background: ${colors.baseL3};
         border: 1px solid ${colors.baseL0};
         border-radius: ${sizes.borderRadius}px;
-        box-shadow: 0 1px 5px ${colors.baseL0};
+        box-shadow: 0 1px 5px ${colors.baseL0}50;
         
         ${position === 'bl' && `
             top: 100%;

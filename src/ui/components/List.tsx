@@ -22,8 +22,8 @@ export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md
     `;
     const Item = styled.li`
         box-sizing: border-box;
-        height: ${sizes.elementHeight}px;
-        padding: ${sizes.spacings}px ${sizes.elementPadding}px;
+        height: ${sizes.elementHeight - sizes.spacing / 2}px;
+        padding: ${sizes.spacing / 2}px ${sizes.spacing}px;
         cursor: pointer;
         font: ${sizes.fontSize}px/${Fonts.mh} "${Fonts.ff}";
         

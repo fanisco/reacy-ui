@@ -39,7 +39,8 @@ export const Select: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
     const sizes = Dims[size];
     const Select = styled.div`
         position: relative;
-        width: ${sizes.elementWidth}px;
+        width: 100%;
+        min-width: ${sizes.elementWidth}px;
         height: ${sizes.elementHeight}px;
     `;
     const Arrow = styled.div`
