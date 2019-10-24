@@ -33,8 +33,8 @@ export const stylize = (props: IStyledProps) => `
     padding: ${props.dims.spacings}px ${props.dims.spacings}px;
     background: ${props.colors.baseL3};
     color: ${props.colors.text};
-    border: 1px solid ${props.colors.baseL0};
-    border-radius: ${props.dims.borderRadius}px;
+    border: 1px solid;
+    border-color: ${props.colors.baseL1} ${props.colors.baseL1} ${props.colors.baseL0};
     text-align: ${props.dims.textAlign};
     font: ${props.dims.fontSize}px/${props.dims.lineHeight} "${Fonts.ff}";
     font-weight: 400;
@@ -42,13 +42,12 @@ export const stylize = (props: IStyledProps) => `
     
     &:hover {
         background: #fff;
-        border-color: ${Colors[Styles.secondary].baseL0};
         transition: all 0.15s ease-in-out 0.15s;
     }
     &:focus {
         background: #fff;
         outline: 0 none;
-        border-color: ${Colors[Styles.secondary].baseL0};        
+        border-color: ${Colors[Styles.default].baseL0};        
         box-shadow: 0 5px 15px ${Colors[Styles.default].baseL0}20;
     }
 `;
