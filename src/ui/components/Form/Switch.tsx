@@ -68,6 +68,7 @@ const Trigger = styled.div<StyledProps>`
     
     &:hover {
         background-color: ${props => props.active ? Colors[Styles.success].baseL3 : Colors[Styles.default].baseL2};
+        transition: all 0.15s ease-in-out 0.15s;
     }
     &::before {
         content: "";

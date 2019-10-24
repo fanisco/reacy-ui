@@ -51,8 +51,8 @@ export const stylize = (props: IStyledProps) => `
     &:focus {
         background: #fff;
         outline: 0 none;
-        border-color: ${Colors[Styles.secondary].baseL3};
-        box-shadow: 0 0 0 1px ${Colors[Styles.secondary].baseL3}50;
+        border-color: ${Colors[Styles.secondary].baseL0};        
+        box-shadow: 0 5px 15px ${Colors[Styles.default].baseL0}20;
     }
 `;
 
