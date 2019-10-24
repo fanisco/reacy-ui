@@ -41,7 +41,7 @@ interface StyledProps {
 const ButtonElement = styled.button<StyledProps>`
     box-sizing: border-box;
     height: ${props => props.dims.elementHeight}px;
-    padding: ${props => props.dims.spacings}px ${props => props.dims.elementPadding}px;
+    padding: ${props => props.dims.spacings}px ${props => props.dims.spacing}px;
     background: ${props => props.colors.idleColor} linear-gradient(to bottom, rgba(255, 255, 255, ${props => props.colors.gradient}), rgba(255, 255, 255, 0));
     border: 1px solid ${props => props.colors.borderColor};
     border-radius: ${props => props.dims.borderRadius}px;
@@ -61,7 +61,7 @@ const ButtonElement = styled.button<StyledProps>`
     &:active:focus {
         background: ${props => props.colors.activeColor};
         border-color: ${props => props.colors.borderColor};
-        box-shadow: inset 0 0 10px ${props => props.colors.shadowColor};
+        box-shadow: inset 0 0 10px ${props => props.colors.shadowColor}50;
     }
     
     ${props => props.fullWidth && `

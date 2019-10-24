@@ -30,11 +30,12 @@ export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.m
 export const stylize = (props: IStyledProps) => `
     box-sizing: border-box;
     width: 100%;
-    padding: ${props.dims.spacings}px ${props.dims.spacings}px;
+    padding: ${props.dims.spacings}px ${props.dims.spacing}px;
     background: ${props.colors.baseL3};
     color: ${props.colors.text};
     border: 1px solid;
     border-color: ${props.colors.baseL1} ${props.colors.baseL1} ${props.colors.baseL0};
+    border-radius: ${props.dims.borderRadius}px;
     text-align: ${props.dims.textAlign};
     font: ${props.dims.fontSize}px/${props.dims.lineHeight} "${Fonts.ff}";
     font-weight: 400;

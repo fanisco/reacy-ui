@@ -37,7 +37,7 @@ const dims = (factor: number): Dims => {
         elementPadding: factor * 2,
         elementWidth: factor * 10,
         elementHeight: factor * 3,
-        borderRadius: 3,
+        borderRadius: 0,
         containerWidth: factor * 54
     }
 };
