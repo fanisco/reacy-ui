@@ -18,7 +18,7 @@ export const Demo: React.FC = () => {
     }
     const items = store.allItems;
     return (
-        <Container size={Sizes.xl}>
+        <Container size={Sizes.sm}>
             <Controller items={items} onChange={(id, value) => {
                 store.setItem(id, value);
             }}/>

@@ -1,4 +1,4 @@
-import { Sizes, Styles } from '../enums';
+import { Sizes, Styles } from '../../enums';
 
 export default interface IComponentProps {
     style?: Styles;

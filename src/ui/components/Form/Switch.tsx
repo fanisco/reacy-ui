@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import IInputProps from '../IInputProps';
+import IInputProps from '../Interfaces/IInputProps';
 import { Colors, Fonts, Dims } from '../../constants';
 import { Styles, Sizes } from '../../enums';
 
 interface IProps extends IInputProps {
     onChange: (value: boolean) => void;
-    size?: Sizes;
 }
 
 /**
@@ -14,10 +13,8 @@ interface IProps extends IInputProps {
  */
 export const Switch: React.FC<IProps> = ({ size = Sizes.xs, ...props }) => {
     const dims = Dims[size];
-    const captionDims = Dims.md;
     return (
         <Wrapper>
-            <Caption active={props.value} dims={captionDims}>{props.name}</Caption>
             <Trigger
                 active={props.value}
                 dims={dims}
@@ -50,14 +47,9 @@ const Wrapper = styled.label`
     }
 `;
 
-const Caption = styled.span<StyledProps>`
-    font: ${props => props.dims.fontSize}px/${props => props.dims.lineHeight} "${Fonts.ff}";
-`;
-
 const Trigger = styled.div<StyledProps>`
     box-sizing: border-box;
     position: relative;
-    margin-left: 5px;
     width: ${props => props.dims.elementHeight * 2}px;
     height: ${props => props.dims.elementHeight}px;
     border-radius: ${props => props.dims.elementHeight}px;

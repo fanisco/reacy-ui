@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import IInputProps from '../IInputProps';
+import IStyledProps from '../Interfaces/IStyledProps';
+import IInputProps from '../Interfaces/IInputProps';
 import { Colors, Fonts, Dims } from '../../constants';
 import { Styles, Sizes } from '../../enums';
 
@@ -12,10 +13,10 @@ interface IProps extends IInputProps {
 
 export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'left', ...props }) => {
     const colors = Colors[style];
-    const sizes = Dims[size];
+    const dims = Dims[size];
     return (
         <InputElement
-            sizes={sizes}
+            dims={dims}
             colors={colors}
             value={props.value}
             placeholder={props.placeholder}
@@ -26,20 +27,16 @@ export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.m
     );
 };
 
-interface IStyledProps {
-    sizes?: any
-    colors?: any
-}
-
 export const stylize = (props: IStyledProps) => `
     box-sizing: border-box;
-    padding: ${props.sizes.spacings}px ${props.sizes.spacings}px;
+    width: 100%;
+    padding: ${props.dims.spacings}px ${props.dims.spacings}px;
     background: ${props.colors.baseL3};
     color: ${props.colors.text};
     border: 1px solid ${props.colors.baseL0};
-    border-radius: ${props.sizes.borderRadius}px;
-    text-align: ${props.sizes.textAlign};
-    font: ${props.sizes.fontSize}px/${props.sizes.lineHeight} "${Fonts.ff}";
+    border-radius: ${props.dims.borderRadius}px;
+    text-align: ${props.dims.textAlign};
+    font: ${props.dims.fontSize}px/${props.dims.lineHeight} "${Fonts.ff}";
     font-weight: 400;
     transition: all 0.15s ease-in-out;
     
@@ -58,5 +55,5 @@ export const stylize = (props: IStyledProps) => `
 
 const InputElement = styled.input<IStyledProps>`
     ${stylize};
-    height: ${props => props.sizes.elementHeight}px;
+    height: ${props => props.dims.elementHeight}px;
 `;

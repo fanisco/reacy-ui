@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
+import { Field } from './Field';
 import { Input } from './Input';
 import { Switch } from './Switch';
 import { FormItem } from '../Types/Item';
@@ -22,16 +23,22 @@ export const Controller: React.FC<IProps> = observer(({ ...props }) => {
                         props.onChange(item.id, value);
                     }
                 };
+                let elem;
                 switch (item.type) {
                     case 'string':
-                        return <Input {...properties}/>;
+                        elem = <Input {...properties}/>;
+                        break;
                     case 'text':
-                        return <Textarea {...properties}/>;
-                    case 'boolean':
-                        return <Switch {...properties}/>;
+                        elem = <Textarea {...properties}/>;
+                        break;
+                    case 'switch':
+                        elem = <Switch {...properties}/>;
+                        break;
                     case 'select':
-                        return <Select {...properties}/>;
+                        elem = <Select {...properties}/>;
+                        break;
                 }
+                return <Field key={i} {...item}>{elem}</Field>
             })}
         </div>
     );

@@ -4,7 +4,7 @@ import { FormItem } from './ui/components/Types/Item';
 export default class Store {
     @observable items: FormItem[] = [
         { id: 'color', name: 'Color', type: 'string', value: '', placeholder: 'Green...' },
-        { id: 'bold', name: 'Bold', type: 'boolean', value: true },
+        { id: 'bold', name: 'Bold', type: 'switch', value: true },
         { id: 'descr', name: 'Description', type: 'text', value: '', placeholder: 'Description...' },
         { id: 'type', name: 'Type', type: 'select', value: 0, values: [{ id: 0, name: 'Simple' }] },
     ];
