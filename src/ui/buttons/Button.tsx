@@ -10,6 +10,7 @@ interface IProps {
     size?: Sizes;
     mode?: 'default' | 'link' | 'outline';
     textAlign?: 'left' | 'center' | 'right';
+    rounded?: boolean;
     fullWidth?: boolean;
 }
 
@@ -23,9 +24,10 @@ export const Button: React.FC<IProps> =
             colors={colors}
             mode={mode}
             textAlign={textAlign}
+            rounded={props.rounded}
             fullWidth={props.fullWidth}
-            onClick={() => props.onClick && props.onClick()}
             disabled={props.disabled}
+            onClick={() => props.onClick && props.onClick()}
         >{props.children}</ButtonElement>
     );
 };
@@ -34,6 +36,7 @@ interface StyledProps {
     dims?: any;
     colors?: any;
     mode?: string;
+    rounded?: boolean;
     textAlign?: string;
     fullWidth?: boolean;
 }
@@ -42,13 +45,13 @@ const ButtonElement = styled.button<StyledProps>`
     box-sizing: border-box;
     height: ${props => props.dims.elementHeight}px;
     padding: ${props => props.dims.spacings}px ${props => props.dims.spacing}px;
-    background: ${props => props.colors.idleColor} linear-gradient(to bottom, rgba(255, 255, 255, ${props => props.colors.gradient}), rgba(255, 255, 255, 0));
-    border: 1px solid ${props => props.colors.borderColor};
-    border-radius: ${props => props.dims.borderRadius}px;
+    background: ${props => props.colors.idleColor};
+    border: 0 none;
+    border-radius: ${props => props.rounded ? 50 : props.dims.borderRadius}px;
     color: ${props => props.colors.textColor};
     text-align: ${props => props.textAlign};
     font: ${props => props.dims.fontSize}px/${props => props.dims.lineHeight} "${Fonts.ff}";
-    font-weight: 500;
+    font-weight: 400;
     cursor: pointer;
     
     &:hover {
@@ -74,22 +77,22 @@ const ButtonElement = styled.button<StyledProps>`
         background: none;
         border: 0 none;
         font-weight: 400;
-        color: ${props.colors.idleColor};
+        color: ${props.colors.textColor};
 
         &:hover {
             background: none;
-            color: ${props.colors.hoverColor};
+            color: ${props.colors.textColor};
             text-decoration: underline;
         }
         &:active:focus {
             background: none;
             box-shadow: none;
-            color: ${props.colors.activeColor};
+            color: ${props.colors.textColor};
         }
     ` : props.mode === 'outline' && `
         background: none;
-        border-radius: 50px;
-        color: ${props.colors.idleColor};
+        color: ${props.colors.outlineTextColor};
+        border: 1px solid ${props.colors.borderColor};
 
         &:hover {
             background: ${props.colors.hoverColor};
@@ -110,40 +113,39 @@ const ButtonElement = styled.button<StyledProps>`
         cursor: default;
     }
 `;
-
 const getColors = (style: string, colors: any): Scheme => {
-    if (style !== 'default') {
+    if (style === 'default') {
         return {
             textColor: colors.text,
+            outlineTextColor: colors.textColor,
+            idleColor: colors.baseL1,
+            hoverColor: colors.baseL2,
+            activeColor: colors.baseL2,
+            borderColor: colors.text,
+            borderHoverColor: colors.baseL0,
+            shadowColor: colors.baseL0
+        };
+    } else {
+        return {
+            textColor: colors.text,
+            outlineTextColor: colors.baseL2,
             idleColor: colors.baseL2,
             hoverColor: colors.baseL3,
             activeColor: colors.baseL2,
             borderColor: colors.baseL0,
             borderHoverColor: colors.baseL2,
-            shadowColor: colors.baseL0,
-            gradient: 0.15
-        };
-    } else {
-        return {
-            textColor: colors.text,
-            idleColor: colors.baseL2,
-            hoverColor: colors.baseL3,
-            activeColor: colors.baseL2,
-            borderColor: colors.baseL0,
-            borderHoverColor: colors.baseL0,
-            shadowColor: colors.baseL0,
-            gradient: 0.75
+            shadowColor: colors.baseL0
         };
     }
 };
 
 type Scheme = {
     textColor: string;
+    outlineTextColor: string;
     idleColor: string;
     hoverColor: string;
     activeColor: string;
     borderColor: string;
     borderHoverColor: string;
     shadowColor: string;
-    gradient: number;
 }

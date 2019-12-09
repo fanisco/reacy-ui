@@ -3,13 +3,15 @@ import { observer } from 'mobx-react-lite';
 import { Field } from './Field';
 import { Input } from './Input';
 import { Switch } from './Switch';
-import { FormItem } from '../Types/Item';
+import { FormItem } from '../types/Item';
 import { Textarea } from './Textarea';
 import { Select } from './Select';
 
 interface IProps {
+    wrap?: boolean;
     items: FormItem[];
-    onChange: (name: any, value: any) => void
+    onChange: (name: any, value: any) => void;
+    buttons?: any[];
 }
 
 export const Controller: React.FC<IProps> = observer(({ ...props }) => {
@@ -38,7 +40,7 @@ export const Controller: React.FC<IProps> = observer(({ ...props }) => {
                         elem = <Select {...properties}/>;
                         break;
                 }
-                return <Field key={i} {...item}>{elem}</Field>
+                return props.wrap ? <Field key={i} {...item}>{elem}</Field> : elem;
             })}
         </div>
     );

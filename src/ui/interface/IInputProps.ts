@@ -1,5 +1,5 @@
 import IComponentProps from './IComponentProps';
-import { FormItem } from '../Types/Item';
+import { FormItem } from '../types/Item';
 
 export interface IItemProps {
     id: FormItem['id'];

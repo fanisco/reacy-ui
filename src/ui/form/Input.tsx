@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import IStyledProps from '../Interfaces/IStyledProps';
-import IInputProps from '../Interfaces/IInputProps';
-import { Colors, Fonts, Dims } from '../../constants';
-import { Styles, Sizes } from '../../enums';
+import IStyledProps from '../interface/IStyledProps';
+import IInputProps from '../interface/IInputProps';
+import { Colors, Fonts, Dims } from '../constants';
+import { Styles, Sizes } from '../enums';
 
 interface IProps extends IInputProps {
     onChange: (value: string) => void;

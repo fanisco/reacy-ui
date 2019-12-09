@@ -1,9 +1,9 @@
 export const defaultColors = {
     text: '#1A1A1A',
-    baseL3: '#fefffe',
-    baseL2: '#f7f7f0',
-    baseL1: '#e7e9de',
-    baseL0: '#bfc1b9',
+    baseL3: '#ffffff',
+    baseL2: '#f5f5f5',
+    baseL1: '#e8e8e8',
+    baseL0: '#bfbfbf',
 };
 
 export const successColors = {

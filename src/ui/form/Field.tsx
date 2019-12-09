@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IFieldProps } from '../Interfaces/IInputProps';
-import IStyledProps from '../Interfaces/IStyledProps';
-import { Colors, Dims, Fonts } from '../../constants';
-import { Sizes, Styles } from '../../enums';
+import { IFieldProps } from '../interface/IInputProps';
+import IStyledProps from '../interface/IStyledProps';
+import { Colors, Dims, Fonts } from '../constants';
+import { Sizes, Styles } from '../enums';
 
 export const Field: React.FC<IFieldProps> = ({ size = Sizes.md, ...props }) => {
     const dims = Dims[size];

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors, Fonts, Dims } from '../constants';
 import { Sizes, Styles } from '../enums';
-import { ListItem } from './Types/Item';
+import { ListItem } from '../types/Item';
 
 interface IProps {
     onClick?: Function;

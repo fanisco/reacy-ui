@@ -1,12 +1,12 @@
 import React, { useReducer, useEffect } from 'react';
 import styled from 'styled-components';
-import { Colors, Dims } from '../../constants';
-import { Sizes, Styles } from '../../enums';
-import { Images } from '../../images';
-import { Button } from '../Button';
-import { Dropdown } from '../Dropdown';
-import { ListItem } from '../Types/Item';
-import IInputProps from '../Interfaces/IInputProps';
+import { Colors, Dims } from '../constants';
+import { Sizes, Styles } from '../enums';
+import { Images } from '../images';
+import { Button } from '../buttons';
+import { Dropdown } from '../popup';
+import { ListItem } from '../types/Item';
+import IInputProps from '../interface/IInputProps';
 
 interface IProps extends IInputProps {
     values?: any[];

@@ -33,11 +33,11 @@ const dims = (factor: number): Dims => {
         fontSize: factor + 2,
         lineHeight: factor >= 14 ? 1.5 : factor >= 12 ? 1.35 : factor >= 10 ? 1.3 : 1.2,
         spacing: factor,
-        spacings: factor * 0.75,
+        spacings: factor * 0.85,
         elementPadding: factor * 2,
         elementWidth: factor * 10,
         elementHeight: factor * 3,
-        borderRadius: 0,
+        borderRadius: 3,
         containerWidth: factor * 54
     }
 };
