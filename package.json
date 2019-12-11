@@ -4,6 +4,7 @@
   "description": "UI kit of React components",
   "author": "Fanil Zubairov <fannisco@gmail.com>",
   "license": "MIT",
+  "homepage": "https://fanisco.github.io/reacy-ui",
   "keywords": [
     "react",
     "components"
@@ -18,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "compile": "tsc -p ./tsconfig.ui.json"
+    "compile": "tsc -p ./tsconfig.ui.json",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "mobx": "^5.14.2",
@@ -32,6 +34,7 @@
     "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
     "@types/styled-components": "^4.0.0",
+    "gh-pages": "^2.1.1",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
     "reacy-ui": "^1.0.2",
