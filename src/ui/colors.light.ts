@@ -1,9 +1,9 @@
 export const defaultColors = {
-    text: '#1A1A1A',
-    baseL3: '#ffffff',
-    baseL2: '#f5f5f5',
-    baseL1: '#e8e8e8',
-    baseL0: '#bfbfbf',
+    text: '#050608',
+    baseL3: '#f5f6fa',
+    baseL2: '#f4f5f9',
+    baseL1: '#e9eaec',
+    baseL0: '#6d6d6d',
 };
 
 export const successColors = {
@@ -40,8 +40,8 @@ export const primaryColors = {
 
 export const secondaryColors = {
     text: '#fff',
-    baseL3: '#33abff',
-    baseL2: '#229cf2',
-    baseL1: '#1D85C0',
-    baseL0: '#1189e6',
+    baseL3: '#5A8AF1',
+    baseL2: '#4279EE',
+    baseL1: '#3A6AD1',
+    baseL0: '#325BB3',
 };

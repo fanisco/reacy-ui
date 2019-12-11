@@ -77,17 +77,17 @@ const ButtonElement = styled.button<StyledProps>`
         background: none;
         border: 0 none;
         font-weight: 400;
-        color: ${props.colors.textColor};
+        color: ${props.colors.linkColor};
 
         &:hover {
             background: none;
-            color: ${props.colors.textColor};
+            color: ${props.colors.linkColor};
             text-decoration: underline;
         }
         &:active:focus {
             background: none;
             box-shadow: none;
-            color: ${props.colors.textColor};
+            color: ${props.colors.linkColor};
         }
     ` : props.mode === 'outline' && `
         background: none;
@@ -103,7 +103,7 @@ const ButtonElement = styled.button<StyledProps>`
             background: ${props.colors.activeColor};
             border-color: ${props.colors.borderColor};
             color: ${props.colors.textColor};
-            }
+        }
     `}
     
     &:disabled, &:disabled:hover, &:disabled:active:focus {
@@ -116,10 +116,11 @@ const ButtonElement = styled.button<StyledProps>`
 const getColors = (style: string, colors: any): Scheme => {
     if (style === 'default') {
         return {
+            linkColor: colors.text,
             textColor: colors.text,
             outlineTextColor: colors.textColor,
-            idleColor: colors.baseL1,
-            hoverColor: colors.baseL2,
+            idleColor: colors.baseL3,
+            hoverColor: colors.baseL1,
             activeColor: colors.baseL2,
             borderColor: colors.text,
             borderHoverColor: colors.baseL0,
@@ -127,6 +128,7 @@ const getColors = (style: string, colors: any): Scheme => {
         };
     } else {
         return {
+            linkColor: colors.baseL2,
             textColor: colors.text,
             outlineTextColor: colors.baseL2,
             idleColor: colors.baseL2,
@@ -140,6 +142,7 @@ const getColors = (style: string, colors: any): Scheme => {
 };
 
 type Scheme = {
+    linkColor: string;
     textColor: string;
     outlineTextColor: string;
     idleColor: string;

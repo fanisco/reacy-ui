@@ -70,7 +70,6 @@ interface IStyledProps {
 const DropdownElement = styled.div<IStyledProps>`
     box-sizing: border-box;
     background: ${props => props.background};
-    border: 1px solid ${props => props.borderColor};
     border-radius: ${props => props.borderRadius}px;
-    box-shadow: 0 1px 5px ${props => props.shadowColor}50;
+    box-shadow: 0 1px 5px ${props => props.shadowColor}10;
 `;

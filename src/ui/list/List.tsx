@@ -37,7 +37,6 @@ export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md
         }
         &:hover {
             background: ${colors.baseL1};
-            border-color: ${colors.baseL1};
         }
     `;
     return (
