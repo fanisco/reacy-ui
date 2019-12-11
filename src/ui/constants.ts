@@ -11,7 +11,7 @@ export const Colors = {
 };
 
 export const Fonts = {
-    ff: 'Roboto',
+    ff: 'Nunito Sans',
     mh: 1.3,
     lh: 1.5
 };
