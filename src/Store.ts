@@ -1,18 +1,48 @@
 import { observable, computed } from 'mobx';
-import { FormItem } from './ui/components/Types/Item';
+import { Item, FormItem } from './ui/types/Item';
+import { Sizes, Styles } from './ui';
+
+const buttonModes: Item[] = [
+    { id: 'default', name: 'Default' },
+    { id: 'link', name: 'Link' },
+    { id: 'outline', name: 'Outline' }
+];
+
+const buttonSizes: Item[] = [
+    { id: Sizes.xs, name: 'XS' },
+    { id: Sizes.sm, name: 'SM' },
+    { id: Sizes.md, name: 'MD' },
+    { id: Sizes.lg, name: 'LG' },
+    { id: Sizes.xl, name: 'XL' }
+];
+
+const buttonStyles: Item[] = [
+    { id: Styles.default, name: 'Default' },
+    { id: Styles.primary, name: 'Primary' },
+    { id: Styles.secondary, name: 'Secondary' },
+    { id: Styles.success, name: 'Success' },
+    { id: Styles.warning, name: 'Warning' },
+    { id: Styles.danger, name: 'Danger' }
+];
 
 export default class Store {
-    @observable items: FormItem[] = [
-        { id: 'color', name: 'Color', type: 'string', value: '', placeholder: 'Green...' },
-        { id: 'bold', name: 'Bold', type: 'switch', value: true },
-        { id: 'descr', name: 'Description', type: 'text', value: '', placeholder: 'Description...' },
-        { id: 'type', name: 'Type', type: 'select', value: 0, values: [{ id: 0, name: 'Simple' }] },
+    @observable buttonProps: FormItem[] = [
+        { id: 'mode', name: 'Mode', type: 'select', value: 'default', values: buttonModes },
+        { id: 'size', name: 'Size', type: 'select', value: Sizes.md, values: buttonSizes },
+        { id: 'style', name: 'Style', type: 'select', value: Styles.default, values: buttonStyles },
     ];
     @computed get allItems(): FormItem[] {
-        return this.items;
+        return this.buttonProps;
+    }
+    @computed get allProps(): any {
+        const props: any = {};
+        for (const prop of this.buttonProps) {
+            props[prop.id] = prop.value;
+        }
+        return props;
     }
     getItemById(id: string) {
-        for (const element of this.items) {
+        for (const element of this.buttonProps) {
             if (element.id === id) {
                 return element;
             }
