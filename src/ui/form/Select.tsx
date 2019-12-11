@@ -1,7 +1,6 @@
-import React, { useReducer, useEffect } from 'react';
+import React from 'react';
+import { Component } from '../base';
 import styled from 'styled-components';
-import { Colors, Dims } from '../constants';
-import { Sizes, Styles } from '../enums';
 import { Images } from '../images';
 import { Button } from '../buttons';
 import { Dropdown } from '../popup';
@@ -15,109 +14,77 @@ interface IProps extends IInputProps {
 /**
  * Component for displaying select dropdown.
  */
-export const Select: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, ...props}) => {
-    const [state, dispatch] = useReducer(reducer, {open: false, value: props.value}, init);
-    const onButtonClick = () => {
-        dispatch({
-            type: 'open',
-            value: !state.open
-        });
+export default class Select extends Component<IProps> {
+    constructor(props: IProps) {
+        super(props);
+        this.onDropdownClick = this.onDropdownClick.bind(this);
+    }
+    onDropdownClick(item: ListItem) {
+        this.props.onChange && this.props.onChange(item.id);
     };
-    const onDropdownClick = (item: ListItem) => {
-        dispatch({
-            type: 'open',
-            value: false
-        });
-        dispatch({
-            type: 'value',
-            value: item.id
-        });
-    };
-
-    const arrowImage = Images.arrowDown;
-    const colors = Colors[style];
-    const sizes = Dims[size];
-    const Select = styled.div`
-        position: relative;
-        width: 100%;
-        min-width: ${sizes.elementWidth}px;
-        height: ${sizes.elementHeight}px;
-    `;
-    const Arrow = styled.div`
-        position: absolute;
-        top: 50%;
-        right: ${sizes.spacing}px;
-        width: ${arrowImage.width}px;
-        height: ${arrowImage.height}px;
-        margin-top: -${arrowImage.height / 2}px;
-        background: url("${arrowImage.src}") center no-repeat;
-        transform: rotate(${state.open ? '180deg' : '0deg'});
-    `;
-
-    // const [isOpen, setIsOpen] = useState(false);
-    // const [value, setValue] = useState(props.value);
-    //
-
-    useEffect(() => {
-        if (state.value && state.value !== props.value) {
-            props.onChange && props.onChange(state.value);
-        }
-    });
-
-    return (
-        <Select>
-            <Button
-                style={style}
-                size={size}
-                fullWidth={true}
-                textAlign="left"
-                onClick={onButtonClick}
-            >
-                {getCaption(props.values, state.value)}<Arrow/>
-            </Button>
-            <Dropdown
-                style={style}
-                size={size}
-                items={props.values}
-                open={state.open}
-                onClick={onDropdownClick}
-            />
-        </Select>
-    );
-};
-
-function getCaption(items?: ListItem[], value?: number): string {
-    if (items) {
-        for (const item of items) {
-            if (item.id === value) {
-                return item.name;
+    getCaption(items?: ListItem[], value?: number): string {
+        if (items) {
+            for (const item of items) {
+                if (item.id === value) {
+                    return item.name;
+                }
             }
         }
+        return '';
     }
-    return '';
+    render() {
+        const { dims, style, size } = this.getStyles();
+        return (
+            <SelectElement
+                id={`select-${this.id}`}
+                width={dims.elementWidth}
+                height={dims.elementHeight}
+            >
+                <Button
+                    style={style}
+                    size={size}
+                    fullWidth={true}
+                    textAlign="left"
+                >
+                    {this.getCaption(this.props.values, this.props.value)}
+                    <ArrowElement open={false} right={dims.spacing}/>
+                </Button>
+                <Dropdown
+                    style={style}
+                    size={size}
+                    items={this.props.values}
+                    onClick={this.onDropdownClick}
+                />
+            </SelectElement>
+        );
+    }
 }
 
-type State = {
+interface IStyledProps {
+    width: number;
+    height: number;
+}
+
+const SelectElement = styled.div<IStyledProps>`
+    position: relative;
+    width: 100%;
+    min-width: ${props => props.width}px;
+    height: ${props => props.height}px;
+`;
+
+interface IStyledArrowProps {
     open: boolean;
-    value?: number;
+    right: number;
 }
 
-type Action =
-    | {type: 'open', value: any}
-    | {type: 'value', value: any}
-
-function init({ open = false, ...init }): State {
-    return {
-        open: open,
-        value: init.value
-    }
-}
-
-function reducer(state: State, action: Action) {
-    switch (action.type) {
-        case 'open':
-            return {...state, open: action.value};
-        case 'value':
-            return {...state, value: action.value};
-    }
-}
+const arrowImage = Images.arrowDown;
+const ArrowElement = styled.div<IStyledArrowProps>`
+    position: absolute;
+    top: 50%;
+    right: ${props => props.right}px;
+    width: ${arrowImage.width}px;
+    height: ${arrowImage.height}px;
+    margin-top: -${arrowImage.height / 2}px;
+    background: url("${arrowImage.src}") center no-repeat;
+    transform: rotate(${props => props.open ? '180deg' : '0deg'});
+`;

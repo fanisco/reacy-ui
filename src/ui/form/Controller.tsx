@@ -5,7 +5,7 @@ import { Input } from './Input';
 import { Switch } from './Switch';
 import { FormItem } from '../types/Item';
 import { Textarea } from './Textarea';
-import { Select } from './Select';
+import Select from './Select';
 
 interface IProps {
     wrap?: boolean;

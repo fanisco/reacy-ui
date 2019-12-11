@@ -1,28 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Component } from '../base';
 import styled from 'styled-components';
 import Manager from './Manager';
+import IComponentProps from '../interface/IComponentProps';
 
-export default class Popup<T extends IProps> extends Component<T> {
-    constructor(props: T) {
+/**
+ * Container for popup content.
+ */
+export default class Popup extends Component<IProps, IState> {
+    node: Node = escapeDiv;
+    constructor(props: IProps) {
         super(props);
+        this.state = { visible: !!this.props.visible };
+        this.setRefNodes = this.setRefNodes.bind(this);
+    }
+    componentWillMount(): void {
+        const manager = Manager.getInstance();
+        manager.register(this);
+    }
+    componentWillUnmount(): void {
+        const manager = Manager.getInstance();
+        manager.unregister(this);
+    }
+
+    show(): void {
+        this.setState({ visible: true });
+    }
+    hide(): void {
+        this.setState({ visible: false });
+    }
+    toggle(): void {
+        this.state.visible ? this.hide() : this.show();
+    }
+    setRefNodes(node: HTMLDivElement): void {
+        if (node) {
+            this.node = node;
+        }
     }
     render() {
-        console.log(this.props);
         return (
             <PopupElement
+                id={`popup-${this.id}`}
+                ref={this.setRefNodes}
                 top={this.props.top}
                 left={this.props.left}
                 right={this.props.right}
                 bottom={this.props.bottom}
                 zIndex={Manager.getInstance().index}
                 width={this.props.width}
-                visible={this.props.visible}
+                visible={this.state.visible}
             >{this.props.children}</PopupElement>
         );
     }
 }
 
-interface StyledProps {
+interface IStyledProps {
     top?: number|string;
     left?: number|string;
     right?: number|string;
@@ -32,7 +64,7 @@ interface StyledProps {
     visible?: boolean;
 }
 
-const PopupElement = styled.div<StyledProps>`
+const PopupElement = styled.div<IStyledProps>`
     position: absolute;
     ${props => props.top !== undefined ? `top: ${props.top}` : ''}
     ${props => props.left !== undefined ? `left: ${props.left}` : ''}
@@ -43,7 +75,7 @@ const PopupElement = styled.div<StyledProps>`
     display: ${props => props.visible ? 'block' : 'none'};
 `;
 
-interface IProps {
+interface IProps extends IComponentProps {
     top?: number|string;
     left?: number|string;
     right?: number|string;
@@ -52,3 +84,9 @@ interface IProps {
     width?: number|string;
     visible?: boolean;
 }
+
+interface IState {
+    visible: boolean;
+}
+
+const escapeDiv = document.createElement('div');
