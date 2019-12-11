@@ -23,7 +23,7 @@ interface StyledProps {
 const PanelElement = styled.div<StyledProps>`
     margin: ${props => props.sizes.spacing}px;
     padding: ${props => props.sizes.elementPadding}px;
-    background-color: ${props => props.colors.baseL2};
+    background: white;
     border-radius: ${props => props.sizes.borderRadius}px;
     color: ${props => props.colors.text};
     font: ${props => props.sizes.fontSize}px/${Fonts.lh} '${Fonts.ff}';
