@@ -28,10 +28,12 @@ type Dims = {
     containerWidth: number
 }
 
+const lhByFactors: { [x: number]: number } = { 16: 1.25, 14: 1.3, 12: 1.3, 10: 1.3, 8: 1.2 };
+
 const dims = (factor: number): Dims => {
     return {
         fontSize: factor + 2,
-        lineHeight: factor >= 14 ? 1.5 : factor >= 12 ? 1.35 : factor >= 10 ? 1.3 : 1.2,
+        lineHeight: lhByFactors[factor],
         spacing: factor,
         spacings: factor * 0.85,
         elementPadding: factor * 2,
