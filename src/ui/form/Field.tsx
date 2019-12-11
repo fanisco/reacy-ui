@@ -5,11 +5,12 @@ import IStyledProps from '../interface/IStyledProps';
 import { Colors, Dims, Fonts } from '../constants';
 import { Sizes, Styles } from '../enums';
 
-export const Field: React.FC<IFieldProps> = ({ size = Sizes.md, ...props }) => {
+export const Field: React.FC<IFieldProps> = ({ style = Styles.default, size = Sizes.md, ...props }) => {
+    const colors = Colors[style];
     const dims = Dims[size];
     return (
         <FieldElement dims={dims} type={props.type}>
-            <Caption dims={dims} type={props.type}>{props.name}{props.type !== 'switch' ? ':' : ''}</Caption>{props.children}</FieldElement>
+            <Caption dims={dims} colors={colors} type={props.type}>{props.name}{props.type !== 'switch' ? ':' : ''}</Caption>{props.children}</FieldElement>
     );
 };
 
@@ -29,6 +30,8 @@ const FieldElement = styled.div<IFieldStyledProps>`
 
 const Caption = styled.span<IFieldStyledProps>`
     font: ${props => props.dims.fontSize}px/${props => props.dims.lineHeight} "${Fonts.ff}";
+    font-weight: 700;
+    color: ${props => props.colors.baseL0};
     
     ${props => props.type === 'switch' && `
         

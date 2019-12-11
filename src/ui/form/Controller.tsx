@@ -28,6 +28,7 @@ export const Controller: React.FC<IProps> = observer(({ ...props }) => {
                 let elem;
                 switch (item.type) {
                     case 'string':
+                    case 'number':
                         elem = <Input {...properties}/>;
                         break;
                     case 'text':

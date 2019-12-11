@@ -33,8 +33,7 @@ export const stylize = (props: IStyledProps) => `
     padding: ${props.dims.spacings}px ${props.dims.spacing}px;
     background: ${props.colors.baseL3};
     color: ${props.colors.text};
-    border: 1px solid;
-    border-color: ${props.colors.baseL1} ${props.colors.baseL1} ${props.colors.baseL0};
+    border: 1px solid ${props.colors.baseL1};
     border-radius: ${props.dims.borderRadius}px;
     text-align: ${props.dims.textAlign};
     font: ${props.dims.fontSize}px/${props.dims.lineHeight} "${Fonts.ff}";
@@ -48,8 +47,8 @@ export const stylize = (props: IStyledProps) => `
     &:focus {
         background: #fff;
         outline: 0 none;
-        border-color: ${Colors[Styles.default].baseL0};        
-        box-shadow: 0 5px 15px ${Colors[Styles.default].baseL0}20;
+        border-color: ${Colors[Styles.secondary].baseL3};        
+        box-shadow: 0 5px 15px ${Colors[Styles.secondary].baseL3}10;
     }
 `;
 
