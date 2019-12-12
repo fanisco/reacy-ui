@@ -15,6 +15,7 @@ export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md
     const colors = Colors[style];
     const sizes = Dims[size];
     const List = styled.ul`
+        background: ${colors.lights};
         margin: 0;
         padding: 0;
         list-style: none;
@@ -26,17 +27,17 @@ export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md
         padding: ${sizes.spacing / 2}px ${sizes.spacing}px;
         cursor: pointer;
         font: ${sizes.fontSize}px/${Fonts.mh} "${Fonts.ff}";
+        border-top: 1px solid ${colors.baseL1};
         
         &:first-child {
-            border-top-left-radius: ${sizes.borderRadius}px;
-            border-top-right-radius: ${sizes.borderRadius}px;
+            border-top: 0 none;
         }
         &:last-child {
             border-bottom-left-radius: ${sizes.borderRadius}px;
             border-bottom-right-radius: ${sizes.borderRadius}px;
         }
         &:hover {
-            background: ${colors.baseL1};
+            background: ${colors.baseL2};
         }
     `;
     return (

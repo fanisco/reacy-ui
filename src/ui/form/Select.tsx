@@ -53,6 +53,7 @@ export default class Select extends Component<IProps> {
                     style={style}
                     size={size}
                     items={this.props.values}
+                    topShift={dims.elementHeight}
                     onClick={this.onDropdownClick}
                 />
             </SelectElement>

@@ -1,28 +1,33 @@
 export const defaultColors = {
-    text: '#050608',
+    text: '#1d3341',
+    shadow: '#050608',
+    lights: '#ffffff',
     baseL3: '#f5f6fa',
     baseL2: '#f4f5f9',
-    baseL1: '#e9eaec',
+    baseL1: '#e8e9eb',
     baseL0: '#6d6d6d',
 };
 
 export const successColors = {
+    ...defaultColors,
     text: '#fff',
-    baseL3: '#6dbf88',
-    baseL2: '#48B36D',
-    baseL1: '#24A669',
-    baseL0: '#009966',
+    baseL3: '#64D889',
+    baseL2: '#45D073',
+    baseL1: '#2FBB69',
+    baseL0: '#19A661',
 };
 
 export const dangerColors = {
+    ...defaultColors,
     text: '#fff',
-    baseL3: '#E0798C',
-    baseL2: '#D76578',
-    baseL1: '#CE5063',
-    baseL0: '#C13C4A',
+    baseL3: '#f05b65',
+    baseL2: '#ed424e',
+    baseL1: '#cf3a44',
+    baseL0: '#b3323b',
 };
 
 export const warningColors = {
+    ...defaultColors,
     text: '#fff',
     baseL3: '#FBB20E',
     baseL2: '#F5980B',
@@ -31,6 +36,7 @@ export const warningColors = {
 };
 
 export const primaryColors = {
+    ...defaultColors,
     text: '#fff',
     baseL3: '#ff7033',
     baseL2: '#f26222',
@@ -39,6 +45,7 @@ export const primaryColors = {
 };
 
 export const secondaryColors = {
+    ...defaultColors,
     text: '#fff',
     baseL3: '#5A8AF1',
     baseL2: '#4279EE',

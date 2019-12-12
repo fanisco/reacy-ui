@@ -8,6 +8,7 @@ import IComponentProps from '../interface/IComponentProps';
 
 interface IProps extends IComponentProps {
     onClick?: (item: ListItem) => void;
+    topShift?: number;
     open?: boolean;
     position?: 'bl'
     items?: any[];
@@ -36,10 +37,11 @@ export default class Dropdown extends Component<IProps> {
             <Popup {...positions} visible={this.props.open} width="100%">
                 <DropdownElement
                     id={`dropdown-${this.id}`}
-                    background={colors.baseL3}
-                    borderColor={colors.baseL0}
+                    background={colors.lights}
+                    borderColor={colors.baseL1}
                     borderRadius={dims.borderRadius}
-                    shadowColor={colors.baseL0}
+                    shadowColor={colors.shadow}
+                    topShift={this.props.topShift||0}
                 >
                     <List
                         style={style}
@@ -65,11 +67,14 @@ interface IStyledProps {
     borderColor: string;
     borderRadius: number;
     shadowColor: string;
+    topShift: number;
 }
 
 const DropdownElement = styled.div<IStyledProps>`
+    padding-top: ${props => props.topShift - 1}px;
+    margin-top: -${props => props.topShift}px;
     box-sizing: border-box;
-    background: ${props => props.background};
+    border: 1px solid ${props => props.borderColor};
     border-radius: ${props => props.borderRadius}px;
-    box-shadow: 0 1px 5px ${props => props.shadowColor}10;
+    box-shadow: 0 1px 17px ${props => props.shadowColor}22;
 `;

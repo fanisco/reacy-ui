@@ -46,7 +46,7 @@ const ButtonElement = styled.button<StyledProps>`
     height: ${props => props.dims.elementHeight}px;
     padding: ${props => props.dims.spacings}px ${props => props.dims.spacing}px;
     background: ${props => props.colors.idleColor};
-    border: 0 none;
+    border: 1px solid ${props => props.colors.borderColor};
     border-radius: ${props => props.rounded ? 50 : props.dims.borderRadius}px;
     color: ${props => props.colors.textColor};
     text-align: ${props => props.textAlign};
@@ -119,12 +119,12 @@ const getColors = (style: string, colors: any): Scheme => {
             linkColor: colors.text,
             textColor: colors.text,
             outlineTextColor: colors.textColor,
-            idleColor: colors.baseL3,
-            hoverColor: colors.baseL1,
+            idleColor: colors.lights,
+            hoverColor: colors.baseL2,
             activeColor: colors.baseL2,
-            borderColor: colors.text,
-            borderHoverColor: colors.baseL0,
-            shadowColor: colors.baseL0
+            borderColor: colors.baseL1,
+            borderHoverColor: colors.baseL1,
+            shadowColor: colors.baseL1
         };
     } else {
         return {
