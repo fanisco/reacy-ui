@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors, Dims, Fonts } from '../constants';
 import { Sizes, Styles } from '../enums';
+import { getColors } from '../helpers';
 
 interface IProps {
     onClick?: Function;
@@ -45,7 +46,7 @@ const ButtonElement = styled.button<StyledProps>`
     box-sizing: border-box;
     height: ${props => props.dims.elementHeight}px;
     padding: ${props => props.dims.spacings}px ${props => props.dims.spacing}px;
-    background: ${props => props.colors.idleColor};
+    background: ${props => props.colors.idleColor} linear-gradient(to bottom, ${props => props.colors.idleColor}, ${props => props.colors.idleColorBottom});
     border: 1px solid ${props => props.colors.borderColor};
     border-radius: ${props => props.rounded ? 50 : props.dims.borderRadius}px;
     color: ${props => props.colors.textColor};
@@ -113,42 +114,3 @@ const ButtonElement = styled.button<StyledProps>`
         cursor: default;
     }
 `;
-const getColors = (style: string, colors: any): Scheme => {
-    if (style === 'default') {
-        return {
-            linkColor: colors.text,
-            textColor: colors.text,
-            outlineTextColor: colors.textColor,
-            idleColor: colors.lights,
-            hoverColor: colors.baseL2,
-            activeColor: colors.baseL2,
-            borderColor: colors.baseL1,
-            borderHoverColor: colors.baseL1,
-            shadowColor: colors.baseL1
-        };
-    } else {
-        return {
-            linkColor: colors.baseL2,
-            textColor: colors.text,
-            outlineTextColor: colors.baseL2,
-            idleColor: colors.baseL2,
-            hoverColor: colors.baseL3,
-            activeColor: colors.baseL2,
-            borderColor: colors.baseL0,
-            borderHoverColor: colors.baseL2,
-            shadowColor: colors.baseL0
-        };
-    }
-};
-
-type Scheme = {
-    linkColor: string;
-    textColor: string;
-    outlineTextColor: string;
-    idleColor: string;
-    hoverColor: string;
-    activeColor: string;
-    borderColor: string;
-    borderHoverColor: string;
-    shadowColor: string;
-}

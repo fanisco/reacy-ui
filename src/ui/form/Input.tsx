@@ -4,6 +4,7 @@ import IStyledProps from '../interface/IStyledProps';
 import IInputProps from '../interface/IInputProps';
 import { Colors, Fonts, Dims } from '../constants';
 import { Styles, Sizes } from '../enums';
+import { getColors } from '../helpers';
 
 interface IProps extends IInputProps {
     onChange: (value: string) => void;
@@ -12,8 +13,9 @@ interface IProps extends IInputProps {
 }
 
 export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'left', ...props }) => {
-    const colors = Colors[style];
+    const colors = getColors(style, Colors[style]);
     const dims = Dims[size];
+    console.log(colors);
     return (
         <InputElement
             dims={dims}
@@ -32,8 +34,8 @@ export const stylize = (props: IStyledProps) => `
     width: 100%;
     padding: ${props.dims.spacings}px ${props.dims.spacing}px;
     background: ${props.colors.baseL3};
-    color: ${props.colors.text};
-    border: 1px solid ${props.colors.baseL1};
+    color: ${props.colors.textColor};
+    border: 1px solid ${props.colors.borderColor};
     border-radius: ${props.dims.borderRadius}px;
     text-align: ${props.dims.textAlign};
     font: ${props.dims.fontSize}px/${props.dims.lineHeight} "${Fonts.ff}";

@@ -31,7 +31,7 @@ const FieldElement = styled.div<IFieldStyledProps>`
 const Caption = styled.span<IFieldStyledProps>`
     font: ${props => props.dims.fontSize}px/${props => props.dims.lineHeight} "${Fonts.ff}";
     font-weight: 700;
-    color: ${props => props.colors.baseL0};
+    color: ${props => props.colors.text};
     
     ${props => props.type === 'switch' && `
         

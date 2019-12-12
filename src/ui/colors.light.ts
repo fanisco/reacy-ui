@@ -5,7 +5,7 @@ export const defaultColors = {
     baseL3: '#f5f6fa',
     baseL2: '#f4f5f9',
     baseL1: '#e8e9eb',
-    baseL0: '#6d6d6d',
+    baseL0: '#D9DADC',
 };
 
 export const successColors = {
