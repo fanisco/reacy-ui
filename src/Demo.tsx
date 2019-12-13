@@ -5,7 +5,7 @@ import { Container, Panel, H3 } from './ui/layout';
 import { Controller } from './ui/form';
 import { Button } from './ui/buttons';
 import { Icon } from './ui/icons';
-import { Styles, Sizes } from './ui';
+import { Sizes } from './ui';
 
 export const Demo: React.FC = observer(() => {
     const store = React.useContext(Context);
@@ -21,7 +21,7 @@ export const Demo: React.FC = observer(() => {
                 <Controller wrap={true} items={items} onChange={(id, value) => {
                     store.setItem(id, value);
                 }}/>
-                <Button {...props}>Configurable button</Button>
+                <Button {...props}>{props.caption}</Button>
             </Panel>
         </Container>
     );

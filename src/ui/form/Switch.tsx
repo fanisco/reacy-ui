@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import IInputProps from '../interface/IInputProps';
-import { Colors, Fonts, Dims } from '../constants';
-import { Styles, Sizes } from '../enums';
+import IStyledProps from '../interface/IStyledProps';
+import {Colors, Dims} from '../constants';
+import {Sizes, Styles} from '../enums';
+import {getColors} from '../helpers';
 
 interface IProps extends IInputProps {
     onChange: (value: boolean) => void;
@@ -11,13 +13,15 @@ interface IProps extends IInputProps {
 /**
  * Component for displaying switch wich replaces by it self the boolean checkbox input.
  */
-export const Switch: React.FC<IProps> = ({ size = Sizes.xs, ...props }) => {
+export const Switch: React.FC<IProps> = ({ style = Styles.default, size = Sizes.xs, ...props }) => {
+    const colors = getColors(style);
     const dims = Dims[size];
     return (
         <Wrapper>
             <Trigger
-                active={props.value}
+                state={props.value}
                 dims={dims}
+                colors={colors}
             />
             <Hidden>
                 <input
@@ -33,9 +37,8 @@ export const Switch: React.FC<IProps> = ({ size = Sizes.xs, ...props }) => {
     )
 };
 
-interface StyledProps {
-    active: boolean;
-    dims?: any;
+interface StyledProps extends IStyledProps {
+    state?: boolean | null;
 }
 
 const Wrapper = styled.label`
@@ -53,13 +56,13 @@ const Trigger = styled.div<StyledProps>`
     width: ${props => props.dims.elementHeight * 2}px;
     height: ${props => props.dims.elementHeight}px;
     border-radius: ${props => props.dims.elementHeight}px;
-    background-color: ${props => props.active ? Colors[Styles.success].baseL2 : Colors[Styles.default].baseL1};
+    background-color: ${props => props.colors.idleColor};
     cursor: pointer;
-    box-shadow: inset 0.5px 0.5px 3px ${props => props.active ? Colors[Styles.success].baseL0 : Colors[Styles.default].baseL0};
+    box-shadow: inset 0.5px 0.5px 3px ${props => props.colors.shadowColor};
     transition: background-color 0.15s ease-in-out;
     
     &:hover {
-        background-color: ${props => props.active ? Colors[Styles.success].baseL3 : Colors[Styles.default].baseL2};
+        background-color: ${props => props.colors.hoverColor};
         transition: all 0.15s ease-in-out 0.15s;
     }
     &::before {
@@ -71,10 +74,18 @@ const Trigger = styled.div<StyledProps>`
         height: ${props => props.dims.elementHeight - 4}px;
         border-radius: 50%;
         background-color: white;
-        transform: translateX(${props => props.active ? props.dims.elementHeight : 0}px);
-        box-shadow: 0.5px 0.5px 3px ${props => props.active ? Colors[Styles.success].baseL0 : Colors[Styles.default].baseL0};
+        transform: translateX(${props => props.state ? props.dims.elementHeight : 0}px);
+        box-shadow: 0.5px 0.5px 3px ${props => props.colors.shadowColor};
         transition: transform 0.15s ease-in-out;
     }
+    
+    ${props => props.state && `
+        background-color: ${Colors[Styles.success].a400};
+        
+        &:hover {
+        background-color: ${Colors[Styles.success].a350};
+        }
+    `}
 `;
 
 const Hidden = styled.div`

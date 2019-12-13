@@ -11,6 +11,8 @@ interface IProps {
     size?: Sizes;
     mode?: 'default' | 'link' | 'outline';
     textAlign?: 'left' | 'center' | 'right';
+    bold?: boolean;
+    italic?: boolean;
     rounded?: boolean;
     fullWidth?: boolean;
     state?: boolean | null;
@@ -27,6 +29,8 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
             colors={colors}
             mode={mode}
             textAlign={textAlign}
+            bold={props.bold}
+            italic={props.italic}
             rounded={props.rounded}
             fullWidth={props.fullWidth}
             disabled={props.state === false}
@@ -44,7 +48,7 @@ const ButtonElement = styled.button<IStyledProps>`
     padding: ${props => props.dims.spacings}px ${props => props.dims.spacing}px;
     background: ${props => props.colors.idleColor} linear-gradient(to bottom, ${props => props.colors.bottomColor}00, ${props => props.colors.bottomColor});
     border: 1px solid ${props => props.colors.borderColor};
-    border-radius: ${props => props.rounded ? 50 : props.dims.borderRadius}px;
+    border-radius: ${props => props.dims.borderRadius}px;
     color: ${props => props.colors.textColor};
     text-align: ${props => props.textAlign};
     font: ${props => props.dims.fontSize}px/${props => props.dims.lineHeight} "${Fonts.ff}";
@@ -63,6 +67,20 @@ const ButtonElement = styled.button<IStyledProps>`
     }
     
     ${props => props.state && getActive(props)}
+    
+    ${props => props.bold && `
+        font-weight: bold;
+    `}
+    
+    ${props => props.rounded && `
+        border-radius: 50px;
+        padding-left: ${props.dims.spacing * 2}px;
+        padding-right: ${props.dims.spacing * 2}px;
+    `}
+    
+    ${props => props.italic && `
+        font-style: italic;
+    `}
     
     ${props => props.fullWidth && `
         width: 100%;
@@ -122,9 +140,11 @@ interface IStyledProps {
     dims?: any;
     colors?: any;
     mode?: string;
+    bold?: boolean;
+    italic?: boolean;
     rounded?: boolean;
-    textAlign?: string;
     fullWidth?: boolean;
+    textAlign?: string;
     state?: boolean | null;
     side?: boolean | null;
 }

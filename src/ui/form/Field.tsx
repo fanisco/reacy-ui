@@ -25,7 +25,6 @@ const FieldElement = styled.div<IFieldStyledProps>`
     ${props => props.type === 'switch' && `
         display: flex;
         align-items: center;
-        justify-content: space-between;
     `}
 `;
 
@@ -35,6 +34,6 @@ const Caption = styled.span<IFieldStyledProps>`
     color: ${props => props.colors.textColor};
     
     ${props => props.type === 'switch' && `
-        
+        margin-right: ${props.dims.spacings}px;
     `}
 `;

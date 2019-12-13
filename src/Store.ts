@@ -21,20 +21,27 @@ const buttonStyles: Item[] = [
     { id: Styles.primary, name: 'Primary' },
     { id: Styles.secondary, name: 'Secondary' },
     { id: Styles.success, name: 'Success' },
-    { id: Styles.warning, name: 'Warning' },
     { id: Styles.danger, name: 'Danger' }
 ];
 
 const icons: Item[] = [
-    { id: 'frog' }
+    { id: 'frog' },
+    { id: 'wind' },
+    { id: 'tree' },
+    { id: 'home' },
+    { id: 'bath' }
 ];
 
 export default class Store {
     @observable buttonProps: FormItem[] = [
-        { id: 'mode', name: 'Mode', type: 'select', value: 'default', values: buttonModes },
-        { id: 'size', name: 'Size', type: 'select', value: Sizes.md, values: buttonSizes },
         { id: 'style', name: 'Style', type: 'select', value: Styles.default, values: buttonStyles },
-        { id: 'icon', name: 'Icon', type: 'select', values: icons },
+        { id: 'caption', name: 'Caption', type: 'string', value: 'Configurable button' },
+        { id: 'bold', name: 'Bold', type: 'switch', value: false },
+        { id: 'italic', name: 'Italic', type: 'switch', value: false },
+        { id: 'rounded', name: 'Rounded', type: 'switch', value: false },
+        { id: 'mode', name: 'Mode', type: 'toggle', value: 'default', values: buttonModes },
+        { id: 'size', name: 'Size', type: 'toggle', value: Sizes.md, values: buttonSizes },
+        { id: 'icon', name: 'Icon', type: 'toggle', values: icons },
     ];
     @computed get allItems(): FormItem[] {
         return this.buttonProps;
