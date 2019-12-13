@@ -1,29 +1,35 @@
-export function getColors(style: string, colors: any) {
+import { Colors } from './constants';
+import { Styles } from './enums';
+
+export function getColors(style: Styles) {
+    const colors = Colors[style];
     if (style === 'default') {
         return {
-            linkColor: colors.text,
-            textColor: colors.text,
-            outlineTextColor: colors.textColor,
-            idleColor: colors.lights,
-            idleColorBottom: colors.baseL3,
-            hoverColor: colors.baseL2,
-            activeColor: colors.baseL2,
-            borderColor: colors.baseL0,
-            borderHoverColor: colors.baseL1,
-            shadowColor: colors.baseL1
+            linkColor: colors.b900,
+            textColor: colors.b900,
+            idleColor: colors.b100,
+            bottomColor: colors.b200,
+            borderColor: colors.b300,
+            shadowColor: colors.b500,
+
+            hoverColor: colors.b200,
+            activeColor: colors.b200,
+            borderHover: colors.b350,
+            borderActive: colors.b350
         };
     } else {
         return {
-            linkColor: colors.baseL2,
-            textColor: colors.text,
-            outlineTextColor: colors.baseL2,
-            idleColor: colors.baseL2,
-            idleColorBottom: colors.baseL1,
-            hoverColor: colors.baseL3,
-            activeColor: colors.baseL2,
-            borderColor: colors.baseL0,
-            borderHoverColor: colors.baseL2,
-            shadowColor: colors.baseL0
+            linkColor: colors.a450,
+            textColor: colors.b100,
+            idleColor: colors.a350,
+            bottomColor: colors.a400,
+            borderColor: colors.a450,
+            shadowColor: colors.a900,
+
+            hoverColor: colors.a400,
+            activeColor: colors.a400,
+            borderHover: colors.a550,
+            borderActive: colors.a550
         };
     }
 }

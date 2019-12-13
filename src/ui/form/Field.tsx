@@ -2,15 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { IFieldProps } from '../interface/IInputProps';
 import IStyledProps from '../interface/IStyledProps';
-import { Colors, Dims, Fonts } from '../constants';
+import { Dims, Fonts } from '../constants';
 import { Sizes, Styles } from '../enums';
+import { getColors } from '../helpers';
 
 export const Field: React.FC<IFieldProps> = ({ style = Styles.default, size = Sizes.md, ...props }) => {
-    const colors = Colors[style];
+    const colors = getColors(style);
     const dims = Dims[size];
     return (
         <FieldElement dims={dims} type={props.type}>
-            <Caption dims={dims} colors={colors} type={props.type}>{props.name}{props.type !== 'switch' ? ':' : ''}</Caption>{props.children}</FieldElement>
+            <Caption dims={dims} colors={colors} type={props.type}>{props.name + (props.type !== 'switch' ? ':' : '')}</Caption>{props.children}</FieldElement>
     );
 };
 
@@ -31,7 +32,7 @@ const FieldElement = styled.div<IFieldStyledProps>`
 const Caption = styled.span<IFieldStyledProps>`
     font: ${props => props.dims.fontSize}px/${props => props.dims.lineHeight} "${Fonts.ff}";
     font-weight: 700;
-    color: ${props => props.colors.text};
+    color: ${props => props.colors.textColor};
     
     ${props => props.type === 'switch' && `
         

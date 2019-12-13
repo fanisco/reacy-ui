@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors, Fonts, Dims } from '../constants';
+import { Fonts, Dims } from '../constants';
 import { Sizes, Styles } from '../enums';
 import { ListItem } from '../types/Item';
+import { getColors } from '../helpers';
 
 interface IProps {
     onClick?: Function;
@@ -12,32 +13,33 @@ interface IProps {
 }
 
 export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, items, onClick}) => {
-    const colors = Colors[style];
-    const sizes = Dims[size];
+    const colors = getColors(style);
+    const dims = Dims[size];
     const List = styled.ul`
-        background: ${colors.lights};
+        background: ${colors.idleColor};
         margin: 0;
         padding: 0;
         list-style: none;
-        border-radius: ${sizes.borderRadius}px;
+        border-radius: ${dims.borderRadius}px;
+        color: ${colors.textColor}
     `;
     const Item = styled.li`
         box-sizing: border-box;
-        height: ${sizes.elementHeight - sizes.spacing / 2}px;
-        padding: ${sizes.spacing / 2}px ${sizes.spacing}px;
+        height: ${dims.elementHeight - dims.spacing / 2}px;
+        padding: ${dims.spacing / 2}px ${dims.spacing}px;
         cursor: pointer;
-        font: ${sizes.fontSize}px/${Fonts.mh} "${Fonts.ff}";
-        border-top: 1px solid ${colors.baseL1};
-        
+        font: ${dims.fontSize}px/${dims.lineHeight} "${Fonts.ff}";
+        border-top: 1px solid ${colors.borderColor};
+
         &:first-child {
             border-top: 0 none;
         }
         &:last-child {
-            border-bottom-left-radius: ${sizes.borderRadius}px;
-            border-bottom-right-radius: ${sizes.borderRadius}px;
+            border-bottom-left-radius: ${dims.borderRadius}px;
+            border-bottom-right-radius: ${dims.borderRadius}px;
         }
         &:hover {
-            background: ${colors.baseL2};
+            background: ${colors.hoverColor};
         }
     `;
     return (

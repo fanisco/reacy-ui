@@ -19,7 +19,7 @@ interface IProps {
 }
 
 export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, mode = 'default', textAlign = 'center', ...props }) => {
-    const colors = getColors(style, Colors[style]);
+    const colors = getColors(style);
     const dims = Dims[size];
     return (
         <ButtonElement
@@ -38,10 +38,11 @@ export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.
 };
 
 const ButtonElement = styled.button<IStyledProps>`
+    position: relative;
     box-sizing: border-box;
     height: ${props => props.dims.elementHeight}px;
     padding: ${props => props.dims.spacings}px ${props => props.dims.spacing}px;
-    background: ${props => props.colors.idleColor} linear-gradient(to bottom, ${props => props.colors.idleColor}, ${props => props.colors.idleColorBottom});
+    background: ${props => props.colors.idleColor} linear-gradient(to bottom, ${props => props.colors.bottomColor}00, ${props => props.colors.bottomColor});
     border: 1px solid ${props => props.colors.borderColor};
     border-radius: ${props => props.rounded ? 50 : props.dims.borderRadius}px;
     color: ${props => props.colors.textColor};
@@ -51,7 +52,7 @@ const ButtonElement = styled.button<IStyledProps>`
     cursor: pointer;
     
     &:hover {
-        border-color: ${props => props.colors.borderHoverColor};
+        border-color: ${props => props.colors.borderHover};
         background-color: ${props => props.colors.hoverColor};
     }
     &:focus {
@@ -68,6 +69,7 @@ const ButtonElement = styled.button<IStyledProps>`
     `}
     
     ${props => props.side !== undefined && getBorderSides(props)}
+    ${props => props.side !== undefined && props.state && `z-index: 1;`}
     
     ${props => props.mode === 'link' ? `
         height: auto;
@@ -89,12 +91,12 @@ const ButtonElement = styled.button<IStyledProps>`
         }
     ` : props.mode === 'outline' && `
         background: none;
-        color: ${props.colors.outlineTextColor};
+        color: ${props.colors.linkColor};
         border: 1px solid ${props.colors.borderColor};
 
         &:hover {
             background: ${props.colors.hoverColor};
-            border-color: ${props.colors.borderHoverColor};
+            border-color: ${props.colors.borderHover};
             color: ${props.colors.textColor};
         }
         &:active:focus {
@@ -130,8 +132,9 @@ interface IStyledProps {
 const getActive = (props: IStyledProps) => {
     return `
         background: ${props.colors.activeColor};
-        border-color: ${props.colors.borderColor};
-        box-shadow: inset 0 0 10px ${props.colors.shadowColor}50;
+        border-color: ${props.colors.borderActive};
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+                    inset 0 0 10px ${props.colors.shadowColor}50;
     `;
 };
 

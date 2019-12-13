@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import IStyledProps from '../interface/IStyledProps';
 import IInputProps from '../interface/IInputProps';
-import { Colors, Fonts, Dims } from '../constants';
+import { Fonts, Dims } from '../constants';
 import { Styles, Sizes } from '../enums';
 import { getColors } from '../helpers';
 
@@ -13,7 +13,7 @@ interface IProps extends IInputProps {
 }
 
 export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'left', ...props }) => {
-    const colors = getColors(style, Colors[style]);
+    const colors = getColors(style);
     const dims = Dims[size];
     return (
         <InputElement
@@ -32,7 +32,7 @@ export const stylize = (props: IStyledProps) => `
     box-sizing: border-box;
     width: 100%;
     padding: ${props.dims.spacings}px ${props.dims.spacing}px;
-    background: ${props.colors.baseL3};
+    background: ${props.colors.idleColor};
     color: ${props.colors.textColor};
     border: 1px solid ${props.colors.borderColor};
     border-radius: ${props.dims.borderRadius}px;
@@ -48,8 +48,8 @@ export const stylize = (props: IStyledProps) => `
     &:focus {
         background: #fff;
         outline: 0 none;
-        border-color: ${Colors[Styles.secondary].baseL3};        
-        box-shadow: 0 5px 15px ${Colors[Styles.secondary].baseL3}10;
+        border-color: ${props.colors.borderActive};        
+        box-shadow: 0 5px 15px ${props.colors.borderActive}10;
     }
 `;
 

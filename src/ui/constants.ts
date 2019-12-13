@@ -2,12 +2,11 @@ import { Styles, Sizes } from './enums';
 import * as colors from './colors.light';
 
 export const Colors = {
-    [Styles.default]: colors.defaultColors,
-    [Styles.success]: colors.successColors,
-    [Styles.warning]: colors.warningColors,
-    [Styles.danger]: colors.dangerColors,
+    [Styles.default]: colors.primaryColors,
     [Styles.primary]: colors.primaryColors,
-    [Styles.secondary]: colors.secondaryColors
+    [Styles.secondary]: colors.secondaryColors,
+    [Styles.success]: colors.successColors,
+    [Styles.danger]: colors.dangerColors
 };
 
 export const Fonts = {

@@ -37,10 +37,10 @@ export default class Dropdown extends Component<IProps> {
             <Popup {...positions} visible={this.props.open} width="100%">
                 <DropdownElement
                     id={`dropdown-${this.id}`}
-                    background={colors.lights}
-                    borderColor={colors.baseL1}
+                    background={colors.idleColor}
+                    borderColor={colors.borderColor}
                     borderRadius={dims.borderRadius}
-                    shadowColor={colors.shadow}
+                    shadowColor={colors.shadowColor}
                     topShift={this.props.topShift||0}
                 >
                     <List
