@@ -5,6 +5,7 @@ import { Input } from './Input';
 import { Switch } from './Switch';
 import { FormItem } from '../types/Item';
 import { Textarea } from './Textarea';
+import { Toggle } from './Toggle';
 import Select from './Select';
 
 interface IProps {
@@ -39,6 +40,9 @@ export const Controller: React.FC<IProps> = observer(({ ...props }) => {
                         break;
                     case 'select':
                         elem = <Select {...properties}/>;
+                        break;
+                    case 'toggle':
+                        elem = <Toggle {...properties}/>;
                         break;
                 }
                 return props.wrap ? <Field key={i} {...item}>{elem}</Field> : elem;
