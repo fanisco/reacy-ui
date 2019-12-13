@@ -3,20 +3,22 @@ import styled from 'styled-components';
 import { Colors, Dims, Fonts } from '../constants';
 import { Sizes, Styles } from '../enums';
 import { getColors } from '../helpers';
+import { Icon } from '../icons';
 
 interface IProps {
     onClick?: Function;
-    disabled?: boolean;
     style?: Styles;
     size?: Sizes;
     mode?: 'default' | 'link' | 'outline';
     textAlign?: 'left' | 'center' | 'right';
     rounded?: boolean;
     fullWidth?: boolean;
+    state?: boolean | null;
+    side?: boolean | null;
+    icon?: string;
 }
 
-export const Button: React.FC<IProps> =
-    ({ style = Styles.default, size = Sizes.md, mode = 'default', textAlign = 'center', ...props }) => {
+export const Button: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, mode = 'default', textAlign = 'center', ...props }) => {
     const colors = getColors(style, Colors[style]);
     const dims = Dims[size];
     return (
@@ -27,22 +29,15 @@ export const Button: React.FC<IProps> =
             textAlign={textAlign}
             rounded={props.rounded}
             fullWidth={props.fullWidth}
-            disabled={props.disabled}
+            disabled={props.state === false}
+            state={props.state}
+            side={props.side}
             onClick={() => props.onClick && props.onClick()}
-        >{props.children}</ButtonElement>
+        >{props.icon ? <ButtonIcon name={props.icon}/> : null}{props.children}</ButtonElement>
     );
 };
 
-interface StyledProps {
-    dims?: any;
-    colors?: any;
-    mode?: string;
-    rounded?: boolean;
-    textAlign?: string;
-    fullWidth?: boolean;
-}
-
-const ButtonElement = styled.button<StyledProps>`
+const ButtonElement = styled.button<IStyledProps>`
     box-sizing: border-box;
     height: ${props => props.dims.elementHeight}px;
     padding: ${props => props.dims.spacings}px ${props => props.dims.spacing}px;
@@ -63,14 +58,16 @@ const ButtonElement = styled.button<StyledProps>`
         outline: 0 none;
     }
     &:active:focus {
-        background: ${props => props.colors.activeColor};
-        border-color: ${props => props.colors.borderColor};
-        box-shadow: inset 0 0 10px ${props => props.colors.shadowColor}50;
+        ${props => getActive(props)}
     }
+    
+    ${props => props.state && getActive(props)}
     
     ${props => props.fullWidth && `
         width: 100%;
     `}
+    
+    ${props => props.side !== undefined && getBorderSides(props)}
     
     ${props => props.mode === 'link' ? `
         height: auto;
@@ -114,3 +111,48 @@ const ButtonElement = styled.button<StyledProps>`
         cursor: default;
     }
 `;
+
+const ButtonIcon = styled(Icon)`
+    margin-right: 12px;
+`;
+
+interface IStyledProps {
+    dims?: any;
+    colors?: any;
+    mode?: string;
+    rounded?: boolean;
+    textAlign?: string;
+    fullWidth?: boolean;
+    state?: boolean | null;
+    side?: boolean | null;
+}
+
+const getActive = (props: IStyledProps) => {
+    return `
+        background: ${props.colors.activeColor};
+        border-color: ${props.colors.borderColor};
+        box-shadow: inset 0 0 10px ${props.colors.shadowColor}50;
+    `;
+};
+
+const getBorderSides = (props: IStyledProps) => {
+    switch (props.side) {
+        case true:
+            return `
+                margin-right: -1px;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            `;
+        case false:
+            return `
+                margin-right: -1px;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            `;
+        default:
+            return `
+                margin-right: -1px;
+                border-radius: 0;
+            `;
+    }
+};

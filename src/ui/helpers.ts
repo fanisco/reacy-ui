@@ -18,7 +18,7 @@ export function getColors(style: string, colors: any) {
             textColor: colors.text,
             outlineTextColor: colors.baseL2,
             idleColor: colors.baseL2,
-            idleColorBottom: colors.baseL3,
+            idleColorBottom: colors.baseL1,
             hoverColor: colors.baseL3,
             activeColor: colors.baseL2,
             borderColor: colors.baseL0,
