@@ -4,8 +4,8 @@ import { FormItem } from '../types/Item';
 export interface IItemProps {
     id: FormItem['id'];
     type: FormItem['type'];
-    name: FormItem['name'];
-    value: FormItem['value'];
+    name?: FormItem['name'];
+    value?: FormItem['value'];
     placeholder?: FormItem['placeholder'];
 }
 

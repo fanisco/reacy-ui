@@ -25,11 +25,16 @@ const buttonStyles: Item[] = [
     { id: Styles.danger, name: 'Danger' }
 ];
 
+const icons: Item[] = [
+    { id: 'frog' }
+];
+
 export default class Store {
     @observable buttonProps: FormItem[] = [
         { id: 'mode', name: 'Mode', type: 'select', value: 'default', values: buttonModes },
         { id: 'size', name: 'Size', type: 'select', value: Sizes.md, values: buttonSizes },
         { id: 'style', name: 'Style', type: 'select', value: Styles.default, values: buttonStyles },
+        { id: 'icon', name: 'Icon', type: 'select', values: icons },
     ];
     @computed get allItems(): FormItem[] {
         return this.buttonProps;

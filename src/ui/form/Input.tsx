@@ -15,7 +15,6 @@ interface IProps extends IInputProps {
 export const Input: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'left', ...props }) => {
     const colors = getColors(style, Colors[style]);
     const dims = Dims[size];
-    console.log(colors);
     return (
         <InputElement
             dims={dims}

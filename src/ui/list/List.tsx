@@ -43,7 +43,7 @@ export const List: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md
     return (
         <List>
             {items ? items.map((item, i) => {
-                return <Item key={i} onClick={() => onClick && onClick(item)}>{item.name}</Item>
+                return <Item key={i} onClick={() => onClick && onClick(item)}>{item.name || item.id}</Item>
             }) : null}
         </List>
     );

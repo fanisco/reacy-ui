@@ -26,7 +26,7 @@ export default class Select extends Component<IProps> {
         if (items) {
             for (const item of items) {
                 if (item.id === value) {
-                    return item.name;
+                    return `${item.name || item.id}`;
                 }
             }
         }
