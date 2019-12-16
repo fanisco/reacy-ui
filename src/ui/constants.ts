@@ -6,7 +6,7 @@ export const Colors = {
     [Styles.primary]: colors.primaryColors,
     [Styles.secondary]: colors.secondaryColors,
     [Styles.success]: colors.successColors,
-    [Styles.danger]: colors.dangerColors
+    [Styles.warning]: colors.dangerColors
 };
 
 export const Fonts = {

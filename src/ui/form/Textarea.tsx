@@ -1,10 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import IStyledProps from '../interface/IStyledProps';
 import IInputProps from '../interface/IInputProps';
-import { Colors, Fonts, Dims } from '../constants';
-import { Styles, Sizes } from '../enums';
-import { stylize } from './Input';
+import { getClass } from './Input';
+import './Input.scss';
 
 interface IProps extends IInputProps {
     onChange: (value: string) => void;
@@ -12,13 +9,10 @@ interface IProps extends IInputProps {
     fullWidth?: boolean;
 }
 
-export const Textarea: React.FC<IProps> = ({ style = Styles.default, size = Sizes.md, textAlign = 'left', ...props }) => {
-    const colors = Colors[style];
-    const dims = Dims[size];
+export const Textarea: React.FC<IProps> = (props) => {
     return (
-        <TextareaElement
-            dims={dims}
-            colors={colors}
+        <textarea
+            className={getClass(props)}
             value={props.value}
             placeholder={props.placeholder}
             onChange={(e) => {
@@ -27,10 +21,3 @@ export const Textarea: React.FC<IProps> = ({ style = Styles.default, size = Size
         />
     );
 };
-
-const TextareaElement = styled.textarea<IStyledProps>`
-    ${stylize};
-    display: block;
-    height: ${props => props.dims.elementHeight * 3}px;
-    resize: none;
-`;
