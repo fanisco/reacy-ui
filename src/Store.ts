@@ -43,6 +43,12 @@ export default class Store {
         { id: 'size', name: 'Size', type: 'toggle', value: Sizes.md, values: buttonSizes },
         { id: 'icon', name: 'Icon', type: 'toggle', values: icons },
     ];
+    @observable menu: Item[] = [
+        { id: 0, name: 'Dashboard' },
+        { id: 1, name: 'Users' },
+        { id: 2, name: 'Devices' },
+        { id: 3, name: 'Settings' },
+    ];
     @computed get allItems(): FormItem[] {
         return this.buttonProps;
     }
@@ -52,6 +58,9 @@ export default class Store {
             props[prop.id] = prop.value;
         }
         return props;
+    }
+    @computed get allMenu(): Item[] {
+        return this.menu;
     }
     getItemById(id: string) {
         for (const element of this.buttonProps) {

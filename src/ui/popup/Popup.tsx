@@ -42,6 +42,7 @@ export default class Popup extends Component<IProps, IState> {
             <PopupElement
                 id={`popup-${this.id}`}
                 ref={this.setRefNodes}
+                position={this.props.position || 'absolute'}
                 top={this.props.top}
                 left={this.props.left}
                 right={this.props.right}
@@ -55,6 +56,7 @@ export default class Popup extends Component<IProps, IState> {
 }
 
 interface IStyledProps {
+    position?: string;
     top?: number|string;
     left?: number|string;
     right?: number|string;
@@ -65,7 +67,7 @@ interface IStyledProps {
 }
 
 const PopupElement = styled.div<IStyledProps>`
-    position: absolute;
+    position: ${props => props.position};
     ${props => props.top !== undefined ? `top: ${props.top}` : ''}
     ${props => props.left !== undefined ? `left: ${props.left}` : ''}
     ${props => props.right !== undefined ? `right: ${props.right}` : ''}
@@ -75,14 +77,8 @@ const PopupElement = styled.div<IStyledProps>`
     display: ${props => props.visible ? 'block' : 'none'};
 `;
 
-interface IProps extends IComponentProps {
-    top?: number|string;
-    left?: number|string;
-    right?: number|string;
-    bottom?: number|string;
-    zIndex?: number|string;
-    width?: number|string;
-    visible?: boolean;
+interface IProps extends IComponentProps, IStyledProps {
+
 }
 
 interface IState {

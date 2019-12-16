@@ -9,6 +9,7 @@ export function getColors(style: Styles) {
             textColor: colors.b900,
             idleColor: colors.b100,
             bottomColor: colors.b200,
+            borderLight: colors.b200,
             borderColor: colors.b300,
             shadowColor: colors.b500,
 
@@ -23,6 +24,7 @@ export function getColors(style: Styles) {
             textColor: colors.b100,
             idleColor: colors.a350,
             bottomColor: colors.a400,
+            borderLight: colors.b400,
             borderColor: colors.a450,
             shadowColor: colors.a900,
 
