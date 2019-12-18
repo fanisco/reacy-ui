@@ -2,28 +2,14 @@ import React from 'react';
 import { Component } from '../base';
 import styled from 'styled-components';
 import Popup from './Popup';
-import { List } from '../list/List';
-import { ListItem } from '../types/Item';
 import IComponentProps from '../interface/IComponentProps';
-
-interface IProps extends IComponentProps {
-    onClick?: (item: ListItem) => void;
-    topShift?: number;
-    open?: boolean;
-    position?: 'bl'
-    items?: any[];
-}
 
 export default class Dropdown extends Component<IProps> {
     constructor(props: IProps) {
         super(props);
-        this.onListClick = this.onListClick.bind(this);
     }
-    onListClick(item: ListItem) {
-        this.props.onClick && this.props.onClick(item);
-    };
     render() {
-        const { colors, dims, style, size } = this.getStyles();
+        const { colors, dims } = this.getStyles();
         const position = this.props.position;
         const positions: IPositions = {};
 
@@ -42,17 +28,16 @@ export default class Dropdown extends Component<IProps> {
                     borderRadius={dims.borderRadius}
                     shadowColor={colors.shadowColor}
                     topShift={this.props.topShift||0}
-                >
-                    <List
-                        style={style}
-                        size={size}
-                        items={this.props.items}
-                        onClick={this.onListClick}
-                    />
-                </DropdownElement>
+                >{this.props.children}</DropdownElement>
             </Popup>
         );
     }
+}
+
+interface IProps extends IComponentProps {
+    topShift?: number;
+    open?: boolean;
+    position?: 'bl';
 }
 
 interface IPositions {

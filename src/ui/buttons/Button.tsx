@@ -21,7 +21,7 @@ interface IProps {
     onClick?: Function;
     style?: Styles;
     size?: Sizes;
-    mode?: 'default' | 'link' | 'outline';
+    mode?: 'default' | 'link' | 'outline' | 'transparent';
     textAlign?: 'left' | 'center' | 'right';
     bold?: boolean;
     italic?: boolean;
@@ -36,13 +36,13 @@ interface IProps {
 const getClass = (props: IProps) => {
     const base = 'btn';
     const classes: string[] = [base];
-    if (props.style !== 'default') {
+    if (props.style && props.style !== 'default') {
         classes.push(`${base}_${props.style}`);
     }
-    if (props.size !== 'md') {
+    if (props.size && props.size !== 'md') {
         classes.push(`${base}_${props.size}`);
     }
-    if (props.state !== null) {
+    if (props.state !== null && props.state !== undefined) {
         classes.push(`${base}_${props.state ? 'active' : 'disabled'}`);
     }
     if (props.bold) {

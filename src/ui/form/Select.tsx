@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from '../base';
 import { Button } from '../buttons';
 import { Dropdown } from '../popup';
+import { List } from '../list';
 import { ListItem } from '../types/Item';
 import IInputProps from '../interface/IInputProps';
 import './Select.scss';
@@ -48,10 +49,22 @@ export default class Select extends Component<IProps> {
                 <Dropdown
                     style={this.props.style}
                     size={this.props.size}
-                    items={this.props.values}
                     topShift={dims.elementHeight}
-                    onClick={this.onDropdownClick}
-                />
+                >
+                    <List
+                        style={this.props.style}
+                        size={this.props.size}
+                        items={this.props.values}
+                        itemTemplate={(item) => {
+                            const isActive = item.id === this.props.value;
+                            const props = {
+                                ...(isActive ? { icon: 'check', iconPosition: 'end' } : {})
+                            };
+                            return <Button mode="transparent" fullWidth={true} {...props}>{item.name || item.id}</Button>;
+                        }}
+                        onClick={this.onDropdownClick}
+                    />
+                </Dropdown>
             </div>
         );
     }

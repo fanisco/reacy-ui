@@ -33,7 +33,7 @@
 	&_rounded { border-radius: 50px; }
 	&_fullWidth { width: 100%; }
 
-	&_link {
+	&_link, &_transparent {
 		height: auto;
 		padding: 0;
 		background: none;
@@ -41,11 +41,15 @@
 
 		&:hover {
 			background: none;
-			text-decoration: underline;
 		}
 		&:active:focus {
 			background: none;
 			box-shadow: none;
+		}
+	}
+	&_link {
+		&:hover {
+			text-decoration: underline;
 		}
 	}
 	&_outline {

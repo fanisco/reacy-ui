@@ -3,23 +3,28 @@ import { Sizes, Styles } from '../enums';
 import { ListItem } from '../types/Item';
 import './List.scss';
 
-interface IProps {
-    onClick?: Function;
-    style?: Styles;
-    size?: Sizes,
-    items?: ListItem[]
-}
-
 export const List: React.FC<IProps> = (props) => {
     const { items, onClick } = props;
     return (
         <ul className={getClass(props)}>
-            {items ? items.map((item, i) => {
-                return <li key={i} className="list__item" onClick={() => onClick && onClick(item)}>{item.name || item.id}</li>
-            }) : null}
+            {items ?
+                items.map((item, i) =>
+                    <li key={i} className="list__item" onClick={() => onClick && onClick(item)}>{
+                        props.itemTemplate ? props.itemTemplate(item) : (item.name || item.id)
+                    }</li>)
+                : null
+            }
         </ul>
     );
 };
+
+interface IProps {
+    onClick?: Function;
+    style?: Styles;
+    size?: Sizes;
+    items?: ListItem[];
+    itemTemplate?: (props: ListItem) => React.ReactNode;
+}
 
 const getClass = (props: IProps) => {
     const base = 'list';
