@@ -1,0 +1,9 @@
+.cell {
+	box-sizing: border-box;
+
+	@for $i from 1 through 24 {
+		&_col#{$i} {
+			width: $i / 24 * 100%;
+		}
+	}
+}

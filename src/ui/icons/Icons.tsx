@@ -1,9 +1,10 @@
 import React from 'react';
 
-export const Icon: React.FC<IProps> = ({ name }) => {
-    return <i className={`las la-${name}`}/>;
+export const Icon: React.FC<IProps> = ({ name, className }) => {
+    return <i className={`${className} las la-${name}`}/>;
 };
 
 interface IProps {
     name: string;
+    className?: string;
 }

@@ -4,12 +4,16 @@ import { Icon } from '../icons';
 import './Button.scss';
 
 export const Button: React.FC<IProps> = (props) => {
+    const iconAtStart = !props.iconPosition || props.iconPosition === 'start';
+    const icon = props.icon ? <Icon className={`btn__icon btn__icon_${iconAtStart ? 'start' : 'end'}`} name={props.icon}/> : null;
+    const startIcon = icon && iconAtStart ? icon : null;
+    const endIcon = icon && !iconAtStart ? icon : null;
     return (
         <button
             className={getClass(props)}
             disabled={props.state === false}
             onClick={() => props.onClick && props.onClick()}
-        >{props.icon ? <Icon name={props.icon}/> : null}{props.children}</button>
+        >{startIcon}{props.children}{endIcon}</button>
     );
 };
 
@@ -26,6 +30,7 @@ interface IProps {
     state?: boolean | null;
     side?: boolean | null;
     icon?: string;
+    iconPosition?: 'start' | 'end'
 }
 
 const getClass = (props: IProps) => {

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Component } from '../base';
-import styled from 'styled-components';
-import { Images } from '../images';
 import { Button } from '../buttons';
 import { Dropdown } from '../popup';
 import { ListItem } from '../types/Item';
 import IInputProps from '../interface/IInputProps';
+import './Select.scss';
 
 interface IProps extends IInputProps {
     values?: any[];
@@ -33,59 +32,36 @@ export default class Select extends Component<IProps> {
         return '';
     }
     render() {
-        const { dims, style, size } = this.getStyles();
+        const { dims } = this.getStyles();
         return (
-            <SelectElement
-                id={`select-${this.id}`}
-                width={dims.elementWidth}
-                height={dims.elementHeight}
-            >
+            <div id={`select-${this.id}`} className={getClass(this.props)}>
                 <Button
-                    style={style}
-                    size={size}
+                    style={this.props.style}
+                    size={this.props.size}
                     fullWidth={true}
                     textAlign="left"
+                    icon="angle-down"
+                    iconPosition="end"
                 >
                     {this.getCaption(this.props.values, this.props.value)}
-                    <ArrowElement open={false} right={dims.spacing}/>
                 </Button>
                 <Dropdown
-                    style={style}
-                    size={size}
+                    style={this.props.style}
+                    size={this.props.size}
                     items={this.props.values}
                     topShift={dims.elementHeight}
                     onClick={this.onDropdownClick}
                 />
-            </SelectElement>
+            </div>
         );
     }
 }
 
-interface IStyledProps {
-    width: number;
-    height: number;
-}
-
-const SelectElement = styled.div<IStyledProps>`
-    position: relative;
-    width: 100%;
-    min-width: ${props => props.width}px;
-    height: ${props => props.height}px;
-`;
-
-interface IStyledArrowProps {
-    open: boolean;
-    right: number;
-}
-
-const arrowImage = Images.arrowDown;
-const ArrowElement = styled.div<IStyledArrowProps>`
-    position: absolute;
-    top: 50%;
-    right: ${props => props.right}px;
-    width: ${arrowImage.width}px;
-    height: ${arrowImage.height}px;
-    margin-top: -${arrowImage.height / 2}px;
-    background: url("${arrowImage.src}") center no-repeat;
-    transform: rotate(${props => props.open ? '180deg' : '0deg'});
-`;
+const getClass = (props: IProps) => {
+    const base = 'select';
+    const classes: string[] = [base];
+    if (props.size && props.size !== 'md') {
+        classes.push(`${base}_${props.size}`);
+    }
+    return classes.join(' ');
+};

@@ -19,4 +19,8 @@ export default class Component<P extends IComponentProps, S = {}> extends ReactC
             style, size
         };
     }
+    static defaultProps: IComponentProps = {
+        style: Styles.default,
+        size: Sizes.md
+    };
 }

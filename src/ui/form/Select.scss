@@ -1,0 +1,13 @@
+@import '../base/mixins';
+.select {
+	$class: select;
+	position: relative;
+	width: 100%;
+
+	@include box(3, $class);
+
+	&_xs { @include btn-sizes(1, $class); }
+	&_sm { @include btn-sizes(2, $class); }
+	&_lg { @include btn-sizes(4, $class); }
+	&_xl { @include btn-sizes(5, $class); }
+}

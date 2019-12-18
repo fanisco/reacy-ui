@@ -1,3 +1,3 @@
 export { Container } from './Container';
-export { Panel } from './Panel';
+export { Card } from './Card';
 export { H3 } from './H';

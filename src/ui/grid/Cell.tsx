@@ -1,24 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Dims } from '../constants';
-import { Sizes } from '../enums';
-
-interface IProps {
-
-}
+import IComponentProps from '../interface/IComponentProps';
+import './Cell.scss';
 
 export const Cell: React.FC<IProps> = (props) => {
-    const sizes = Dims[Sizes.md];
     return (
-        <CellElement sizes={sizes}>{props.children}</CellElement>
+        <div className={`cell cell_col${props.cols}`}>{props.children}</div>
     );
 };
 
-interface StyledProps {
-    sizes?: any
-    colors?: any
+interface IProps extends IComponentProps {
+    cols: number;
 }
-
-const CellElement = styled.div<StyledProps>`
-    
-`;

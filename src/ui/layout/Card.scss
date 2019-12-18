@@ -1,0 +1,15 @@
+@import '../base/mixins';
+
+.card {
+	$class: card;
+	background: $b100;
+	box-shadow: 0 5px 15px rgba($b500, 0.3);
+	color: $b900;
+
+	@include sizes(3, $class);
+
+	&_xs { @include sizes(1, $class); }
+	&_sm { @include sizes(2, $class); }
+	&_lg { @include sizes(4, $class); }
+	&_xl { @include sizes(5, $class); }
+}

@@ -1,6 +1,9 @@
 @import '../base/mixins';
 .btn {
 	$class: btn;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	position: relative;
 	box-sizing: border-box;
 	font-weight: 400;
@@ -76,5 +79,14 @@
 	}
 	&_active#{&}_first, &_active#{&}_last, &_active#{&}_mid {
 		z-index: 1;
+	}
+
+	&__icon {
+		&_start {
+			margin-right: 5px;
+		}
+		&_end {
+			margin-left: 5px;
+		}
 	}
 }

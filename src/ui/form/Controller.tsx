@@ -7,20 +7,23 @@ import { FormItem } from '../types/Item';
 import { Textarea } from './Textarea';
 import { Toggle } from './Toggle';
 import Select from './Select';
+import IComponentProps from '../interface/IComponentProps';
 
-interface IProps {
+interface IProps extends IComponentProps {
     wrap?: boolean;
     items: FormItem[];
     onChange: (name: any, value: any) => void;
     buttons?: any[];
 }
 
-export const Controller: React.FC<IProps> = observer(({ ...props }) => {
+export const Controller: React.FC<IProps> = observer((props) => {
     return (
         <div>
             {props.items.map((item, i) => {
                 const properties = {
                     key: i,
+                    style: props.style,
+                    size: props.size,
                     ...item,
                     onChange: (value: any) => {
                         props.onChange(item.id, value);

@@ -1,6 +1,5 @@
 import React from 'react';
 import IInputProps from '../interface/IInputProps';
-import { Sizes, Styles } from '../enums';
 import './Switch.scss';
 
 interface IProps extends IInputProps {

@@ -1,0 +1,25 @@
+@import '../base/mixins';
+.list {
+	$class: list;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	&__item {
+		box-sizing: border-box;
+		border-top: 1px solid;
+
+		@include sizes(3, $class);
+
+		&:first-child {
+			border-top: 0 none;
+		}
+		&:last-child {
+			border-bottom-left-radius: $borderRadius;
+			border-bottom-right-radius: $borderRadius;
+		}
+	}
+
+	@include fonts(3, $class);
+	@include list-styles(1, $class);
+}
