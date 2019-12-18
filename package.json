@@ -25,6 +25,7 @@
   "dependencies": {
     "mobx": "^5.14.2",
     "mobx-react-lite": "^1.5.0",
+    "node-sass": "^4.13.0",
     "react": "^16.10.2",
     "styled-components": "^4.4.0"
   },
