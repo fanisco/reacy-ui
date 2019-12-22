@@ -21,7 +21,7 @@ const buttonStyles: Item[] = [
     { id: Styles.primary, name: 'Primary' },
     { id: Styles.secondary, name: 'Secondary' },
     { id: Styles.success, name: 'Success' },
-    { id: Styles.danger, name: 'Danger' }
+    { id: Styles.warning, name: 'Warning' }
 ];
 
 const icons: Item[] = [
@@ -35,10 +35,11 @@ const icons: Item[] = [
 export default class Store {
     @observable buttonProps: FormItem[] = [
         { id: 'style', name: 'Style', type: 'select', value: Styles.default, values: buttonStyles },
-        { id: 'caption', name: 'Caption', type: 'string', value: 'Configurable button' },
+        { id: 'caption', name: 'Caption', type: 'string', value: 'Hello!' },
         { id: 'bold', name: 'Bold', type: 'switch', value: false },
         { id: 'italic', name: 'Italic', type: 'switch', value: false },
         { id: 'rounded', name: 'Rounded', type: 'switch', value: false },
+        { id: 'disabled', name: 'Disabled', type: 'switch', value: false },
         { id: 'mode', name: 'Mode', type: 'toggle', value: 'default', values: buttonModes },
         { id: 'size', name: 'Size', type: 'toggle', value: Sizes.md, values: buttonSizes },
         { id: 'icon', name: 'Icon', type: 'toggle', values: icons },
@@ -55,7 +56,11 @@ export default class Store {
     @computed get allProps(): any {
         const props: any = {};
         for (const prop of this.buttonProps) {
-            props[prop.id] = prop.value;
+            if (prop.id !== 'disabled') {
+                props[prop.id] = prop.value;
+            } else {
+                props.state = prop.value === true ? false : null;
+            }
         }
         return props;
     }
