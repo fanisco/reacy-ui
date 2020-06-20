@@ -1,0 +1,11 @@
+.grid {
+  display: grid;
+  grid-gap: 36px;
+
+  @media all and (max-width: 768px) {
+    grid-gap: 12px;
+  }
+  @media all and (max-width: 1200px) {
+    grid-gap: 24px;
+  }
+}

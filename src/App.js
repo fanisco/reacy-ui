@@ -1,15 +1,15 @@
 import React, {useEffect, useContext} from 'react';
 import {Store} from './state/Store';
-import Products from './ui/Products';
-import './App.css';
+import Layout from './ui/layout/Layout';
+import Products from './ui/app/Products';
 
 const App = () => {
   const {state, dispatch, items} = useContext(Store);
   console.log(items);
   return (
-    <div className="App">
+    <Layout>
       <Products items={items}/>
-    </div>
+    </Layout>
   );
 }
 
