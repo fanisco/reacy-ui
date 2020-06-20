@@ -6,7 +6,7 @@ import './Products.scss';
 const Products = ({items}) => {
   return (
     <div className="products">
-      <Grid columns="repeat(4, 1fr)" items={items.map((item, i) => <Product key={i} item={item}/>)}/>
+      <Grid items={items.map((item, i) => <Product key={i} item={item}/>)}/>
     </div>
   );
 }
