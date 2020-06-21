@@ -1,10 +1,10 @@
 import React from 'react';
 import './Grid.scss';
 
-const Grid = ({columns, items}) => {
+const Grid = ({items}) => {
   return (
     <div className="grid">
-      {items.map(item => <div className="grid__cell">{item}</div>)}
+      {items.map((item, i) => <div key={i} className="grid__cell">{item}</div>)}
     </div>
   )
 }

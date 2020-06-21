@@ -8,7 +8,7 @@ const Products = () => {
   const {state} = useContext(Context);
   return (
     <div className="products">
-      <Grid items={state.items.map((item, i) => <Product key={i} item={item}/>)}/>
+      <Grid items={state.items.map(item => <Product item={item}/>)}/>
     </div>
   );
 }
