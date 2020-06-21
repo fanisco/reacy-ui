@@ -1,14 +1,16 @@
 import React from 'react';
-import {Context, ContextProvider} from './state/Context';
+import {ContextProvider} from './state/Context';
 import Layout from './ui/layout/Layout';
 import Products from './ui/app/Products';
+import Basket from './ui/app/Basket';
 
 const App = () => {
   return (
     <ContextProvider>
-      <Layout>
-        <Products/>
-      </Layout>
+      <Layout
+        basket={<Basket/>}
+        content={<Products/>}
+      />
     </ContextProvider>
   );
 }

@@ -1,0 +1,12 @@
+.header {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+
+  height: 100%;
+
+  &__basket {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
