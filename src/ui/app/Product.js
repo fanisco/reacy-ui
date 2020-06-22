@@ -4,19 +4,19 @@ import {addToCart} from '../../state/actions';
 import {Context} from '../../state/Context';
 import './Product.scss';
 
-const Product = ({item}) => {
+const Product = ({product}) => {
   const {state, dispatch} = useContext(Context);
-  const inCartItem = state.cart.find(i => i.id === item.id);
+  const inCartItem = state.cart.find(i => i.id === product.id);
   return (
     <div className="product">
-      <div className="product__image"><img src={item.image} alt={item.title}/></div>
-      <span className="product__title">{item.title}</span>
-      <div className="product__descr">{item.descr}</div>
+      <div className="product__image"><img src={product.image} alt={product.title}/></div>
+      <span className="product__title">{product.title}</span>
+      <div className="product__descr">{product.descr}</div>
       <div className="product__bottom">
-        <span className="product__price">${item.price} {inCartItem ? inCartItem.amount : 0}</span>
+        <span className="product__price">${product.price} {inCartItem ? inCartItem.amount : 0}</span>
         <Button
           caption={inCartItem ? 'In cart' : 'Add to cart'}
-          onClick={() => addToCart({dispatch, id: item.id, amount: 1})}
+          onClick={() => addToCart({dispatch, id: product.id, amount: 1})}
         />
       </div>
     </div>

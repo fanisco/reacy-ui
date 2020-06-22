@@ -6,7 +6,7 @@ export default function useLocalStorageState(reducer, initialState, storageKey) 
   let loadedState;
   if (isLoading.current) {
     loadedState = loadState(storageKey) || initialState;
-    loadedState = {items: initialState.items, cart: Array.isArray(loadedState.cart) ? loadedState.cart : initialState.cart};
+    loadedState = {products: initialState.products, cart: Array.isArray(loadedState.cart) ? loadedState.cart : initialState.cart};
     isLoading.current = false;
   }
   const [state, dispatch] = useReducer(reducer, loadedState);

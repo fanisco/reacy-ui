@@ -7,7 +7,7 @@ import fiesta from '../images/fiesta.jpg';
 import cheeseChicken from '../images/cheese_chicken.jpg';
 import cheesy from '../images/cheesy.jpg';
 
-export const items = [{
+export const products = [{
   id: 1,
   title: 'Pepperoni fresh',
   image: peperoni,

@@ -1,10 +1,10 @@
 import React, {createContext} from 'react';
 import reducer from './reducer';
-import {items} from './items';
+import {products} from './products';
 import useLocalStorageState from './useLocalStorageState';
 
 const initialState = {
-  items,
+  products,
   cart: []
 };
 
