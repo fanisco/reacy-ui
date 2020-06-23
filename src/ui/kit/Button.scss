@@ -36,4 +36,17 @@
     background-color: $primary-color;
     color: #fff;
   }
+
+  &--inline {
+    height: auto;
+    padding: 0;
+    border-width: 0;
+
+    &, &:hover, &:focus, &:active:focus {
+      border-color: transparent;
+      background-color: transparent;
+      color: $base-color;
+      box-shadow: none;
+    }
+  }
 }

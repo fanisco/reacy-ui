@@ -10,6 +10,7 @@ import Layout from './ui/layout/Layout';
 import Products from './ui/app/Products';
 import Basket from './ui/app/Basket';
 import Cart from './ui/app/Cart';
+import BackButton from './ui/kit/BackButton';
 
 const App = () => {
   return (
@@ -17,11 +18,14 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/cart">
-            <Cart/>
+            <Layout
+              headerSlot1={<BackButton/>}
+              content={<Cart/>}
+            />
           </Route>
           <Route path="/">
             <Layout
-              basket={<Basket/>}
+              headerSlot3={<Basket/>}
               content={<Products/>}
             />
           </Route>

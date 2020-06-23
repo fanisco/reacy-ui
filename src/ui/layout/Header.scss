@@ -4,9 +4,11 @@
 
   height: 100%;
 
-  &__basket {
+  &__slot1, &__slot2, &__slot3 {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+  }
+  &__slot3 {
+    justify-content: flex-end;
   }
 }

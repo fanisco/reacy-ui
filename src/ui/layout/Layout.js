@@ -2,12 +2,12 @@ import React from 'react';
 import Header from './Header';
 import './Layout.scss';
 
-const Layout = ({content, basket}) => {
+const Layout = ({content, headerSlot1, headerSlot2, headerSlot3}) => {
   return (
     <div className="layout">
       <header className="layout__header">
         <div className="layout__container">
-          <Header basket={basket}/>
+          <Header slot1={headerSlot1} slot2={headerSlot2} slot3={headerSlot3}/>
         </div>
       </header>
       <main className="layout__content">

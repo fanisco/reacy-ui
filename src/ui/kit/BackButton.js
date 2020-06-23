@@ -2,17 +2,19 @@ import React from 'react';
 import {withRouter} from 'react-router';
 import Button from './Button';
 
-const SpaButton = (props) => {
-  const {history, href} = props;
+const BackButton = (props) => {
+  const {history, caption = 'Back'} = props;
   return (
     <Button
       {...props}
+      caption={caption}
+      mods={['inline', 'gray']}
       onClick={(e) => {
         e.preventDefault();
-        history.push(href);
+        history.goBack();
       }}
     />
   );
 }
 
-export default withRouter(SpaButton);
+export default withRouter(BackButton);

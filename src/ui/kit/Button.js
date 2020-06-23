@@ -1,11 +1,11 @@
 import React from 'react';
-import {bemClasses} from './bem';
+import {bemClasses} from '../core/bem';
 import './Button.scss';
 
-const Button = ({caption, onClick, href, children, className, mod}) => {
+const Button = ({caption, onClick, href, children, className, mods}) => {
   const classNameFinal = bemClasses({
     base: 'button',
-    mods: [mod],
+    mods,
     adds: [className]
   });
   if (href) {
