@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
-import Button from '../kit/Button';
+import SpaButton from '../kit/SpaButton';
 import {Context} from '../../state/Context';
 import './Basket.scss';
 
 const Basket = () => {
   const {state} = useContext(Context);
   return (
-    <Button caption={`Cart | ${state.cart.length}`}/>
+    <SpaButton caption={`Cart | ${state.cart.length}`} href="/cart"/>
   )
 }
 
