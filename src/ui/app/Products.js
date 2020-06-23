@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import Grid from '../layout/Grid';
+import Grid from '../kit/Grid';
 import Product from './Product';
 import {Context} from '../../state/Context';
 import './Products.scss';

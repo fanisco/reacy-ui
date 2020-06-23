@@ -1,0 +1,12 @@
+.table {
+  display: grid;
+
+  &__row {
+    display: contents;
+  }
+
+  &__cell {
+    display: flex;
+    align-items: baseline;
+  }
+}
