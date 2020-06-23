@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Button from '../kit/Button';
-import {addToCart} from '../../state/actions';
+import {cartItemAdd} from '../../state/actions';
 import {Context} from '../../state/Context';
 import './Product.scss';
 
@@ -16,7 +16,7 @@ const Product = ({product}) => {
         <span className="product__price">${product.price} {inCartItem ? inCartItem.amount : 0}</span>
         <Button
           caption={inCartItem ? 'In cart' : 'Add to cart'}
-          onClick={() => addToCart({dispatch, id: product.id, amount: 1})}
+          onClick={() => cartItemAdd({dispatch, id: product.id, amount: 1})}
         />
       </div>
     </div>

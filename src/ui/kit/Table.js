@@ -8,10 +8,21 @@ const Table = ({rows, columns, gap}) => {
       style={{
         'grid-template-columns': columns.map(column => column.width || '1fr').join(' ')
       }}>
+      <Header columns={columns}/>
       {rows.map((row, i) => <Row key={i} row={row} columns={columns}/>)}
     </div>
   )
 }
+
+const Header = ({columns}) => {
+  const header = {};
+  columns.forEach(column => header[column.id] = column.caption);
+  return (
+    <header className="table__header">
+      {columns.map(column => <Cell row={header} column={{...column, template: undefined}}/>)}
+    </header>
+  );
+};
 
 const Row = ({row, columns}) => {
   return (
@@ -23,7 +34,7 @@ const Row = ({row, columns}) => {
 
 const Cell = ({row, column}) => {
   return (
-    <div className="table__cell">{column.template ? column.template(row[column.id]) : row[column.id]}</div>
+    <div className="table__cell">{column.template ? column.template(row, column) : row[column.id]}</div>
   );
 };
 
