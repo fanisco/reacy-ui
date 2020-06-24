@@ -10,6 +10,7 @@ import Layout from './ui/layout/Layout';
 import Products from './ui/app/Products';
 import Basket from './ui/app/Basket';
 import Cart from './ui/app/Cart';
+import Checkout from './ui/app/Checkout';
 import BackButton from './ui/kit/BackButton';
 
 const App = () => {
@@ -21,6 +22,12 @@ const App = () => {
             <Layout
               headerSlot1={<BackButton/>}
               content={<Cart/>}
+            />
+          </Route>
+          <Route path="/checkout">
+            <Layout
+              headerSlot1={<BackButton/>}
+              content={<Checkout/>}
             />
           </Route>
           <Route path="/">

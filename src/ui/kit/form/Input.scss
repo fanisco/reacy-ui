@@ -1,0 +1,20 @@
+@import '../../core/variables.scss';
+
+.input {
+  height: 32px;
+  padding: 5px 16px;
+
+  border: 1px solid $delta-color;
+  border-radius: 5px;
+  
+  font: 12px/1.5 $ff;
+  font-weight: 400;
+
+  &:focus {
+    outline: 0 none;
+  }
+
+  &:hover, &:focus {
+    border: 1px solid $primary-color;
+  }
+}

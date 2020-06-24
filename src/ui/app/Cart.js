@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {Context} from '../../state/Context';
 import {cartItemAmount, cartItemRemove} from '../../state/actions';
 import Table from '../kit/Table';
+import SpaButton from '../kit/SpaButton';
 import Amount from './Amount';
 import './Cart.scss';
 
@@ -47,6 +48,7 @@ const Cart = () => {
           return {...item, ...product, total: product.price * item.amount};
         })}
       />
+      <SpaButton caption="Checkout" href="/checkout"/>
     </div>
   )
 }
