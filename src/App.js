@@ -11,7 +11,7 @@ import Products from './ui/app/Products';
 import Basket from './ui/app/Basket';
 import Cart from './ui/app/Cart';
 import Checkout from './ui/app/Checkout';
-import BackButton from './ui/kit/BackButton';
+import BackButton from './ui/kit/buttons/BackButton';
 
 const App = () => {
   return (

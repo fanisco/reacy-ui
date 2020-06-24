@@ -3,7 +3,7 @@ import {Context} from '../../state/Context';
 import {cartItemAmount, cartItemRemove} from '../../state/actions';
 import Table from '../kit/Table';
 import Input from '../kit/form/Input';
-import Button from '../kit/Button';
+import Button from '../kit/buttons/Button';
 import Amount from './Amount';
 import './Cart.scss';
 
@@ -12,18 +12,18 @@ const Checkout = () => {
     <div className="checkout">
       <h1>Checkout</h1>
       <div className="checkout__field">
-        <Input placeholder="Street"/>
+        <Input placeholder="Street" mods={['l']}/>
       </div>
       <div className="checkout__field">
-        <Input placeholder="House"/>
+        <Input placeholder="House" mods={['l']}/>
       </div>
       <div className="checkout__field">
-        <Input placeholder="Flat"/>
+        <Input placeholder="Flat" mods={['l']}/>
       </div>
       <div className="checkout__field">
-        <Input placeholder="Comment"/>
+        <Input placeholder="Comment" mods={['l']}/>
       </div>
-      <Button caption="Confirm"/>
+      <Button caption="Confirm" mods={['l']}/>
     </div>
   )
 }

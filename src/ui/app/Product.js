@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import Button from '../kit/Button';
+import Button from '../kit/buttons/Button';
 import {cartItemAdd} from '../../state/actions';
 import {Context} from '../../state/Context';
 import './Product.scss';
@@ -9,7 +9,7 @@ const Product = ({product}) => {
   const inCartItem = state.cart.find(i => i.id === product.id);
   return (
     <div className="product">
-      <div className="product__image"><img src={product.image} alt={product.title}/></div>
+      <div className="product__image"><img {...product.image} alt={product.title}/></div>
       <span className="product__title">{product.title}</span>
       <div className="product__descr">{product.descr}</div>
       <div className="product__bottom">
@@ -17,6 +17,7 @@ const Product = ({product}) => {
         <Button
           caption={inCartItem ? 'In cart' : 'Add to cart'}
           onClick={() => cartItemAdd({dispatch, id: product.id, amount: 1})}
+          mods={['s']}
         />
       </div>
     </div>

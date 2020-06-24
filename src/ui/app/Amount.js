@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../kit/Button';
+import Button from '../kit/buttons/Button';
 import './Amount.scss';
 
 const Amount = ({amount, onChange}) => {

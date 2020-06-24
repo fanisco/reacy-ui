@@ -2,14 +2,14 @@ import React, {useContext} from 'react';
 import {Context} from '../../state/Context';
 import {cartItemAmount, cartItemRemove} from '../../state/actions';
 import Table from '../kit/Table';
-import SpaButton from '../kit/SpaButton';
+import SpaButton from '../kit/buttons/SpaButton';
 import Amount from './Amount';
 import './Cart.scss';
 
 const columns = [{
   id: 'image',
   width: '80px',
-  template: ({image, title}) => <img className="cart__item-product-image" src={image} alt={title}/>
+  template: ({image, title}) => <img className="cart__item-product-image" {...image} alt={title}/>
 }, {
   id: 'title',
   template: ({title}) => <span className="cart__item-product-name">{title}</span>

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import SpaButton from '../kit/SpaButton';
+import SpaButton from '../kit/buttons/SpaButton';
 import {Context} from '../../state/Context';
 import './Basket.scss';
 
