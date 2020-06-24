@@ -1,8 +1,9 @@
-@import '../core/variables.scss';
+@import '../../core/variables.scss';
+@import '../../core/mixins.scss';
 
 .button {
-  height: 32px;
-  padding: 5px 16px;
+  @include size-model;
+  
   text-decoration: none;
 
   background-image: none;
@@ -12,7 +13,7 @@
   border-radius: 5px;
 
   white-space: nowrap;
-  font: 12px/1.5 $ff;
+  font-family: $ff;
   font-weight: 400;
   color: $primary-color;
 
@@ -48,5 +49,9 @@
       color: $base-color;
       box-shadow: none;
     }
+  }
+
+  &__icon {
+    margin-right: 0.25em;
   }
 }

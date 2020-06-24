@@ -1,0 +1,16 @@
+@mixin size-model {
+  height: 32px;
+  padding: 5px 16px;
+
+  line-height: 1.5;
+  font-size: 14px;
+
+  &--s {
+    font-size: 12px;
+  }
+
+  &--l {
+    height: 37px;
+    font-size: 17px;
+  }
+}
