@@ -7,6 +7,7 @@ import './Product.scss';
 const Product = ({product}) => {
   const {state, dispatch} = useContext(Context);
   const inCartItem = state.cart.find(i => i.id === product.id);
+
   return (
     <div className="product">
       <div className="product__image"><img {...product.image} alt={product.title}/></div>
@@ -17,7 +18,7 @@ const Product = ({product}) => {
         <Button
           caption={inCartItem ? 'In cart' : 'Add to cart'}
           onClick={() => cartItemAdd({dispatch, id: product.id, amount: 1})}
-          mode="secondary"
+          mods={['primary', 'rounded', 'no-border', 'shadow']}
         />
       </div>
     </div>

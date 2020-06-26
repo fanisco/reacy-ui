@@ -1,6 +1,5 @@
 import React from 'react';
-import Input from '../kit/form/Input';
-import Button from '../kit/buttons/Button';
+import {Button, Input} from 'reacy-ui';
 import {faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
 import './Amount.scss';
 

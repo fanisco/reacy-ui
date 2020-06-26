@@ -1,10 +1,5 @@
-import React, {useContext} from 'react';
-import {Context} from '../../state/Context';
-import {cartItemAmount, cartItemRemove} from '../../state/actions';
-import Table from '../kit/Table';
-import Input from '../kit/form/Input';
-import Button from '../kit/buttons/Button';
-import Amount from './Amount';
+import React from 'react';
+import {Button, Input} from 'reacy-ui';
 import './Cart.scss';
 
 const Checkout = () => {
@@ -12,20 +7,20 @@ const Checkout = () => {
     <div className="checkout">
       <h1>Checkout</h1>
       <div className="checkout__field">
-        <Input placeholder="Street" mods={['l']}/>
+        <Input placeholder="Street" mods={['lg']}/>
       </div>
       <div className="checkout__field">
-        <Input placeholder="House" mods={['l']}/>
+        <Input placeholder="House" mods={['lg']}/>
       </div>
       <div className="checkout__field">
-        <Input placeholder="Flat" mods={['l']}/>
+        <Input placeholder="Flat" mods={['lg']}/>
       </div>
       <div className="checkout__field">
-        <Input placeholder="Comment" mods={['l']}/>
+        <Input placeholder="Comment" mods={['lg']}/>
       </div>
-      <Button caption="Confirm" mods={['l']}/>
+      <Button caption="Confirm" mods={['lg']}/>
     </div>
   )
-}
+};
 
 export default Checkout;

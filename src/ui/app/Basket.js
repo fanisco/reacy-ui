@@ -7,10 +7,10 @@ const Basket = () => {
   const {state} = useContext(Context);
   const amount = state.cart.length ? <div className="basket__amount">{state.cart.length}</div> : '';
   return (
-    <SpaButton className="basket" caption="Cart" href="/cart" mods={['active']}>
+    <SpaButton className="basket" caption="Cart" href="/cart" mods={['primary', 'lg', 'shadow', 'no-border', 'rounded']}>
       {amount}
     </SpaButton>
   )
-}
+};
 
 export default Basket;

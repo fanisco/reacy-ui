@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import Grid from '../kit/Grid';
+import {Grid} from 'reacy-ui';
 import Product from './Product';
 import {Context} from '../../state/Context';
 import './Products.scss';
@@ -11,6 +11,6 @@ const Products = () => {
       <Grid items={state.products.map(product => <Product product={product}/>)}/>
     </div>
   );
-}
+};
 
 export default Products;

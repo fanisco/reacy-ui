@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router';
-import Button from './Button';
+import {Button} from 'reacy-ui';
 
 const SpaButton = (props) => {
   const {history, href} = props;
@@ -13,6 +13,6 @@ const SpaButton = (props) => {
       }}
     />
   );
-}
+};
 
 export default withRouter(SpaButton);
