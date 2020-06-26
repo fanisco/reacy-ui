@@ -3,9 +3,13 @@ import {bemClasses} from '../../core/bem';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import './Button.scss';
 
-const Button = ({caption, onClick, href, children, icon, ...props}) => {
+const Button = ({caption, onClick, href, children, icon, mods = [], ...props}) => {
+  if (!caption) {
+    mods = [...mods, 'no-caption'];
+  }
   const className = bemClasses({
     ...props,
+    mods,
     base: 'button'
   });
   let iconComponent = '';

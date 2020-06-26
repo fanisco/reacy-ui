@@ -3,6 +3,7 @@
 
 .input {
   @include size-model;
+  @include display-model;
 
   border: 1px solid $delta-color;
   border-radius: 5px;
@@ -15,6 +16,10 @@
   }
 
   &:hover, &:focus {
-    border: 1px solid $primary-color;
+    border-color: $primary-color;
+  }
+
+  &:focus {
+    box-shadow: 0 1px 3px mix(#ffffff, $primary-color);
   }
 }
