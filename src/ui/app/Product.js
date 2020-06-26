@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import Button from '../kit/buttons/Button';
+import {Button} from 'reacy-ui';
 import {cartItemAdd} from '../../state/actions';
 import {Context} from '../../state/Context';
 import './Product.scss';
@@ -17,7 +17,7 @@ const Product = ({product}) => {
         <Button
           caption={inCartItem ? 'In cart' : 'Add to cart'}
           onClick={() => cartItemAdd({dispatch, id: product.id, amount: 1})}
-          mods={['s']}
+          mode="secondary"
         />
       </div>
     </div>

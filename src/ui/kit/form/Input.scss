@@ -3,11 +3,10 @@
 
 .input {
   @include size-model;
-  @include display-model;
 
   border: 1px solid $delta-color;
   border-radius: 5px;
-  
+
   font-family: $ff;
   font-weight: 400;
 
