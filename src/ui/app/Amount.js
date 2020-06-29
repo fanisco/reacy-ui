@@ -10,18 +10,18 @@ const Amount = ({amount, onChange}) => {
     <div className="amount">
       <Button
         icon={faMinus}
-        mods={['gray', 'narrow', 'stacked-right']}
+        mods={['sm', 'bordered', 'gray', 'narrow', 'stacked-right']}
         onClick={decrement}
       />
       <Input
         type="text"
         value={amount}
-        mods={['narrow', 'text-center', 'roundness-none', 'eased']}
+        mods={['sm', 'bordered', 'narrow', 'text-center', 'roundness-none', 'eased', 'padding-x0']}
         onChange={e => onChange(e.target.value)}
       />
       <Button
         icon={faPlus}
-        mods={['gray', 'narrow', 'stacked-left']}
+        mods={['sm', 'bordered', 'gray', 'narrow', 'stacked-left']}
         onClick={increment}
       />
     </div>

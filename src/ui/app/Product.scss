@@ -20,6 +20,9 @@
   }
 
   &__price {
+    width: 50%;
+    margin-right: 12px;
+
     font: 18px/1.1 $ff-ancy;
     font-weight: 400;
   }
@@ -34,8 +37,12 @@
   &__bottom {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 
     padding-top: 6px;
+  }
+
+  &__add {
+    
   }
 }

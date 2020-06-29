@@ -1,6 +1,9 @@
 @import '../core/variables.scss';
 
 .cart {
+  &__footer {
+    
+  }
 
   &__item-product-image {
     max-width: 100%;
@@ -16,5 +19,7 @@
   &__item-product-total {
     font: 18px/1.1 $ff-ancy;
     font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

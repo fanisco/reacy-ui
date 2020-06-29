@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Context} from '../../state/Context';
 import {cartItemAmount, cartItemRemove} from '../../state/actions';
-import {Table} from 'reacy-ui';
+import {Table, Grid, Empty} from 'reacy-ui';
 import SpaButton from '../kit/buttons/SpaButton';
 import Amount from './Amount';
 import './Cart.scss';
@@ -15,13 +15,16 @@ const columns = [{
   template: ({title}) => <span className="cart__item-product-name">{title}</span>
 }, {
   id: 'amount',
+  width: '120px',
   caption: 'Amount'
 }, {
   id: 'price',
+  width: '80px',
   caption: 'Price',
   template: ({price}) => <span className="cart__item-product-price">{price}</span>
 }, {
   id: 'total',
+  width: '80px',
   caption: 'Total',
   template: ({total}) => <span className="cart__item-product-total">{total}</span>
 }];
@@ -29,6 +32,9 @@ const columns = [{
 const Cart = () => {
   const {state, dispatch} = useContext(Context);
   const {cart, products} = state;
+  if (!cart.length) {
+    return <Empty heading="Your cart is empty" text="Looks like you didn't add any items to your shopping cart."/>
+  }
   columns
     .find(column => column.id === 'amount')
     .template = ({amount, id}) => <Amount amount={amount} onChange={amount => {
@@ -48,7 +54,11 @@ const Cart = () => {
           return {...item, ...product, total: product.price * item.amount};
         })}
       />
-      <SpaButton caption="Checkout" href="/checkout" mods={['primary', 'xl']}/>
+      <Grid className="cart__footer" items={[
+        null,
+        null,
+        <SpaButton caption="Checkout" href="/checkout" mods={['primary', 'xl']}/>
+      ]}/>
     </div>
   )
 };
