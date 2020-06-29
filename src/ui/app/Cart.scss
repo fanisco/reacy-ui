@@ -2,7 +2,8 @@
 
 .cart {
   &__footer {
-    
+    display: flex;
+    justify-content: center;
   }
 
   &__item-product-image {
