@@ -18,7 +18,7 @@ const Checkout = () => {
       <div className="checkout__field">
         <Input placeholder="Comment" mods={['lg']}/>
       </div>
-      <Button caption="Confirm" mods={['lg']}/>
+      <Button mods={['primary', 'xl', 'shadow']}>Confirm</Button>
     </div>
   )
 };

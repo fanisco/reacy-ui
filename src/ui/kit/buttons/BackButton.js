@@ -1,20 +1,17 @@
 import React from 'react';
 import {withRouter} from 'react-router';
-import {Button} from 'reacy-ui';
-import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+import {Button, Icon} from 'reacy-ui';
 
 const BackButton = (props) => {
-  const {history, caption = 'Back'} = props;
+  const {history, children = 'Back'} = props;
   return (
     <Button
       {...props}
-      caption={caption}
-      mods={['inline', 'gray', 'lg']}
-      icon={faArrowLeft}
+      mods={['inline', 'bold', 'lg']}
       onClick={(e) => {
         e.preventDefault();
         history.goBack();
-      }}/>
+      }}><Icon name="arrow-left" size="lg" align="center"/>{children}</Button>
   );
 };
 

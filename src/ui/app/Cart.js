@@ -34,18 +34,18 @@ const columns = [{
 const Cart = () => {
   const {state, dispatch} = useContext(Context);
   const {cart, products} = state;
-  if (!cart.length) {
-    return <Empty heading="Your cart is empty" text="Looks like you didn't add any items to your shopping cart."/>
-  }
-  columns
-    .find(column => column.id === 'amount')
-    .template = ({amount, id}) => <Amount amount={amount} onChange={amount => {
-      if (amount > 0) {
-        cartItemAmount({dispatch, id, amount});
-      } else {
-        cartItemRemove({dispatch, id});
-      }
-    }}/>;
+  // if (!cart.length) {
+  //   return <Empty heading="Your cart is empty" text="Looks like you didn't add any items to your shopping cart."/>
+  // }
+  // columns
+  //   .find(column => column.id === 'amount')
+  //   .template = ({amount, id}) => <Amount amount={amount} onChange={amount => {
+  //     if (amount > 0) {
+  //       cartItemAmount({dispatch, id, amount});
+  //     } else {
+  //       cartItemRemove({dispatch, id});
+  //     }
+  //   }}/>;
   let summaryTotal = 0;
   return (
     <div className="cart">
@@ -64,11 +64,11 @@ const Cart = () => {
           summaryText: 'Total'
         }, {
           id: 'summaryTotal',
-          summaryTotal 
+          summaryTotal
         }]}
       />
       <div className="cart__footer">
-        <SpaButton caption="Checkout" href="/checkout" mods={['primary', 'xl', 'shadow']}/>
+        <SpaButton href="/checkout" mods={['primary', 'xl', 'shadow']}>Checkout</SpaButton>
       </div>
     </div>
   )

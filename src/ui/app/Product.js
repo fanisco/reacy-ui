@@ -20,10 +20,9 @@ const Product = ({product}) => {
         <span className="product__price">${product.price}</span>
         <Button
           className="product__add"
-          caption={item ? 'In cart' : 'Add to cart'}
           onClick={() => cartItemAdd({dispatch, id: product.id, amount: 1})}
           mods={buttonMods}
-        />
+        >{item ? 'In cart' : 'Add to cart'}</Button>
       </div>
     </div>
   );

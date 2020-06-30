@@ -1,5 +1,7 @@
 @import '~normalize.css/normalize.css';
-@import 'https://fonts.googleapis.com/css2?family=Itim&family=Roboto&display=swap';
+@import 'https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,500,700,700i&display=swap';
+@import 'https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css';
+@import 'https://fonts.googleapis.com/css2?family=Itim&display=swap';
 
 * {
   box-sizing: border-box;
