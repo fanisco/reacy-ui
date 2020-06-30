@@ -116,6 +116,20 @@ padding-right: 0;`;
         return css`
 text-align: center;
 justify-content: center`;
+      case 'inline':
+        return css`
+height: auto;
+padding: 0;
+background: none;
+border: 0 none;
+
+&:hover {
+  background: none;
+}
+&:active:focus {
+  background: none;
+  box-shadow: none;
+}`;
     }
   });
 };
