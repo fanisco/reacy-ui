@@ -1,6 +1,6 @@
 {
   "name": "reacy-ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "UI kit of React components",
   "author": "Fanil Zubairov <fannisco@gmail.com>",
   "license": "MIT",
@@ -19,12 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "compile": "tsc -p ./tsconfig.ui.json",
-    "deploy": "gh-pages -d build"
+    "compile": "tsc -p ./tsconfig.ui.json"
   },
   "dependencies": {
-    "mobx": "^5.14.2",
-    "mobx-react-lite": "^1.5.0",
     "react": "^16.10.2",
     "styled-components": "^4.4.0"
   },
@@ -34,7 +31,6 @@
     "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
     "@types/styled-components": "^4.0.0",
-    "gh-pages": "^2.1.1",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
     "reacy-ui": "^1.0.2",
