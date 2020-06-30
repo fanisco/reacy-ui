@@ -46,7 +46,7 @@ const Cart = () => {
         cartItemRemove({dispatch, id});
       }
     }}/>;
-  let totalSummary = 0;
+  let summaryTotal = 0;
   return (
     <div className="cart">
       <h1>Cart</h1>
@@ -55,10 +55,17 @@ const Cart = () => {
         rows={[...cart.map(item => {
           const product = products.find(product => product.id === item.id);
           const total = product.price * item.amount;
-          totalSummary += total;
+          summaryTotal += total;
           return {...item, ...product, total};
         })]}
-        footer={[]}
+        footer={[{
+          id: 'summaryText',
+          colspan: 3,
+          summaryText: 'Total'
+        }, {
+          id: 'summaryTotal',
+          summaryTotal 
+        }]}
       />
       <div className="cart__footer">
         <SpaButton caption="Checkout" href="/checkout" mods={['primary', 'xl', 'shadow']}/>
