@@ -19,7 +19,7 @@ export namespace Buttons {
   }
 }
 
-export namespace Forms {
+export namespace Form {
   export interface IInput extends Core.IComponent {
     type: 'text'|'email';
     value: any;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {Buttons, Core} from '../core/interfaces';
 import {modsFromArray} from '../core/helpers';
 import {button} from '../core/mixins/button';
