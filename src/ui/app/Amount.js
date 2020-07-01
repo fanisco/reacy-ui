@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button, Input} from 'reacy-ui';
-import {faPlus, faMinus} from '@fortawesome/free-solid-svg-icons';
+import {Button, Input, Icon} from 'reacy-ui';
 import './Amount.scss';
 
 const Amount = ({amount, onChange}) => {
@@ -9,21 +8,19 @@ const Amount = ({amount, onChange}) => {
   return (
     <div className="amount">
       <Button
-        icon={faMinus}
-        mods={['sm', 'bordered', 'gray', 'narrow', 'stacked-right']}
+        mods={['sm', 'stackedRight']}
         onClick={decrement}
-      />
+      ><Icon name="minus" size="lg"/></Button>
       <Input
         type="text"
         value={amount}
-        mods={['sm', 'bordered', 'narrow', 'text-center', 'roundness-none', 'eased', 'padding-x0']}
+        mods={['sm', 'textCenter', 'square', 'paddingX0']}
         onChange={e => onChange(e.target.value)}
       />
       <Button
-        icon={faPlus}
-        mods={['sm', 'bordered', 'gray', 'narrow', 'stacked-left']}
+        mods={['sm', 'stackedLeft']}
         onClick={increment}
-      />
+      ><Icon name="plus" size="lg"/></Button>
     </div>
   )
 }

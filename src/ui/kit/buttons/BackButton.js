@@ -11,7 +11,7 @@ const BackButton = (props) => {
       onClick={(e) => {
         e.preventDefault();
         history.goBack();
-      }}><Icon name="arrow-left" size="lg" align="center"/>{children}</Button>
+      }}><Icon name="arrow-left" size="lg"/>{children}</Button>
   );
 };
 
