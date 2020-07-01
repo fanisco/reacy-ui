@@ -6,7 +6,7 @@ export const sizes = {
   fontSize: ['10px', '12px', '14px', '16px', '18px'],
   headingFontSize: ['16px', '20px', '24px', '28px', '32px'],
   factors: [8, 10, 12, 14, 16],
-  lineHeight: [1.5, 1.5, 1.5, 1.5, 1.5],
+  lineHeight: [1.4, 1.4, 1.4, 1.4, 1.4],
   spacingX: ['8px', '10px', '12px', '14px', '16px'],
   spacingY: ['3px', '6px', '7.5px', '9px', '10px'],
   elementWidth: ['80px', '100px', '120px', '140px', '160px'],

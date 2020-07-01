@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Form, Core} from '../core/interfaces';
+import {modsFromArray} from '../core/helpers';
+import {input} from '../core/mixins/input';
 
-export const Input: React.FC<Form.IInput> = ({value, onChange, placeholder, type = 'text'}) => {
+export const Input: React.FC<Form.IInput> = ({value, onChange, placeholder, mods, type = 'text'}) => {
     return (
         <_Input
+            mods={modsFromArray(mods)}
             type={type}
             value={value}
             placeholder={placeholder}
@@ -24,4 +27,6 @@ const _Input = styled.input<Core.IStyled>`
 
   &:hover { transition: all 0.15s ease-in-out 0.15s; }
   &:focus { outline: 0 none; }
+
+  ${props => input(props.mods)}
 `;

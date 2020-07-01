@@ -28,72 +28,19 @@ export const sized = (size: ModSizes = ModSizes.md) => {
 `;
 };
 
-export const styles = (style: ModStyles, {outline, shadow}: any) => {
-  const isStyle = style !== undefined;
-  const {
-    foreground,
-    foregroundHover,
-    foregroundActive,
-    background,
-    backgroundHover,
-    backgroundActive,
-    border,
-    borderHover,
-    borderActive,
-    link,
-    linkHover,
-    linkActive
-  } = getColors(style);
-  return css`
-  background-color: ${background};
-  border-color: ${isStyle ? background : border};
-  color: ${foreground}
-
-  :hover {
-    background-color: ${backgroundHover};
-    border-color: ${isStyle ? backgroundHover : borderHover};
-    color: ${foregroundHover};
-  }
-
-  :active:focus {
-    background: ${backgroundActive};
-    border-color: ${isStyle ? backgroundActive : borderActive};
-    color: ${foregroundActive};
-  }
-
-  ${conditional(outline, css`
-  background-color: transparent;
-  color: ${isStyle ? link : foreground};
-
-  :hover {
-    background-color: ${isStyle ? backgroundHover + 30 : backgroundHover};
-    color: ${isStyle ? linkHover : foreground};
-  }
-  :active:focus {
-    background-color: ${isStyle ? backgroundActive + 30 : backgroundActive};
-    color: ${isStyle ? linkActive : foreground};
-  }
-`)}
-
-  ${conditional(shadow, css`
-  box-shadow: 0 0.15em 0.35em ${border}35;
-  
-  &:hover {
-    box-shadow: 0 0.15em 0.65em ${border}65;
-  }
-`)}
-`;
-};
-
 export const appearance = (mods: Mods) => {
+  console.log(mods);
   return Object.keys(mods).map(mod => {
+    console.log(mod);
     switch (mod) {
       case 'rounded':
         return css`border-radius: 50px`;
+      case 'square':
+        return css`border-radius: 0;`;
       case 'bold':
-        return css`font-weight: bold`;
+        return css`font-weight: bold;`;
       case 'italic':
-        return css`font-style: italic`;
+        return css`font-style: italic;`;
       case 'stackedLeft':
         return css`
 border-left-width: 0;
@@ -115,7 +62,7 @@ padding-right: 0;`;
       case 'textCenter':
         return css`
 text-align: center;
-justify-content: center`;
+justify-content: center;`;
       case 'inline':
         return css`
 height: auto;
@@ -133,5 +80,3 @@ border: 0 none;
     }
   });
 };
-
-const conditional = (condition: any, a: any, b: any = '') => condition ? a : b;

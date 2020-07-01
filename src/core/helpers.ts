@@ -58,3 +58,5 @@ export const getColors = (style: number = -1): {
     }
   }
 };
+
+export const conditional = (condition: any, a: any, b: any = '') => condition ? a : b;

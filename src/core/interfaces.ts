@@ -15,7 +15,6 @@ export namespace Buttons {
     caption: string;
     onClick: (e: any) => void;
     href: string;
-    icon: any;
   }
 }
 
