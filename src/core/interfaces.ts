@@ -22,6 +22,7 @@ export namespace Forms {
     name: string;
     type: 'number'|'string'|'textarea'|'switch'|'select'|'toggle';
     value: any;
+    title: string;
     disabled: boolean;
     onChange: (e: any) => void;
   }

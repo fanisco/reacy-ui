@@ -10,7 +10,11 @@ export const Textarea: React.FC<Forms.IInput> = ({value, onChange, placeholder, 
             mods={modsFromArray(mods)}
             value={value}
             placeholder={placeholder}
-            onChange={onChange}
+            onChange={e => {
+              if (onChange) {
+                onChange(e.target.value)
+              }
+            }}
         />
     );
 };
