@@ -35,13 +35,6 @@ export default class App extends Component<{}, { compact: boolean, stacked: bool
   protected data = new DataSet(data, 'comments');
 
   /**
-   */
-  constructor(props: any) {
-    super(props);
-    console.log(this.settings, this.data);
-  }
-
-  /**
    * @return {ReactNode}
    */
   public render(): ReactNode {

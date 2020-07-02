@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from 'react';
 import styled from 'styled-components';
-import Form, { IFieldProps } from '../input/Form';
+import {Form} from 'reacy-ui';
 
 interface ISettingsProps {
   data: {
@@ -12,9 +12,9 @@ interface ISettingsProps {
  * Component for displaying form.
  */
 export default class Settings extends Component<ISettingsProps> {
-  protected fields: IFieldProps[] = [
-    { name: 'compact', caption: 'Compact', type: 'switch' },
-    { name: 'stacked', caption: 'Stacked', type: 'switch' }
+  protected fields: any[] = [
+    {name: 'compact', title: 'Compact', type: 'switch'},
+    {name: 'stacked', title: 'Stacked', type: 'switch'}
   ];
 
   constructor(props: ISettingsProps) {
@@ -27,7 +27,9 @@ export default class Settings extends Component<ISettingsProps> {
   render(): ReactNode {
     return (
       <Wrapper>
-        <Form fields={this.fields} data={this.props.data}/>
+        <Form fields={this.fields}
+              data={this.props.data}
+              onChange={(name, value) => console.log(name, value)}/>
       </Wrapper>
     )
   }

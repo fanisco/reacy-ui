@@ -5,8 +5,7 @@ import { observer } from 'mobx-react';
 
 import styled from 'styled-components';
 
-import Form, { IFieldProps } from '../input/Form';
-import Button from '../button/Button';
+import {Form, Button, Icon} from 'reacy-ui';
 
 import IDataSet from '../../core/interface/IDataSet';
 
@@ -22,9 +21,7 @@ export default class Comform extends Component<IComformProps> {
   @observable protected data = {
     comment: ''
   };
-  protected fields: IFieldProps[] = [
-    { name: 'comment', caption: 'Comment', type: 'textarea' }
-  ];
+  protected fields: any[] = [{name: 'comment', type: 'textarea', placeholder: 'Type your comment here...'}];
 
   constructor(props: IComformProps) {
     super(props);
@@ -32,7 +29,6 @@ export default class Comform extends Component<IComformProps> {
   }
 
   protected onButtonClick() {
-
     // Create a new comment
     this.props.data.records.create({
       text: this.data.comment,
@@ -45,16 +41,19 @@ export default class Comform extends Component<IComformProps> {
     this.data.comment = '';
   }
 
-  /**
-   * */
   public render(): ReactNode {
     return (
       <Wrapper>
         <FormWrapper>
-          <Form fields={this.fields} data={this.data}/>
+          <Form fields={this.fields}
+                data={this.data}
+                onChange={(name: string, value: string) => this.data.comment = value}/>
         </FormWrapper>
         <ButtonWrapper>
-          <Button onClick={this.onButtonClick}>Send</Button>
+          <Button onClick={this.onButtonClick}
+                  mods={['outline', 'rounded', 'primary', 'bold']}
+                  disabled={!this.data.comment.length}
+          ><Icon name="reply"/>Send</Button>
         </ButtonWrapper>
       </Wrapper>
     )
