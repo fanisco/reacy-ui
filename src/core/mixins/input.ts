@@ -30,23 +30,27 @@ export const inputStyles = (style: ModStyles, {}: any) => {
   const {
     borderHover,
     borderActive,
+    borderDisabled,
     link,
     linkHover,
-    linkActive
+    linkActive,
+    linkDisabled
   } = getColors(style);
   const {
     border,
     foreground,
     foregroundHover,
     foregroundActive,
+    foregroundDisabled,
     background,
     backgroundHover,
-    backgroundActive
+    backgroundActive,
+    backgroundDisabled
   } = getColors(-1);
   return css`
   background-color: ${background};
   border-color: ${border};
-  color: ${foreground}
+  color: ${foreground};
 
   :hover {
     background-color: ${background};
@@ -60,6 +64,16 @@ export const inputStyles = (style: ModStyles, {}: any) => {
     color: ${foregroundActive};
     box-shadow: 0 8px 16px ${link}46,
                 0 2px 4px ${link}24;
+  }
+
+  :disabled {
+    cursor: default;
+
+    &, :hover, :active:focus {
+      background-color: ${backgroundDisabled};
+      border-color: ${borderDisabled};
+      color: ${foregroundDisabled};
+    }
   }
 `;
 };

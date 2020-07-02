@@ -33,15 +33,19 @@ export const buttonStyles = (style: ModStyles, {outline, inline, shadow}: any) =
     foreground,
     foregroundHover,
     foregroundActive,
+    foregroundDisabled,
     background,
     backgroundHover,
     backgroundActive,
+    backgroundDisabled,
     border,
     borderHover,
     borderActive,
+    borderDisabled,
     link,
     linkHover,
-    linkActive
+    linkActive,
+    linkDisabled
   } = getColors(style);
   return css`
   background-color: ${background};
@@ -58,6 +62,16 @@ export const buttonStyles = (style: ModStyles, {outline, inline, shadow}: any) =
     background: ${backgroundActive};
     border-color: ${isStyle ? backgroundActive : borderActive};
     color: ${foregroundActive};
+  }
+
+  :disabled {
+    cursor: default;
+
+    &, :hover, :active:focus {
+      background-color: ${backgroundDisabled};
+      border-color: ${borderDisabled};
+      color: ${foregroundDisabled};
+    }
   }
 
   ${conditional(outline, css`
