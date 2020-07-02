@@ -27,7 +27,7 @@ ${appearance(mods)}
 `;
 };
 
-export const buttonStyles = (style: ModStyles, {outline, shadow}: any) => {
+export const buttonStyles = (style: ModStyles, {outline, inline, shadow}: any) => {
   const isStyle = style !== undefined;
   const {
     foreground,
@@ -46,7 +46,7 @@ export const buttonStyles = (style: ModStyles, {outline, shadow}: any) => {
   return css`
   background-color: ${background};
   border-color: ${isStyle ? background : border};
-  color: ${foreground}
+  color: ${foreground};
 
   :hover {
     background-color: ${backgroundHover};
@@ -74,11 +74,28 @@ export const buttonStyles = (style: ModStyles, {outline, shadow}: any) => {
   }
 `)}
 
-  ${conditional(shadow, css`
-  box-shadow: 0 0.25em 1em ${border}80;
+  ${conditional(inline, css`
+  height: auto;
+  padding: 0;
+  background: none;
+  border: 0 none;
   
   &:hover {
-    box-shadow: 0 0.25em 1.5em ${border}95;
+    background: none;
+  }
+  &:active:focus {
+    background: none;
+    box-shadow: none;
+  }
+`)}
+
+  ${conditional(shadow, css`
+  box-shadow: 0 2px 4px rgba(96, 97, 112, 0.16),
+              0 0 1px rgba(40, 41, 61, 0.04);
+  
+  &:hover {
+    box-shadow: 0 2px 4px ${border}56,
+                0 0 1px ${border}34;
   }
 `)}
 `;

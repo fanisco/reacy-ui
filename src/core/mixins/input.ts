@@ -58,7 +58,8 @@ export const inputStyles = (style: ModStyles, {}: any) => {
     background: ${background};
     border-color: ${borderActive};
     color: ${foregroundActive};
-    box-shadow: 0 0.25em 0.5em ${borderActive}30;
+    box-shadow: 0 8px 16px ${link}46,
+                0 2px 4px ${link}24;
   }
 `;
 };
