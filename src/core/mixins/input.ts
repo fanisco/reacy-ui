@@ -7,6 +7,7 @@ export const input = (mods: Mods = {}) => {
   const size = ModSizes[mods.xs || mods.sm || mods.md || mods.lg || mods.xl] || ModSizes.md;
   const style = ModStyles[mods.primary || mods.secondary || mods.success || mods.warning || mods.danger] || ModStyles.primary;
   return css`
+  display: block;
   position: relative;
   box-sizing: border-box;
   width: 100%;

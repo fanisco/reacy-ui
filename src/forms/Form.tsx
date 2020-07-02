@@ -1,29 +1,21 @@
 import React from 'react';
-import { observer } from 'mobx-react-lite';
-import { Field } from './Field';
-import { Input } from './Input';
-import { Switch } from './Switch';
-import { FormItem } from '../types/Item';
-import { Textarea } from './Textarea';
-import { Toggle } from './Toggle';
-import Select from './Select';
+import {Forms, Core} from '../core/interfaces';
+// import {Field} from './Field';
+import {Input} from './Input';
+// import {Switch} from './Switch';
+import {Textarea} from './Textarea';
+// import {Toggle} from './Toggle';
+// import Select from './Select';
 
-interface IProps {
-    wrap?: boolean;
-    items: FormItem[];
-    onChange: (name: any, value: any) => void;
-    buttons?: any[];
-}
-
-export const Controller: React.FC<IProps> = observer(({ ...props }) => {
+export const Form: React.FC<Forms.IForm> = ({fields, onChange, wrap = false}) => {
     return (
         <div>
-            {props.items.map((item, i) => {
+            {fields.map((item, i) => {
                 const properties = {
                     key: i,
                     ...item,
                     onChange: (value: any) => {
-                        props.onChange(item.id, value);
+                        onChange(item.name, value);
                     }
                 };
                 let elem;
@@ -32,21 +24,21 @@ export const Controller: React.FC<IProps> = observer(({ ...props }) => {
                     case 'number':
                         elem = <Input {...properties}/>;
                         break;
-                    case 'text':
+                    case 'textarea':
                         elem = <Textarea {...properties}/>;
                         break;
-                    case 'switch':
-                        elem = <Switch {...properties}/>;
-                        break;
-                    case 'select':
-                        elem = <Select {...properties}/>;
-                        break;
-                    case 'toggle':
-                        elem = <Toggle {...properties}/>;
-                        break;
+                    // case 'switch':
+                    //     elem = <Switch {...properties}/>;
+                    //     break;
+                    // case 'select':
+                    //     elem = <Select {...properties}/>;
+                    //     break;
+                    // case 'toggle':
+                    //     elem = <Toggle {...properties}/>;
+                    //     break;
                 }
-                return props.wrap ? <Field key={i} {...item}>{elem}</Field> : elem;
+                return /*wrap ? <Field key={i} {...item}>{elem}</Field> : */elem;
             })}
         </div>
     );
-});
+};
