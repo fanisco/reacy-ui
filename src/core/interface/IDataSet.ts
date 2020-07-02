@@ -1,12 +1,13 @@
 import IList from './IList';
 import IMeta from './IMeta';
 
-export default interface IDataSet {
-  records: IList
-  meta?: IMeta
+export interface IDataSet {
+  records: IList;
+  meta?: IMeta;
+  unload: () => IUnmarkedDataSet;
 }
 
 export interface IUnmarkedDataSet {
-  rec: Array<any>
-  meta?: any
+  rec: Array<any>;
+  meta?: any;
 }

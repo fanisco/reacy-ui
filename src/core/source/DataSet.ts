@@ -1,12 +1,11 @@
-import { observable } from 'mobx';
-import List from "../collection/List";
-import CommentList from "../collection/CommentList";
-import Meta from "../entity/Meta";
-import IDataSet, { IUnmarkedDataSet } from "../interface/IDataSet";
-import IList from "../interface/IList";
+import List from '../collection/List';
+import CommentList from '../collection/CommentList';
+import Meta from '../entity/Meta';
+import {IDataSet, IUnmarkedDataSet} from '../interface/IDataSet';
+import IList from '../interface/IList';
 
 /**
- * Class to present a set of data wich may contain a list of records and meta data.
+ * Set of data wich contain a list of records and meta data.
  */
 export default class DataSet implements IDataSet {
   records: IList;
@@ -29,4 +28,14 @@ export default class DataSet implements IDataSet {
         this.records = new List(List.toRecords(dataSet.rec, this.meta), this.meta)
     }
   }
+
+  unload(): IUnmarkedDataSet {
+    const u = {
+      rec: this.records.map(record => ({...record.data})),
+      meta: null
+    };
+    console.log(u);
+    return u;
+  };
+
 }
