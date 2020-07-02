@@ -1,4 +1,4 @@
-import {Mods} from './types';
+import {Mods, HashMap} from './types';
 
 export namespace Core {
   export interface IStyled {
@@ -22,17 +22,18 @@ export namespace Forms {
   export interface IFormItem extends Core.IComponent {
     name: string;
     type: 'number'|'string'|'textarea'|'switch'|'select'|'toggle';
-    value: any;
-    title: string;
-    disabled: boolean;
+    title?: string;
+    disabled?: boolean;
     onChange: (e: any) => void;
   }
-  export interface IInput extends IFormItem {
-    placeholder: 'string';
-    constraint: string;
+  export interface IBase extends IFormItem {
+    value: any;
+  }
+  export interface IInput extends IBase {
+    placeholder?: 'string';
   }
   export interface IForm extends Core.IComponent {
-    data: Object;
+    data: HashMap<any>;
     fields: Array<IInput>;
     onChange: (name: any, value: any) => void;
     wrap?: boolean;

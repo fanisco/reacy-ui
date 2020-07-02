@@ -7,12 +7,11 @@ import {Textarea} from './Textarea';
 // import {Toggle} from './Toggle';
 // import Select from './Select';
 
-export const Form: React.FC<Forms.IForm> = ({fields, onChange, wrap = false}) => {
+export const Form: React.FC<Forms.IForm> = ({fields, data, onChange, wrap = false}) => {
 return (
   <div>
     {fields.map((item, i) => {
-      const properties = {
-          key: i,
+      const properties: Forms.IFormItem = {
           ...item,
           onChange: (value: any) => {
               onChange(item.name, value);
@@ -22,10 +21,10 @@ return (
       switch (item.type) {
           case 'string':
           case 'number':
-              elem = <Input {...properties}/>;
+              elem = <Input key={i} value={data[item.name]} {...properties}/>;
               break;
           case 'textarea':
-              elem = <Textarea {...properties}/>;
+              elem = <Textarea key={i} value={data[item.name]} {...properties}/>;
               break;
         // case 'switch':
         //     elem = <Switch {...properties}/>;
