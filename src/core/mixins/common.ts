@@ -1,7 +1,6 @@
 import {css} from 'styled-components';
-import {getColors} from '../helpers';
 import {Mods} from '../types';
-import {fontFamily, sizes} from '../variables';
+import {fontFamily, units, sizes} from '../variables';
 
 // Bundles
 export enum ModSizes {
@@ -14,7 +13,7 @@ export enum ModStyles {
 
 export const fonts = (size: ModSizes = ModSizes.md) => {
   return css`
-  font-size: ${sizes.fontSize[size]};
+  font-size: ${sizes.fontSize[size]}${units};
   font-family: ${fontFamily};
   line-height: ${sizes.lineHeight[size]};
 `;
@@ -22,16 +21,14 @@ export const fonts = (size: ModSizes = ModSizes.md) => {
 
 export const sized = (size: ModSizes = ModSizes.md) => {
   return css`
-  height: ${sizes.elementHeight[size]};
-  padding: ${sizes.spacingY[size]} ${sizes.spacingX[size]};
-  border-radius: ${sizes.borderRadius[size]};
+  height: ${sizes.elementHeight[size]}${units};
+  padding: ${sizes.spacingY[size]}${units} ${sizes.spacingX[size]}${units};
+  border-radius: ${sizes.borderRadius[size]}${units};
 `;
 };
 
 export const appearance = (mods: Mods) => {
-  console.log(mods);
   return Object.keys(mods).map(mod => {
-    console.log(mod);
     switch (mod) {
       case 'rounded':
         return css`border-radius: 50px`;

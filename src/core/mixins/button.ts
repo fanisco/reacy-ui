@@ -3,13 +3,23 @@ import {Mods} from '../types';
 import {getColors, conditional} from '../helpers';
 import {fonts, sized, appearance, ModSizes, ModStyles} from './common';
 
-export const button = (mods?: Mods) => {
-  if (!mods) {
-    return;
-  }
+export const button = (mods: Mods = {}) => {
   const size = ModSizes[mods.xs || mods.sm || mods.md || mods.lg || mods.xl];
   const style = ModStyles[mods.primary || mods.secondary || mods.success || mods.warning || mods.danger];
   return css`
+  display: inline-flex;
+  position: relative;
+  box-sizing: border-box;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  border: 1px solid;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+
+  :hover { transition: all 0.15s ease-in-out; }
+  :focus { outline: 0 none; }
 ${sized(size)}
 ${fonts(size)}
 ${buttonStyles(style, mods)}

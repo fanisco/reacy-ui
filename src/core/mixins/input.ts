@@ -3,13 +3,20 @@ import {Mods} from '../types';
 import {getColors, conditional} from '../helpers';
 import {fonts, sized, appearance, ModSizes, ModStyles} from './common';
 
-export const input = (mods?: Mods) => {
-  if (!mods) {
-    return;
-  }
-  const size = ModSizes[mods.xs || mods.sm || mods.md || mods.lg || mods.xl];
+export const input = (mods: Mods = {}) => {
+  const size = ModSizes[mods.xs || mods.sm || mods.md || mods.lg || mods.xl] || ModSizes.md;
   const style = ModStyles[mods.primary || mods.secondary || mods.success || mods.warning || mods.danger] || ModStyles.primary;
   return css`
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  border: 1px solid;
+  font-weight: 400;
+  transition: all 0.15s ease-in-out;
+
+  :hover { transition: all 0.15s ease-in-out 0.15s; }
+  :focus { outline: 0 none; }
 ${sized(size)}
 ${fonts(size)}
 ${inputStyles(style, mods)}
@@ -53,4 +60,4 @@ export const inputStyles = (style: ModStyles, {}: any) => {
     box-shadow: 0 0.25em 0.5em ${borderActive}30;
   }
 `;
-}
+};

@@ -11,21 +11,30 @@ export namespace Core {
 }
 
 export namespace Buttons {
-  export interface IButton extends Core.IComponent{
-    caption: string;
+  export interface IButton extends Core.IComponent {
     onClick: (e: any) => void;
-    href: string;
+    href?: string;
   }
 }
 
-export namespace Form {
-  export interface IInput extends Core.IComponent {
-    type: 'text'|'email';
+export namespace Forms {
+  export interface IFormItem extends Core.IComponent {
+    name: string;
+    type: 'number'|'string'|'textarea'|'switch'|'select'|'toggle';
     value: any;
-    placeholder: 'string';
     disabled: boolean;
-    constraint: string;
     onChange: (e: any) => void;
+  }
+  export interface IInput extends IFormItem {
+    placeholder: 'string';
+    constraint: string;
+  }
+  export interface IForm extends Core.IComponent {
+    data: Object;
+    fields: Array<IInput>;
+    onChange: (name: any, value: any) => void;
+    wrap?: boolean;
+    buttons?: any[];
   }
 }
 

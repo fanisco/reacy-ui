@@ -1,17 +1,18 @@
 // Font
 export const fontFamily = '"Nunito Sans", sans-serif';
+export const units = 'px';
 
 // Sizes
 export const sizes = {
-  fontSize: ['10px', '12px', '14px', '16px', '18px'],
-  headingFontSize: ['16px', '20px', '24px', '28px', '32px'],
+  fontSize: [10, 12, 14, 16, 18],
+  headingFontSize: [16, 20, 24, 28, 32],
   factors: [8, 10, 12, 14, 16],
   lineHeight: [1.4, 1.4, 1.4, 1.4, 1.4],
-  spacingX: ['8px', '10px', '12px', '14px', '16px'],
-  spacingY: ['3px', '6px', '7.5px', '9px', '10px'],
-  elementWidth: ['80px', '100px', '120px', '140px', '160px'],
-  elementHeight: ['24px', '30px', '36px', '42px', '48px'],
-  borderRadius: ['2px', '3px', '5px', '5px', '5px']
+  spacingX: [8, 10, 12, 14, 16],
+  spacingY: [3, 6, 7.5, 9, 10],
+  elementWidth: [80, 100, 120, 140, 160],
+  elementHeight: [24, 30, 36, 42, 48],
+  borderRadius: [2, 3, 5, 5, 5]
 };
 
 // Colors
