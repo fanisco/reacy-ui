@@ -1,2 +1,4 @@
-export {Button} from './buttons/Button';
-export {Icon} from './icons/Icon';
+export * from './buttons';
+export * from './forms';
+export * from './misc';
+
