@@ -1,0 +1,21 @@
+$className: rcy-button;
+.#{$className} {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  border: 1px solid;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+  align-items: center;
+
+  &:hover { transition: all 0.15s ease-in-out; }
+  &:focus { outline: 0 none; }
+  @include sizes();
+  @include default-button();
+  @include colorize-button($className);
+  @include appearance($className);
+}

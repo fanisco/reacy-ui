@@ -1,0 +1,97 @@
+@mixin default-button {
+  background-color: map_get($colors_default, background);
+  border-color: map_get($colors_default, border);
+  color: map_get($colors_default, foreground);
+
+  &:hover {
+    background-color: map_get($colors_default, backgroundHover);
+    border-color: map_get($colors_default, borderHover);
+    color: map_get($colors_default, foregroundHover);
+  }
+
+  &:active:focus {
+    background: map_get($colors_default, backgroundActive);
+    border-color: map_get($colors_default, borderActive);
+    color: map_get($colors_default, foregroundActive);
+  }
+
+  &:disabled {
+    cursor: default;
+
+    &, &:hover, &:active:focus {
+      background-color: map_get($colors_default, backgroundDisabled);
+      border-color: map_get($colors_default, borderDisabled);
+      color: map_get($colors_default, foregroundDisabled);
+    }
+  }
+}
+@mixin colorize-button($className) {
+  @each $style, $palette in $colors {
+    &_#{$style} {
+      background-color: map_get($palette, background);
+      border-color: map_get($palette, background);
+      color: map_get($palette, foreground);
+
+      &:hover {
+        background-color: map_get($palette, backgroundHover);
+        border-color: map_get($palette, backgroundHover);
+        color: map_get($palette, foregroundHover);
+      }
+
+      &:active:focus {
+        background: map_get($palette, backgroundActive);
+        border-color: map_get($palette, backgroundActive);
+        color: map_get($palette, foregroundActive);
+      }
+
+      &:disabled {
+        cursor: default;
+
+        &, &:hover, &:active:focus {
+          background-color: map_get($palette, backgroundDisabled);
+          border-color: map_get($palette, borderDisabled);
+          color: map_get($palette, foregroundDisabled);
+        }
+      }
+
+      &.#{$className}_outline {
+        background-color: transparent;
+        color: map_get($palette, link);
+
+        :hover {
+          background-color: #{map_get($palette, backgroundHover)}30;
+          color: map_get($palette, linkHover);
+        }
+        :active:focus {
+          background-color: #{map_get($palette, backgroundActive)}30;
+          color: map_get($palette, linkActive);
+        }
+      }
+
+      &.#{$className}_inline {
+        height: auto;
+        padding: 0;
+        background: none;
+        border: 0 none;
+
+        &:hover {
+          background: none;
+        }
+        &:active:focus {
+          background: none;
+          box-shadow: none;
+        }
+      }
+
+      &.#{$className}_shadow {
+        box-shadow: 0 2px 4px rgba(96, 97, 112, 0.16),
+                    0 0 1px rgba(40, 41, 61, 0.04);
+
+        &:hover {
+          box-shadow: 0 2px 4px #{map_get($palette, border)}56,
+                      0 0 1px #{map_get($palette, border)}34;
+        }
+      }
+    }
+  }
+}

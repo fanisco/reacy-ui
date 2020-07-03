@@ -1,0 +1,183 @@
+// Colors
+$def_palette: (
+  d500: #050608,
+  d400: #28293D,
+  d300: #555770,
+  d200: #8E90A6,
+  d100: #C7C8D9,
+  l500: #E3E4EB,
+  l400: #EBEBF0,
+  l300: #F2F2F5,
+  l200: #FAFAFC,
+  l100: #FFFFFF
+);
+$pri_palette: (
+  a900: #1D2840,
+  a800: #203573,
+  a700: #2241A7,
+  a600: #254EDA,
+  a500: #3366FF,
+  a400: #6690FF,
+  a300: #8DACFD,
+  a200: #B4C9FB,
+  a100: #DBE5F9
+);
+$sec_palette: (
+  a900: #40281D,
+  a800: #5F2E17,
+  a700: #7D3411,
+  a600: #9C3B0C,
+  a500: #D94700,
+  a400: #F26222,
+  a300: #FD8555,
+  a200: #F9B098,
+  a100: #F5dADC
+);
+$suc_palette: (
+  a900: #065F43,
+  a800: #0B7247,
+  a700: #118D4E,
+  a600: #1AAA52,
+  a500: #23C653,
+  a400: #54DC6E,
+  a300: #78ED84,
+  a200: #A7F9A7,
+  a100: #D6FDD1
+);
+$war_palette: (
+  a900: #7A6A0B,
+  a800: #938111,
+  a700: #B6A41C,
+  a600: #DBC72A,
+  a500: #FFEC3A,
+  a400: #FFF16C,
+  a300: #FFF589,
+  a200: #FFF9AF,
+  a100: #FFFCD7
+);
+$dan_palette: (
+  a900: #7A0B2B,
+  a800: #93132C,
+  a700: #B81D2F,
+  a600: #DB2A30,
+  a500: #FF4539,
+  a400: #FF7F6A,
+  a300: #FFA288,
+  a200: #FFC9B1,
+  a100: #FFE6D7
+);
+$colors_default: (
+  foreground: map_get($def_palette, d500),
+  foregroundHover: map_get($def_palette, d500),
+  foregroundActive: map_get($def_palette, d500),
+  foregroundDisabled: map_get($def_palette, d500),
+  background: map_get($def_palette, l100),
+  backgroundHover: map_get($def_palette, l200),
+  backgroundActive: map_get($def_palette, l200),
+  backgroundDisabled: map_get($def_palette, l200),
+  border: map_get($def_palette, l500),
+  borderHover: map_get($def_palette, l500),
+  borderActive: map_get($def_palette, l500),
+  borderDisabled: map_get($def_palette, l500),
+  link: map_get($pri_palette, a400),
+  linkHover: map_get($pri_palette, a500),
+  linkActive: map_get($pri_palette, a500),
+  linkDisabled: map_get($pri_palette, a500)
+);
+$colors_primary: (
+  foreground: map_get($def_palette, l100),
+  foregroundHover: map_get($def_palette, l100),
+  foregroundActive: map_get($def_palette, l100),
+  foregroundDisabled: map_get($def_palette, l100),
+  background: map_get($pri_palette, a500),
+  backgroundHover: map_get($pri_palette, a400),
+  backgroundActive: map_get($pri_palette, a600),
+  backgroundDisabled: map_get($def_palette, l500),
+  border: map_get($pri_palette, a400),
+  borderHover: map_get($pri_palette, a500),
+  borderActive: map_get($pri_palette, a500),
+  borderDisabled: map_get($def_palette, l500),
+  link: map_get($pri_palette, a400),
+  linkHover: map_get($pri_palette, a500),
+  linkActive: map_get($pri_palette, a500),
+  linkDisabled: map_get($def_palette, l500)
+);
+$colors_secondary: (
+  foreground: map_get($def_palette, l100),
+  foregroundHover: map_get($def_palette, l100),
+  foregroundActive: map_get($def_palette, l100),
+  foregroundDisabled: map_get($def_palette, l100),
+  background: map_get($sec_palette, a500),
+  backgroundHover: map_get($sec_palette, a400),
+  backgroundActive: map_get($sec_palette, a600),
+  backgroundDisabled: map_get($def_palette, l500),
+  border: map_get($sec_palette, a400),
+  borderHover: map_get($sec_palette, a500),
+  borderActive: map_get($sec_palette, a500),
+  borderDisabled: map_get($def_palette, l500),
+  link: map_get($sec_palette, a400),
+  linkHover: map_get($sec_palette, a500),
+  linkActive: map_get($sec_palette, a500),
+  linkDisabled: map_get($def_palette, l500)
+);
+$colors_success: (
+  foreground: map_get($def_palette, l100),
+  foregroundHover: map_get($def_palette, l100),
+  foregroundActive: map_get($def_palette, l100),
+  foregroundDisabled: map_get($def_palette, l100),
+  background: map_get($suc_palette, a500),
+  backgroundHover: map_get($suc_palette, a400),
+  backgroundActive: map_get($suc_palette, a600),
+  backgroundDisabled: map_get($def_palette, l500),
+  border: map_get($suc_palette, a400),
+  borderHover: map_get($suc_palette, a500),
+  borderActive: map_get($suc_palette, a500),
+  borderDisabled: map_get($def_palette, l500),
+  link: map_get($suc_palette, a400),
+  linkHover: map_get($suc_palette, a500),
+  linkActive: map_get($suc_palette, a500),
+  linkDisabled: map_get($def_palette, l500)
+);
+$colors_warning: (
+  foreground: map_get($def_palette, l100),
+  foregroundHover: map_get($def_palette, l100),
+  foregroundActive: map_get($def_palette, l100),
+  foregroundDisabled: map_get($def_palette, l100),
+  background: map_get($war_palette, a500),
+  backgroundHover: map_get($war_palette, a400),
+  backgroundActive: map_get($war_palette, a600),
+  backgroundDisabled: map_get($def_palette, l500),
+  border: map_get($war_palette, a400),
+  borderHover: map_get($war_palette, a500),
+  borderActive: map_get($war_palette, a500),
+  borderDisabled: map_get($def_palette, l500),
+  link: map_get($war_palette, a400),
+  linkHover: map_get($war_palette, a500),
+  linkActive: map_get($war_palette, a500),
+  linkDisabled: map_get($def_palette, l500)
+);
+$colors_danger: (
+  foreground: map_get($def_palette, l100),
+  foregroundHover: map_get($def_palette, l100),
+  foregroundActive: map_get($def_palette, l100),
+  foregroundDisabled: map_get($def_palette, l100),
+  background: map_get($dan_palette, a500),
+  backgroundHover: map_get($dan_palette, a400),
+  backgroundActive: map_get($dan_palette, a600),
+  backgroundDisabled: map_get($def_palette, l500),
+  border: map_get($dan_palette, a400),
+  borderHover: map_get($dan_palette, a500),
+  borderActive: map_get($dan_palette, a500),
+  borderDisabled: map_get($def_palette, l500),
+  link: map_get($dan_palette, a400),
+  linkHover: map_get($dan_palette, a500),
+  linkActive: map_get($dan_palette, a500),
+  linkDisabled: map_get($def_palette, l500)
+);
+$colors: (
+  primary: $colors_primary,
+  secondary: $colors_secondary,
+  success: $colors_success,
+  warning: $colors_warning,
+  danger: $colors_danger
+);
