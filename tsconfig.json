@@ -7,11 +7,7 @@
     "outDir": "lib",
     "strict": true,
     "jsx": "react",
-    "esModuleInterop": true,
-    "baseUrl": "./",
-    "paths": {
-      "common/*": ["./src/common/*"]
-    }
+    "esModuleInterop": true
   },
   "include": ["src"]
 }

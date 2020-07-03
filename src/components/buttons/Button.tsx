@@ -1,6 +1,6 @@
 import React from 'react';
-import {Buttons} from 'common/interfaces';
-import {bemClasses} from 'common/bem';
+import {Buttons} from '../../common/interfaces';
+import {bemClasses} from '../../common/bem';
 
 export const Button: React.FC<Buttons.IButton> = ({onClick, href, children, disabled = false, ...props}) => {
   const className = bemClasses('rcy-button', props.mods, props.className);
