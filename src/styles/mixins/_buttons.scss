@@ -26,45 +26,45 @@
   }
 }
 @mixin colorize-button($className) {
-  @each $style, $palette in $colors {
+  @each $style, $set in $colors {
     &_#{$style} {
-      background-color: map_get($palette, background);
-      border-color: map_get($palette, background);
-      color: map_get($palette, foreground);
+      background-color: map_get($set, background);
+      border-color: map_get($set, background);
+      color: map_get($set, foreground);
 
       &:hover {
-        background-color: map_get($palette, backgroundHover);
-        border-color: map_get($palette, backgroundHover);
-        color: map_get($palette, foregroundHover);
+        background-color: map_get($set, backgroundHover);
+        border-color: map_get($set, backgroundHover);
+        color: map_get($set, foregroundHover);
       }
 
       &:active:focus {
-        background: map_get($palette, backgroundActive);
-        border-color: map_get($palette, backgroundActive);
-        color: map_get($palette, foregroundActive);
+        background: map_get($set, backgroundActive);
+        border-color: map_get($set, backgroundActive);
+        color: map_get($set, foregroundActive);
       }
 
       &:disabled {
         cursor: default;
 
         &, &:hover, &:active:focus {
-          background-color: map_get($palette, backgroundDisabled);
-          border-color: map_get($palette, borderDisabled);
-          color: map_get($palette, foregroundDisabled);
+          background-color: map_get($set, backgroundDisabled);
+          border-color: map_get($set, borderDisabled);
+          color: map_get($set, foregroundDisabled);
         }
       }
 
       &.#{$className}_outline {
         background-color: transparent;
-        color: map_get($palette, link);
+        color: map_get($set, link);
 
         :hover {
-          background-color: #{map_get($palette, backgroundHover)}30;
-          color: map_get($palette, linkHover);
+          background-color: #{map_get($set, backgroundHover)}30;
+          color: map_get($set, linkHover);
         }
         :active:focus {
-          background-color: #{map_get($palette, backgroundActive)}30;
-          color: map_get($palette, linkActive);
+          background-color: #{map_get($set, backgroundActive)}30;
+          color: map_get($set, linkActive);
         }
       }
 
@@ -88,8 +88,8 @@
                     0 0 1px rgba(40, 41, 61, 0.04);
 
         &:hover {
-          box-shadow: 0 2px 4px #{map_get($palette, border)}56,
-                      0 0 1px #{map_get($palette, border)}34;
+          box-shadow: 0 2px 4px #{map_get($set, border)}56,
+                      0 0 1px #{map_get($set, border)}34;
         }
       }
     }

@@ -1,9 +1,6 @@
-import {Mods, HashMap} from './types';
+import {HashMap} from './types';
 
 export namespace Core {
-  export interface IStyled {
-    mods?: Mods;
-  }
   export interface IComponent {
     mods?: string[];
     className?: string;

@@ -1,0 +1,13 @@
+$className: rcy-input;
+.#{$className} {
+  display: block;
+  width: 100%;
+  border: 1px solid;
+  transition: all 0.15s ease-in-out;
+
+  &:hover { transition: all 0.15s ease-in-out 0.15s; }
+  &:focus { outline: 0 none; }
+  @include sizes();
+  @include colorize-input($className);
+  @include appearance($className);
+}

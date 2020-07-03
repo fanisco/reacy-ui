@@ -1,0 +1,52 @@
+@mixin default-input {
+
+}
+@mixin colorize-input($className) {
+  @each $style, $set in $colors {
+    $foreground: map_get($colors_default, foreground);
+    $foregroundHover: map_get($colors_default, foregroundHover);
+    $foregroundActive: map_get($colors_default, foregroundActive);
+    $foregroundDisabled: map_get($colors_default, foregroundDisabled);
+    $background: map_get($colors_default, background);
+    $backgroundHover: map_get($colors_default, backgroundHover);
+    $backgroundActive: map_get($colors_default, backgroundActive);
+    $backgroundDisabled: map_get($colors_default, backgroundDisabled);
+    $border: map_get($colors_default, border);
+    $borderHover: map_get($set, borderHover);
+    $borderActive: map_get($set, borderActive);
+    $borderDisabled: map_get($set, borderDisabled);
+    $link: map_get($set, link);
+    $linkHover: map_get($set, linkHover);
+    $linkActive: map_get($set, linkActive);
+    $linkDisabled: map_get($set, linkDisabled);
+    &_#{$style} {
+      background-color: $background;
+      border-color: $border;
+      color: $foreground;
+
+      &:hover {
+        background-color: $background;
+        border-color: $borderHover;
+        color: $foregroundHover;
+      }
+
+      &:focus {
+        background: $background;
+        border-color: $borderActive;
+        color: $foregroundActive;
+        box-shadow: 0 8px 16px #{$link}46,
+                    0 2px 4px #{$link}24;
+      }
+
+      &:disabled {
+        cursor: default;
+
+        &, &:hover, &:focus {
+          background-color: $backgroundDisabled;
+          border-color: $borderDisabled;
+          color: $foregroundDisabled;
+        }
+      }
+    }
+  }
+}

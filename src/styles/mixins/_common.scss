@@ -32,8 +32,11 @@
 }
 
 @mixin appearance($className) {
+  box-sizing: border-box;
   font-family: $fontFamily;
+  font-weight: 400;
   line-height: $lineHeight;
+  text-align: left;
 
   .#{$className}_rounded {
     border-radius: 50px;
