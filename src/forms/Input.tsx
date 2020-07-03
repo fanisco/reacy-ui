@@ -4,10 +4,11 @@ import {Forms, Core} from '../core/interfaces';
 import {modsFromArray} from '../core/helpers';
 import {input} from '../core/mixins/input';
 
-export const Input: React.FC<Forms.IInput> = ({value, onChange, placeholder, mods, type = 'text', disabled = false}) => {
+export const Input: React.FC<Forms.IInput> = ({value, onChange, placeholder, mods, name, type = 'text', disabled = false}) => {
   return (
     <_Input mods={modsFromArray(mods)}
             type={type}
+            name={name}
             value={value}
             disabled={disabled}
             placeholder={placeholder}

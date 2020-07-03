@@ -7,7 +7,7 @@ export const button = (mods: Mods = {}) => {
   const size = ModSizes[mods.xs || mods.sm || mods.md || mods.lg || mods.xl];
   const style = ModStyles[mods.primary || mods.secondary || mods.success || mods.warning || mods.danger];
   return css`
-  display: inline-flex;
+  display: flex;
   position: relative;
   box-sizing: border-box;
   font-weight: 400;
@@ -17,6 +17,7 @@ export const button = (mods: Mods = {}) => {
   border: 1px solid;
   transition: all 0.15s ease-in-out;
   white-space: nowrap;
+  align-items: center;
 
   :hover { transition: all 0.15s ease-in-out; }
   :focus { outline: 0 none; }

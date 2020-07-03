@@ -21,20 +21,24 @@ export namespace Buttons {
 export namespace Forms {
   export interface IFormItem extends Core.IComponent {
     name: string;
-    type: 'number'|'string'|'textarea'|'switch'|'select'|'toggle';
+    type: string;
     title?: string;
     disabled?: boolean;
-    onChange: (e: any) => void;
+    onChange?: (e: any) => void;
+    placeholder?: string;
   }
   export interface IBase extends IFormItem {
     value: any;
   }
   export interface IInput extends IBase {
-    placeholder?: 'string';
+
+  }
+  export interface ISwitch extends IBase {
+
   }
   export interface IForm extends Core.IComponent {
     data: HashMap<any>;
-    fields: Array<IInput>;
+    fields: Array<IFormItem>;
     onChange: (name: any, value: any) => void;
     wrap?: boolean;
     buttons?: any[];

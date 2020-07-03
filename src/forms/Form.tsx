@@ -1,8 +1,8 @@
 import React from 'react';
 import {Forms, Core} from '../core/interfaces';
-// import {Field} from './Field';
+import {Field} from './Field';
 import {Input} from './Input';
-// import {Switch} from './Switch';
+import {Switch} from './Switch';
 import {Textarea} from './Textarea';
 // import {Toggle} from './Toggle';
 // import Select from './Select';
@@ -26,9 +26,9 @@ return (
           case 'textarea':
               elem = <Textarea key={i} value={data[item.name]} {...properties}/>;
               break;
-        // case 'switch':
-        //     elem = <Switch {...properties}/>;
-        //     break;
+        case 'switch':
+            elem = <Switch key={i} value={data[item.name]} {...properties}/>;
+            break;
         // case 'select':
         //     elem = <Select {...properties}/>;
         //     break;
@@ -36,7 +36,7 @@ return (
         //     elem = <Toggle {...properties}/>;
         //     break;
       }
-      return /*wrap ? <Field key={i} {...item}>{elem}</Field> : */elem;
+      return wrap ? <Field key={i} {...item}>{elem}</Field> : elem;
     })}
   </div>
 );
