@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "compile:ts": "tsc -p ./tsconfig.ui.json",
+    "compile:ts": "tsc",
     "compile:css": "npx node-sass --importer node_modules/node-sass-package-importer/dist/cli.js ./src/index.scss -o ./lib",
     "dist": "npm run compile:ts & npm run compile:css"
   },
