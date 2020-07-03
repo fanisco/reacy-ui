@@ -58,11 +58,11 @@
         background-color: transparent;
         color: map_get($set, link);
 
-        :hover {
+        &:hover {
           background-color: #{map_get($set, backgroundHover)}30;
           color: map_get($set, linkHover);
         }
-        :active:focus {
+        &:active:focus {
           background-color: #{map_get($set, backgroundActive)}30;
           color: map_get($set, linkActive);
         }
