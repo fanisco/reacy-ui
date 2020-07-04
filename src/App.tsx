@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {Provider} from './state/Context';
 
-// import Comform from './ui/comment/Comform';
+import {Comform} from './ui/comment/Comform';
 import {Settings} from './ui/settings/Settings';
 import {CommentList} from './ui/comment/CommentList';
 
@@ -13,7 +13,7 @@ export const App: React.FC = () => {
       <Layout>
         <Settings/>
         <CommentList/>
-        {/*<Comform/>*/}
+        <Comform/>
       </Layout>
     </Provider>
   );
