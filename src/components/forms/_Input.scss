@@ -7,7 +7,9 @@ $className: rcy-input;
 
   &:hover { transition: all 0.15s ease-in-out 0.15s; }
   &:focus { outline: 0 none; }
+  @include size-default();
   @include sizes();
-  @include colorize-input($className);
+  @include colorize-input-default();
+  @include colorize-input-various($className);
   @include appearance($className);
 }

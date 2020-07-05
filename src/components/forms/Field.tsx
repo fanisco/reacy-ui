@@ -1,21 +1,17 @@
-export const a = 1;
-// import React from 'react';
-// import styled from 'styled-components';
-// import {Forms, Core} from '../core/interfaces';
-// import {modsFromArray} from '../core/helpers';
-//
-// export const Field: React.FC<Forms.IFormItem> = ({title, type, mods, children}) => {
-//   return (
-//     <FieldElement mods={modsFromArray(mods)}>
-//       <Caption mods={modsFromArray(mods)}>{title + (type !== 'switch' ? ':' : '')}</Caption>
-//       {children}
-//     </FieldElement>
-//   );
-// };
-//
-// const FieldElement = styled.div<Core.IStyled>`
-//   margin-bottom: 12px;
-// `;
-//
-// const Caption = styled.span<Core.IStyled>`
-// `;
+import React from 'react';
+import {Forms} from '../../common/interfaces';
+import {bemClasses} from '../../common/bem';
+import {SizeMods} from '../../common/mods';
+
+export const Field: React.FC<Forms.IFormItem> = ({title, type, mods, children, ...props}) => {
+  return (
+    <div className={bemClasses('rcy-field', mods && mods.filter(mod => AvaialableMods.includes(mod)), props.className)}>
+      <span className="rcy-field__caption">{title + (type !== 'switch' ? ':' : '')}</span>
+      {children}
+    </div>
+  );
+};
+
+export const AvaialableMods: string[] = [
+  ...Object.keys(SizeMods)
+];
