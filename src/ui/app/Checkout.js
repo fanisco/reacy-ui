@@ -1,23 +1,35 @@
-import React from 'react';
-import {Button, Input} from 'reacy-ui';
+import React, {useState} from 'react';
+import {Button, Form} from 'reacy-ui';
 import './Cart.scss';
 
+const fields = [{
+  name: 'street',
+  type: 'string',
+  placeholder: 'Street'
+}, {
+  name: 'house',
+  type: 'string',
+  placeholder: 'House'
+}, {
+  name: 'flat',
+  type: 'string',
+  placeholder: 'Flat'
+}, {
+  name: 'comment',
+  type: 'textarea',
+  placeholder: 'Comment'
+}];
+
 const Checkout = () => {
+  const [data, setData] = useState({street: '', house: '', flat: '', comment: ''});
   return (
     <div className="checkout">
       <h1>Checkout</h1>
-      <div className="checkout__field">
-        <Input placeholder="Street" mods={['lg']}/>
-      </div>
-      <div className="checkout__field">
-        <Input placeholder="House" mods={['lg']}/>
-      </div>
-      <div className="checkout__field">
-        <Input placeholder="Flat" mods={['lg']}/>
-      </div>
-      <div className="checkout__field">
-        <Input placeholder="Comment" mods={['lg']}/>
-      </div>
+      <Form fields={fields}
+            data={data}
+            wrap={true}
+            onChange={(name, value) => setData({...data, [name]: value})}
+      />
       <Button mods={['primary', 'xl', 'shadow']}>Confirm</Button>
     </div>
   )
