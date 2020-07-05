@@ -1,4 +1,4 @@
-@mixin default-button {
+@mixin colorize-button-default {
   background-color: map_get($colors_default, background);
   border-color: map_get($colors_default, border);
   color: map_get($colors_default, foreground);
@@ -25,7 +25,7 @@
     }
   }
 }
-@mixin colorize-button($className) {
+@mixin colorize-button-various($className) {
   @each $style, $set in $colors {
     &_#{$style} {
       background-color: map_get($set, background);

@@ -1,52 +1,90 @@
-@mixin default-input {
+@mixin colorize-input(
+  $foreground,
+  $foregroundHover,
+  $foregroundActive,
+  $foregroundDisabled,
+  $background,
+  $backgroundHover,
+  $backgroundActive,
+  $backgroundDisabled,
+  $border,
+  $borderHover,
+  $borderActive,
+  $borderDisabled,
+  $link,
+  $linkHover,
+  $linkActive,
+  $linkDisabled
+) {
+  background-color: $background;
+  border-color: $border;
+  color: $foreground;
 
+  &:hover {
+    background-color: $background;
+    border-color: $borderHover;
+    color: $foregroundHover;
+  }
+
+  &:focus {
+    background: $background;
+    border-color: $borderActive;
+    color: $foregroundActive;
+    box-shadow: 0 8px 16px #{$link}46,
+                0 2px 4px #{$link}24;
+  }
+
+  &:disabled {
+    cursor: default;
+
+    &, &:hover, &:focus {
+      background-color: $backgroundDisabled;
+      border-color: $borderDisabled;
+      color: $foregroundDisabled;
+    }
+  }  
 }
-@mixin colorize-input($className) {
+@mixin colorize-input-default {
+  @include colorize-input(
+    map_get($colors_default, foreground),
+    map_get($colors_default, foregroundHover),
+    map_get($colors_default, foregroundActive),
+    map_get($colors_default, foregroundDisabled),
+    map_get($colors_default, background),
+    map_get($colors_default, backgroundHover),
+    map_get($colors_default, backgroundActive),
+    map_get($colors_default, backgroundDisabled),
+    map_get($colors_default, border),
+    map_get($colors_primary, borderHover),
+    map_get($colors_primary, borderActive),
+    map_get($colors_primary, borderDisabled),
+    map_get($colors_primary, link),
+    map_get($colors_primary, linkHover),
+    map_get($colors_primary, linkActive),
+    map_get($colors_primary, linkDisabled)
+  );
+}
+@mixin colorize-input-various($className) {
   @each $style, $set in $colors {
-    $foreground: map_get($colors_default, foreground);
-    $foregroundHover: map_get($colors_default, foregroundHover);
-    $foregroundActive: map_get($colors_default, foregroundActive);
-    $foregroundDisabled: map_get($colors_default, foregroundDisabled);
-    $background: map_get($colors_default, background);
-    $backgroundHover: map_get($colors_default, backgroundHover);
-    $backgroundActive: map_get($colors_default, backgroundActive);
-    $backgroundDisabled: map_get($colors_default, backgroundDisabled);
-    $border: map_get($colors_default, border);
-    $borderHover: map_get($set, borderHover);
-    $borderActive: map_get($set, borderActive);
-    $borderDisabled: map_get($set, borderDisabled);
-    $link: map_get($set, link);
-    $linkHover: map_get($set, linkHover);
-    $linkActive: map_get($set, linkActive);
-    $linkDisabled: map_get($set, linkDisabled);
     &_#{$style} {
-      background-color: $background;
-      border-color: $border;
-      color: $foreground;
-
-      &:hover {
-        background-color: $background;
-        border-color: $borderHover;
-        color: $foregroundHover;
-      }
-
-      &:focus {
-        background: $background;
-        border-color: $borderActive;
-        color: $foregroundActive;
-        box-shadow: 0 8px 16px #{$link}46,
-                    0 2px 4px #{$link}24;
-      }
-
-      &:disabled {
-        cursor: default;
-
-        &, &:hover, &:focus {
-          background-color: $backgroundDisabled;
-          border-color: $borderDisabled;
-          color: $foregroundDisabled;
-        }
-      }
+      @include colorize-input(
+        map_get($colors_default, foreground),
+        map_get($colors_default, foregroundHover),
+        map_get($colors_default, foregroundActive),
+        map_get($colors_default, foregroundDisabled),
+        map_get($colors_default, background),
+        map_get($colors_default, backgroundHover),
+        map_get($colors_default, backgroundActive),
+        map_get($colors_default, backgroundDisabled),
+        map_get($set, border),
+        map_get($set, borderHover),
+        map_get($set, borderActive),
+        map_get($set, borderDisabled),
+        map_get($set, link),
+        map_get($set, linkHover),
+        map_get($set, linkActive),
+        map_get($set, linkDisabled)
+      );
     }
   }
 }
