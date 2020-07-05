@@ -1,5 +1,7 @@
 $className: rcy-field;
 .#{$className} {
+  @include sizes-field();
+
   &__caption {
     
   }

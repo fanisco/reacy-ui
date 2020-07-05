@@ -12,4 +12,10 @@ $className: rcy-input;
   @include colorize-input-default();
   @include colorize-input-various($className);
   @include appearance($className);
+  @at-root {
+    textarea#{&} {
+      height: auto;
+      resize: vertical;
+    }
+  }
 }

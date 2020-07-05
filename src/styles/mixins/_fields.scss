@@ -1,0 +1,19 @@
+@mixin sizes-field() {
+  margin-bottom: #{$spacingY_md}$units;
+
+  &_xs {
+    margin-bottom: #{$spacingY_xs}$units;
+  }
+  &_sm {
+    margin-bottom: #{$spacingY_sm}$units;
+  }
+  &_md {
+    margin-bottom: #{$spacingY_md}$units;
+  }
+  &_lg {
+    margin-bottom: #{$spacingY_lg}$units;
+  }
+  &_xl {
+    margin-bottom: #{$spacingY_xl}$units;
+  }
+}

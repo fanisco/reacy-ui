@@ -2,8 +2,8 @@ import React from 'react';
 import {Forms} from '../../common/interfaces';
 import {Field} from './Field';
 import {Input} from './Input';
-// import {Switch} from './Switch';
-// import {Textarea} from './Textarea';
+import {Switch} from './Switch';
+import {Textarea} from './Textarea';
 // import {Toggle} from './Toggle';
 // import Select from './Select';
 
@@ -21,14 +21,14 @@ export const Form: React.FC<Forms.IForm> = ({fields, data, onChange, wrap = fals
         switch (item.type) {
             case 'string':
             case 'number':
-                elem = <Input key={i} value={data[item.name]} {...properties}/>;
-                break;
-          //   case 'textarea':
-          //       elem = <Textarea key={i} value={data[item.name]} {...properties}/>;
-          //       break;
-          // case 'switch':
-          //     elem = <Switch key={i} value={data[item.name]} {...properties}/>;
-          //     break;
+              elem = <Input key={i} value={data[item.name]} {...properties}/>;
+              break;
+            case 'textarea':
+              elem = <Textarea key={i} value={data[item.name]} {...properties}/>;
+              break;
+            case 'switch':
+              elem = <Switch key={i} value={data[item.name]} {...properties}/>;
+              break;
           // case 'select':
           //     elem = <Select {...properties}/>;
           //     break;

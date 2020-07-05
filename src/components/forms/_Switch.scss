@@ -1,0 +1,34 @@
+$className: rcy-switch;
+.#{$className} {
+  display: flex;
+  align-items: center;
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  &__trigger {
+    box-sizing: border-box;
+    position: relative;
+    transition: background-color 0.15s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      transition: all 0.15s ease-in-out 0.15s;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      border-radius: 50%;
+      background-color: white;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+  &__hidden {
+    margin: 0;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+  }
+}

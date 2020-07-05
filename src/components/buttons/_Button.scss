@@ -1,7 +1,6 @@
 $className: rcy-button;
 .#{$className} {
   display: flex;
-  width: 100%;
   border: 1px solid;
   transition: all 0.15s ease-in-out;
   white-space: nowrap;
@@ -11,8 +10,9 @@ $className: rcy-button;
 
   &:hover { transition: all 0.15s ease-in-out; }
   &:focus { outline: 0 none; }
+  @include size-default();
   @include sizes();
-  @include default-button();
-  @include colorize-button($className);
+  @include colorize-button-default();
+  @include colorize-button-various($className);
   @include appearance($className);
 }
