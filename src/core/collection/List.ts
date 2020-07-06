@@ -1,8 +1,7 @@
-import { observable } from "mobx";
-import IList from "../interface/IList";
-import Record from "../entity/Record";
-import IMeta from "../interface/IMeta";
-import IData from "../interface/IData";
+import IList from '../interface/IList';
+import Record from '../entity/Record';
+import IMeta from '../interface/IMeta';
+import IData from '../interface/IData';
 
 /**
  * Class to present a mapped list of records.
@@ -10,7 +9,7 @@ import IData from "../interface/IData";
 export default class List implements IList {
   protected _map: Map<number, Record>;
   protected _meta?: IMeta;
-  @observable protected _list: Array<Record>;
+  protected _list: Array<Record>;
 
   /**
    * Constructor.

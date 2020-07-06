@@ -1,36 +1,22 @@
-import React, { Component, ReactNode } from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
-import Form, { IFieldProps } from '../input/Form';
+import {Form} from 'reacy-ui';
+import {Context} from '../../state/Context';
+import {setSettings} from '../../state/actions';
 
-interface ISettingsProps {
-  data: {
-    [x: string]: any
-  }
-}
-
-/**
- * Component for displaying form.
- */
-export default class Settings extends Component<ISettingsProps> {
-  protected fields: IFieldProps[] = [
-    { name: 'compact', caption: 'Compact', type: 'switch' },
-    { name: 'stacked', caption: 'Stacked', type: 'switch' }
-  ];
-
-  constructor(props: ISettingsProps) {
-    super(props);
-    this.fields.map(field => field.value = this.props.data[field.name])
-  }
-
-  /**
-   * */
-  render(): ReactNode {
-    return (
-      <Wrapper>
-        <Form fields={this.fields} data={this.props.data}/>
-      </Wrapper>
-    )
-  }
+export const Settings: React.FC<{}> = () => {
+  const {state, dispatch} = useContext(Context);
+  return (
+    <Wrapper>
+      <Form fields={[
+        {name: 'compact', title: 'Compact', type: 'checkbox'},
+        {name: 'stacked', title: 'Stacked', type: 'checkbox'}
+      ]}
+            wrap={true}
+            data={state.settings}
+            onChange={(name, value) => setSettings({dispatch, name, value})}/>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`

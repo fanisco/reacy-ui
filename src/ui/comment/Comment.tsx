@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import IComment from '../../core/interface/IComment';
 import Author from './Author';
-import CommentList from './CommentList';
+import {CommentList} from './CommentList';
 
 interface ICommentProps {
   comment: IComment
@@ -11,10 +11,7 @@ interface ICommentProps {
   depth?: number
 }
 
-/**
- * Component for displaying particular comment and it contents.
- */
-const Comment = ({ comment, compact, stacked, depth = 0 }: ICommentProps) => {
+const Comment = ({comment, compact, stacked, depth = 0}: ICommentProps) => {
   let author, children;
 
   const styledProps = {
@@ -29,7 +26,10 @@ const Comment = ({ comment, compact, stacked, depth = 0 }: ICommentProps) => {
   if (comment.children && comment.children.length) {
     children = (
       <Children {...styledProps}>
-        <CommentList comments={comment.children} compact={compact} stacked={stacked} depth={depth + 1}/>
+        {/*<CommentList depth={depth + 1}*/}
+        {/*             comments={comment.children}*/}
+        {/*             compact={compact}*/}
+        {/*             stacked={stacked}/>*/}
       </Children>
     )
   }

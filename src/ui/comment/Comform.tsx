@@ -1,64 +1,37 @@
-import React, { Component, ReactNode } from 'react';
-
-import { observable } from 'mobx';
-import { observer } from 'mobx-react';
-
+import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
+import {Form, Button, Icon} from 'reacy-ui';
+import {Context} from '../../state/Context';
 
-import Form, { IFieldProps } from '../input/Form';
-import Button from '../button/Button';
+export const Comform: React.FC<{}> = () => {
+  const [comment, setComment] = useState('');
+  const {state, dispatch} = useContext(Context);
+  return (
+    <Wrapper>
+      <FormWrapper>
+        <Form fields={[{name: 'comment', type: 'textarea', placeholder: 'Type your comment here...'}]}
+              data={{comment}}
+              onChange={(name: string, value: string) => setComment(value)}/>
+      </FormWrapper>
+      <ButtonWrapper>
+        <Button onClick={() => {
+          // Create a new comment
+          state.comments.records.create({
+            text: comment,
+            author_id: 1,
+            comment_id: 0,
+            date: (new Date()).getTime()
+          });
 
-import IDataSet from '../../core/interface/IDataSet';
-
-interface IComformProps {
-  data: IDataSet
-}
-
-/**
- * Component for displaying comment form.
- */
-@observer
-export default class Comform extends Component<IComformProps> {
-  @observable protected data = {
-    comment: ''
-  };
-  protected fields: IFieldProps[] = [
-    { name: 'comment', caption: 'Comment', type: 'textarea' }
-  ];
-
-  constructor(props: IComformProps) {
-    super(props);
-    this.onButtonClick = this.onButtonClick.bind(this);
-  }
-
-  protected onButtonClick() {
-
-    // Create a new comment
-    this.props.data.records.create({
-      text: this.data.comment,
-      author_id: 1,
-      comment_id: 0,
-      date: (new Date()).getTime()
-    });
-
-    // Empty the textbox
-    this.data.comment = '';
-  }
-
-  /**
-   * */
-  public render(): ReactNode {
-    return (
-      <Wrapper>
-        <FormWrapper>
-          <Form fields={this.fields} data={this.data}/>
-        </FormWrapper>
-        <ButtonWrapper>
-          <Button onClick={this.onButtonClick}>Send</Button>
-        </ButtonWrapper>
-      </Wrapper>
-    )
-  }
+          // Empty the textbox
+          setComment('');
+        }}
+                mods={['outline', 'rounded', 'primary', 'bold']}
+                disabled={!comment.length}
+        ><Icon name="reply"/>Send</Button>
+      </ButtonWrapper>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`

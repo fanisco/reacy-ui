@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "no-comments",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,13 +7,12 @@
     "@types/node": "12.0.12",
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
-    "@types/styled-components": "^4.1.16",
-    "mobx": "^5.11.0",
-    "mobx-react": "^6.1.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "@types/styled-components": "^4.4.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-scripts": "3.0.1",
-    "styled-components": "^4.3.2",
+    "reacy-ui": "^1.0.9",
+    "styled-components": "^4.4.1",
     "typescript": "3.5.2"
   },
   "scripts": {
