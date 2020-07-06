@@ -7,15 +7,15 @@ import {setSettings} from '../../state/actions';
 export const Settings: React.FC<{}> = () => {
   const {state, dispatch} = useContext(Context);
   return (
-    <div>
+    <Wrapper>
       <Form fields={[
-        {name: 'compact', title: 'Compact', type: 'switch'},
-        {name: 'stacked', title: 'Stacked', type: 'switch'}
+        {name: 'compact', title: 'Compact', type: 'checkbox'},
+        {name: 'stacked', title: 'Stacked', type: 'checkbox'}
       ]}
             wrap={true}
             data={state.settings}
             onChange={(name, value) => setSettings({dispatch, name, value})}/>
-    </div>
+    </Wrapper>
   );
 };
 
