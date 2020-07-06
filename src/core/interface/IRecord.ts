@@ -1,5 +1,6 @@
-import IThing from './IThing';
+import IList from './IList';
 
-export default interface IRecord extends IThing {
-  id: number
+export default interface IRecord {
+  id: number;
+  owner?: IList;
 }

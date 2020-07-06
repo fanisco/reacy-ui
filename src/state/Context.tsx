@@ -1,14 +1,14 @@
 import React, {createContext, useReducer} from 'react';
 
 import data from '../data/comments.json';
-import {loadDataSet} from '../core/source/loadDataSet';
+import {loadComments} from '../helpers/loadComments';
 
 import {reducer} from './reducer';
 import {useLocalStorageState} from './useLocalStorageState';
 import {State} from './types';
 
 const initialState = {
-  comments: loadDataSet(data, 'comments'),
+  comments: loadComments(data),
   settings: {
     compact: false,
     stacked: false

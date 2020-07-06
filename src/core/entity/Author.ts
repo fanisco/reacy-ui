@@ -5,15 +5,11 @@ import IAuthor from '../interface/IAuthor';
  * Class to present author.
  */
 export default class Author extends Record implements IAuthor {
-  public name: string;
-  public photo?: string;
-
-  /**
-   * @inheritDoc
-   */
-  constructor(data: any) {
+  name: string;
+  photo?: string;
+  constructor({name, photo, ...data}: IAuthor) {
     super(data);
-    this.name = this.data.name;
-    this.photo = this.data.photo;
+    this.name = name;
+    this.photo = photo;
   }
 }

@@ -1,13 +1,13 @@
 import IList from './IList';
-import IMeta from './IMeta';
+import IData from './IData';
 
 export interface IDataSet {
   records: IList;
-  meta?: IMeta;
+  meta?: any;
   unload: () => IUnmarkedDataSet;
 }
 
 export interface IUnmarkedDataSet {
-  rec: Array<any>;
+  rec: Array<IData>;
   meta?: any;
 }

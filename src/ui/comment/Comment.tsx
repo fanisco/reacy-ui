@@ -1,20 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import IComment from '../../core/interface/IComment';
+import IList from '../../core/interface/IList';
 import Author from './Author';
 import {CommentList} from './CommentList';
 
 interface ICommentProps {
-  comment: IComment
-  compact?: boolean
-  stacked?: boolean
-  depth?: number
+  comment: IComment;
+  comments?: IList;
+  compact?: boolean;
+  stacked?: boolean;
+  parentId?: number;
 }
 
-const Comment = ({comment, compact, stacked, depth = 0}: ICommentProps) => {
+const Comment = ({comment, compact, stacked, comments, parentId = 0}: ICommentProps) => {
   let author, children;
 
-  const nested = depth >= 1;
+  const nested = parentId !== 0;
   const styledProps = {
     compact: compact,
     stacked: stacked && nested
@@ -24,11 +26,11 @@ const Comment = ({comment, compact, stacked, depth = 0}: ICommentProps) => {
     author = <Author {...comment.author} time={comment.date} compact={styledProps.compact || styledProps.stacked}/>
   }
 
-  if (comment.children && comment.children.length) {
+  if (comments) {
     children = (
       <Children {...styledProps}>
-        <CommentList depth={depth + 1}
-                     comments={comment.children}/>
+        <CommentList parentId={comment.id}
+                     comments={comments}/>
       </Children>
     )
   }

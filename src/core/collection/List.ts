@@ -1,39 +1,39 @@
 import IList from '../interface/IList';
 import Record from '../entity/Record';
-import IMeta from '../interface/IMeta';
 import IData from '../interface/IData';
+import IRecord from '../interface/IRecord';
 
 /**
  * Class to present a mapped list of records.
  */
 export default class List implements IList {
-  protected _map: Map<number, Record>;
-  protected _meta?: IMeta;
-  protected _list: Array<Record>;
+  protected _map: Map<number, IRecord>;
+  protected _meta: unknown;
+  protected _list: Array<IRecord>;
 
   /**
    * Constructor.
-   * @param {Record[]} records Array of new raw data.
-   * @param {Meta} meta Meta data that may occur in near data set.
+   * @param {IRecord[]} records Array of new raw data.
+   * @param {*} meta Meta data that may occur in near data set.
    */
-  constructor(records: Record[] = [], meta?: IMeta) {
-
+  constructor(records: IRecord[] = [], meta?: unknown) {
     // Save meta info
     this._meta = meta;
-
     // Create id map and list
     this._map = new Map();
     this._list = [];
-
     // Map and set records
     for (let record of records) {
-      if (record) {
-        if (record.id) {
-          this._map.set(record.id, record)
-        }
-        this._list.push(record)
+      record.owner = this;
+      if (record.id) {
+        this._map.set(record.id, record);
       }
+      this._list.push(record);
     }
+  }
+
+  getMeta(): unknown {
+    return this._meta;
   }
 
   /**
@@ -43,7 +43,12 @@ export default class List implements IList {
    * @return {U[]}
    */
   public map<U>(callbackfn: (value: any, index: number, array: any[]) => U, thisArg?: any): U[] {
-    return this._list.map(callbackfn, thisArg)
+    return this._list.map(callbackfn, thisArg);
+  }
+
+  filter<U>(callbackfn: (value: any) => boolean): U[] {
+    // @ts-ignore
+    return this._list.filter(callbackfn);
   }
 
   /**
@@ -51,25 +56,25 @@ export default class List implements IList {
    * @return {number}
    */
   public length(): number {
-    return this._list.length
+    return this._list.length;
   }
 
   /**
    * @param {number} id
-   * @return {Record}
+   * @return {IRecord}
    */
-  public getById(id: number): Record|undefined {
-    return this._map.get(id)
+  public getById(id: number): IRecord|undefined {
+    return this._map.get(id);
   }
 
   /**
    * Add record to the list.
-   * @param {Record} record
+   * @param {IRecord} record
    * @return boolean
    */
-  public add(record: Record): boolean {
+  public add(record: IRecord): boolean {
     this._list.push(record);
-    return true
+    return true;
   }
 
   /**
@@ -79,30 +84,21 @@ export default class List implements IList {
    */
   public create(data: IData): boolean {
     // ToDo...
-    return true
-  }
-
-  /**
-   * Creates item from data to record class instance.
-   * Here are possible combinations of record classes.
-   * @param {any} item
-   * @param {Meta} meta
-   * @return {Record}
-   */
-  public static toRecord(item: any, meta?: IMeta): Record {
-    return new Record(item, meta)
+    return true;
   }
 
   /**
    * Creates list of record instances from sample data.
    * @param {any[]} items
-   * @param {Meta} meta
+   * @param {*} meta
+   * @param {*} model
+   * @return {List}
    */
-  public static toRecords(items: any[], meta?: IMeta): Record[] {
-    const list: Record[] = [];
-    for (let item of items) {
-      list.push(List.toRecord(item, meta))
-    }
-    return list
+  public static fromArray(items: any[], meta?: unknown, model?: any): IList {
+    return new List(items.map(rec => List.recordFromObject(rec, model)), meta);
+  }
+
+  static recordFromObject(data: IData, model: any = Record) {
+    return new model(data);
   }
 }

@@ -2,25 +2,27 @@ import React, {useContext} from 'react';
 import styled from 'styled-components';
 import Comment from './Comment';
 import {Context} from '../../state/Context';
+import IList from '../../core/interface/IList';
 
 export const CommentList: React.FC<{
-  depth?: number;
-  comments?: any;
-}> = ({depth = 0, ...props}) => {
-  let comments;
+  parentId?: number;
+  comments?: IList;
+}> = ({parentId = 0, ...props}) => {
+  let comments: IList;
   const {state} = useContext(Context);
-  if (depth) {
+  if (parentId && props.comments) {
     comments = props.comments;
   } else {
     comments = state.comments.records;
   }
   return (
-    <Wrapper depth={depth}>
-      {comments && comments.map((comment: any, i: number) => {
+    <Wrapper parentId={parentId}>
+      {comments && comments.filter(comment => comment.parentId === parentId).map((comment: any, i: number) => {
         return (
           <Comment key={i}
-                   depth={depth}
+                   parentId={parentId}
                    comment={comment}
+                   comments={comments}
                    compact={state.settings.compact}
                    stacked={state.settings.stacked}/>
         )
@@ -29,6 +31,6 @@ export const CommentList: React.FC<{
   )
 };
 
-const Wrapper = styled.div<{depth: number;}>`
-  padding: ${props => props.depth === 0 ? 10 : 0}px;
+const Wrapper = styled.div<{parentId: number;}>`
+  padding: ${props => props.parentId === 0 ? 10 : 0}px;
 `;

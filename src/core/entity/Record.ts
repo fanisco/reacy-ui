@@ -1,23 +1,13 @@
-import Thing from "./Thing";
-import IRecord from "../interface/IRecord";
-import IMeta from "../interface/IMeta";
-
-interface IUmarkedData {
-  id: number
-  [x: string]: any
-}
+import IRecord from '../interface/IRecord';
+import IList from '../interface/IList';
 
 /**
  * Class to present data.
  */
-export default class Record extends Thing implements IRecord {
+export default class Record implements IRecord {
   id: number;
-
-  /**
-   *
-   */
-  constructor(data: IUmarkedData, meta?: IMeta) {
-    super(data);
-    this.id = data.id;
+  owner?: IList;
+  constructor({id}: IRecord) {
+    this.id = id;
   }
 }

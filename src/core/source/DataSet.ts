@@ -1,6 +1,4 @@
 import List from '../collection/List';
-import CommentList from '../collection/CommentList';
-import Meta from '../entity/Meta';
 import {IDataSet, IUnmarkedDataSet} from '../interface/IDataSet';
 import IList from '../interface/IList';
 
@@ -9,32 +7,25 @@ import IList from '../interface/IList';
  */
 export default class DataSet implements IDataSet {
   records: IList;
-  meta?: Meta;
+  meta: unknown;
 
   /**
    * @param {IUnmarkedDataSet} dataSet Set of raw data.
-   * @param {string} listType Determine type of main list.
+   * @param {IRecord} model Determine type of main list.
    */
-  constructor(dataSet: IUnmarkedDataSet, listType?: string) {
+  constructor(dataSet: IUnmarkedDataSet, model: any) {
     if (dataSet.meta !== undefined) {
-      this.meta = new Meta(dataSet.meta)
+      this.meta = {...dataSet.meta};
     }
-    switch (listType) {
-      case 'comments':
-        this.records = new CommentList(CommentList.toRecords(dataSet.rec, this.meta), this.meta);
-        break;
-      case 'list':
-      default:
-        this.records = new List(List.toRecords(dataSet.rec, this.meta), this.meta)
-    }
+    this.records = List.fromArray(dataSet.rec, this.meta, model);
   }
 
   unload(): IUnmarkedDataSet {
     const u = {
-      rec: this.records.map(record => ({...record.data})),
-      meta: null
+      rec: this.records.map(record => record),
+      meta: {}
     };
-    console.log(u);
+    console.log(this.records, u);
     return u;
   };
 

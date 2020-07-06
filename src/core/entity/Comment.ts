@@ -1,39 +1,28 @@
-import Record from './Record';
-import Author from './Author';
+import Node from './Node';
 import IComment from '../interface/IComment';
-import IMeta from '../interface/IMeta';
-import INode from '../interface/INode';
-import IList from '../interface/IList';
-import CommentList from '../collection/CommentList';
+import IAuthor from '../interface/IAuthor';
+import ICommentsMeta from '../interface/ICommentsMeta';
 
 /**
  * The model of comment item.
  */
-export default class Comment extends Record implements IComment, INode {
-  parentId: number;
-  authorId?: number;
-  author?: Author;
-  text?: string;
-  date?: Date;
-  children: IList;
+export default class Comment extends Node implements IComment {
+  public authorId: number;
+  public text: string;
+  public date: Date;
 
-  /**
-   * @inheritDoc
-   */
-  constructor(data: any, meta?: IMeta) {
+  constructor({authorId, text, date, ...data}: IComment) {
     super(data);
-    this.parentId = data.comment_id;
-    this.authorId = data.author_id;
-    this.text = data.text;
-    this.date = new Date(data.date);
-    this.children = new CommentList();
+    this.authorId = authorId;
+    this.text = text;
+    this.date = new Date(date);
+  }
 
-    // Get author from meta information
-    if (meta && this.authorId) {
-      const authors = meta.getList('authors');
-      if (authors) {
-        this.author = new Author(authors.getById(this.authorId));
-      }
+  get author(): IAuthor | undefined {
+    const meta = this.owner && this.owner.getMeta() as ICommentsMeta;
+    if (meta) {
+      return meta.authors.getById(this.authorId) as IAuthor;
     }
+    return undefined;
   }
 }

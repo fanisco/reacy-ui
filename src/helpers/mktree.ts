@@ -1,21 +1,12 @@
-import IRecord from '../core/interface/IRecord';
-import INode from '../core/interface/INode';
-
-interface IRecordNode extends IRecord, INode {
-
-}
-
-interface IMap {
-  [x: number]: IRecordNode
-}
+import IData from '../core/interface/IData';
 
   /**
  * @param {Array} list
  * @param {number} rootId
  * @return {Object}
  */
-export default function mktree(list: Array<IRecordNode>, rootId: number = 0): Array<IRecord> {
-  const map: IMap = {};
+export default function mktree(list: any[], rootId: number = 0): any[] {
+  const map: IData<any> = {};
   const tree: any[] = [];
 
   for (let i = 0; i < list.length; i++) {
@@ -28,7 +19,8 @@ export default function mktree(list: Array<IRecordNode>, rootId: number = 0): Ar
     }
     else if (item.parentId) {
       if (map[item.parentId]) {
-        map[item.parentId].children.add(item);
+        map[item.parentId].children = map[item.parentId].children || [];
+        map[item.parentId].children.push(item);
       }
     }
   }

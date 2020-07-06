@@ -21,7 +21,7 @@ const Author = (props: IAuthorProps) => {
     styledProps = { compact: compact, photoSize: photoSize };
   const
     photo = props.photo && <Photo src={props.photo} {...styledProps}/>,
-    time = props.time && <Time {...styledProps}>{formatDate(props.time)}</Time>;
+    time = props.time instanceof Date && <Time {...styledProps}>{formatDate(props.time)}</Time>;
 
   return(
     <Wrapper>
