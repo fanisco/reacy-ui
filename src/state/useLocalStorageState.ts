@@ -14,7 +14,6 @@ export const useLocalStorageState = (reducer: Reducer<State, Action>, initialSta
     isLoading.current = false;
   }
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state);
-  // saveState(storageKey, {...state, comments: unloadDataSet(state.comments)});
+  saveState(storageKey, state);
   return [state, dispatch];
 };
