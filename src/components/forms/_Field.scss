@@ -1,8 +1,16 @@
 $className: rcy-field;
 .#{$className} {
-  @include sizes-field();
+  display: flex;
+  flex-direction: column;
+
+  &_checkbox {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include sizes-field($className);
 
   &__caption {
-    
+
   }
 }

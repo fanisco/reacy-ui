@@ -1,19 +1,33 @@
-@mixin sizes-field() {
-  margin-bottom: #{$spacingY_md}$units;
+@mixin size-field(
+  $className,
+  $spacingX,
+  $spacingY,
+  $fontSize
+) {
+  margin-bottom: #{$spacingY}$units;
+
+  & .#{$className}__caption {
+    margin-right: #{$spacingX}$units;
+    font-size: #{$fontSize}$units;
+  }
+}
+
+@mixin sizes-field($className) {
+  @include size-field($className, $spacingX_md / 2, $spacingY_md, $fontSize_md - 4);
 
   &_xs {
-    margin-bottom: #{$spacingY_xs}$units;
+    @include size-field($className, $spacingX_xs / 2, $spacingY_xs, $fontSize_xs - 4);
   }
   &_sm {
-    margin-bottom: #{$spacingY_sm}$units;
+    @include size-field($className, $spacingX_sm / 2, $spacingY_sm, $fontSize_sm - 4);
   }
   &_md {
-    margin-bottom: #{$spacingY_md}$units;
+    @include size-field($className, $spacingX_md / 2, $spacingY_md, $fontSize_md - 4);
   }
   &_lg {
-    margin-bottom: #{$spacingY_lg}$units;
+    @include size-field($className, $spacingX_lg / 2, $spacingY_lg, $fontSize_lg - 4);
   }
   &_xl {
-    margin-bottom: #{$spacingY_xl}$units;
+    @include size-field($className, $spacingX_xl / 2, $spacingY_xl, $fontSize_xl - 4);
   }
 }

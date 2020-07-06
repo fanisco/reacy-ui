@@ -9,7 +9,7 @@ export namespace Core {
 
 export namespace Buttons {
   export interface IButton extends Core.IComponent {
-    onClick: (e: any) => void;
+    onClick?: (e: any) => void;
     href?: string;
     disabled?: boolean;
   }
@@ -81,6 +81,7 @@ export namespace Icons {
     name: string;
     size?: 'xs' | 'sm' | 'lg' | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | '10x';
     align?: string;
+    className?: string;
   }
 }
 
