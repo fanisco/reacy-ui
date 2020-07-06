@@ -8,7 +8,7 @@ interface IAuthorProps {
   name: string
   photo?: string
   time?: Date
-  stacked?: boolean
+  compact?: boolean
 }
 
 /**
@@ -16,9 +16,9 @@ interface IAuthorProps {
  */
 const Author = (props: IAuthorProps) => {
   const
-    stacked = !!props.stacked,
-    photoSize = stacked ? 24 : 32,
-    styledProps = { stacked: stacked, photoSize: photoSize };
+    compact = !!props.compact,
+    photoSize = compact ? 24 : 32,
+    styledProps = { compact: compact, photoSize: photoSize };
   const
     photo = props.photo && <Photo src={props.photo} {...styledProps}/>,
     time = props.time && <Time {...styledProps}>{formatDate(props.time)}</Time>;
@@ -35,7 +35,7 @@ const Author = (props: IAuthorProps) => {
 };
 
 interface StyledProps {
-  stacked?: boolean
+  compact?: boolean
   photoSize?: number
 }
 
@@ -55,22 +55,22 @@ const Photo = styled.img<StyledProps>`
 
 const NameWrapper = styled.div<StyledProps>`
   display: flex;
-  flex-direction: ${props => props.stacked ? 'row' : 'column'};
+  flex-direction: ${props => props.compact ? 'row' : 'column'};
 `;
 
 const Name = styled.h5<StyledProps>`
   margin: 0;
-  margin-bottom: ${props => props.stacked ? 0 : 4}px;
+  margin-bottom: ${props => props.compact ? 0 : 4}px;
   font-weight: 500;
   font-size: 14px;
-  line-height: ${props => props.stacked ? props.photoSize : 16}px;
+  line-height: ${props => props.compact ? props.photoSize : 16}px;
   color: ${colors.dark}
 `;
 
 const Time = styled.time<StyledProps>`
-  margin-left: ${props => props.stacked ? 5 : 0}px;
+  margin-left: ${props => props.compact ? 5 : 0}px;
   font-size: 12px;
-  line-height: ${props => props.stacked ? props.photoSize : 12}px;
+  line-height: ${props => props.compact ? props.photoSize : 12}px;
   color: ${colors.gray}
 `;
 

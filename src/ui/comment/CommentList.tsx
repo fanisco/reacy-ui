@@ -4,14 +4,19 @@ import Comment from './Comment';
 import {Context} from '../../state/Context';
 
 export const CommentList: React.FC<{
-  compact?: boolean
-  stacked?: boolean
-  depth?: number
-}> = ({depth = 0}) => {
+  depth?: number;
+  comments?: any;
+}> = ({depth = 0, ...props}) => {
+  let comments;
   const {state} = useContext(Context);
+  if (depth) {
+    comments = props.comments;
+  } else {
+    comments = state.comments.records;
+  }
   return (
     <Wrapper depth={depth}>
-      {state.comments && state.comments.records.map((comment: any, i: number) => {
+      {comments && comments.map((comment: any, i: number) => {
         return (
           <Comment key={i}
                    depth={depth}

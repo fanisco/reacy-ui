@@ -14,22 +14,21 @@ interface ICommentProps {
 const Comment = ({comment, compact, stacked, depth = 0}: ICommentProps) => {
   let author, children;
 
+  const nested = depth >= 1;
   const styledProps = {
-    compact: compact && depth >= 1,
-    stacked: stacked
+    compact: compact,
+    stacked: stacked && nested
   };
 
   if (comment.author) {
-    author = <Author {...comment.author} time={comment.date} stacked={stacked || compact && depth >= 1}/>
+    author = <Author {...comment.author} time={comment.date} compact={styledProps.compact || styledProps.stacked}/>
   }
 
   if (comment.children && comment.children.length) {
     children = (
       <Children {...styledProps}>
-        {/*<CommentList depth={depth + 1}*/}
-        {/*             comments={comment.children}*/}
-        {/*             compact={compact}*/}
-        {/*             stacked={stacked}/>*/}
+        <CommentList depth={depth + 1}
+                     comments={comment.children}/>
       </Children>
     )
   }
@@ -37,11 +36,10 @@ const Comment = ({comment, compact, stacked, depth = 0}: ICommentProps) => {
   return (
     <Wrapper>
       {author}
-      <Content>{comment.text}</Content>
+      <Content {...styledProps}>{comment.text}</Content>
       {children}
     </Wrapper>
   )
-  // }
 };
 
 interface StyledProps {
@@ -53,13 +51,14 @@ const Wrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-const Content = styled.div`
+const Content = styled.div<StyledProps>`
   margin-bottom: 5px;
+  font-size: ${props => props.stacked || props.compact ? 14 : 16}px;
 `;
 
 const Children = styled.div<StyledProps>`
   margin-top: 10px;
-  padding-left: ${props => props.compact ? 0 : props.stacked ? 29 : 37}px;
+  padding-left: ${props => props.stacked ? 0 : props.compact ? 29 : 37}px;
   transition: padding-left 0.15s ease-in-out;
 `;
 
