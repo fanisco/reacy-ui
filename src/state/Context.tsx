@@ -1,14 +1,20 @@
 import React, {createContext, useReducer} from 'react';
 
-import data from '../data/comments.json';
-import {loadComments} from '../helpers/loadComments';
-
 import {reducer} from './reducer';
 import {useLocalStorageState} from './useLocalStorageState';
 import {State} from './types';
 
-const initialState = {
-  comments: loadComments(data),
+import data from '../data/comments.json';
+import IComment from '../core/interface/IComment';
+import IAuthor from '../core/interface/IAuthor';
+
+const initialState: State = {
+  comments: {
+    list: data.list as IComment[],
+    meta: {
+      authors: data.meta.authors as IAuthor[]
+    }
+  },
   settings: {
     compact: false,
     stacked: false

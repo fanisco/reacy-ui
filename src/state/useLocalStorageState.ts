@@ -1,21 +1,20 @@
 import {Reducer, useReducer, useRef} from 'react';
 import {loadState, saveState} from './localStorage';
-import {State, RawStateData, Action} from './types';
-import {loadComments, unloadComments} from '../helpers/loadComments';
+import {State, Action} from './types';
 
 export const useLocalStorageState = (reducer: Reducer<State, Action>, initialState: State, storageKey: string): [State, Function] => {
   const isLoading = useRef(true);
   if (isLoading.current) {
-    const load = loadState<RawStateData>(storageKey);
+    const load = loadState<State>(storageKey);
     if (load) {
       initialState = {
-        ...load, comments: loadComments(load.comments)
+        ...load, comments: load.comments
       };
     }
     isLoading.current = false;
   }
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(unloadComments(state.comments));
+  console.log(state);
   // saveState(storageKey, {...state, comments: unloadDataSet(state.comments)});
   return [state, dispatch];
 };

@@ -1,45 +1,38 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
-import IComment from '../../core/interface/IComment';
-import IList from '../../core/interface/IList';
+import {Context} from '../../state/Context';
 import Author from './Author';
 import {CommentList} from './CommentList';
+import IComment from '../../core/interface/IComment';
+import IAuthor from '../../core/interface/IAuthor';
 
-interface ICommentProps {
+interface IProps {
   comment: IComment;
-  comments?: IList;
   compact?: boolean;
   stacked?: boolean;
-  parentId?: number;
 }
 
-const Comment = ({comment, compact, stacked, comments, parentId = 0}: ICommentProps) => {
-  let author, children;
-
-  const nested = parentId !== 0;
+const Comment: React.FC<IProps> = ({comment, compact, stacked}) => {
+  const {state} = useContext(Context);
+  const comments: IComment[] = state.comments.list;
+  const authors: IAuthor[] = state.comments.meta.authors;
+  const nested = comment.parentId !== 0;
   const styledProps = {
     compact: compact,
     stacked: stacked && nested
   };
 
-  if (comment.author) {
-    author = <Author {...comment.author} time={comment.date} compact={styledProps.compact || styledProps.stacked}/>
-  }
-
-  if (comments) {
-    children = (
-      <Children {...styledProps}>
-        <CommentList parentId={comment.id}
-                     comments={comments}/>
-      </Children>
-    )
-  }
+  const children = comments.filter(c => c.parentId === comment.id);
+  const author = authors.find(a => a.id === comment.authorId);
+  const authorCompact = styledProps.compact || styledProps.stacked;
 
   return (
     <Wrapper>
-      {author}
+      {author ? <Author {...author} time={comment.date} compact={authorCompact}/> : ''}
       <Content {...styledProps}>{comment.text}</Content>
-      {children}
+      {children ? <Children {...styledProps}>
+        <CommentList parentId={comment.id}/>
+      </Children> : ''}
     </Wrapper>
   )
 };

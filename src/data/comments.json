@@ -1,5 +1,5 @@
 {
-  "rec": [
+  "list": [
     {"id": 1, "authorId": 1, "parentId": 0, "text": "I did not hit her! It’s not true! It’s bullshit! I did not hit her! I did not! (he throws a water bottle to the floor) Oh, hi Mark.", "date": 994330521000},
     {"id": 2, "authorId": 2, "parentId": 1, "text": "(holding a football) Oh hey Johnny, what’s up?", "date": 994330521000},
     {"id": 3, "authorId": 1, "parentId": 2, "text": "I have a problem with Lisa. She says that I hit her.", "date": 994330521000},

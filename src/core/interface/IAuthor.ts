@@ -1,6 +1,5 @@
-import IRecord from './IRecord';
-
-export default interface IAuthor extends IRecord {
+export default interface IAuthor {
+  id: number;
   name: string;
   photo?: string;
-}
+};

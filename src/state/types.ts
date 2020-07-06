@@ -1,12 +1,13 @@
-import {IDataSet, IUnmarkedDataSet} from '../core/interface/IDataSet';
+import IComment from '../core/interface/IComment';
+import IAuthor from '../core/interface/IAuthor';
 
 export type State = {
-  comments: IDataSet;
-  settings: any;
-}
-
-export type RawStateData = {
-  comments: IUnmarkedDataSet;
+  comments: {
+    list: IComment[];
+    meta: {
+      authors: IAuthor[];
+    }
+  };
   settings: any;
 }
 

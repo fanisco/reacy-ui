@@ -2,33 +2,28 @@ import React from 'react'
 import styled from 'styled-components';
 import colors from '../colors';
 import formatDate from '../../helpers/formatDate';
+import IAuthor from '../../core/interface/IAuthor';
 
-interface IAuthorProps {
-  id: number
-  name: string
-  photo?: string
-  time?: Date
-  compact?: boolean
+interface IProps extends IAuthor {
+  time?: number;
+  compact?: boolean;
 }
 
 /**
  * Component for displaying person card.
  */
-const Author = (props: IAuthorProps) => {
+const Author: React.FC<IProps> = ({id, name, photo, time, ...props}) => {
   const
     compact = !!props.compact,
     photoSize = compact ? 24 : 32,
-    styledProps = { compact: compact, photoSize: photoSize };
-  const
-    photo = props.photo && <Photo src={props.photo} {...styledProps}/>,
-    time = props.time instanceof Date && <Time {...styledProps}>{formatDate(props.time)}</Time>;
+    styledProps = {compact: compact, photoSize: photoSize};
 
   return(
     <Wrapper>
-      {photo}
+      {photo ? <Photo src={photo} {...styledProps}/> : ''}
       <NameWrapper {...styledProps}>
-        <Name {...styledProps}>{props.name}</Name>
-        {time}
+        <Name {...styledProps}>{name}</Name>
+        {time ? <Time {...styledProps}>{formatDate(new Date(time))}</Time> : ''}
       </NameWrapper>
     </Wrapper>
   )

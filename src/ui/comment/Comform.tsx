@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
 import {Form, Button, Icon} from 'reacy-ui';
 import {Context} from '../../state/Context';
+import {addComment} from '../../state/actions';
 
 export const Comform: React.FC<{}> = () => {
   const [comment, setComment] = useState('');
@@ -16,13 +17,13 @@ export const Comform: React.FC<{}> = () => {
       <ButtonWrapper>
         <Button onClick={() => {
           // Create a new comment
-          state.comments.records.create({
+          addComment({
+            dispatch,
             text: comment,
-            author_id: 1,
-            comment_id: 0,
+            authorId: 1,
+            parentId: 0,
             date: (new Date()).getTime()
           });
-
           // Empty the textbox
           setComment('');
         }}
