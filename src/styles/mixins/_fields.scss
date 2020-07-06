@@ -1,0 +1,33 @@
+@mixin size-field(
+  $className,
+  $spacingX,
+  $spacingY,
+  $fontSize
+) {
+  margin-bottom: #{$spacingY}$units;
+
+  & .#{$className}__caption {
+    margin-right: #{$spacingX}$units;
+    font-size: #{$fontSize}$units;
+  }
+}
+
+@mixin sizes-field($className) {
+  @include size-field($className, $spacingX_md / 2, $spacingY_md, $fontSize_md - 4);
+
+  &_xs {
+    @include size-field($className, $spacingX_xs / 2, $spacingY_xs, $fontSize_xs - 4);
+  }
+  &_sm {
+    @include size-field($className, $spacingX_sm / 2, $spacingY_sm, $fontSize_sm - 4);
+  }
+  &_md {
+    @include size-field($className, $spacingX_md / 2, $spacingY_md, $fontSize_md - 4);
+  }
+  &_lg {
+    @include size-field($className, $spacingX_lg / 2, $spacingY_lg, $fontSize_lg - 4);
+  }
+  &_xl {
+    @include size-field($className, $spacingX_xl / 2, $spacingY_xl, $fontSize_xl - 4);
+  }
+}

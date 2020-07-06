@@ -1,0 +1,23 @@
+$className: rcy-table;
+.#{$className} {
+  display: grid;
+  grid-gap: 6px;
+
+  &__header {
+    display: contents;
+    font-weight: 700;
+  }
+  &__footer {
+    display: contents;
+  }
+  &__row {
+    display: contents;
+  }
+  &__cell {
+    display: flex;
+    align-items: center;
+    &_right {
+      justify-content: flex-end;
+    }
+  }
+}

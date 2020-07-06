@@ -1,0 +1,141 @@
+@mixin colorize-button(
+  $foreground,
+  $foregroundHover,
+  $foregroundActive,
+  $background,
+  $backgroundHover,
+  $backgroundActive,
+  $border,
+  $borderHover,
+  $borderActive,
+  $link,
+  $linkHover,
+  $linkActive
+) {
+  background-color: $background;
+  border-color: $border;
+  color: $foreground;
+
+  &:hover {
+    background-color: $backgroundHover;
+    border-color: $borderHover;
+    color: $foregroundHover;
+  }
+
+  &:active:focus {
+    background: $backgroundActive;
+    border-color: $borderActive;
+    color: $foregroundActive;
+  }
+
+  &.#{$className}_outline {
+    background-color: transparent;
+    color: $link;
+
+    &:hover {
+      background-color: #{$backgroundHover}30;
+      color: $linkHover;
+    }
+    &:active:focus {
+      background-color: #{$backgroundActive}30;
+      color: $linkActive;
+    }
+  }
+
+  &.#{$className}_shadow {
+    box-shadow: 0 2px 4px rgba(96, 97, 112, 0.16),
+                0 0 1px rgba(40, 41, 61, 0.04);
+
+    &:hover {
+      box-shadow: 0 2px 4px #{$border}56,
+                  0 0 1px #{$border}34;
+    }
+  }
+
+  &.#{$className}_inline {
+    height: auto;
+    padding: 0;
+    border-width: 0;
+    color: $link;
+
+    &:hover {
+      color: $linkHover;
+    }
+
+    &:active:focus {
+      color: $linkActive;
+    }
+
+    &, &:hover, &:active:focus {
+      background-color: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+}
+@mixin colorize-button-default() {
+  @include colorize-button(
+    map_get($colors_default, foreground),
+    map_get($colors_default, foregroundHover),
+    map_get($colors_default, foregroundActive),
+    map_get($colors_default, background),
+    map_get($colors_default, backgroundHover),
+    map_get($colors_default, backgroundActive),
+    map_get($colors_default, border),
+    map_get($colors_default, borderHover),
+    map_get($colors_default, borderActive),
+    map_get($colors_default, link),
+    map_get($colors_default, linkHover),
+    map_get($colors_default, linkActive)
+  );
+}
+@mixin colorize-button-disabled(
+  $foregroundDisabled,
+  $backgroundDisabled,
+  $borderDisabled,
+  $linkDisabled
+) {
+  cursor: default;
+  &, &:hover, &:active:focus {
+    background-color: $backgroundDisabled;
+    border-color: $borderDisabled;
+    color: $foregroundDisabled;
+  }
+}
+@mixin colorize-button-various($className) {
+  @each $style, $set in $colors {
+    &_#{$style} {
+      @include colorize-button(
+          map_get($set, foreground),
+          map_get($set, foregroundHover),
+          map_get($set, foregroundActive),
+          map_get($set, background),
+          map_get($set, backgroundHover),
+          map_get($set, backgroundActive),
+          map_get($set, background),
+          map_get($set, backgroundHover),
+          map_get($set, backgroundActive),
+          map_get($set, link),
+          map_get($set, linkHover),
+          map_get($set, linkActive)
+      );
+    }
+  }
+  @at-root {
+    .#{$className}:disabled {
+      @include colorize-button-disabled(
+          map_get($colors_default, foregroundDisabled),
+          map_get($colors_default, backgroundDisabled),
+          map_get($colors_default, borderDisabled),
+          map_get($colors_default, linkDisabled)
+      );
+    }
+    .#{$className}_inline:disabled {
+      &, &:hover, &:active:focus {
+        background-color: transparent;
+        border-color: transparent;
+        color: map_get($colors_default, linkDisabled);
+      }
+    }
+  }
+}

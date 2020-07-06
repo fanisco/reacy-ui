@@ -1,0 +1,28 @@
+$className: rcy-checkbox;
+.#{$className} {
+  position: relative;
+  display: flex;
+  border: 1px solid;
+  cursor: pointer;
+
+  &__icon {
+    margin: -1px 0 0 -1px;
+    transition: all 0.15s ease-in-out;
+    opacity: 0;
+  }
+  &__input {
+    margin: 0;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &__input:checked ~ &__icon {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  @include sizes-checkbox($className);
+  @include colorize-checkbox-default();
+  @include colorize-checkbox-various();
+}
