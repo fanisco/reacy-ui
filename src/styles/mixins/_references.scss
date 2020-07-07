@@ -10,23 +10,21 @@
 }
 
 @mixin sizes-reference($className) {
-  @include size-reference($className, $spacingY_md, $spacingX_md, $fontSize_md, 2);
-
   &_xs {
     @include size-reference($className, $spacingY_xs, $spacingX_xs, $fontSize_xs, 1);
   }
-  //&_sm {
-  //  @include size-reference($className, $fontSize_sm, 1);
-  //}
-  //&_md {
-  //  @include size-reference($className, $fontSize_md, 2);
-  //}
-  //&_lg {
-  //  @include size-reference($className, $fontSize_lg, 3);
-  //}
-  //&_xl {
-  //  @include size-reference($className, $fontSize_xl, 3);
-  //}
+  &_sm {
+    @include size-reference($className, $spacingY_sm, $spacingX_sm, $fontSize_sm, 1);
+  }
+  &_md {
+    @include size-reference($className, $spacingY_md, $spacingX_md, $fontSize_md, 2);
+  }
+  &_lg {
+    @include size-reference($className, $spacingY_lg, $spacingX_lg, $fontSize_lg, 3);
+  }
+  &_xl {
+    @include size-reference($className, $spacingY_xl, $spacingX_xl, $fontSize_xl, 3);
+  }
 }
 
 @mixin colorize-reference(

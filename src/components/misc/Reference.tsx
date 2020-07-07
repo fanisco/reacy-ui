@@ -1,12 +1,12 @@
 import React from 'react';
 import {Misc} from '../../common/interfaces';
-import {bemClasses} from '../../common/bem';
+import {bemClasses, defaultMods} from '../../common/bem';
 import {Button} from '../buttons';
 import {Icon} from './Icon';
 
 export const Reference: React.FC<Misc.IReference> = ({title, descr, ...props}) => {
   const classBase = 'rcy-reference';
-  const className = bemClasses(classBase, props.mods, props.className);
+  const className = bemClasses(classBase, defaultMods(props.mods), props.className);
   return (
     <div className={className}>
       <div className={`${classBase}__body`}>

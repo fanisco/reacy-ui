@@ -11,8 +11,6 @@
 }
 
 @mixin sizes-checkbox($className) {
-  @include size-checkbox($className, $fontSize_md, 3);
-
   &_xs {
     @include size-checkbox($className, $fontSize_xs, 1);
   }

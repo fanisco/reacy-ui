@@ -13,8 +13,6 @@
 }
 
 @mixin sizes-field($className) {
-  @include size-field($className, $spacingX_md / 2, $spacingY_md, $fontSize_md - 4);
-
   &_xs {
     @include size-field($className, $spacingX_xs / 2, $spacingY_xs, $fontSize_xs - 4);
   }

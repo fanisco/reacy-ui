@@ -10,7 +10,7 @@
   font-size: #{$fontSize_sm}$units;
   border-radius: #{$borderRadius_sm}$units;
 }
-@mixin size-default() {
+@mixin size-md() {
   height: #{$elementHeight_md}$units;
   padding: #{$spacingY_md}$units #{$spacingX_md}$units;
   font-size: #{$fontSize_md}$units;
@@ -36,7 +36,7 @@
     @include size-sm();
   }
   &_md {
-    @include size-default();
+    @include size-md();
   }
   &_lg {
     @include size-lg();

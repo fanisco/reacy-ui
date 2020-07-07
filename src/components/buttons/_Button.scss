@@ -10,7 +10,6 @@ $className: rcy-button;
 
   &:hover { transition: all 0.15s ease-in-out; }
   &:focus { outline: 0 none; }
-  @include size-default();
   @include sizes();
   @include colorize-button-default();
   @include colorize-button-various($className);
