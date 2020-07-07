@@ -21,6 +21,9 @@ export namespace Forms {
     type: string;
     title?: string;
     disabled?: boolean;
+    onKeyDown?: (e: any) => void;
+    onKeyUp?: (e: any) => void;
+    onKeyPress?: (e: any) => void;
     onChange?: (e: any) => void;
     placeholder?: string;
   }

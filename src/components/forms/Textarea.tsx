@@ -2,7 +2,7 @@ import React from 'react';
 import {Forms} from '../../common/interfaces';
 import {bemClasses} from '../../common/bem';
 
-export const Textarea: React.FC<Forms.IInput> = ({value, name, onChange, placeholder, disabled = false, ...props}) => {
+export const Textarea: React.FC<Forms.IInput> = ({value, name, placeholder, disabled = false, ...props}) => {
   const className = bemClasses('rcy-input', props.mods, props.className);
     return (
         <textarea className={className}
@@ -10,9 +10,12 @@ export const Textarea: React.FC<Forms.IInput> = ({value, name, onChange, placeho
                   value={value}
                   disabled={disabled}
                   placeholder={placeholder}
+                  onKeyDown={props.onKeyDown}
+                  onKeyUp={props.onKeyUp}
+                  onKeyPress={props.onKeyPress}
                   onChange={e => {
-                    if (onChange) {
-                      onChange(e.target.value)
+                    if (props.onChange) {
+                      props.onChange(e.target.value)
                     }
                   }}
         />
