@@ -3,7 +3,7 @@
   font-size: #{$fontSize}$units;
   border-radius: #{$borderRadius}$units;
 
-  & .#{$className}__text {
+  & .#{$className}__body {
     padding-left: #{$spacingX / 2}$units;
     padding-right: #{$spacingX / 2}$units;
   }
@@ -42,7 +42,7 @@
 ) {
   background-color: #{$background}30;
 
-  & .#{$className}__text {
+  & .#{$className}__body {
     border-color: $border;
     color: $foreground;
   }

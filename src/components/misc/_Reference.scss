@@ -3,9 +3,14 @@ $className: rcy-reference;
   display: flex;
   justify-content: space-between;
 
-  &__text {
-    margin: 0;
+  &__body {
     border-left: 2px solid;
+  }
+  &__title {
+    margin: 0;
+  }
+  &__descr {
+    margin: 0;
   }
 
   @include sizes-reference($className);

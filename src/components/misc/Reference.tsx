@@ -4,15 +4,18 @@ import {bemClasses} from '../../common/bem';
 import {Button} from '../buttons';
 import {Icon} from './Icon';
 
-export const Reference: React.FC<Misc.IReference> = ({text, ...props}) => {
+export const Reference: React.FC<Misc.IReference> = ({title, descr, ...props}) => {
   const classBase = 'rcy-reference';
   const className = bemClasses(classBase, props.mods, props.className);
   return (
     <div className={className}>
-        <p className={`${classBase}__text`}>{text}</p>
-        <Button className={`${classBase}__close`} mods={['inline', ...(props.mods || [])]} onClick={props.onCloseClick}>
-          <Icon name="times"/>
-        </Button>
+      <div className={`${classBase}__body`}>
+        <h6 className={`${classBase}__title`}>{title}</h6>
+        <p className={`${classBase}__descr`}>{descr}</p>
+      </div>
+      <Button className={`${classBase}__close`} mods={['inline', ...(props.mods || [])]} onClick={props.onCloseClick}>
+        <Icon name="times"/>
+      </Button>
     </div>
   );
 };
