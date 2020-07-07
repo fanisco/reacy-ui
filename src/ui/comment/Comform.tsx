@@ -9,7 +9,8 @@ export const Comform: React.FC<{}> = () => {
   const {state, dispatch} = useContext(Context);
   const [ctrlPressed, setCtrlPressed] = useState(false);
 
-  const contextComment = state.comments.list.find(c => c.id === state.contextCommentId);
+  const ctxComment = state.comments.list.find(c => c.id === state.contextCommentId);
+  const ctxCommentAuthor = state.comments.meta.authors.find(a => a.id === (ctxComment && ctxComment.authorId));
 
   const submitComment = async () => {
     if (!comment) {
@@ -47,22 +48,27 @@ export const Comform: React.FC<{}> = () => {
 
   return (
     <Wrapper>
-      {contextComment ? (
-        <ReferenceWrapper>
-          <Reference id={contextComment.id} text={contextComment.text} mods={['xs', 'primary']} onCloseClick={onContextCommentDismiss}/>
-        </ReferenceWrapper>
-      ) : ''}
-      <FormWrapper>
-        <Form fields={[{name: 'comment', type: 'textarea', placeholder: 'Type your comment here...', onKeyDown, onKeyUp}]}
-              data={{comment}}
-              onChange={(name: string, value: string) => setComment(value)}/>
-      </FormWrapper>
-      <ButtonWrapper>
-        <Button onClick={submitComment}
-                mods={['outline', 'rounded', 'primary', 'bold']}
-                disabled={!comment.length}
-        ><Icon name="reply"/>Send</Button>
-      </ButtonWrapper>
+      <Inner>
+        {ctxComment ? (
+          <ReferenceWrapper>
+            <Reference id={ctxComment.id}
+                       title={ctxCommentAuthor ? `${ctxCommentAuthor.name} said:` : 'Reply to comment'}
+                       descr={ctxComment.text}
+                       onCloseClick={onContextCommentDismiss}/>
+          </ReferenceWrapper>
+        ) : ''}
+        <FormWrapper>
+          <Form fields={[{name: 'comment', type: 'textarea', placeholder: 'Type your comment here...', onKeyDown, onKeyUp, className: 'comform-input'}]}
+                data={{comment}}
+                onChange={(name: string, value: string) => setComment(value)}/>
+        </FormWrapper>
+        <ButtonWrapper>
+          <Button onClick={submitComment}
+                  mods={['outline', 'rounded', 'primary', 'bold']}
+                  disabled={!comment.length}
+          ><Icon name="reply"/>Send</Button>
+        </ButtonWrapper>
+      </Inner>
     </Wrapper>
   );
 };
@@ -70,6 +76,17 @@ export const Comform: React.FC<{}> = () => {
 const Wrapper = styled.div`
   position: relative;
   padding: 10px;
+  height: 100px;
+`;
+
+const Inner = styled.div`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 10px;
+  min-height: 100px;
+  background-color: rgba(255, 255, 255, 0.9);
 `;
 
 const FormWrapper = styled.div`

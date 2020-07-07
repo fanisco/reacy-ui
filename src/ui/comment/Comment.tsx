@@ -34,7 +34,8 @@ const Comment: React.FC<IProps> = ({comment, compact, stacked}) => {
     <Wrapper>
       {author ? <Author {...author} time={comment.date} compact={authorCompact}/> : ''}
       <Content {...styledProps}>{comment.text}</Content>
-      <Button onClick={onReplyClick} mods={['inline', 'bold', 'sm']}>Reply</Button>
+      <Button onClick={onReplyClick}
+              mods={['inline', 'bold', styledProps.compact ? 'xs' : 'sm']}>Reply</Button>
       {children ? <Children {...styledProps}>
         <CommentList parentId={comment.id}/>
       </Children> : ''}
