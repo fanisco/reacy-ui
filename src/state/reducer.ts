@@ -12,6 +12,8 @@ export const reducer: Reducer<State, Action> = (state, {type, payload}) => {
       return {...state, comments};
     case 'SET_SETTINGS':
       return {...state, settings: {...state.settings, [payload.name]: payload.value}};
+    case 'SET_CONTEXT_COMMENT_ID':
+      return {...state, contextCommentId: payload.id};
     default:
       return state;
   }

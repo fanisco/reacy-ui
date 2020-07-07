@@ -9,9 +9,12 @@ export type State = {
     }
   };
   settings: any;
+  contextCommentId?: number;
 }
 
 export type Action = {
   type: string,
   [x: string]: any;
 };
+
+export type Dispatch = () => undefined;

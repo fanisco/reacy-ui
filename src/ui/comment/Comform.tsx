@@ -1,13 +1,16 @@
 import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
-import {Form, Button, Icon} from 'reacy-ui';
+import {Form, Button, Icon, Reference} from 'reacy-ui';
 import {Context} from '../../state/Context';
-import {addComment} from '../../state/actions';
+import {addComment, setContextComment} from '../../state/actions';
 
 export const Comform: React.FC<{}> = () => {
   const [comment, setComment] = useState('');
-  const {dispatch} = useContext(Context);
+  const {state, dispatch} = useContext(Context);
   const [ctrlPressed, setCtrlPressed] = useState(false);
+
+  const contextComment = state.comments.list.find(c => c.id === state.contextCommentId);
+
   const submitComment = async () => {
     if (!comment) {
       return;
@@ -17,12 +20,15 @@ export const Comform: React.FC<{}> = () => {
       dispatch,
       text: comment,
       authorId: 1,
-      parentId: 0,
+      parentId: state.contextCommentId || 0,
       date: (new Date()).getTime()
     });
     // Empty the textbox
     setComment('');
+    // Empty context comment
+    setContextComment({dispatch, id: null});
   };
+
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Control') {
       setCtrlPressed(true);
@@ -36,8 +42,16 @@ export const Comform: React.FC<{}> = () => {
       setCtrlPressed(false);
     }
   };
+
+  const onContextCommentDismiss = () => setContextComment({dispatch, id: null});
+
   return (
     <Wrapper>
+      {contextComment ? (
+        <ReferenceWrapper>
+          <Reference id={contextComment.id} text={contextComment.text} mods={['xs', 'primary']} onCloseClick={onContextCommentDismiss}/>
+        </ReferenceWrapper>
+      ) : ''}
       <FormWrapper>
         <Form fields={[{name: 'comment', type: 'textarea', placeholder: 'Type your comment here...', onKeyDown, onKeyUp}]}
               data={{comment}}
@@ -60,6 +74,10 @@ const Wrapper = styled.div`
 
 const FormWrapper = styled.div`
 
+`;
+
+const ReferenceWrapper = styled.div`
+  margin-bottom: 5px;
 `;
 
 const ButtonWrapper = styled.div`

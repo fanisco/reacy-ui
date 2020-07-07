@@ -4,4 +4,4 @@ export default interface IComment {
   authorId: number;
   text: string;
   date: number;
-};
+}

@@ -6,6 +6,10 @@ export const setSettings = ({dispatch, ...payload}: any) => {
   dispatch({type: 'SET_SETTINGS', payload});
 };
 
+export const setContextComment = ({dispatch, ...payload}: any) => {
+  dispatch({type: 'SET_CONTEXT_COMMENT_ID', payload});
+};
+
 // const fetchData = async (action, {dispatch, verb, url, params}) => {
 //     dispatch({type: SET_STATUS, status: FETCHING});
 //     try {

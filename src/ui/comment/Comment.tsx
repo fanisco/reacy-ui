@@ -1,6 +1,8 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components';
+import {Button} from 'reacy-ui';
 import {Context} from '../../state/Context';
+import {setContextComment} from '../../state/actions';
 import Author from './Author';
 import {CommentList} from './CommentList';
 import IComment from '../../core/interface/IComment';
@@ -13,7 +15,7 @@ interface IProps {
 }
 
 const Comment: React.FC<IProps> = ({comment, compact, stacked}) => {
-  const {state} = useContext(Context);
+  const {state, dispatch} = useContext(Context);
   const comments: IComment[] = state.comments.list;
   const authors: IAuthor[] = state.comments.meta.authors;
   const nested = comment.parentId !== 0;
@@ -26,10 +28,13 @@ const Comment: React.FC<IProps> = ({comment, compact, stacked}) => {
   const author = authors.find(a => a.id === comment.authorId);
   const authorCompact = styledProps.compact || styledProps.stacked;
 
+  const onReplyClick = () => setContextComment({dispatch, id: comment.id});
+
   return (
     <Wrapper>
       {author ? <Author {...author} time={comment.date} compact={authorCompact}/> : ''}
       <Content {...styledProps}>{comment.text}</Content>
+      <Button onClick={onReplyClick} mods={['inline', 'bold', 'sm']}>Reply</Button>
       {children ? <Children {...styledProps}>
         <CommentList parentId={comment.id}/>
       </Children> : ''}
@@ -47,7 +52,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div<StyledProps>`
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   font-size: ${props => props.stacked || props.compact ? 14 : 16}px;
 `;
 
