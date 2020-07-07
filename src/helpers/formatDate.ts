@@ -9,5 +9,5 @@ const months = [
  */
 export default function formatDate(date: Date): string {
   // 12 May 2014
-  return date.getDate() +' '+ months[date.getMonth()] +' '+ date.getFullYear()
+  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 }

@@ -1,47 +1,45 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
-import IComment from '../../core/interface/IComment';
+import {Button} from 'reacy-ui';
+import {Context} from '../../state/Context';
+import {setContextComment} from '../../state/actions';
 import Author from './Author';
 import {CommentList} from './CommentList';
+import IComment from '../../core/interface/IComment';
+import IAuthor from '../../core/interface/IAuthor';
 
-interface ICommentProps {
-  comment: IComment
-  compact?: boolean
-  stacked?: boolean
-  depth?: number
+interface IProps {
+  comment: IComment;
+  compact?: boolean;
+  stacked?: boolean;
 }
 
-const Comment = ({comment, compact, stacked, depth = 0}: ICommentProps) => {
-  let author, children;
-
+const Comment: React.FC<IProps> = ({comment, compact, stacked}) => {
+  const {state, dispatch} = useContext(Context);
+  const comments: IComment[] = state.comments.list;
+  const authors: IAuthor[] = state.comments.meta.authors;
+  const nested = comment.parentId !== 0;
   const styledProps = {
-    compact: compact && depth >= 1,
-    stacked: stacked
+    compact: compact,
+    stacked: stacked && nested
   };
 
-  if (comment.author) {
-    author = <Author {...comment.author} time={comment.date} stacked={stacked || compact && depth >= 1}/>
-  }
+  const children = comments.filter(c => c.parentId === comment.id);
+  const author = authors.find(a => a.id === comment.authorId);
+  const authorCompact = styledProps.compact || styledProps.stacked;
 
-  if (comment.children && comment.children.length) {
-    children = (
-      <Children {...styledProps}>
-        {/*<CommentList depth={depth + 1}*/}
-        {/*             comments={comment.children}*/}
-        {/*             compact={compact}*/}
-        {/*             stacked={stacked}/>*/}
-      </Children>
-    )
-  }
+  const onReplyClick = () => setContextComment({dispatch, id: comment.id});
 
   return (
     <Wrapper>
-      {author}
-      <Content>{comment.text}</Content>
-      {children}
+      {author ? <Author {...author} time={comment.date} compact={authorCompact}/> : ''}
+      <Content {...styledProps}>{comment.text}</Content>
+      <Button onClick={onReplyClick} mods={['inline', 'bold', 'sm']}>Reply</Button>
+      {children ? <Children {...styledProps}>
+        <CommentList parentId={comment.id}/>
+      </Children> : ''}
     </Wrapper>
   )
-  // }
 };
 
 interface StyledProps {
@@ -53,13 +51,14 @@ const Wrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-const Content = styled.div`
-  margin-bottom: 5px;
+const Content = styled.div<StyledProps>`
+  margin-bottom: 2px;
+  font-size: ${props => props.stacked || props.compact ? 14 : 16}px;
 `;
 
 const Children = styled.div<StyledProps>`
   margin-top: 10px;
-  padding-left: ${props => props.compact ? 0 : props.stacked ? 29 : 37}px;
+  padding-left: ${props => props.stacked ? 0 : props.compact ? 29 : 37}px;
   transition: padding-left 0.15s ease-in-out;
 `;
 

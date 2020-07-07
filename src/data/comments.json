@@ -1,11 +1,11 @@
 {
-  "rec": [
-    {"id": 1, "author_id": 1, "comment_id": 0, "text": "I did not hit her! It’s not true! It’s bullshit! I did not hit her! I did not! (he throws a water bottle to the floor) Oh, hi Mark.", "date": 994330521000},
-    {"id": 2, "author_id": 2, "comment_id": 1, "text": "(holding a football) Oh hey Johnny, what’s up?", "date": 994330521000},
-    {"id": 3, "author_id": 1, "comment_id": 2, "text": "I have a problem with Lisa. She says that I hit her.", "date": 994330521000},
-    {"id": 4, "author_id": 2, "comment_id": 3, "text": "What? Well did you?", "date": 994330521000},
-    {"id": 5, "author_id": 1, "comment_id": 4, "text": "Well I’m just sitting up here thinking, you know? I got a question for you.", "date": 994330521000},
-    {"id": 6, "author_id": 2, "comment_id": 5, "text": "Yeah.", "date": 994330521000}
+  "list": [
+    {"id": 1, "authorId": 1, "parentId": 0, "text": "I did not hit her! It’s not true! It’s bullshit! I did not hit her! I did not! (he throws a water bottle to the floor) Oh, hi Mark.", "date": 994330521000},
+    {"id": 2, "authorId": 2, "parentId": 1, "text": "(holding a football) Oh hey Johnny, what’s up?", "date": 994330521000},
+    {"id": 3, "authorId": 1, "parentId": 2, "text": "I have a problem with Lisa. She says that I hit her.", "date": 994330521000},
+    {"id": 4, "authorId": 2, "parentId": 3, "text": "What? Well did you?", "date": 994330521000},
+    {"id": 5, "authorId": 1, "parentId": 4, "text": "Well I’m just sitting up here thinking, you know? I got a question for you.", "date": 994330521000},
+    {"id": 6, "authorId": 2, "parentId": 5, "text": "Yeah.", "date": 994330521000}
   ],
   "meta": {
     "authors": [

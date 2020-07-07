@@ -1,3 +1,3 @@
-export default interface IData {
-  [x: string]: any
+export default interface IData<T = {}> {
+  [x: string]: T
 }

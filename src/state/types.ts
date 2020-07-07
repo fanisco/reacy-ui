@@ -1,16 +1,20 @@
-import {IDataSet, IUnmarkedDataSet} from '../core/interface/IDataSet';
+import IComment from '../core/interface/IComment';
+import IAuthor from '../core/interface/IAuthor';
 
 export type State = {
-  comments: IDataSet;
+  comments: {
+    list: IComment[];
+    meta: {
+      authors: IAuthor[];
+    }
+  };
   settings: any;
-}
-
-export type RawStateData = {
-  comments: IUnmarkedDataSet;
-  settings: any;
+  contextCommentId?: number;
 }
 
 export type Action = {
   type: string,
   [x: string]: any;
 };
+
+export type Dispatch = () => undefined;
