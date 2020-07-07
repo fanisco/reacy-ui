@@ -89,6 +89,12 @@ export namespace Icons {
 }
 
 export namespace Misc {
+  export interface IReference extends Core.IComponent {
+    id: string | number;
+    text: string;
+    href?: string;
+    onCloseClick?: (e: any) => void;
+  }
   export interface Empty {
     heading: string;
     text: string;

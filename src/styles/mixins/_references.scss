@@ -1,0 +1,81 @@
+@mixin size-reference($className, $spacingY, $spacingX, $fontSize, $borderRadius) {
+  padding: #{$spacingY}$units #{$spacingX}$units;
+  font-size: #{$fontSize}$units;
+  border-radius: #{$borderRadius}$units;
+
+  & .#{$className}__text {
+    padding-left: #{$spacingX / 2}$units;
+    padding-right: #{$spacingX / 2}$units;
+  }
+}
+
+@mixin sizes-reference($className) {
+  @include size-reference($className, $spacingY_md, $spacingX_md, $fontSize_md, 2);
+
+  &_xs {
+    @include size-reference($className, $spacingY_xs, $spacingX_xs, $fontSize_xs, 1);
+  }
+  //&_sm {
+  //  @include size-reference($className, $fontSize_sm, 1);
+  //}
+  //&_md {
+  //  @include size-reference($className, $fontSize_md, 2);
+  //}
+  //&_lg {
+  //  @include size-reference($className, $fontSize_lg, 3);
+  //}
+  //&_xl {
+  //  @include size-reference($className, $fontSize_xl, 3);
+  //}
+}
+
+@mixin colorize-reference(
+  $foreground,
+  $foregroundHover,
+  $foregroundActive,
+  $background,
+  $backgroundHover,
+  $backgroundActive,
+  $border,
+  $borderHover,
+  $borderActive
+) {
+  background-color: #{$background}30;
+
+  & .#{$className}__text {
+    border-color: $border;
+    color: $foreground;
+  }
+}
+
+@mixin colorize-reference-default($className) {
+  @include colorize-reference(
+      map_get($colors_default, link),
+      map_get($colors_default, linkHover),
+      map_get($colors_default, linkActive),
+      map_get($colors_default, border),
+      map_get($colors_default, borderHover),
+      map_get($colors_default, borderActive),
+      map_get($colors_default, border),
+      map_get($colors_default, borderHover),
+      map_get($colors_default, borderActive)
+  );
+}
+
+@mixin colorize-button-various($className) {
+  @each $style, $set in $colors {
+    &_#{$style} {
+      @include colorize-reference(
+          map_get($set, link),
+          map_get($set, linkHover),
+          map_get($set, linkActive),
+          map_get($set, background),
+          map_get($set, backgroundHover),
+          map_get($set, backgroundActive),
+          map_get($set, border),
+          map_get($set, borderHover),
+          map_get($set, borderActive)
+      );
+    }
+  }
+}

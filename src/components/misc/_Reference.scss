@@ -1,0 +1,14 @@
+$className: rcy-reference;
+.#{$className} {
+  display: flex;
+  justify-content: space-between;
+
+  &__text {
+    margin: 0;
+    border-left: 2px solid;
+  }
+
+  @include sizes-reference($className);
+  @include colorize-reference-default($className);
+  @include colorize-button-various($className);
+}
