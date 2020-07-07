@@ -3,14 +3,14 @@ $className: rcy-input;
   display: block;
   width: 100%;
   border: 1px solid;
-  transition: all 0.15s ease-in-out;
 
-  &:hover { transition: all 0.15s ease-in-out 0.15s; }
   &:focus { outline: 0 none; }
+
   @include sizes();
   @include colorize-input-default();
   @include colorize-input-various($className);
   @include appearance($className);
+
   @at-root {
     textarea#{&} {
       height: auto;

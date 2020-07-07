@@ -90,3 +90,15 @@
     }
   }
 }
+
+@mixin easing(
+  $props: $easingProps,
+  $time: $easingTime,
+  $func: $easingFunc,
+  $delay: $easingDelay
+) {
+  transition-property: $props;
+  transition-duration: $time;
+  transition-timing-function: $func;
+  transition-delay: $delay;
+}

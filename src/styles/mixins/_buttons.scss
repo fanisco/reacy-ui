@@ -101,6 +101,8 @@
     border-color: $borderDisabled;
     color: $foregroundDisabled;
   }
+
+  @include easing();
 }
 @mixin colorize-button-various($className) {
   @each $style, $set in $colors {

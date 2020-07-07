@@ -2,3 +2,9 @@
 $fontFamily: "Roboto", sans-serif;
 $lineHeight: 1.5;
 $units: px;
+
+// Easing
+$easingProps: background-color, border-color, color, box-shadow;
+$easingTime: 0.15s;
+$easingFunc: ease-in-out;
+$easingDelay: 0;

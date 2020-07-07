@@ -42,7 +42,7 @@
       border-color: $borderDisabled;
       color: $foregroundDisabled;
     }
-  }  
+  }
 }
 @mixin colorize-input-default {
   @include colorize-input(
@@ -63,6 +63,10 @@
     map_get($colors_primary, linkActive),
     map_get($colors_primary, linkDisabled)
   );
+
+  @include easing();
+  &:hover { transition-delay: 0.25s; }
+  &:focus { transition-delay: 0s; }
 }
 @mixin colorize-input-various($className) {
   @each $style, $set in $colors {
