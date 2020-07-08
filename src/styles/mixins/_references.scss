@@ -60,7 +60,7 @@
   );
 }
 
-@mixin colorize-button-various($className) {
+@mixin colorize-reference-various($className) {
   @each $style, $set in $colors {
     &_#{$style} {
       @include colorize-reference(

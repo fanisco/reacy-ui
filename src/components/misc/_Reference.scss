@@ -15,5 +15,5 @@ $className: rcy-reference;
 
   @include sizes-reference($className);
   @include colorize-reference-default($className);
-  @include colorize-button-various($className);
+  @include colorize-reference-various($className);
 }

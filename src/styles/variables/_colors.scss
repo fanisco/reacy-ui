@@ -79,10 +79,10 @@ $colors_default: (
   borderHover: map_get($def_palette, l500),
   borderActive: map_get($def_palette, l500),
   borderDisabled: map_get($def_palette, l400),
-  link: map_get($pri_palette, a400),
-  linkHover: map_get($pri_palette, a500),
-  linkActive: map_get($pri_palette, a500),
-  linkDisabled: map_get($def_palette, l500)
+  link: map_get($def_palette, d300),
+  linkHover: map_get($def_palette, d400),
+  linkActive: map_get($def_palette, d500),
+  linkDisabled: map_get($def_palette, l100)
 );
 $colors_primary: (
   foreground: map_get($def_palette, l100),
