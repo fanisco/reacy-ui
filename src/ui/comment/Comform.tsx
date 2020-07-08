@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import styled from 'styled-components';
-import {Form, Button, Icon, Reference} from 'reacy-ui';
+import {Forms, Buttons, Misc, Layout} from 'reacy-ui';
 import {Context} from '../../state/Context';
 import {addComment, setContextComment} from '../../state/actions';
 
@@ -12,7 +12,7 @@ export const Comform: React.FC<{}> = () => {
   const ctxComment = state.comments.list.find(c => c.id === state.contextCommentId);
   const ctxCommentAuthor = state.comments.meta.authors.find(a => a.id === (ctxComment && ctxComment.authorId));
 
-  const submitComment = async () => {
+  const submit = async () => {
     if (!comment) {
       return;
     }
@@ -35,7 +35,7 @@ export const Comform: React.FC<{}> = () => {
       setCtrlPressed(true);
     }
     if (e.key === 'Enter' && ctrlPressed) {
-      submitComment();
+      submit();
     }
   };
   const onKeyUp = (e: KeyboardEvent) => {
@@ -43,62 +43,89 @@ export const Comform: React.FC<{}> = () => {
       setCtrlPressed(false);
     }
   };
-
+  const onCommentChange = (v: string) => setComment(v);
   const onContextCommentDismiss = () => setContextComment({dispatch, id: null});
 
   return (
-    <Wrapper>
-      <Inner>
-        {ctxComment ? (
-          <ReferenceWrapper>
-            <Reference id={ctxComment.id}
-                       title={ctxCommentAuthor ? `${ctxCommentAuthor.name} said:` : 'Reply to comment'}
-                       descr={ctxComment.text}
-                       onCloseClick={onContextCommentDismiss}/>
-          </ReferenceWrapper>
-        ) : ''}
-        <FormWrapper>
-          <Form fields={[{name: 'comment', type: 'textarea', placeholder: 'Type your comment here...', onKeyDown, onKeyUp, className: 'comform-input'}]}
-                data={{comment}}
-                onChange={(name: string, value: string) => setComment(value)}/>
-        </FormWrapper>
-        <ButtonWrapper>
-          <Button onClick={submitComment}
+    <Wrapper isContextComment={!!ctxComment}>
+      <Pinned>
+        <Layout.Container>
+          <Inner>
+            {ctxComment ? (
+              <ReferenceWrapper>
+                <Misc.Reference
+                  id={ctxComment.id}
+                  title={ctxCommentAuthor ? `${ctxCommentAuthor.name} said:` : 'Reply to comment'}
+                  descr={ctxComment.text.length >= 40 ? ctxComment.text.slice(0, 40) + '...' : ctxComment.text}
+                  onCloseClick={onContextCommentDismiss}
+                />
+              </ReferenceWrapper>
+            ) : ''}
+            <FormWrapper>
+              <CommentArea
+                name="comment"
+                type="textarea"
+                value={comment}
+                placeholder="Type your comment here..."
+                {...{onKeyDown, onKeyUp, onChange: onCommentChange}}
+              />
+              <ButtonWrapper>
+                <Buttons.Button
+                  onClick={submit}
                   mods={['outline', 'rounded', 'primary', 'bold']}
                   disabled={!comment.length}
-          ><Icon name="reply"/>Send</Button>
-        </ButtonWrapper>
-      </Inner>
+                ><Misc.Icon name="paper-plane"/> Send</Buttons.Button>
+              </ButtonWrapper>
+            </FormWrapper>
+          </Inner>
+        </Layout.Container>
+      </Pinned>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{isContextComment?: boolean}>`
   position: relative;
   padding: 10px;
-  height: 100px;
+  height: ${props => props.isContextComment ? 140 : 80}px;
+  transition: height 0.35s ease-in-out;
 `;
 
-const Inner = styled.div`
+const Pinned = styled.div`
   position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
+`;
+
+const Inner = styled.div`
+  width: 100%;
   padding: 10px;
-  min-height: 100px;
-  background-color: rgba(255, 255, 255, 0.9);
 `;
 
 const FormWrapper = styled.div`
+  position: relative;
+`;
 
+const CommentArea = styled(Forms.Textarea)`
+  textarea& {
+    height: 80px;
+    resize: none;
+    padding-right: 120px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
 `;
 
 const ReferenceWrapper = styled.div`
   margin-bottom: 5px;
+  background-color: white;
 `;
 
 const ButtonWrapper = styled.div`
   position: absolute;
-  right: 20px;
-  bottom: 20px;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+  margin: auto;
+  height: 40px;
 `;

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import styled from 'styled-components';
-import {Button} from 'reacy-ui';
+import {Buttons} from 'reacy-ui';
 import {Context} from '../../state/Context';
 import {setContextComment} from '../../state/actions';
 import Author from './Author';
@@ -34,8 +34,8 @@ const Comment: React.FC<IProps> = ({comment, compact, stacked}) => {
     <Wrapper>
       {author ? <Author {...author} time={comment.date} compact={authorCompact}/> : ''}
       <Content {...styledProps}>{comment.text}</Content>
-      <Button onClick={onReplyClick}
-              mods={['inline', 'bold', styledProps.compact ? 'xs' : 'sm']}>Reply</Button>
+      <Buttons.Button onClick={onReplyClick}
+              mods={['inline', 'bold', styledProps.compact ? 'xs' : 'sm']}>Reply</Buttons.Button>
       {children ? <Children {...styledProps}>
         <CommentList parentId={comment.id}/>
       </Children> : ''}

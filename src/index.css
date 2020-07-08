@@ -1,6 +1,1 @@
 @import '~reacy-ui/lib/index.css';
-
-textarea.comform-input {
-	height: 80px;
-	resize: none;
-}
