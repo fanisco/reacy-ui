@@ -45,6 +45,12 @@ export namespace Forms {
   }
 }
 
+export namespace Layout {
+  export interface IContainer extends Core.IComponent {
+
+  }
+}
+
 export namespace Tables {
   type Cell = {
     id: string;

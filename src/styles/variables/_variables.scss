@@ -1,10 +1,54 @@
 // Font
-$fontFamily: "Roboto", sans-serif;
-$lineHeight: 1.5;
-$units: px;
+$fontFamily: "Roboto", sans-serif !default;
+$lineHeight: 1.5 !default;
+$units: px !default;
 
 // Easing
-$easingProps: background-color, border-color, color, box-shadow;
-$easingTime: 0.15s;
-$easingFunc: ease-in-out;
-$easingDelay: 0;
+$easingProps: background-color, border-color, color, box-shadow !default;
+$easingTime: 0.15s !default;
+$easingFunc: ease-in-out !default;
+$easingDelay: 0 !default;
+
+// Responsivity & Grid
+$breakpoints: (
+  desktop: 840px,
+  tablet: 600px,
+  phone: 0px,
+) !default;
+$columns: (
+  desktop: 12,
+  tablet: 8,
+  phone: 4,
+) !default;
+$default-margin: (
+  desktop: 24px,
+  tablet: 16px,
+  phone: 16px,
+) !default;
+$default-gutter: (
+  desktop: 24px,
+  tablet: 16px,
+  phone: 16px,
+) !default;
+$column-width: (
+  desktop: 72px,
+  tablet: 72px,
+  phone: 72px,
+) !default;
+
+// Css vars
+:root {
+  --rcy-font-family: #{$fontFamily};
+
+  // Responsive
+  @each $size, $count in $columns {
+    @include media-query($size) {
+      $margin: map_get($default-margin, $size);
+      $gutter: map_get($default-gutter, $size);
+      $width: map_get($column-width, $size);
+      --rcy-container-width-#{$size}: #{$count * ($width + $gutter) + $margin * 2};
+      --rcy-margin-#{$size}: #{$margin};
+      --rcy-gutter-#{$size}: #{$gutter};
+    }
+  }
+}

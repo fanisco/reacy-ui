@@ -1,0 +1,4 @@
+$className: rcy-container;
+.#{$className} {
+  @include container();
+}
