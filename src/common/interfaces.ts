@@ -51,6 +51,12 @@ export namespace Layout {
   }
 }
 
+export namespace Lists {
+  export interface IList extends Core.IComponent {
+    
+  }
+}
+
 export namespace Popups {
   export interface IPopup extends Core.IComponent {
 
