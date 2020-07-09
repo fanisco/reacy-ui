@@ -46,9 +46,9 @@
   }
 }
 
-@mixin appearance($className) {
+@mixin appearance() {
   box-sizing: border-box;
-  font-family: $fontFamily;
+  font-family: var(--rcy-font-family);
   font-weight: 400;
   line-height: $lineHeight;
   text-align: left;

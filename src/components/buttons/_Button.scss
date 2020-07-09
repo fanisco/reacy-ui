@@ -10,7 +10,9 @@ $className: rcy-button;
   &:focus { outline: 0 none; }
 
   @include sizes();
+  @include easing();
+  @include appearance();
   @include colorize-button-default();
-  @include colorize-button-various($className);
-  @include appearance($className);
+  @include colorize-button-various();
+  @include colorize-button-disabled();
 }

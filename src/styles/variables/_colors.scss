@@ -1,3 +1,7 @@
+@function hexToRGBString($hexColor) {
+  @return "#{red($hexColor)}, #{green($hexColor)}, #{blue($hexColor)}";
+}
+
 // Colors
 $def_palette: (
   d500: #050608,
@@ -67,8 +71,8 @@ $dan_palette: (
   a100: #FFE6D7
 );
 $colors_default: (
-  foreground: map_get($def_palette, d500),
-  foregroundHover: map_get($def_palette, d500),
+  foreground: map_get($def_palette, d300),
+  foregroundHover: map_get($def_palette, d400),
   foregroundActive: map_get($def_palette, d500),
   foregroundDisabled: map_get($def_palette, l100),
   background: map_get($def_palette, l100),
@@ -83,7 +87,7 @@ $colors_default: (
   linkHover: map_get($def_palette, d400),
   linkActive: map_get($def_palette, d500),
   linkDisabled: map_get($def_palette, l100)
-);
+) !default;
 $colors_primary: (
   foreground: map_get($def_palette, l100),
   foregroundHover: map_get($def_palette, l100),
@@ -181,3 +185,73 @@ $colors: (
   warning: $colors_warning,
   danger: $colors_danger
 );
+
+
+// Css vars
+:root {
+  // Sets
+  @each $prop, $color in $colors_default {
+    --rcy-color-default-#{$prop}: #{hexToRGBString($color)};
+  }
+  @each $style, $set in $colors {
+    @each $prop, $color in $set {
+      --rcy-color-#{$style}-#{$prop}: #{hexToRGBString($color)};
+    }
+  }
+
+  // Buttons
+  --rcy-button-default-foreground: var(--rcy-color-default-foreground);
+  --rcy-button-default-foregroundHover: var(--rcy-color-default-foregroundHover);
+  --rcy-button-default-foregroundActive: var(--rcy-color-default-foregroundActive);
+  --rcy-button-default-background: var(--rcy-color-default-background);
+  --rcy-button-default-backgroundHover: var(--rcy-color-default-backgroundHover);
+  --rcy-button-default-backgroundActive: var(--rcy-color-default-backgroundActive);
+  --rcy-button-default-border: var(--rcy-color-default-border);
+  --rcy-button-default-borderHover: var(--rcy-color-default-borderHover);
+  --rcy-button-default-borderActive: var(--rcy-color-default-borderActive);
+  --rcy-button-default-link: var(--rcy-color-default-link);
+  --rcy-button-default-linkHover: var(--rcy-color-default-linkHover);
+  --rcy-button-default-linkActive: var(--rcy-color-default-linkActive);
+  // Buttons colorized
+  @each $style, $set in $colors {
+    --rcy-button-#{$style}-foreground: var(--rcy-color-#{$style}-foreground);
+    --rcy-button-#{$style}-foregroundHover: var(--rcy-color-#{$style}-foregroundHover);
+    --rcy-button-#{$style}-foregroundActive: var(--rcy-color-#{$style}-foregroundActive);
+    --rcy-button-#{$style}-background: var(--rcy-color-#{$style}-background);
+    --rcy-button-#{$style}-backgroundHover: var(--rcy-color-#{$style}-backgroundHover);
+    --rcy-button-#{$style}-backgroundActive: var(--rcy-color-#{$style}-backgroundActive);
+    --rcy-button-#{$style}-border: var(--rcy-color-#{$style}-background);
+    --rcy-button-#{$style}-borderHover: var(--rcy-color-#{$style}-backgroundHover);
+    --rcy-button-#{$style}-borderActive: var(--rcy-color-#{$style}-backgroundActive);
+    --rcy-button-#{$style}-link: var(--rcy-color-#{$style}-link);
+    --rcy-button-#{$style}-linkHover: var(--rcy-color-#{$style}-linkHover);
+    --rcy-button-#{$style}-linkActive: var(--rcy-color-#{$style}-linkActive);
+  }
+  // Buttons disabled
+  --rcy-button-foregroundDisabled: var(--rcy-color-default-foregroundDisabled);
+  --rcy-button-backgroundDisabled: var(--rcy-color-default-backgroundDisabled);
+  --rcy-button-borderDisabled: var(--rcy-color-default-borderDisabled);
+  --rcy-button-linkDisabled: var(--rcy-color-default-linkDisabled);
+
+  // Inputs common
+  --rcy-input-foreground: #{map_get($colors_default, foreground)};
+  --rcy-input-foregroundHover: #{map_get($colors_default, foregroundHover)};
+  --rcy-input-foregroundActive: #{map_get($colors_default, foregroundActive)};
+  --rcy-input-background: #{map_get($colors_default, background)};
+  --rcy-input-backgroundHover: #{map_get($colors_default, backgroundHover)};
+  --rcy-input-backgroundActive: #{map_get($colors_default, backgroundActive)};
+  // Inputs default
+  --rcy-input-default-border: #{map_get($colors_default, border)};
+  --rcy-input-default-borderHover: #{map_get($colors_default, borderHover)};
+  --rcy-input-default-borderActive: #{map_get($colors_default, borderActive)};
+  // Inputs colorized
+  @each $style, $set in $colors {
+    --rcy-input-#{$style}-border: #{map_get($set, border)};
+    --rcy-input-#{$style}-borderHover: #{map_get($set, borderHover)};
+    --rcy-input-#{$style}-borderActive: #{map_get($set, borderActive)};
+  }
+  // Inputs disabled
+  --rcy-input-foregroundDisabled: #{map_get($colors_default, foregroundDisabled)};
+  --rcy-input-backgroundDisabled: #{map_get($colors_default, backgroundDisabled)};
+  --rcy-input-borderDisabled: #{map_get($colors_primary, borderDisabled)};
+}

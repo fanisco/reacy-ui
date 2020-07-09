@@ -1,94 +1,39 @@
-@mixin colorize-input(
-  $foreground,
-  $foregroundHover,
-  $foregroundActive,
-  $foregroundDisabled,
-  $background,
-  $backgroundHover,
-  $backgroundActive,
-  $backgroundDisabled,
-  $border,
-  $borderHover,
-  $borderActive,
-  $borderDisabled,
-  $link,
-  $linkHover,
-  $linkActive,
-  $linkDisabled
-) {
-  background-color: $background;
-  border-color: $border;
-  color: $foreground;
+@mixin colorize-input($style) {
+  background-color: var(--rcy-input-background);
+  border-color: var(--rcy-input-#{$style}-border);
+  color: var(--rcy-input-foreground);
 
   &:hover {
-    background-color: $background;
-    border-color: $borderHover;
-    color: $foregroundHover;
+    background-color: var(--rcy-input-background);
+    border-color: var(--rcy-input-#{$style}-borderHover);
+    color: var(--rcy-input-foregroundHover);
   }
 
   &:focus {
-    background: $background;
-    border-color: $borderActive;
-    color: $foregroundActive;
-    box-shadow: 0 8px 16px #{$link}46,
-                0 2px 4px #{$link}24;
+    background: var(--rcy-input-background);
+    border-color: var(--rcy-input-#{$style}-borderActive);
+    color: var(--rcy-input-foregroundActive);
+    box-shadow: 0 8px 16px #{var(--rcy-input-#{$style}-border)}46,
+                0 2px 4px #{var(--rcy-input-#{$style}-border)}24;
   }
 
   &:disabled {
     cursor: default;
 
     &, &:hover, &:focus {
-      background-color: $backgroundDisabled;
-      border-color: $borderDisabled;
-      color: $foregroundDisabled;
+      background-color: var(--rcy-input-backgroundDisabled);
+      border-color: var(--rcy-input-borderDisabled);
+      color: var(--rcy-input-foregroundDisabled);
     }
   }
 }
 @mixin colorize-input-default {
-  @include colorize-input(
-    map_get($colors_default, foreground),
-    map_get($colors_default, foregroundHover),
-    map_get($colors_default, foregroundActive),
-    map_get($colors_default, foregroundDisabled),
-    map_get($colors_default, background),
-    map_get($colors_default, backgroundHover),
-    map_get($colors_default, backgroundActive),
-    map_get($colors_default, backgroundDisabled),
-    map_get($colors_default, border),
-    map_get($colors_primary, borderHover),
-    map_get($colors_primary, borderActive),
-    map_get($colors_primary, borderDisabled),
-    map_get($colors_primary, link),
-    map_get($colors_primary, linkHover),
-    map_get($colors_primary, linkActive),
-    map_get($colors_primary, linkDisabled)
-  );
-
-  @include easing();
-  &:hover { transition-delay: 0.25s; }
-  &:focus { transition-delay: 0s; }
+  @include colorize-input(default);
 }
-@mixin colorize-input-various($className) {
+@mixin colorize-input-various() {
   @each $style, $set in $colors {
     &_#{$style} {
-      @include colorize-input(
-        map_get($colors_default, foreground),
-        map_get($colors_default, foregroundHover),
-        map_get($colors_default, foregroundActive),
-        map_get($colors_default, foregroundDisabled),
-        map_get($colors_default, background),
-        map_get($colors_default, backgroundHover),
-        map_get($colors_default, backgroundActive),
-        map_get($colors_default, backgroundDisabled),
-        map_get($set, border),
-        map_get($set, borderHover),
-        map_get($set, borderActive),
-        map_get($set, borderDisabled),
-        map_get($set, link),
-        map_get($set, linkHover),
-        map_get($set, linkActive),
-        map_get($set, linkDisabled)
-      );
+      @include colorize-input($style);
     }
   }
 }
