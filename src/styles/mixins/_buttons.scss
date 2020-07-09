@@ -1,28 +1,41 @@
-@mixin colorize-button($style) {
-  background-color: var(--rcy-button-#{$style}-background);
-  border-color: var(--rcy-button-#{$style}-border);
-  color: var(--rcy-button-#{$style}-foreground);
+@mixin colorize-button(
+  $foreground,
+  $foregroundHover,
+  $foregroundActive,
+  $background,
+  $backgroundHover,
+  $backgroundActive,
+  $border,
+  $borderHover,
+  $borderActive,
+  $link,
+  $linkHover,
+  $linkActive
+) {
+  background-color: var($background);
+  border-color: var($border);
+  color: var($foreground);
   &:hover {
-    background-color: var(--rcy-button-#{$style}-backgroundHover);
-    border-color: var(--rcy-button-#{$style}-borderHover);
-    color: var(--rcy-button-#{$style}-foregroundHover);
+    background-color: var($backgroundHover);
+    border-color: var($borderHover);
+    color: var($foregroundHover);
   }
   &:active:focus {
-    background-color: var(--rcy-button-#{$style}-backgroundActive);
-    border-color: var(--rcy-button-#{$style}-borderActive);
-    color: var(--rcy-button-#{$style}-foregroundActive);
+    background-color: var($backgroundActive);
+    border-color: var($borderActive);
+    color: var($foregroundActive);
   }
 
   &.#{$className}_outline {
     background-color: transparent;
-    color: var(--rcy-button-#{$style}-link);
+    color: var($link);
     &:hover {
-      background-color: #{var(--rcy-button-#{$style}-backgroundHover)}30;
-      color: var(--rcy-button-#{$style}-linkHover);
+      background-color: #{'rgba(var(#{$backgroundHover}RGB), 0.3)'};
+      color: var($linkHover);
     }
     &:active:focus {
-      background-color: #{var(--rcy-button-#{$style}-backgroundActive)}30;
-      color: var(--rcy-button-#{$style}-linkActive);
+      background-color: #{'rgba(var(#{$backgroundActive}RGB), 0.3)'};
+      color: var($linkActive);
     }
   }
 
@@ -30,8 +43,8 @@
     box-shadow: 0 2px 4px rgba(96, 97, 112, 0.16),
                 0 0 1px rgba(40, 41, 61, 0.04);
     &:hover {
-      box-shadow: 0 2px 4px #{var(--rcy-button-#{$style}-border)}56,
-                  0 0 1px #{var(--rcy-button-#{$style}-border)}34;
+      box-shadow: 0 2px 4px #{'rgba(var(#{$border}RGB), 0.56)'},
+                  0 0 1px #{'rgba(var(#{$border}RGB), 0.34)'};
     }
   }
 
@@ -39,12 +52,12 @@
     height: auto;
     padding: 0;
     border-width: 0;
-    color: var(--rcy-button-#{$style}-link);
+    color: var($link);
     &:hover {
-      color: var(--rcy-button-#{$style}-linkHover);
+      color: var($linkHover);
     }
     &:active:focus {
-      color: var(--rcy-button-#{$style}-linkActive);
+      color: var($linkActive);
     }
     &, &:hover, &:active:focus {
       background-color: transparent;
@@ -54,29 +67,60 @@
   }
 }
 @mixin colorize-button-default() {
-  @include colorize-button(default);
+  @include colorize-button(
+    --rcy-color-default-foreground,
+    --rcy-color-default-foregroundHover,
+    --rcy-color-default-foregroundActive,
+    --rcy-color-default-background,
+    --rcy-color-default-backgroundHover,
+    --rcy-color-default-backgroundActive,
+    --rcy-color-default-border,
+    --rcy-color-default-borderHover,
+    --rcy-color-default-borderActive,
+    --rcy-color-default-link,
+    --rcy-color-default-linkHover,
+    --rcy-color-default-linkActive
+  );
 }
-@mixin colorize-button-disabled() {
+@mixin colorize-button-disabled(
+  $foregroundDisabled: --rcy-color-default-foregroundDisabled,
+  $backgroundDisabled: --rcy-color-default-backgroundDisabled,
+  $borderDisabled: --rcy-color-default-borderDisabled,
+  $linkDisabled: --rcy-color-default-linkDisabled
+) {
   &:disabled {
     cursor: default;
     &, &:hover, &:active:focus {
-      background-color: var(--rcy-button-backgroundDisabled);
-      border-color: var(--rcy-button-borderDisabled);
-      color: var(--rcy-button-foregroundDisabled);
+      background-color: var($backgroundDisabled);
+      border-color: var($borderDisabled);
+      color: var($foregroundDisabled);
     }
   }
   .#{$className}_inline:disabled {
     &, &:hover, &:active:focus {
       background-color: transparent;
       border-color: transparent;
-      color: var(--rcy-button-linkDisabled);
+      color: var($linkDisabled);
     }
   }
 }
 @mixin colorize-button-various() {
   @each $style, $set in $colors {
     &_#{$style} {
-      @include colorize-button($style);
+      @include colorize-button(
+          --rcy-color-#{$style}-foreground,
+          --rcy-color-#{$style}-foregroundHover,
+          --rcy-color-#{$style}-foregroundActive,
+          --rcy-color-#{$style}-background,
+          --rcy-color-#{$style}-backgroundHover,
+          --rcy-color-#{$style}-backgroundActive,
+          --rcy-color-#{$style}-border,
+          --rcy-color-#{$style}-borderHover,
+          --rcy-color-#{$style}-borderActive,
+          --rcy-color-#{$style}-link,
+          --rcy-color-#{$style}-linkHover,
+          --rcy-color-#{$style}-linkActive
+      );
     }
   }
 }
