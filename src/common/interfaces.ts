@@ -51,6 +51,12 @@ export namespace Layout {
   }
 }
 
+export namespace Popups {
+  export interface IPopup extends Core.IComponent {
+
+  }
+}
+
 export namespace Tables {
   type Cell = {
     id: string;
