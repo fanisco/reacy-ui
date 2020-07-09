@@ -67,6 +67,7 @@ export const Comform: React.FC<{}> = () => {
                 type="textarea"
                 value={comment}
                 placeholder="Type your comment here..."
+                mods={['shadow']}
                 {...{onKeyDown, onKeyUp, onChange: onCommentChange}}
               />
               <ButtonWrapper>

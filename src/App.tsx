@@ -6,7 +6,7 @@ import {Comform} from './ui/comment/Comform';
 import {Settings} from './ui/settings/Settings';
 import {CommentList} from './ui/comment/CommentList';
 
-import {Layout} from 'reacy-ui';
+import {Layout, Popups} from 'reacy-ui';
 
 export const App: React.FC = () => {
   return (
@@ -16,6 +16,7 @@ export const App: React.FC = () => {
         <CommentList/>
         <Comform/>
       </Layout.Container>
+      <Popups.Popup/>
     </Provider>
   );
 };
