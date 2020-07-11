@@ -1,9 +1,9 @@
 // Sizes
-$fontSize_xs: 12;
-$fontSize_sm: 14;
-$fontSize_md: 16;
-$fontSize_lg: 20;
-$fontSize_xl: 24;
+$fontSize_xs: 12px;
+$fontSize_sm: 14px;
+$fontSize_md: 16px;
+$fontSize_lg: 20px;
+$fontSize_xl: 24px;
 
 $headingFontSize_xs: 16;
 $headingFontSize_sm: 20;
@@ -40,3 +40,12 @@ $borderRadius_sm: 3;
 $borderRadius_md: 5;
 $borderRadius_lg: 5;
 $borderRadius_xl: 5;
+
+// Css vars
+:root {
+  --rcy-fs-xs: #{$fontSize_xs};
+  --rcy-fs-sm: #{$fontSize_sm};
+  --rcy-fs-md: #{$fontSize_md};
+  --rcy-fs-lg: #{$fontSize_lg};
+  --rcy-fs-xl: #{$fontSize_xl};
+}
