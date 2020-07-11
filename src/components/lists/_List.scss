@@ -4,6 +4,13 @@ $className: rcy-list;
   padding: 0;
   list-style: none;
 
+  &_flex {
+    &-rows {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
   &__item {
     &:first-child {
       
