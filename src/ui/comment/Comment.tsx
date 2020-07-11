@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import {Buttons} from 'reacy-ui';
 import {Context} from '../../state/Context';
 import {setContextComment} from '../../state/actions';
-import Author from './Author';
+import {Author} from '../persons/Author';
 import {CommentList} from './CommentList';
 import IComment from '../../core/interface/IComment';
-import IAuthor from '../../core/interface/IAuthor';
+import IPerson from '../../core/interface/IPerson';
 
 interface IProps {
   comment: IComment;
@@ -17,7 +17,7 @@ interface IProps {
 const Comment: React.FC<IProps> = ({comment, compact, stacked}) => {
   const {state, dispatch} = useContext(Context);
   const comments: IComment[] = state.comments.list;
-  const authors: IAuthor[] = state.comments.meta.authors;
+  const authors: IPerson[] = state.comments.meta.authors;
   const nested = comment.parentId !== 0;
   const styledProps = {
     compact: compact,

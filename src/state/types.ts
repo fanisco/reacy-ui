@@ -1,11 +1,11 @@
 import IComment from '../core/interface/IComment';
-import IAuthor from '../core/interface/IAuthor';
+import IPerson from '../core/interface/IPerson';
 
 export type State = {
   comments: {
     list: IComment[];
     meta: {
-      authors: IAuthor[];
+      authors: IPerson[];
     }
   };
   settings: any;

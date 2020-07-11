@@ -6,13 +6,13 @@ import {State} from './types';
 
 import data from '../data/comments.json';
 import IComment from '../core/interface/IComment';
-import IAuthor from '../core/interface/IAuthor';
+import IPerson from '../core/interface/IPerson';
 
 const initialState: State = {
   comments: {
     list: data.list as IComment[],
     meta: {
-      authors: data.meta.authors as IAuthor[]
+      authors: data.meta.authors as IPerson[]
     }
   },
   settings: {
