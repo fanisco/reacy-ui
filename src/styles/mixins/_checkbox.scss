@@ -1,27 +1,27 @@
 @mixin size-checkbox($className, $size, $borderRadius) {
-  width: #{$size}$units;
-  height: #{$size}$units;
+  width: $size;
+  height: $size;
   font-size: 0;
-  border-radius: #{$borderRadius}$units;
+  border-radius: $borderRadius;
 
   & .#{$className}__icon {
-    font-size: #{$size}$units;
-    transform: translateY(#{$size}$units);
+    font-size: $size;
+    transform: translateY($size);
   }
 }
 
 @mixin sizes-checkbox($className) {
   &_xs {
-    @include size-checkbox($className, $fontSize_xs, 1);
+    @include size-checkbox($className, $fontSize_xs, 1px);
   }
   &_sm {
-    @include size-checkbox($className, $fontSize_sm, 1);
+    @include size-checkbox($className, $fontSize_sm, 1px);
   }
   &_md {
-    @include size-checkbox($className, $fontSize_md, 2);
+    @include size-checkbox($className, $fontSize_md, 2px);
   }
   &_lg {
-    @include size-checkbox($className, $fontSize_lg, 3);
+    @include size-checkbox($className, $fontSize_lg, 3px);
   }
   &_xl {
     @include size-checkbox($className, $fontSize_xl, 3);

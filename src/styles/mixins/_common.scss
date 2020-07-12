@@ -1,32 +1,32 @@
 @mixin size-xs() {
-  height: #{$elementHeight_xs}$units;
-  padding: #{$spacingY_xs}$units #{$spacingX_xs}$units;
-  font-size: #{$fontSize_xs}$units;
-  border-radius: #{$borderRadius_xs}$units;
+  height: $elementHeight_xs;
+  padding: $spacingY_xs $spacingX_xs;
+  font-size: $fontSize_xs;
+  border-radius: $borderRadius_xs;
 }
 @mixin size-sm() {
-  height: #{$elementHeight_sm}$units;
-  padding: #{$spacingY_sm}$units #{$spacingX_sm}$units;
-  font-size: #{$fontSize_sm}$units;
-  border-radius: #{$borderRadius_sm}$units;
+  height: $elementHeight_sm;
+  padding: $spacingY_sm $spacingX_sm;
+  font-size: $fontSize_sm;
+  border-radius: $borderRadius_sm;
 }
 @mixin size-md() {
-  height: #{$elementHeight_md}$units;
-  padding: #{$spacingY_md}$units #{$spacingX_md}$units;
-  font-size: #{$fontSize_md}$units;
-  border-radius: #{$borderRadius_md}$units;
+  height: $elementHeight_md;
+  padding: $spacingY_md $spacingX_md;
+  font-size: $fontSize_md;
+  border-radius: $borderRadius_md;
 }
 @mixin size-lg() {
-  height: #{$elementHeight_lg}$units;
-  padding: #{$spacingY_lg}$units #{$spacingX_lg}$units;
-  font-size: #{$fontSize_lg}$units;
-  border-radius: #{$borderRadius_lg}$units;
+  height: $elementHeight_lg;
+  padding: $spacingY_lg $spacingX_lg;
+  font-size: $fontSize_lg;
+  border-radius: $borderRadius_lg;
 }
 @mixin size-xl() {
-  height: #{$elementHeight_xl}$units;
-  padding: #{$spacingY_xl}$units #{$spacingX_xl}$units;
-  font-size: #{$fontSize_xl}$units;
-  border-radius: #{$borderRadius_xl}$units;
+  height: $elementHeight_xl;
+  padding: $spacingY_xl $spacingX_xl;
+  font-size: $fontSize_xl;
+  border-radius: $borderRadius_xl;
 }
 @mixin sizes() {
   &_xs {
