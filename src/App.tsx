@@ -16,10 +16,16 @@ export const App: React.FC = () => {
       <Page>
         <Sidebar/>
         <Main>
-          <List/>
-          <Settings/>
-          <CommentList/>
-          <Comform/>
+          <Left>
+            <List/>
+          </Left>
+          <Center>
+            <CommentList/>
+            <Comform/>
+          </Center>
+          <Right>
+            <Settings/>
+          </Right>
         </Main>
       </Page>
     </Provider>
@@ -34,11 +40,22 @@ const Page = styled.div`
 `;
 
 const Sidebar = styled.aside`
-    display: flex;
-    grid-area: sidebar;
+  display: flex;
+  grid-area: sidebar;
 `;
 
 const Main = styled.main`
-    display: flex;
-    grid-area: main;
+  display: grid;
+  grid-area: main;
+  grid-template-areas: "left center right";
+  grid-template-columns: 300px 1fr 100px;
+`;
+
+const Left = styled.div`
+  border-right: 1px solid var(--rcy-color-default-border);
+`;
+const Right = styled.div`
+  border-left: 1px solid var(--rcy-color-default-border);
+`;
+const Center = styled.div`
 `;
