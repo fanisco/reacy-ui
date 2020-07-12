@@ -5,7 +5,7 @@ import {StyleMods} from '../../common/mods';
 import {List} from './List';
 import {Button} from '../buttons';
 
-export const Tabs: React.FC<Lists.ITabs> = ({activeId, items, ...props}) => {
+export const Tabs: React.FC<Lists.ITabs> = ({activeId, items, onClick, ...props}) => {
   const mods = defaultMods(props.mods);
   const classBase = 'rcy-tabs';
   const className = bemClasses(classBase, mods, props.className);
@@ -21,6 +21,7 @@ export const Tabs: React.FC<Lists.ITabs> = ({activeId, items, ...props}) => {
         return <Button
           className={`${classBase}__item`}
           mods={mods}
+          onClick={() => onClick && onClick(item.id)}
         >
           {item.caption}
         </Button>
