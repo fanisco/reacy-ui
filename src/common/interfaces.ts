@@ -53,7 +53,7 @@ export namespace Layout {
 
 export namespace Lists {
   export interface IList extends Core.IComponent {
-    
+
   }
   export interface ITabs extends IList {
     onClick?: (e: any) => void;
@@ -61,6 +61,11 @@ export namespace Lists {
     items: Array<{
       id: number;
       caption: string;
+    }>;
+  }
+  export interface IToolbar extends Core.IComponent {
+    items: Array<Buttons.IButton & {
+      caption?: string;
     }>;
   }
 }

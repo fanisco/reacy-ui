@@ -9,14 +9,18 @@ $className: rcy-list;
       display: flex;
       flex-direction: row;
     }
+    &-columns {
+      display: flex;
+      flex-direction: row;
+    }
   }
 
   &__item {
     &:first-child {
-      
+
     }
     &:last-child {
-      
+
     }
   }
 }
