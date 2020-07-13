@@ -1,0 +1,78 @@
+@mixin colorize-input(
+  $foreground,
+  $foregroundHover,
+  $foregroundActive,
+  $foregroundDisabled,
+  $background,
+  $backgroundHover,
+  $backgroundActive,
+  $backgroundDisabled,
+  $border,
+  $borderHover,
+  $borderActive,
+  $borderDisabled
+) {
+  background-color: var($background);
+  border-color: var($border);
+  color: var($foreground);
+
+  &:hover {
+    background-color: var($background);
+    border-color: var($borderHover);
+    color: var($foregroundHover);
+  }
+
+  &:focus {
+    background: var($background);
+    border-color: var($borderActive);
+    color: var($foregroundActive);
+    box-shadow: 0 8px 16px #{'rgba(var(#{$border}RGB), 0.46)'},
+                0 2px 4px #{'rgba(var(#{$border}RGB), 0.24)'};
+  }
+
+  &:disabled {
+    cursor: default;
+
+    &, &:hover, &:focus {
+      background-color: var($backgroundDisabled);
+      border-color: var($borderDisabled);
+      color: var($foregroundDisabled);
+    }
+  }
+}
+@mixin colorize-input-default {
+  @include colorize-input(
+    --rcy-color-default-foreground,
+    --rcy-color-default-foregroundHover,
+    --rcy-color-default-foregroundActive,
+    --rcy-color-default-foregroundDisabled,
+    --rcy-color-default-background,
+    --rcy-color-default-backgroundHover,
+    --rcy-color-default-backgroundActive,
+    --rcy-color-default-backgroundDisabled,
+    --rcy-color-default-border,
+    --rcy-color-primary-borderHover,
+    --rcy-color-primary-borderActive,
+    --rcy-color-primary-borderDisabled
+  );
+}
+@mixin colorize-input-various() {
+  @each $style, $set in $colors {
+    &_#{$style} {
+      @include colorize-input(
+          --rcy-color-default-foreground,
+          --rcy-color-default-foregroundHover,
+          --rcy-color-default-foregroundActive,
+          --rcy-color-default-foregroundDisabled,
+          --rcy-color-default-background,
+          --rcy-color-default-backgroundHover,
+          --rcy-color-default-backgroundActive,
+          --rcy-color-default-backgroundDisabled,
+          --rcy-color-#{$style}-border,
+          --rcy-color-#{$style}-borderHover,
+          --rcy-color-#{$style}-borderActive,
+          --rcy-color-#{$style}-borderDisabled
+      );
+    }
+  }
+}

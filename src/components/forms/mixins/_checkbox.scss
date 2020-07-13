@@ -1,0 +1,82 @@
+@mixin size-checkbox($className, $size, $borderRadius) {
+  width: $size;
+  height: $size;
+  font-size: 0;
+  border-radius: $borderRadius;
+
+  & .#{$className}__icon {
+    font-size: $size;
+    transform: translateY($size);
+  }
+}
+
+@mixin sizes-checkbox($className) {
+  &_xs {
+    @include size-checkbox($className, $fontSize_xs, 1px);
+  }
+  &_sm {
+    @include size-checkbox($className, $fontSize_sm, 1px);
+  }
+  &_md {
+    @include size-checkbox($className, $fontSize_md, 2px);
+  }
+  &_lg {
+    @include size-checkbox($className, $fontSize_lg, 3px);
+  }
+  &_xl {
+    @include size-checkbox($className, $fontSize_xl, 3);
+  }
+}
+
+@mixin colorize-checkbox(
+  $background,
+  $backgroundHover,
+  $backgroundActive,
+  $backgroundDisabled,
+  $border,
+  $borderHover,
+  $borderActive,
+  $borderDisabled
+) {
+  background-color: var(#{$background});
+  border-color: var(#{$border});
+
+  &:hover {
+    background-color: #{'rgba(var(#{$backgroundHover}RGB), 0.3)'};
+    border-color: var(#{$borderHover});
+  }
+  &:active:focus {
+    background-color: #{'rgba(var(#{$backgroundActive}RGB), 0.3)'};
+    border-color: var(#{$borderActive});
+  }
+}
+
+@mixin colorize-checkbox-default() {
+  @include colorize-checkbox(
+      --rcy-color-default-background,
+      --rcy-color-default-backgroundHover,
+      --rcy-color-default-backgroundActive,
+      --rcy-color-default-backgroundDisabled,
+      --rcy-color-default-border,
+      --rcy-color-primary-borderHover,
+      --rcy-color-primary-borderActive,
+      --rcy-color-primary-borderDisabled
+  );
+}
+
+@mixin colorize-checkbox-various() {
+  @each $style, $set in $colors {
+    &_#{$style} {
+      @include colorize-checkbox(
+        --rcy-color-default-background,
+        --rcy-color-default-backgroundHover,
+        --rcy-color-default-backgroundActive,
+        --rcy-color-default-backgroundDisabled,
+        --rcy-color-#{$style}-border,
+        --rcy-color-#{$style}-borderHover,
+        --rcy-color-#{$style}-borderActive,
+        --rcy-color-#{$style}-borderDisabled
+      );
+    }
+  }
+}

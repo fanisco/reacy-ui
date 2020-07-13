@@ -1,0 +1,79 @@
+@mixin size-reference($className, $spacingY, $spacingX, $fontSize, $borderRadius) {
+  padding: $spacingY $spacingX;
+  font-size: $fontSize;
+  border-radius: $borderRadius;
+
+  & .#{$className}__body {
+    padding-left: $spacingX / 2;
+    padding-right: $spacingX / 2;
+  }
+}
+
+@mixin sizes-reference($className) {
+  &_xs {
+    @include size-reference($className, $spacingY_xs, $spacingX_xs, $fontSize_xs, 1px);
+  }
+  &_sm {
+    @include size-reference($className, $spacingY_sm, $spacingX_sm, $fontSize_sm, 1px);
+  }
+  &_md {
+    @include size-reference($className, $spacingY_md, $spacingX_md, $fontSize_md, 2px);
+  }
+  &_lg {
+    @include size-reference($className, $spacingY_lg, $spacingX_lg, $fontSize_lg, 3px);
+  }
+  &_xl {
+    @include size-reference($className, $spacingY_xl, $spacingX_xl, $fontSize_xl, 3px);
+  }
+}
+
+@mixin colorize-reference(
+  $foreground,
+  $foregroundHover,
+  $foregroundActive,
+  $background,
+  $backgroundHover,
+  $backgroundActive,
+  $border,
+  $borderHover,
+  $borderActive
+) {
+  background-color: #{'rgba(var(#{$background}RGB), 0.3)'};
+
+  & .#{$className}__body {
+    border-color: var(#{$border});
+    color: var(#{$foreground});
+  }
+}
+
+@mixin colorize-reference-default($className) {
+  @include colorize-reference(
+      --rcy-color-default-link,
+      --rcy-color-default-linkHover,
+      --rcy-color-default-linkActive,
+      --rcy-color-default-border,
+      --rcy-color-default-borderHover,
+      --rcy-color-default-borderActive,
+      --rcy-color-default-border,
+      --rcy-color-default-borderHover,
+      --rcy-color-default-borderActive
+  );
+}
+
+@mixin colorize-reference-various($className) {
+  @each $style, $set in $colors {
+    &_#{$style} {
+      @include colorize-reference(
+        --rcy-color-#{$style}-link,
+        --rcy-color-#{$style}-linkHover,
+        --rcy-color-#{$style}-linkActive,
+        --rcy-color-#{$style}-border,
+        --rcy-color-#{$style}-borderHover,
+        --rcy-color-#{$style}-borderActive,
+        --rcy-color-#{$style}-border,
+        --rcy-color-#{$style}-borderHover,
+        --rcy-color-#{$style}-borderActive
+      );
+    }
+  }
+}

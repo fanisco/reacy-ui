@@ -51,6 +51,26 @@ export namespace Layout {
   }
 }
 
+export namespace Lists {
+  export interface IList extends Core.IComponent {
+    
+  }
+  export interface ITabs extends IList {
+    onClick?: (e: any) => void;
+    activeId?: number;
+    items: Array<{
+      id: number;
+      caption: string;
+    }>;
+  }
+}
+
+export namespace Popups {
+  export interface IPopup extends Core.IComponent {
+
+  }
+}
+
 export namespace Tables {
   type Cell = {
     id: string;

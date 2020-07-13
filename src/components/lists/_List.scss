@@ -1,0 +1,22 @@
+$className: rcy-list;
+.#{$className} {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &_flex {
+    &-rows {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__item {
+    &:first-child {
+      
+    }
+    &:last-child {
+      
+    }
+  }
+}

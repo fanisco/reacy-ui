@@ -1,0 +1,35 @@
+@mixin size-list() {
+
+}
+
+@mixin sizes-list() {
+  &_xs {
+    @include size-field();
+  }
+  &_sm {
+    @include size-field();
+  }
+  &_md {
+    @include size-field();
+  }
+  &_lg {
+    @include size-field();
+  }
+  &_xl {
+    @include size-field();
+  }
+}
+
+@mixin colorize-list() {
+
+}
+@mixin colorize-list-default {
+  @include colorize-list();
+}
+@mixin colorize-list-various() {
+  @each $style, $set in $colors {
+    &_#{$style} {
+      @include colorize-list();
+    }
+  }
+}

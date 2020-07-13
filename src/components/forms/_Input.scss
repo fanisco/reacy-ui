@@ -3,13 +3,15 @@ $className: rcy-input;
   display: block;
   width: 100%;
   border: 1px solid;
+  box-shadow: none;
 
   &:focus { outline: 0 none; }
 
   @include sizes();
+  @include easing();
+  @include appearance();
   @include colorize-input-default();
-  @include colorize-input-various($className);
-  @include appearance($className);
+  @include colorize-input-various();
 
   @at-root {
     textarea#{&} {

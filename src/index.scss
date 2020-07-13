@@ -15,7 +15,7 @@ html, body {
 body {
     margin: 0;
     font-family: $fontFamily;
-    font-size: #{$fontSize_md}$units;
+    font-size: $fontSize_md;
     line-height: $lineHeight;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -1,3 +1,7 @@
+@function hexToRGBString($hexColor) {
+  @return "#{red($hexColor)}, #{green($hexColor)}, #{blue($hexColor)}";
+}
+
 // Colors
 $def_palette: (
   d500: #050608,
@@ -67,8 +71,8 @@ $dan_palette: (
   a100: #FFE6D7
 );
 $colors_default: (
-  foreground: map_get($def_palette, d500),
-  foregroundHover: map_get($def_palette, d500),
+  foreground: map_get($def_palette, d300),
+  foregroundHover: map_get($def_palette, d400),
   foregroundActive: map_get($def_palette, d500),
   foregroundDisabled: map_get($def_palette, l100),
   background: map_get($def_palette, l100),
@@ -76,14 +80,14 @@ $colors_default: (
   backgroundActive: map_get($def_palette, l200),
   backgroundDisabled: map_get($def_palette, l400),
   border: map_get($def_palette, l500),
-  borderHover: map_get($def_palette, l500),
-  borderActive: map_get($def_palette, l500),
+  borderHover: map_get($def_palette, d100),
+  borderActive: map_get($def_palette, d200),
   borderDisabled: map_get($def_palette, l400),
   link: map_get($def_palette, d300),
   linkHover: map_get($def_palette, d400),
   linkActive: map_get($def_palette, d500),
   linkDisabled: map_get($def_palette, l100)
-);
+) !default;
 $colors_primary: (
   foreground: map_get($def_palette, l100),
   foregroundHover: map_get($def_palette, l100),
@@ -181,3 +185,19 @@ $colors: (
   warning: $colors_warning,
   danger: $colors_danger
 );
+
+
+// Css vars
+:root {
+  // Sets
+  @each $prop, $color in $colors_default {
+    --rcy-color-default-#{$prop}: #{$color};
+    --rcy-color-default-#{$prop}RGB: #{hexToRGBString($color)};
+  }
+  @each $style, $set in $colors {
+    @each $prop, $color in $set {
+      --rcy-color-#{$style}-#{$prop}: #{$color};
+      --rcy-color-#{$style}-#{$prop}RGB: #{hexToRGBString($color)};
+    }
+  }
+}

@@ -4,11 +4,11 @@
   $spacingY,
   $fontSize
 ) {
-  margin-bottom: #{$spacingY}$units;
+  margin-bottom: $spacingY;
 
   & .#{$className}__caption {
-    margin-right: #{$spacingX}$units;
-    font-size: #{$fontSize}$units;
+    margin-right: $spacingX;
+    font-size: $fontSize;
   }
 }
 
