@@ -21,10 +21,25 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 { font-weight: 700; }
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
 h1 { font-size: 4em; }
 h2 { font-size: 2.5em; }
 h3 { font-size: 1.5em; }
 h4 { font-size: 1em; }
 h4 { font-size: 0.875em; }
 h6 { font-size: 0.750em; }
+
+a {
+    color: var(--rcy-color-primary-link);
+    &:hover {
+        color: var(--rcy-color-primary-linkHover);
+        text-decoration: none;
+    }
+    &:active:focus {
+        color: var(--rcy-color-primary-linkActive);
+    }
+}
