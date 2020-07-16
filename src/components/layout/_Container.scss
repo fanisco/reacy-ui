@@ -1,4 +1,9 @@
 $className: rcy-container;
 .#{$className} {
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
   @include container();
 }

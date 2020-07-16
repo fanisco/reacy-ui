@@ -1,0 +1,52 @@
+@mixin popup() {
+
+}
+
+@mixin popupInner-sizes(
+  $elementHeight,
+  $spacingX,
+  $spacingY,
+  $fontSize,
+  $borderRadis
+) {
+  grid-template-rows: $elementHeight 1fr $elementHeight;
+  font-size: $fontSize;
+
+  .#{$className}__header,
+  .#{$className}__body {
+    padding-left: $spacingX;
+    padding-right: $spacingX;
+  }
+
+  .#{$className}__header {
+    border-top-left-radius: $borderRadis;
+    border-top-right-radius: $borderRadis;
+  }
+  .#{$className}__footer {
+    border-bottom-left-radius: $borderRadis;
+    border-bottom-right-radius: $borderRadis;
+  }
+}
+
+@mixin popupInner() {
+  @each $size, $set in $sizes {
+    &_#{$size} {
+      @include popupInner-sizes(
+        $elementHeight_md,
+        $spacingX_md,
+        $spacingY_md,
+        $fontSize_md,
+        $borderRadius_md
+      );
+    }
+  }
+  @include media-query(desktop) {
+    max-width: var(--rcy-width-desktop-6);
+    min-height: var(--rcy-width-desktop-6);
+  }
+}
+
+@mixin popupArea() {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: default;
+}

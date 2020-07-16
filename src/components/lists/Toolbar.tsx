@@ -6,7 +6,7 @@ import {Button} from '../buttons';
 
 export const Toolbar: React.FC<Lists.IToolbar> = ({items, ...props}) => {
   const mods = defaultMods(props.mods);
-  const classBase = 'rcy-button';
+  const classBase = 'rcy-toolbar';
   const className = bemClasses(classBase, mods, props.className);
   return (
     <List className={className} mods={[...mods, 'flex-columns']}>

@@ -6,45 +6,19 @@ import {Manager} from './Manager';
 /**
  * Container for popup content.
  */
-export const Popup: React.FC<Popups.IPopup> = ({...props}) => {
+export const Popup: React.FC<Popups.IPopup> = ({visible, children, ...props}) => {
   const classBase = 'rcy-popup';
   const className = bemClasses(classBase, props.mods, props.className);
+  const style = {};
   return Manager.render(
-    <div
-      className={className}
-      style={{position: 'fixed', bottom: 0, left: 0, right: 0}}
-    >Popup</div>
+    <>
+      {visible ? <div
+        className={className}
+        style={style}
+      >
+        <div className={`${classBase}__area`}/>
+        {children}
+      </div> : ''}
+    </>
   );
 };
-//
-// interface IStyledProps {
-//     position?: string;
-//     top?: number|string;
-//     left?: number|string;
-//     right?: number|string;
-//     bottom?: number|string;
-//     zIndex?: number|string;
-//     width?: number|string;
-//     visible?: boolean;
-// }
-//
-// const PopupElement = styled.div<IStyledProps>`
-//     position: ${props => props.position};
-//     ${props => props.top !== undefined ? `top: ${props.top}` : ''}
-//     ${props => props.left !== undefined ? `left: ${props.left}` : ''}
-//     ${props => props.right !== undefined ? `right: ${props.right}` : ''}
-//     ${props => props.bottom !== undefined ? `bottom: ${props.bottom}` : ''}
-//     ${props => props.zIndex !== undefined ? `z-index: ${props.zIndex}` : ''}
-//     ${props => props.width !== undefined ? `width: ${props.width}` : ''}
-//     display: ${props => props.visible ? 'block' : 'none'};
-// `;
-//
-// interface IProps extends IComponentProps, IStyledProps {
-//
-// }
-//
-// interface IState {
-//     visible: boolean;
-// }
-//
-// const escapeDiv = document.createElement('div');

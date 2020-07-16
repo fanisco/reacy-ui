@@ -72,7 +72,11 @@ export namespace Lists {
 
 export namespace Popups {
   export interface IPopup extends Core.IComponent {
-
+    visible?: boolean;
+  }
+  export interface IInner extends Core.IComponent {
+    title?: string;
+    onCloseClick?: (e: any) => void;
   }
 }
 
