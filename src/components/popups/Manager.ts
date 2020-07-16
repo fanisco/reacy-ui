@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-const container: HTMLDivElement = document.getElementById('rcy-popups');
+const container: HTMLElement | null = document.getElementById('rcy-popups');
 
 export const Manager = {
   zIndex: 1,
