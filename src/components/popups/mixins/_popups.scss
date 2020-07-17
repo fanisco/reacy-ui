@@ -1,5 +1,10 @@
 @mixin popup() {
-
+  .#{$className}__inner {
+    @include media-query(desktop) {
+      max-width: var(--rcy-width-desktop-6);
+      max-height: var(--rcy-width-desktop-8);
+    }
+  }
 }
 
 @mixin popupInner-sizes(
@@ -39,10 +44,6 @@
         $borderRadius_md
       );
     }
-  }
-  @include media-query(desktop) {
-    max-width: var(--rcy-width-desktop-6);
-    min-height: var(--rcy-width-desktop-6);
   }
 }
 

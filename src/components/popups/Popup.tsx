@@ -17,7 +17,7 @@ export const Popup: React.FC<Popups.IPopup> = ({visible, children, ...props}) =>
         style={style}
       >
         <div className={`${classBase}__area`}/>
-        {children}
+        <div className={`${classBase}__inner`}>{children}</div>
       </div> : ''}
     </>
   );

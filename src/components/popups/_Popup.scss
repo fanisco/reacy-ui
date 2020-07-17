@@ -10,6 +10,9 @@ $className: rcy-popup;
   align-items: center;
   justify-content: center;
 
+  overflow-x: hidden;
+  overflow-y: auto;
+
   @include popup();
 
   &__area {
@@ -18,5 +21,9 @@ $className: rcy-popup;
     height: 100%;
 
     @include popupArea();
+  }
+
+  &__inner {
+    height: 100%;
   }
 }
