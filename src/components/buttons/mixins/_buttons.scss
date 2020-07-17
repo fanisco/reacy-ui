@@ -46,19 +46,12 @@
   }
 
   &.#{$className}_inline {
-    height: auto;
-    padding: 0;
-    border-width: 0;
     color: var($link);
     &:hover {
       color: var($linkHover);
     }
     &:active:focus {
       color: var($linkActive);
-    }
-    &, &:hover, &:active:focus {
-      background-color: transparent;
-      border-color: transparent;
     }
   }
 

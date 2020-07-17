@@ -6,10 +6,8 @@ $className: rcy-button;
   cursor: pointer;
   text-decoration: none;
 
-  @at-root {
-    a.#{$className} {
-      display: inline;
-    }
+  &_displayInline {
+    display: inline;
   }
 
   &:focus { outline: 0 none; }
@@ -20,4 +18,15 @@ $className: rcy-button;
   @include colorize-button-default();
   @include colorize-button-various();
   @include colorize-button-disabled();
+
+  // Style override
+  &_inline {
+    height: auto;
+    padding: 0;
+    border-width: 0;
+    &, &:hover, &:active:focus {
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
 }

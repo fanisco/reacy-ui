@@ -1,12 +1,12 @@
 import React from 'react';
 import {Buttons} from '../../common/interfaces';
 import {bemClasses, defaultSize} from '../../common/bem';
+import {Anchor} from './Anchor';
 
-export const Button: React.FC<Buttons.IButton> = ({onClick, href, children, disabled = false, ...props}) => {
-  const className = bemClasses('rcy-button', defaultSize(props.mods), props.className);
-  if (href) {
-    return <a onClick={onClick} href={href} className={className}>{children}</a>;
-  } else {
-    return <button onClick={onClick} className={className} disabled={disabled}>{children}</button>;
+export const Button: React.FC<Buttons.IButton> = ({onClick, children, disabled = false, ...props}, ...args) => {
+  if ('href' in props) {
+    return Anchor({onClick, children, disabled, ...props}, ...args);
   }
+  const className = bemClasses('rcy-button', defaultSize(props.mods), props.className);
+  return <button onClick={onClick} className={className} disabled={disabled}>{children}</button>;
 };
