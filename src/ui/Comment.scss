@@ -1,0 +1,20 @@
+.comment {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+
+  &__image {
+    border-radius: 100%;
+    margin-right: 10px;
+  }
+
+  &__actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+  }
+  &:hover &__actions {
+    opacity: 1;
+  }
+}
