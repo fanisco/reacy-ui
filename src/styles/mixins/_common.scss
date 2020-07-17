@@ -88,6 +88,9 @@
       text-align: center;
       justify-content: center;
     }
+    .#{$className}_dashed {
+      border-style: dashed;
+    }
   }
 }
 
