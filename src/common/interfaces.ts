@@ -66,6 +66,7 @@ export namespace Lists {
     }>;
   }
   export interface ToolbarButton extends Buttons.IButton {
+    anchor?: boolean;
     caption?: string;
   }
   export interface IToolbar extends Core.IComponent {

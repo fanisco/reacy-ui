@@ -11,12 +11,12 @@ $className: rcy-list;
     }
     &-columns {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
     }
   }
 
   &__item {
-    display: flex;
+
   }
 
   @include sizes-list();
