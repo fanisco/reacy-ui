@@ -189,6 +189,10 @@ $colors: (
 
 // Css vars
 :root {
+  // Levels
+  @each $level, $color in $def_palette {
+    --rcy-color-#{$level}: #{$color};
+  }
   // Sets
   @each $prop, $color in $colors_default {
     --rcy-color-default-#{$prop}: #{$color};
