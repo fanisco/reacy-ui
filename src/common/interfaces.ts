@@ -13,6 +13,7 @@ export namespace Buttons {
     onClick?: (e: any) => void;
     href?: string;
     disabled?: boolean;
+    title?: string;
   }
 }
 
