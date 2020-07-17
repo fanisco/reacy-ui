@@ -1,22 +1,25 @@
-@mixin size-list() {
-
+@mixin size-list(
+  $spacingX,
+  $spacingY
+) {
+  &.#{$className}_spaced {
+    margin-left: -$spacingX / 2;
+    margin-right: -$spacingX / 2;
+  }
+  &.#{$className}_spaced .#{$className}__item {
+    padding-left: $spacingX / 2;
+    padding-right: $spacingX /2;
+  }
 }
 
 @mixin sizes-list() {
-  &_xs {
-    @include size-field();
-  }
-  &_sm {
-    @include size-field();
-  }
-  &_md {
-    @include size-field();
-  }
-  &_lg {
-    @include size-field();
-  }
-  &_xl {
-    @include size-field();
+  @each $size, $set in $sizes {
+    &_#{$size} {
+      @include size-list(
+        $spacingX_md,
+        $spacingY_md
+      );
+    }
   }
 }
 

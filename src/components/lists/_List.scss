@@ -23,4 +23,6 @@ $className: rcy-list;
 
     }
   }
+
+  @include sizes-list();
 }

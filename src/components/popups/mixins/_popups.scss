@@ -2,7 +2,7 @@
   .#{$className}__inner {
     @include media-query(desktop) {
       max-width: var(--rcy-width-desktop-6);
-      max-height: var(--rcy-width-desktop-8);
+      max-height: var(--rcy-width-desktop-4);
     }
   }
 }
@@ -16,14 +16,15 @@
 ) {
   grid-template-rows: $elementHeight 1fr $elementHeight;
   font-size: $fontSize;
+  border-radius: $borderRadis;
 
-  .#{$className}__header,
   .#{$className}__body {
-    padding-left: $spacingX;
-    padding-right: $spacingX;
+    padding: $spacingY $spacingX;
   }
 
   .#{$className}__header {
+    padding-left: $spacingX;
+    padding-right: $spacingX;
     border-top-left-radius: $borderRadis;
     border-top-right-radius: $borderRadis;
   }

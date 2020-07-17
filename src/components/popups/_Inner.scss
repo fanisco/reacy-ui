@@ -13,6 +13,8 @@ $className: rcy-popupInner;
   flex-direction: column;
   align-self: center;
 
+  box-shadow: 0 7px 17px rgba(0, 0, 0, 0.34);
+
   &__header {
     grid-area: header;
     justify-content: space-between;

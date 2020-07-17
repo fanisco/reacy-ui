@@ -76,6 +76,8 @@ export namespace Popups {
   }
   export interface IInner extends Core.IComponent {
     title?: string;
+    headerContent?: any;
+    footerContent?: any;
     onCloseClick?: (e: any) => void;
   }
 }
