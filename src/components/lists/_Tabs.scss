@@ -1,4 +1,10 @@
 $className: rcy-tabs;
 .#{$className} {
-  
+
+  &__item {
+    border: 0 none;
+    border-radius: 0;
+  }
+
+  @include colorize-tabs-default();
 }

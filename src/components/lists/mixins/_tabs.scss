@@ -1,0 +1,30 @@
+@mixin colorize-tabs(
+  $background,
+  $backgroundHover,
+  $backgroundActive
+) {
+  .#{$className}__item {
+    background-color: transparent;
+
+    &:hover {
+      background-color: var($backgroundHover);
+    }
+    &:active:focus, &_active, &_active:hover {
+      background-color: var($backgroundActive);
+    }
+  }
+}
+@mixin colorize-tabs-default {
+  @include colorize-tabs(
+    --rcy-color-l300,
+    --rcy-color-l200,
+    --rcy-color-l100
+  );
+}
+@mixin colorize-tabs-various() {
+  @each $style, $set in $colors {
+    &_#{$style} {
+      @include colorize-tabs();
+    }
+  }
+}
