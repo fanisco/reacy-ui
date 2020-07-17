@@ -193,6 +193,9 @@ $colors: (
   @each $level, $color in $def_palette {
     --rcy-color-#{$level}: #{$color};
   }
+  @each $level, $color in $pri_palette {
+    --rcy-prime-#{$level}: #{$color};
+  }
   // Sets
   @each $prop, $color in $colors_default {
     --rcy-color-default-#{$prop}: #{$color};

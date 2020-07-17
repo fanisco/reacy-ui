@@ -2,10 +2,15 @@ $className: rcy-button;
 .#{$className} {
   display: inline-flex;
   border: 1px solid;
-  white-space: nowrap;
   align-items: center;
   cursor: pointer;
   text-decoration: none;
+
+  @at-root {
+    a.#{$className} {
+      display: inline;
+    }
+  }
 
   &:focus { outline: 0 none; }
 

@@ -9,7 +9,7 @@ export const Toolbar: React.FC<Lists.IToolbar> = ({items, ...props}) => {
   const classBase = 'rcy-toolbar';
   const className = bemClasses(classBase, mods, props.className);
   return (
-    <List className={className} mods={[...mods, 'flex-columns', 'spaced']}>
+    <List className={className} mods={[...mods, 'flex-columns', 'spacedX']}>
       {items.map((item, i) => {
         return <Button {...item} key={i}>{item.caption}</Button>
       })}

@@ -126,6 +126,9 @@ export namespace Icons {
 }
 
 export namespace Misc {
+  export interface IBubble extends Core.IComponent {
+
+  }
   export interface IReference extends Core.IComponent {
     id: string | number;
     title: string;

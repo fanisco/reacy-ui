@@ -2,13 +2,11 @@
   $spacingX,
   $spacingY
 ) {
-  &.#{$className}_spaced {
-    margin-left: -$spacingX / 2;
-    margin-right: -$spacingX / 2;
+  &.#{$className}_spacedY .#{$className}__item {
+    padding-bottom: $spacingY;
   }
-  &.#{$className}_spaced .#{$className}__item {
-    padding-left: $spacingX / 2;
-    padding-right: $spacingX /2;
+  &.#{$className}_spacedX .#{$className}__item {
+    padding-right: $spacingX;
   }
 }
 

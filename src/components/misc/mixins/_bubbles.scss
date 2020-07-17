@@ -1,0 +1,40 @@
+@mixin size-bubble(
+  $spacingX,
+  $spacingY,
+  $fontSize,
+  $borderRadius
+) {
+  padding: $spacingY $spacingX;
+  font-size: $fontSize;
+  border-radius: $borderRadius;
+}
+@mixin sizes-bubble() {
+  @each $size, $set in $sizes {
+    &_#{$size} {
+      @include size-bubble(
+          $spacingX_md,
+          $spacingY_md,
+          $fontSize_md,
+          $borderRadius_md
+      );
+    }
+  }
+}
+
+@mixin colorize-bubble(
+  $foreground,
+  $background
+) {
+  background-color: var($background);
+  color: var($foreground);
+
+  &::before {
+    border-color: transparent transparent var($background);
+  }
+}
+@mixin colorize-bubble-default() {
+  @include colorize-bubble(
+    --rcy-prime-a900,
+    --rcy-prime-a100
+  );
+}

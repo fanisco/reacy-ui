@@ -1,0 +1,17 @@
+$className: rcy-bubble;
+.#{$className} {
+  display: flex;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -0.5em;
+    border-style: solid;
+    border-width: 0 0 1em 1em;
+  }
+
+  @include sizes-bubble();
+  @include colorize-bubble-default();
+}
