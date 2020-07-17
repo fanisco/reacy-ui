@@ -14,8 +14,12 @@ export const Comments: React.FC<{postId: number;}> = ({postId, ...props}) => {
       .then(resp => setComments(resp.data));
   }, [postId]);
   return (
-    <Lists.List mods={['spacedY', 'spacedX']}>
-      {comments.map((comment, i) => <Comment {...comment} key={i}/>)}
-    </Lists.List>
+    comments.length ?
+      <Lists.List mods={['spacedY', 'spacedX']}>
+        {comments.map((comment, i) => (
+          <Comment {...comment} key={i} onDeleteClick={id => setComments(comments.filter(comment => comment.id !== id))}/>
+        ))}
+      </Lists.List> :
+      <h4>No comments posted yet</h4>
   );
 };
