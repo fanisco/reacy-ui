@@ -1,10 +1,6 @@
 @mixin container() {
-  @each $size, $count in $columns {
-    @include media-query($size) {
-      width: 100%;
-      max-width: var(--rcy-container-width-#{$size});
-      padding-left: var(--rcy-margin-#{$size});
-      padding-right: var(--rcy-margin-#{$size});
-    }
-  }
+  width: 100%;
+  max-width: var(--rcy-container-width);
+  padding-left: var(--rcy-margin);
+  padding-right: var(--rcy-margin);
 }
