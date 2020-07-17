@@ -1,3 +1,4 @@
+import React from 'react';
 import {HashMap} from './types';
 
 export namespace Core {
@@ -63,10 +64,11 @@ export namespace Lists {
       caption: string;
     }>;
   }
+  export interface ToolbarButton extends Buttons.IButton {
+    caption?: string;
+  }
   export interface IToolbar extends Core.IComponent {
-    items: Array<Buttons.IButton & {
-      caption?: string;
-    }>;
+    items: Array<ToolbarButton | React.ReactElement>;
   }
 }
 

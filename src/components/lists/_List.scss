@@ -16,12 +16,7 @@ $className: rcy-list;
   }
 
   &__item {
-    &:first-child {
-
-    }
-    &:last-child {
-
-    }
+    display: flex;
   }
 
   @include sizes-list();
