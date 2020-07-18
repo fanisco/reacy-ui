@@ -1,0 +1,14 @@
+.comform {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  & &__textarea {
+    height: 100px;
+    resize: none;
+  }
+
+  &__button {
+    margin-left: 10px;
+  }
+}
