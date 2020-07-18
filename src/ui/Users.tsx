@@ -1,19 +1,11 @@
-import React, {useState, useEffect, useContext} from 'react';
-import axios from 'axios';
+import React, {useContext} from 'react';
 import {Lists, Buttons} from 'reacy-ui';
 
 import {Context} from '../state/Context';
-import {fetchUsers, showUserCard} from '../state/actions';
-
-import {IUser} from '../types/IUser';
+import {showUserCard} from '../state/actions';
 
 export const Users: React.FC<{}> = ({...props}) => {
   const {state, dispatch} = useContext(Context);
-
-  useEffect(() => {
-    fetchUsers<IUser[]>({dispatch})
-  }, []);
-
   return (
     <>
       <h1>Users</h1>

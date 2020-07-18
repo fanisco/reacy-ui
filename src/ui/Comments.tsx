@@ -1,12 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import {Lists} from 'reacy-ui';
+
+import {Context} from '../state/Context';
 
 import {Comment} from './Comment';
 
 import {IComment} from '../types/IComment';
 
 export const Comments: React.FC<{postId: number;}> = ({postId, ...props}) => {
+  const {state} = useContext(Context);
   const [comments, setComments] = useState<IComment[]>([]);
   useEffect(() => {
     axios

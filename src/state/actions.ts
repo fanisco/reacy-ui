@@ -24,6 +24,7 @@ const fetchData = async<T>(action: string, {dispatch, verb, url, params}: any) =
     dispatch({type: action, payload: {data: res.data}});
     // dispatch({type: SET_STATUS, status: SUCCESS});
   } catch(e) {
+    console.error('Data fetch error.', `${verb}:${action}:${url}`);
     // dispatch({type: SET_STATUS, status: ERROR});
   }
 };
