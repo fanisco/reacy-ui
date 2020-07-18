@@ -1,6 +1,7 @@
 import {IUser} from '../types/IUser';
 
 export type State = {
+  users: IUser[];
   user?: IUser;
 }
 

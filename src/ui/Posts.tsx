@@ -14,7 +14,7 @@ export const Posts: React.FC<{userId: number;}> = ({userId, ...props}) => {
       .then(resp => setPosts(resp.data));
   }, [userId]);
   return (
-    <Lists.List>
+    <Lists.List mods={['']}>
       {posts.map((post, i) => (
         <MiniPost key={i} {...post}/>
       ))}

@@ -3,7 +3,9 @@ import React, {createContext, useReducer} from 'react';
 import {reducer} from './reducer';
 import {State} from './types';
 
-const initialState: State = {};
+const initialState: State = {
+  users: []
+};
 
 const Context = createContext<{state: State, dispatch: any}>({
   state: initialState,
