@@ -8,7 +8,9 @@ import './Comment.scss';
 export const Comment: React.FC<IComment & {onDeleteClick?: (id: number) => void}> = ({id, body, onDeleteClick, ...props}) => {
   return (
     <div className="comment">
-      <img className="comment__image" src={`https://i.pravatar.cc/32?t=${props.email}`} alt="'s Avatar" width="32px" height="32px"/>
+      <Buttons.Anchor className="comment__author" mods={['inline']}>
+        <img className="comment__avatar" src={`https://i.pravatar.cc/32?t=${props.email}`} alt="'s Avatar" width="32px" height="32px"/>
+      </Buttons.Anchor>
       <Misc.Bubble className="comment__body">
         {body}
         <Lists.Toolbar
