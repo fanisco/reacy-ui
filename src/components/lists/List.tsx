@@ -8,7 +8,7 @@ export const List: React.FC<Lists.IList> = ({children, ...props}) => {
     return (
       <ul className={className}>
         {children instanceof Array ? children.map((child, i) => (
-          <li className={`${classBase}__item`} key={i}>{child}</li>
+          <li className={`${classBase}__item ${props.itemClassName ? props.itemClassName : ''}`} key={i}>{child}</li>
         )) : ''}
       </ul>
     );

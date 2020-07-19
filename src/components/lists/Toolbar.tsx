@@ -9,7 +9,7 @@ export const Toolbar: React.FC<Lists.IToolbar> = ({items, ...props}) => {
   const classBase = 'rcy-toolbar';
   const className = bemClasses(classBase, mods, props.className);
   return (
-    <List className={className} mods={[...mods, 'flex-rows', 'spacedX']}>
+    <List className={className} mods={[...mods, 'flex-rows', 'spacedX']} itemClassName={props.itemClassName}>
       {items.map((button, i) => {
         if ('caption' in (button as Lists.ToolbarButton)) {
           if ((button as Lists.ToolbarButton).anchor) {

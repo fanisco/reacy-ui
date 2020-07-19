@@ -55,11 +55,12 @@ export namespace Layout {
 
 export namespace Lists {
   export interface IList extends Core.IComponent {
-
+    itemClassName?: string;
   }
   export interface ITabs extends IList {
     onClick?: (e: any) => void;
     activeId?: number;
+    itemClassName?: string;
     items: Array<{
       id: number;
       caption: string;
@@ -70,6 +71,7 @@ export namespace Lists {
     caption?: string;
   }
   export interface IToolbar extends Core.IComponent {
+    itemClassName?: string;
     items: Array<ToolbarButton | React.ReactElement>;
   }
 }
