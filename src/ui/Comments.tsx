@@ -9,14 +9,19 @@ import {Comform} from './Comform';
 
 import {IComment} from '../types/IComment';
 
+import {saturateComments} from '../helpers/correctors';
+
 export const Comments: React.FC<{postId: number;}> = ({postId, ...props}) => {
   const {state} = useContext(Context);
   const [comments, setComments] = useState<IComment[]>([]);
   useEffect(() => {
+    if (!state.users.length) {
+      return;
+    }
     axios
       .get<IComment[]>(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-      .then(resp => setComments(resp.data));
-  }, [postId]);
+      .then(resp => setComments(saturateComments(resp.data, state.users)));
+  }, [postId, state.users.length]);
   return (
     <>
       {comments.length ?
@@ -32,8 +37,8 @@ export const Comments: React.FC<{postId: number;}> = ({postId, ...props}) => {
           postId,
           id: (new Date()).getTime(),
           body: comment,
-          name: 'test',
-          email: 'test'
+          name: 'new comment',
+          email: state.users[0].email
         }]);
       }}/>
     </>
