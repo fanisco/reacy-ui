@@ -38,7 +38,7 @@ export const Comments: React.FC<{postId: number;}> = ({postId, ...props}) => {
           id: (new Date()).getTime(),
           body: comment,
           name: 'new comment',
-          email: state.users[0].email
+          user: state.users[0]
         }]);
       }}/>
     </>

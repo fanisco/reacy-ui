@@ -9,7 +9,7 @@ export const Comment: React.FC<IComment & {onDeleteClick?: (id: number) => void}
   return (
     <div className="comment">
       <Buttons.Anchor className="comment__author" mods={['inline']}>
-        <img className="comment__avatar" src={`https://i.pravatar.cc/32?t=${props.email}`} alt="'s Avatar" width="32px" height="32px"/>
+        <img className="comment__avatar" src={`https://i.pravatar.cc/32?t=${props.user.id}`} alt="'s Avatar" width="32px" height="32px"/>
       </Buttons.Anchor>
       <Misc.Bubble className="comment__body">
         {body}

@@ -3,6 +3,7 @@ import axios from 'axios';
 export const SHOW_USER_CARD = 'OPEN_USER_CARD';
 export const HIDE_USER_CARD = 'HIDE_USER_CARD';
 export const FETCH_USERS = 'FETCH_USERS';
+export const SATURATE_USERS = 'SATURATE_USERS';
 
 export const showUserCard = ({dispatch, ...payload}: any) => {
   dispatch({type: SHOW_USER_CARD, payload});
@@ -14,6 +15,10 @@ export const hideUserCard = ({dispatch}: any) => {
 
 export const fetchUsers = async<T>({dispatch}: any) => {
   return fetchData<T>(FETCH_USERS, {dispatch, verb: 'get', url: 'https://jsonplaceholder.typicode.com/users'});
+};
+
+export const saturateUsers = ({dispatch}: any) => {
+  dispatch({type: SATURATE_USERS});
 };
 
 const fetchData = async<T>(action: string, {dispatch, verb, url, params}: any) => {
