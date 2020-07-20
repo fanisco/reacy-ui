@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+
+import {Header} from './Header';
 import {Comments} from './Comments';
 
 import {IPost} from '../types/IPost';
@@ -13,7 +15,7 @@ export const Post: React.FC<{id: number;}> = ({id, ...props}) => {
   }, [id]);
   return (
     <>
-      <h1 id="#post">{post.title}</h1>
+      <Header title={post.title}/>
       <article>
         {post.body}
       </article>
