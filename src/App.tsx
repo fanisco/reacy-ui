@@ -22,9 +22,9 @@ function App() {
         <Route path="/posts/:id/" render={props => <Post id={props.match.params.id}/>}/>
         <Route path="/" exact>
           <Users/>
-          <UserCard/>
         </Route>
       </Router>
+      <UserCard/>
     </Layout.Container>
   );
 }
