@@ -12,7 +12,7 @@ export const List: React.FC<{}> = ({...props}) => {
       <Tabs
         activeId={tabId}
         items={[{id: 1, caption: 'All'}, {id: 3, caption: 'Inbox'}, {id: 2, caption: 'Sent'}]}
-        onClick={tabId => setTabId(tabId)}
+        onClick={(tabId: number) => setTabId(tabId)}
       />
       <Lists.List>
         {state.comments.meta.authors.map(author => <Person {...author}/>)}
