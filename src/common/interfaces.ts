@@ -47,9 +47,10 @@ export namespace Forms {
     data: HashMap<any>;
     groups?: Array<IGroup>;
     fields: Array<IFormItem>;
+    onSubmit?: () => void;
     onChange: (name: any, value: any) => void;
     wrap?: boolean;
-    buttons?: any[];
+    buttons?: React.ReactElement[];
   }
 }
 

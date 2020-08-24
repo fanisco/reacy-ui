@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import {Forms} from '../../common/interfaces';
 import {Group} from './Group';
 import {Field} from './Field';
@@ -14,27 +14,29 @@ export class Form extends React.Component<Forms.IForm> {
     this.fieldRender = this.fieldRender.bind(this);
   }
 
-  onSubmit = event => {
+  onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (this.props.onSubmit) {
+      this.props.onSubmit();
+    }
   }
   
   render() {
-    const {groups, fields, data, onChange, wrap = false} = this.props;
-    if (groups && groups.length) {
-      return (
-        <form onSubmit={this.onSubmit}>
-          {groups.map(group => (
+    const {groups, fields, buttons} = this.props;
+    return (
+      <form onSubmit={this.onSubmit}>
+        {groups && groups.length ?
+          groups.map(group => (
             <Group {...group}>{fields.filter(field => field.group === group.name).map(this.fieldRender)}</Group>
-          ))}
-        </form>
-      );
-    } else {
-      return (
-        <form onSubmit={this.onSubmit}>
-          {fields.map(this.fieldRender)}
-        </form>
-      );
-    }
+          )) :
+          fields.map(this.fieldRender)
+        }
+        {buttons && buttons.length ?
+          buttons :
+          ''
+        }
+      </form>
+    );
   }
 
   fieldRender(item: Forms.IFormItem) {
