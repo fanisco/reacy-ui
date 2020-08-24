@@ -22,12 +22,17 @@ export namespace Forms {
     name: string;
     type: string;
     title?: string;
+    group?: string;
     disabled?: boolean;
     onKeyDown?: (e: any) => void;
     onKeyUp?: (e: any) => void;
     onKeyPress?: (e: any) => void;
     onChange?: (e: any) => void;
     placeholder?: string;
+  }
+  export interface IGroup extends Core.IComponent {
+    name: string;
+    title?: string;
   }
   export interface IBase extends IFormItem {
     value: any;
@@ -40,6 +45,7 @@ export namespace Forms {
   }
   export interface IForm extends Core.IComponent {
     data: HashMap<any>;
+    groups?: Array<IGroup>;
     fields: Array<IFormItem>;
     onChange: (name: any, value: any) => void;
     wrap?: boolean;
