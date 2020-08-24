@@ -84,6 +84,12 @@ $column-width: (
   --rcy-fs-lg: #{$fontSize_lg};
   --rcy-fs-xl: #{$fontSize_xl};
 
+  --rcy-radius-xs: #{$borderRadius_xs};
+  --rcy-radius-sm: #{$borderRadius_sm};
+  --rcy-radius-md: #{$borderRadius_md};
+  --rcy-radius-lg: #{$borderRadius_lg};
+  --rcy-radius-xl: #{$borderRadius_xl};
+
   // Responsive
   @each $size, $count in $columns {
     $margin: map_get($default-margin, $size);

@@ -1,0 +1,9 @@
+$className: rcy-panel;
+.#{$className} {
+  padding: var(--rcy-gutter);
+  border-radius: var(--rcy-radius-md);
+
+  background-color: var(--rcy-color-default-background);
+  box-shadow: 0 2px 4px rgba(96, 97, 112, 0.16),
+              0 0 1px rgba(40, 41, 61, 0.04);
+}
