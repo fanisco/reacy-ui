@@ -1,7 +1,11 @@
-import React from 'react';
+import {ReactElement} from 'react';
 import {HashMap} from './types';
 
 export namespace Core {
+  export interface IListItem {
+    id: string | number;
+    caption: string;
+  }
   export interface IComponent {
     mods?: string[];
     className?: string;
@@ -18,40 +22,41 @@ export namespace Buttons {
 }
 
 export namespace Forms {
-  export interface IFormItem extends Core.IComponent {
-    name: string;
-    type: string;
-    title?: string;
-    group?: string;
-    disabled?: boolean;
-    onKeyDown?: (e: any) => void;
-    onKeyUp?: (e: any) => void;
-    onKeyPress?: (e: any) => void;
-    onChange?: (e: any) => void;
-    placeholder?: string;
+  export interface IForm extends Core.IComponent {
+    data: HashMap<any>;
+    fields: Array<FormItem>;
+    wrap?: boolean;
+    groups?: Array<IGroup>;
+    buttons?: Array<ReactElement>;
+    onSubmit?: () => void;
+    onChange: (name: any, value: any) => void;
   }
   export interface IGroup extends Core.IComponent {
     name: string;
     title?: string;
   }
-  export interface IBase extends IFormItem {
+  export interface IBase extends Core.IComponent {
+    name: string;
+    type: string;
     value: any;
+    title?: string;
+    group?: string;
+    disabled?: boolean;
+    onChange?: (e: any) => void;
   }
   export interface IInput extends IBase {
-
+    placeholder?: string;
+    onKeyDown?: (e: any) => void;
+    onKeyUp?: (e: any) => void;
+    onKeyPress?: (e: any) => void;
   }
   export interface ISwitch extends IBase {
-
+    
   }
-  export interface IForm extends Core.IComponent {
-    data: HashMap<any>;
-    groups?: Array<IGroup>;
-    fields: Array<IFormItem>;
-    onSubmit?: () => void;
-    onChange: (name: any, value: any) => void;
-    wrap?: boolean;
-    buttons?: React.ReactElement[];
+  export interface ISelect extends IBase {
+    items: Array<Core.IListItem>;
   }
+  export type FormItem = Partial<IInput | ISwitch | ISelect>;
 }
 
 export namespace Layout {
@@ -68,18 +73,15 @@ export namespace Lists {
     onClick?: (e: any) => void;
     activeId?: number;
     itemClassName?: string;
-    items: Array<{
-      id: number;
-      caption: string;
-    }>;
+    items: Array<Core.IListItem>;
   }
-  export interface ToolbarButton extends Buttons.IButton {
+  export interface IToolbarButton extends Buttons.IButton {
     anchor?: boolean;
     caption?: string;
   }
   export interface IToolbar extends Core.IComponent {
     itemClassName?: string;
-    items: Array<ToolbarButton | React.ReactElement>;
+    items: Array<IToolbarButton | ReactElement>;
   }
 }
 
@@ -92,6 +94,12 @@ export namespace Popups {
     headerContent?: any;
     footerContent?: any;
     onCloseClick?: (e: any) => void;
+  }
+  export interface IDropdown extends Core.IComponent {
+    itemClassName?: string;
+    items: Array<Core.IListItem | ReactElement>;
+    opener: ReactElement;
+    isVisible?: boolean;
   }
 }
 

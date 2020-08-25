@@ -6,7 +6,7 @@ import {Input} from './Input';
 import {Checkbox} from './Checkbox';
 import {Textarea} from './Textarea';
 // import {Toggle} from './Toggle';
-// import Select from './Select';
+import {Select} from './Select';
 
 export class Form extends React.Component<Forms.IForm> {
   constructor(p: Forms.IForm) {
@@ -24,7 +24,7 @@ export class Form extends React.Component<Forms.IForm> {
   render() {
     const {groups, fields, buttons} = this.props;
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="rcy-form" onSubmit={this.onSubmit}>
         {groups && groups.length ?
           groups.map(group => (
             <Group {...group}>{fields.filter(field => field.group === group.name).map(this.fieldRender)}</Group>
@@ -39,7 +39,7 @@ export class Form extends React.Component<Forms.IForm> {
     );
   }
 
-  fieldRender(item: Forms.IFormItem) {
+  fieldRender(item: Forms.FormItem) {
     const props = {
         ...item,
         mods: item.mods,
@@ -53,17 +53,17 @@ export class Form extends React.Component<Forms.IForm> {
     switch (item.type) {
         case 'string':
         case 'number':
-          elem = <Input key={item.name} value={this.props.data[item.name]} {...props}/>;
+          elem = <Input key={item.name} value={this.props.data[item.name]} {...(props as Forms.IInput)}/>;
           break;
         case 'textarea':
-          elem = <Textarea key={item.name} value={this.props.data[item.name]} {...props}/>;
+          elem = <Textarea key={item.name} value={this.props.data[item.name]} {...(props as Forms.IInput)}/>;
           break;
         case 'checkbox':
-          elem = <Checkbox key={item.name} value={this.props.data[item.name]} {...props}/>;
+          elem = <Checkbox key={item.name} value={this.props.data[item.name]} {...(props as Forms.ISwitch)}/>;
           break;
-      // case 'select':
-      //     elem = <Select {...properties}/>;
-      //     break;
+      case 'select':
+          elem = <Select key={item.name} value={this.props.data[item.name]} {...(props as Forms.ISelect)}/>;
+          break;
       // case 'toggle':
       //     elem = <Toggle {...properties}/>;
       //     break;

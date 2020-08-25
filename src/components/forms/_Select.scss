@@ -1,0 +1,48 @@
+@mixin colorize-select(
+  $border,
+  $borderHover,
+  $borderActive
+) {
+  @at-root {
+    .#{$className}__item {
+      border-color: var($border);
+    }
+  }
+}
+
+@mixin colorize-select-default() {
+  @include colorize-select(
+    --rcy-color-default-border,
+    --rcy-color-default-borderHover,
+    --rcy-color-default-borderActive
+  );
+}
+
+$className: rcy-select;
+.#{$className} {
+  display: block;
+  width: 100%;
+
+  &__value {
+    justify-content: space-between;
+  }
+  &__value, &__button {
+    width: 100%;
+  }
+  &__item:not(:first-child) {
+    border-top-width: 1px;
+    border-top-style: solid;
+  }
+  &__item:not(:first-child) &__button {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0 none;
+  }
+  &__item:not(:last-child) &__button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0 none;
+  }
+
+  @include colorize-select-default();
+}
