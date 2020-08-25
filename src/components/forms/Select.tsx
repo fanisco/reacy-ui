@@ -7,9 +7,12 @@ import {Icon} from '../misc';
 
 export class Select extends Component<Forms.ISelect, {isDropdownVisible: boolean}> {
 
+  state = {
+    isDropdownVisible: false
+  };
+
   constructor(p: Forms.ISelect) {
     super(p);
-    this.state = {isDropdownVisible: false};
     this.onOpenerClick = this.onOpenerClick.bind(this);
     this.onValueClick = this.onValueClick.bind(this);
   }
