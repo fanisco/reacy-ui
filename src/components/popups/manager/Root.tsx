@@ -8,6 +8,7 @@ class Root extends Component<{popupManager: Manager; area: string}> {
 
   constructor(p: any, c: any) {
     super(p, c);
+    console.log(p, c);
     this.onDocumentClick = this.onDocumentClick.bind(this);
     this.onPopupChange = this.onPopupChange.bind(this);
   }
@@ -21,12 +22,14 @@ class Root extends Component<{popupManager: Manager; area: string}> {
   }
 
   componentDidMount() {
+    console.log(this.props.area, config.popups.area);
     if (this.props.area === config.popups.area) {
       document.addEventListener('click', this.onDocumentClick, false);
       this.props.popupManager.subscribe(this.onPopupChange);
     }
   }
   componentWillUnmount() {
+    console.log('unmount', this.props.area);
     if (this.props.area === config.popups.area) {
       document.removeEventListener('click', this.onDocumentClick, false);
       this.props.popupManager.unsubscribe(this.onPopupChange);

@@ -13,6 +13,7 @@ export class Manager implements IManager {
   private subscribers: Function[] = [];
 
   constructor() {
+    console.log(123);
     // Use extra container
     const container: HTMLElement | null = document.getElementById(config.popups.container);
     if (!container) {
@@ -24,6 +25,7 @@ export class Manager implements IManager {
     container.style.right = '0';
     container.style.bottom = '0';
     // Render
+    console.log(<Root area={config.popups.area}/>);
     ReactDOM.createPortal(<Root area={config.popups.area}/>, container);
   }
 
@@ -49,6 +51,7 @@ export class Manager implements IManager {
     area: string = config.popups.area,
     id: string = generateGuid()
   ) {
+    console.log('create', area, id);
     // Create new
     const popup = new Popup(componentClass, popupProps as any, area, id);
     this.allPopups.push(popup);
