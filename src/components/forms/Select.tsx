@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import {Core, Forms} from '../../common/interfaces';
 import {bemClasses, defaultSize} from '../../common/bem';
+import {generateGuid} from '../../common/generateGuid';
 
 import {Root, withPopups, IOpenerProps} from '../popups';
 import {IPopupControl} from '../popups/manager/TypeDefs';
@@ -11,7 +12,7 @@ import {Icon} from '../misc';
 
 class Select extends Component<Forms.ISelect & IOpenerProps, {isDropdownVisible: boolean}> {
 
-  id: string = `select_${(new Date()).getTime().toString()}`;
+  id: string = `select_${generateGuid()}`;
   classBase: string = 'rcy-select';
   dropdown: IPopupControl;
 

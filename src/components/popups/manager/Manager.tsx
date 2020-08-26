@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import {Root} from './Root';
 import {Popup} from './Popup';
 import {IManager} from './TypeDefs';
+import {generateGuid} from '../../../common/generateGuid';
 
 export class Manager implements IManager {
 
   private allPopups: Popup[] = [];
   private openPopups: Popup[] = [];
   private subscribers: Function[] = [];
+  private mainArea: string = 'main';
 
   constructor() {
     // Use extra container
@@ -22,7 +24,7 @@ export class Manager implements IManager {
     container.style.right = '0';
     container.style.bottom = '0';
     // Render
-    ReactDOM.createPortal(<Root area="wrapper"/>, container);
+    ReactDOM.createPortal(<Root area={this.mainArea}/>, container);
   }
 
   get popups(): Array<Popup> {
@@ -44,8 +46,8 @@ export class Manager implements IManager {
   create<T>(
     componentClass: React.ComponentType<T>,
     popupProps?: object,
-    area: string = 'wrapper',
-    id: string = (new Date()).getTime().toString()
+    area: string = this.mainArea,
+    id: string = generateGuid()
   ) {
     // Create new
     const popup = new Popup(componentClass, popupProps as any, area, id);
