@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Manager} from './Manager';
 import {Popup} from './Popup';
 import {withPopups} from './withPopups';
+import {config} from '../../../config';
 
 class Root extends Component<{popupManager: Manager; area: string}> {
 
@@ -20,12 +21,16 @@ class Root extends Component<{popupManager: Manager; area: string}> {
   }
 
   componentDidMount() {
-    document.addEventListener('click', this.onDocumentClick, false);
-    this.props.popupManager.subscribe(this.onPopupChange);
+    if (this.props.area === config.popups.area) {
+      document.addEventListener('click', this.onDocumentClick, false);
+      this.props.popupManager.subscribe(this.onPopupChange);
+    }
   }
   componentWillUnmount() {
-    document.removeEventListener('click', this.onDocumentClick, false);
-    this.props.popupManager.unsubscribe(this.onPopupChange);
+    if (this.props.area === config.popups.area) {
+      document.removeEventListener('click', this.onDocumentClick, false);
+      this.props.popupManager.unsubscribe(this.onPopupChange);
+    }
   }
 
   render() {
