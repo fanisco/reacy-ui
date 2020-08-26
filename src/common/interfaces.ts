@@ -98,8 +98,6 @@ export namespace Popups {
   export interface IDropdown extends Core.IComponent {
     itemClassName?: string;
     items: Array<Core.IListItem | ReactElement>;
-    opener: ReactElement;
-    isVisible?: boolean;
   }
 }
 

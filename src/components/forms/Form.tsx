@@ -27,7 +27,7 @@ export class Form extends React.Component<Forms.IForm> {
       <form className="rcy-form" onSubmit={this.onSubmit}>
         {groups && groups.length ?
           groups.map(group => (
-            <Group {...group}>{fields.filter(field => field.group === group.name).map(this.fieldRender)}</Group>
+            <Group {...group} key={group.name}>{fields.filter(field => field.group === group.name).map(this.fieldRender)}</Group>
           )) :
           fields.map(this.fieldRender)
         }
