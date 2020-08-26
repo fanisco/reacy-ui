@@ -4,19 +4,19 @@ import {Root} from './Root';
 import {Popup} from './Popup';
 import {IManager} from './TypeDefs';
 import {generateGuid} from '../../../common/generateGuid';
+import {config} from '../../../config';
 
 export class Manager implements IManager {
 
   private allPopups: Popup[] = [];
   private openPopups: Popup[] = [];
   private subscribers: Function[] = [];
-  private mainArea: string = 'main';
 
   constructor() {
     // Use extra container
-    const container: HTMLElement | null = document.getElementById('rcy-popups');
+    const container: HTMLElement | null = document.getElementById(config.popups.container);
     if (!container) {
-      throw Error('Container element "#rcy-popups" is not presented in DOM. Unable to create popups.');
+      throw Error(`Container element "#${config.popups.container}" is not presented in DOM. Unable to create popups.`);
     }
     // Position container
     container.style.position = 'fixed';
@@ -24,7 +24,7 @@ export class Manager implements IManager {
     container.style.right = '0';
     container.style.bottom = '0';
     // Render
-    ReactDOM.createPortal(<Root area={this.mainArea}/>, container);
+    ReactDOM.createPortal(<Root area={config.popups.area}/>, container);
   }
 
   get popups(): Array<Popup> {
@@ -46,7 +46,7 @@ export class Manager implements IManager {
   create<T>(
     componentClass: React.ComponentType<T>,
     popupProps?: object,
-    area: string = this.mainArea,
+    area: string = config.popups.area,
     id: string = generateGuid()
   ) {
     // Create new
