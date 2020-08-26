@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Root} from './Root';
 import {Popup} from './Popup';
 import {IManager} from './TypeDefs';
 import {generateGuid} from '../../../common/generateGuid';
@@ -11,23 +9,6 @@ export class Manager implements IManager {
   private allPopups: Popup[] = [];
   private openPopups: Popup[] = [];
   private subscribers: Function[] = [];
-
-  constructor() {
-    console.log(123);
-    // Use extra container
-    const container: HTMLElement | null = document.getElementById(config.popups.container);
-    if (!container) {
-      throw Error(`Container element "#${config.popups.container}" is not presented in DOM. Unable to create popups.`);
-    }
-    // Position container
-    container.style.position = 'fixed';
-    container.style.left = '0';
-    container.style.right = '0';
-    container.style.bottom = '0';
-    // Render
-    console.log(<Root area={config.popups.area}/>);
-    ReactDOM.createPortal(<Root area={config.popups.area}/>, container);
-  }
 
   get popups(): Array<Popup> {
     return [...this.openPopups];
@@ -51,7 +32,6 @@ export class Manager implements IManager {
     area: string = config.popups.area,
     id: string = generateGuid()
   ) {
-    console.log('create', area, id);
     // Create new
     const popup = new Popup(componentClass, popupProps as any, area, id);
     this.allPopups.push(popup);
