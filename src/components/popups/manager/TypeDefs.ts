@@ -6,14 +6,18 @@ export interface IPopupControl {
   isOpen: boolean;
 }
 
+export interface IPopupCreateOptions<T> {
+  component: React.ComponentType<T>;
+  opener?: React.Component & IOpener,
+  props?: React.ComponentProps<any>;
+  area?: string;
+  id?: string;
+  closeOnClickOutside?: boolean
+}
+
 export interface IManager {
   popups: Array<Popup>;
-  create<T>(
-    componentClass: React.ComponentType<T>,
-    popupProps?: object,
-    area?: string,
-    id?: string
-  ): IPopupControl; 
+  create<T>(options: IPopupCreateOptions<T>): IPopupControl; 
   open(id: string): void;
   close(id: string): void;
   closeAll(): void;
@@ -23,6 +27,10 @@ export interface IManager {
 export interface IPopupProps {
     onClose?: (...args: any[]) => any;
     isOpen?: boolean;
+}
+
+export interface IOpener {
+  node: Element;
 }
 
 export interface IOpenerProps {

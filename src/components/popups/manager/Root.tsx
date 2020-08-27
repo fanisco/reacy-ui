@@ -23,19 +23,19 @@ class Root extends Component<{popupManager: Manager; area: string}> {
   componentDidMount() {
     if (this.props.area === config.popups.area) {
       document.addEventListener('click', this.onDocumentClick, false);
-      this.props.popupManager.subscribe(this.onPopupChange);
     }
+    this.props.popupManager.subscribe(this.onPopupChange);
   }
   componentWillUnmount() {
     if (this.props.area === config.popups.area) {
       document.removeEventListener('click', this.onDocumentClick, false);
-      this.props.popupManager.unsubscribe(this.onPopupChange);
     }
+    this.props.popupManager.unsubscribe(this.onPopupChange);
   }
 
   render() {
     return this.props.popupManager.popups.filter(popup => popup.area === this.props.area).map((popup: Popup) => (
-      <popup.ComponentClass key={popup.id} isOpen={popup.isOpen} {...popup.props}/>
+      <popup.Component key={popup.id} isOpen={popup.isOpen} {...popup.props}/>
     ));
   }
 }

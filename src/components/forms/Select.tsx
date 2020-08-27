@@ -4,15 +4,16 @@ import {Core, Forms} from '../../common/interfaces';
 import {bemClasses, defaultSize} from '../../common/bem';
 import {generateGuid} from '../../common/generateGuid';
 
-import {Root, withPopups, IOpenerProps} from '../popups';
+import {Root, withPopups, IOpener, IOpenerProps} from '../popups';
 import {IPopupControl} from '../popups/manager/TypeDefs';
 import {Dropdown} from '../popups';
 import {Anchor} from '../buttons';
 import {Icon} from '../misc';
 
-class Select extends Component<Forms.ISelect & IOpenerProps, {isDropdownVisible: boolean}> {
+class Select extends Component<Forms.ISelect & IOpenerProps, {isDropdownVisible: boolean}> implements IOpener {
 
   id: string = `select_${generateGuid()}`;
+  node: Element;
   classBase: string = 'rcy-select';
   dropdown: IPopupControl;
 
@@ -24,23 +25,29 @@ class Select extends Component<Forms.ISelect & IOpenerProps, {isDropdownVisible:
 
   onOpenerClick(e: Event) {
     e.preventDefault();
-    const popupId = this.id;
-    const areaId = this.id;
+    const id = this.id;
+    const area = this.id;
     if (!this.dropdown) {
-      this.dropdown = this.props.popupManager.create(Dropdown, {
-        className: `${this.classBase}__dropdown`,
-        itemClassName: `${this.classBase}__item`,
-        items: this.props.items.map(item =>
-          <Anchor className={`${this.classBase}__button`} mods={this.props.mods} onClick={() => this.onValueClick(item)}>
-            {item.caption}
-          </Anchor>
-        )}, areaId, popupId
-      );
+      this.dropdown = this.props.popupManager.create({
+        component: Dropdown,
+        opener: this,
+        props: {
+          className: `${this.classBase}__dropdown`,
+          itemClassName: `${this.classBase}__item`,
+          items: this.props.items.map(item =>
+            <Anchor className={`${this.classBase}__button`} mods={this.props.mods} onClick={() => this.onValueClick(item)}>
+              {item.caption}
+            </Anchor>
+          )},
+        area,
+        id,
+        closeOnClickOutside: true
+      });
     }
     if (this.dropdown.isOpen) {
-      this.props.popupManager.close(popupId);
+      this.props.popupManager.close(id);
     } else {
-      this.props.popupManager.open(popupId);
+      this.props.popupManager.open(id);
     }
   }
 
@@ -57,7 +64,7 @@ class Select extends Component<Forms.ISelect & IOpenerProps, {isDropdownVisible:
     const textValue = items.find(item => item.id === value)?.caption;
     const iconName = 'angle-down';
     return (
-      <div className={className}>
+      <div className={className} ref={node => this.node = node}>
         <Anchor className={`${this.classBase}__value`} mods={mods} onClick={this.onOpenerClick} disabled={!items.length}>
           {textValue}
           <Icon name={iconName}/>

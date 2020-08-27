@@ -26,14 +26,23 @@ export class Manager implements IManager {
     this.subscribers.forEach(fn => fn.call(null, ...args));
   }
 
-  create<T>(
-    componentClass: React.ComponentType<T>,
-    popupProps?: object,
-    area: string = config.popups.area,
-    id: string = generateGuid()
-  ) {
+  create<T>({
+    component,
+    opener,
+    props,
+    area = config.popups.area,
+    id = generateGuid(),
+    closeOnClickOutside = false
+  }) {
     // Create new
-    const popup = new Popup(componentClass, popupProps as any, area, id);
+    const popup = new Popup(
+      component,
+      opener,
+      props,
+      area,
+      id,
+      closeOnClickOutside
+    );
     this.allPopups.push(popup);
     // Return control
     return {
@@ -80,6 +89,10 @@ export class Manager implements IManager {
   }
 
   closeOther(node: Element): void {
-    console.log(node);
+    this.openPopups.forEach(popup => {
+      if (!popup.opener?.node?.contains(node)) { // FixMe!
+        this.close(popup.id);
+      }
+    });
   }
 };
