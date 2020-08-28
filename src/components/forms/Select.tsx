@@ -19,14 +19,27 @@ class Select extends Component<Forms.ISelect & IOpenerProps, {isDropdownVisible:
 
   constructor(p: Forms.ISelect & IOpenerProps) {
     super(p);
+    this.onDropdownChange = this.onDropdownChange.bind(this);
     this.onOpenerClick = this.onOpenerClick.bind(this);
     this.onValueClick = this.onValueClick.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.popupManager.subscribe(this.onDropdownChange);
+  }
+  componentWillUnmount() {
+    this.props.popupManager.unsubscribe(this.onDropdownChange);
+  }
+
+  onDropdownChange() {
+    this.forceUpdate();
   }
 
   onOpenerClick(e: Event) {
     e.preventDefault();
     const id = this.id;
     const area = this.id;
+    const {items = [], mods = [], value} = this.props;
     if (!this.dropdown) {
       this.dropdown = this.props.popupManager.create({
         component: Dropdown,
@@ -34,8 +47,8 @@ class Select extends Component<Forms.ISelect & IOpenerProps, {isDropdownVisible:
         props: {
           className: `${this.classBase}__dropdown`,
           itemClassName: `${this.classBase}__item`,
-          items: this.props.items.map(item =>
-            <Anchor className={`${this.classBase}__button`} mods={this.props.mods} onClick={() => this.onValueClick(item)}>
+          items: items.map(item =>
+            <Anchor onClick={() => this.onValueClick(item)} className={`${this.classBase}__button`} mods={[...mods, item.id === value ? 'primary' : '']}>
               {item.caption}
             </Anchor>
           )},
@@ -59,13 +72,14 @@ class Select extends Component<Forms.ISelect & IOpenerProps, {isDropdownVisible:
   }
 
   render() {
-    const {value, items = [], mods} = this.props;
-    const className = bemClasses(this.classBase, defaultSize(mods), this.props.className);
+    const isOpen = !!this.dropdown?.isOpen;
+    const {value, items = [], mods = []} = this.props;
+    const className = bemClasses(this.classBase, [...defaultSize(mods), isOpen ? 'open' : ''], this.props.className);
     const textValue = items.find(item => item.id === value)?.caption;
-    const iconName = 'angle-down';
+    const iconName = isOpen ? 'angle-up' : 'angle-down';
     return (
       <div className={className} ref={node => this.node = node}>
-        <Anchor className={`${this.classBase}__value`} mods={mods} onClick={this.onOpenerClick} disabled={!items.length}>
+        <Anchor onClick={this.onOpenerClick} className={`${this.classBase}__value`} mods={[...mods, isOpen ? 'pressed' : '']} disabled={!items.length}>
           {textValue}
           <Icon name={iconName}/>
         </Anchor>
