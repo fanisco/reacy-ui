@@ -22,11 +22,14 @@ export interface IManager {
   close(id: string): void;
   closeAll(): void;
   closeOther(node: Element): void;
+  subscribe(fn: Function): void;
+  unsubscribe(fn: Function): void;
 }
 
 export interface IPopupProps {
     onClose?: (...args: any[]) => any;
     isOpen?: boolean;
+    zIndex?: number;
 }
 
 export interface IOpener {

@@ -1,12 +1,12 @@
-import {IOpener} from './TypeDefs';
+import {IOpener, IPopupProps} from './TypeDefs';
 
-export class Popup {
+export class Popup  {
   private _isOpen: boolean;
 
   constructor(
     public Component: any,
     public opener: React.Component & IOpener,
-    public props: React.ComponentProps<any>,
+    public props: IPopupProps,
     public area: string,
     public id: string,
     public closeOnClickOutside: boolean = true

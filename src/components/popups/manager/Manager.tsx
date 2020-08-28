@@ -22,8 +22,17 @@ export class Manager implements IManager {
     this.subscribers.slice(this.subscribers.findIndex(f => f === fn), 1);
   }
 
-  dispatch(eventName: string, ...args: any[]): void {
+  private dispatch(eventName: string, ...args: any[]): void {
     this.subscribers.forEach(fn => fn.call(null, ...args));
+  }
+
+  private getZIndex(area: string): number {
+    return Math.max(
+      ...this.openPopups
+        .filter(popup => popup.area === area)
+        .map(popup => popup.props.zIndex) as number[],
+      1
+    );
   }
 
   create<T>({
@@ -56,6 +65,7 @@ export class Manager implements IManager {
 
   open(id: string) {
     const popup = this.allPopups.find(popup => popup.id === id);
+    popup.props = {...popup.props, zIndex: this.getZIndex(popup.area)};
     popup.open();
     if (!this.openPopups.includes(popup)) {
       this.openPopups.push(popup);
