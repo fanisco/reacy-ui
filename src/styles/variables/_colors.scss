@@ -77,7 +77,7 @@ $colors_default: (
   foregroundDisabled: map_get($def_palette, l100),
   background: map_get($def_palette, l100),
   backgroundHover: map_get($def_palette, l200),
-  backgroundActive: map_get($def_palette, l200),
+  backgroundActive: map_get($def_palette, l300),
   backgroundDisabled: map_get($def_palette, l400),
   border: map_get($def_palette, l500),
   borderHover: map_get($def_palette, d100),

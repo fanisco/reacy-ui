@@ -60,13 +60,17 @@ export class Select extends Component<Forms.ISelect> {
   }
 
   render() {
-    const {value, items = [], mods = []} = this.props;
+    const {value, items = [], mods = [], disabled} = this.props;
     const className = bemClasses(this.classBase, [...defaultSize(mods), this.state.isOpen ? 'open' : ''], this.props.className);
     const textValue = items.find(item => item.id === value)?.caption;
     const iconName = this.state.isOpen ? 'angle-up' : 'angle-down';
     return (
       <div className={className} ref={node => this.node = node}>
-        <Anchor onClick={this.onOpenerClick} className={`${this.classBase}__value`} mods={[...mods, this.state.isOpen ? 'pressed' : '']} disabled={!items.length}>
+        <Anchor
+          onClick={this.onOpenerClick}
+          className={`${this.classBase}__value`}
+          mods={[...mods, this.state.isOpen ? 'pressed' : '']}
+          disabled={disabled || !items.length}>
           {textValue}
           <Icon name={iconName}/>
         </Anchor>
@@ -75,8 +79,12 @@ export class Select extends Component<Forms.ISelect> {
           className={`${this.classBase}__dropdown`}
           itemClassName={`${this.classBase}__item`}
           items={items.map(item =>
-            <Anchor onClick={() => this.onValueClick(item)} className={`${this.classBase}__button`} mods={[...mods, item.id === value ? 'primary' : '']}>
+            <Anchor
+              onClick={() => this.onValueClick(item)}
+              className={`${this.classBase}__button`}
+              mods={[...mods, ...(item.id === value ? ['active', 'bold'] : [])]}>
               {item.caption}
+              {item.id === value ? <Icon name="check"/> : ''}
             </Anchor>
           )}
         />

@@ -29,6 +29,12 @@
     color: var($foregroundActive);
   }
 
+  &_active {
+    background-color: var($backgroundActive);
+    border-color: var($borderActive);
+    color: var($foregroundActive);
+  }
+
   &.#{$className}_outline {
     background-color: transparent;
     border-color: var($outline);

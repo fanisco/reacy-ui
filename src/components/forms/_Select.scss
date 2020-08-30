@@ -28,7 +28,7 @@ $className: rcy-select;
     border-width: 1px;
     border-style: solid;
   }
-  &__value {
+  &__value, &__button {
     justify-content: space-between;
   }
   &_open &__value {
