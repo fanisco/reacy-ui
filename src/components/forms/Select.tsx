@@ -38,7 +38,7 @@ export class Select extends Component<Forms.ISelect> {
   }
 
   onDocumentClick(e: Event) {
-    if (!this.node.contains(e.target)) {
+    if (!this.node.contains(e.target as Element)) {
       this.close();
     }
   }
