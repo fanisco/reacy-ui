@@ -7,11 +7,11 @@ import {List} from '../lists';
 
 export const Dropdown: React.FC<Popups.IDropdown & IPopupProps> = ({isOpen, zIndex, items = [], ...props}) => {
   const classBase = 'rcy-dropdown';
-  const className = bemClasses(classBase, props.mods, props.className);
+  const className = bemClasses(classBase, props.mods, `${props.className} ${!isOpen ? 'rcy-hidden' : ''}`);
   return (
     <div className={className} style={{zIndex}}>
       <List
-        className={`${classBase}__list ${!isOpen ? 'rcy-hidden' : ''}`}
+        className={`${classBase}__list`}
         itemClassName={`${classBase}__item ${props.itemClassName ? props.itemClassName : ''}`}
       >
         {items.map(item => {
