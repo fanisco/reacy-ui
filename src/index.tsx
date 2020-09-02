@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import {Popups} from 'reacy-ui';
+
 import App from './App';
 import {Provider} from './state/Context';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider>
-      <App />
+      <Popups.Provider>
+        <App/>
+      </Popups.Provider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

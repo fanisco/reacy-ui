@@ -1,11 +1,15 @@
-import React, {useContext} from 'react';
-import {Lists, Buttons} from 'reacy-ui';
+import React, {useContext, useRef} from 'react';
+import {Popups, Lists, Buttons} from 'reacy-ui';
 
+import {UserCard} from './UserCard';
 import {Context} from '../state/Context';
 import {showUserCard} from '../state/actions';
 
-export const Users: React.FC<{}> = ({...props}) => {
+const Users: React.FC<Popups.IOpenerProps> = ({popupManager, ...props}) => {
   const {state, dispatch} = useContext(Context);
+  const popup = useRef(popupManager.create({
+    component: UserCard
+  }));
   return (
     <>
       <h1>Users</h1>
@@ -14,8 +18,10 @@ export const Users: React.FC<{}> = ({...props}) => {
           <Buttons.Button
             key={i}
             mods={['primary', 'inline']}
-            onClick={() => showUserCard({dispatch, user})}
-          >
+            onClick={() => {
+              showUserCard({dispatch, user});
+              popupManager.open(popup.current.id);
+            }}>
             {user.name}
           </Buttons.Button>
         )}
@@ -23,3 +29,6 @@ export const Users: React.FC<{}> = ({...props}) => {
     </>
   );
 };
+
+const wrappedUsers = Popups.withPopups()(Users);
+export {wrappedUsers as Users};

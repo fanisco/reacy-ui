@@ -1,17 +1,15 @@
 import {Reducer} from 'react';
 import {State, Action} from './types';
 import {
-  SHOW_USER_CARD,
-  HIDE_USER_CARD,
-  FETCH_USERS
-} from './actions';
+  SET_CURRENT_USER,
+  FETCH_USERS,
+  SATURATE_USERS
+} from '../types/Actions';
 
 export const reducer: Reducer<State, Action> = (state, {type, payload}) => {
   switch (type) {
-    case SHOW_USER_CARD:
+    case SET_CURRENT_USER:
       return {...state, user: payload.user};
-    case HIDE_USER_CARD:
-      return {...state, user: undefined};
     case FETCH_USERS:
       return {...state, users: payload.data};
     default:
