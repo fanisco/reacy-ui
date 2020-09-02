@@ -86,14 +86,13 @@ export namespace Lists {
 }
 
 export namespace Popups {
-  export interface IPopup extends Core.IComponent {
-    visible?: boolean;
+  export interface IPopupOverlay extends Core.IComponent {
+    
   }
-  export interface IInner extends Core.IComponent {
+  export interface IPopupBody extends Core.IComponent {
     title?: string;
     headerContent?: any;
     footerContent?: any;
-    onCloseClick?: (e: any) => void;
   }
   export interface IDropdown extends Core.IComponent {
     itemClassName?: string;

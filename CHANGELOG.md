@@ -8,3 +8,5 @@
 * Popup manager fix
 ### 1.0.95
 * Popup manager zIndex
+### 1.0.96
+* PopupBody & PopupOverlay

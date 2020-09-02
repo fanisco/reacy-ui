@@ -55,6 +55,7 @@ export class Manager implements IManager {
     this.allPopups.push(popup);
     // Return control
     return {
+      id,
       open: () => this.open(id),
       close: () => this.close(id),
       get isOpen(): boolean {
@@ -65,7 +66,11 @@ export class Manager implements IManager {
 
   open(id: string) {
     const popup = this.allPopups.find(popup => popup.id === id);
-    popup.props = {...popup.props, zIndex: this.getZIndex(popup.area)};
+    popup.props = {
+      ...popup.props,
+      zIndex: this.getZIndex(popup.area),
+      onClose: () => this.close(id)
+    };
     popup.open();
     if (!this.openPopups.includes(popup)) {
       this.openPopups.push(popup);
@@ -99,10 +104,10 @@ export class Manager implements IManager {
   }
 
   closeOther(node: Element): void {
-    this.openPopups.forEach(popup => {
-      if (!popup.opener?.node?.contains(node)) { // FixMe!
-        this.close(popup.id);
-      }
-    });
+    // this.openPopups.forEach(popup => {
+    //   if (!popup.opener?.node?.contains(node)) { // FixMe!
+    //     this.close(popup.id);
+    //   }
+    // });
   }
 };

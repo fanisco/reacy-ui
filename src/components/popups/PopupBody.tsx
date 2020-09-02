@@ -1,12 +1,14 @@
 import React from 'react';
+
+import {IPopupProps} from '.';
 import {Popups} from '../../common/interfaces';
 import {bemClasses, defaultSize} from '../../common/bem';
 import {Button} from '../buttons';
 import {Icon} from '../misc';
 
-export const Inner: React.FC<Popups.IInner> = ({children, ...props}) => {
+export const PopupBody: React.FC<Popups.IPopupBody & IPopupProps> = ({onClose, children, ...props}) => {
   const mods = defaultSize(props.mods);
-  const classBase = 'rcy-popupInner';
+  const classBase = 'rcy-popupBody';
   const className = bemClasses(classBase, mods, props.className);
   let headerContent = null;
   if (props.headerContent) {
@@ -18,7 +20,7 @@ export const Inner: React.FC<Popups.IInner> = ({children, ...props}) => {
     <div className={className}>
       <header className={`${classBase}__header`}>
         {headerContent}
-        <Button className={`${classBase}__close`} onClick={props.onCloseClick} mods={['inline']}>
+        <Button className={`${classBase}__close`} onClick={onClose} mods={['inline']}>
           <Icon name="times"/>
         </Button>
       </header>

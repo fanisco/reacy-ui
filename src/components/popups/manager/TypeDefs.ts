@@ -1,6 +1,7 @@
 import {Popup} from './Popup';
 
 export interface IPopupControl {
+  id: string;
   open(): void;
   close(): void;
   isOpen: boolean;
