@@ -3,7 +3,7 @@ import {Forms} from '../../common/interfaces';
 import {bemClasses, defaultSize, filterMods} from '../../common/bem';
 import {SizeMods, StyleMods} from '../../common/mods';
 
-export const Field: React.FC<Forms.IFormItem> = ({title, type, mods, children, ...props}) => {
+export const Field: React.FC<any> = ({title, type, mods, children, ...props}) => {
   const appliableMods: string[] = [
     type,
     ...filterMods(defaultSize(mods), AvaialableMods)
