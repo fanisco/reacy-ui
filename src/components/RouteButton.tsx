@@ -9,7 +9,11 @@ export const RouteButton = withRouter<any, any>((props: any) => {
       {...props}
       onClick={(e) => {
         e.preventDefault();
-        history.push(href);
+        if (href === '__back') {
+          history.goBack();
+        } else {
+          history.push(href);
+        }
       }}
     />
   );

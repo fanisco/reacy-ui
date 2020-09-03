@@ -18,7 +18,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "reacy-ui": "^1.0.13",
+    "reacy-ui": "^1.0.95",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "typescript": "^3.9.6"
