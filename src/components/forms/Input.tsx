@@ -1,5 +1,5 @@
 import React from 'react';
-import {Forms} from '../../common/interfaces';
+import {Forms} from './interfaces';
 import {bemClasses, defaultSize} from '../../common/bem';
 
 export const Input: React.FC<Forms.IInput> = ({value, name, placeholder, type = 'text', disabled = false, ...props}) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Forms} from '../../common/interfaces';
+import {Forms} from './interfaces';
 import {bemClasses, defaultSize} from '../../common/bem';
 import {Icon} from '../misc';
 

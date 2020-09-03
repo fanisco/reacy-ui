@@ -5,3 +5,4 @@ export {Group} from './Group';
 export {Input} from './Input';
 export {Textarea} from './Textarea';
 export {Divarea} from './Divarea';
+export type {Forms as Interfaces} from './interfaces';

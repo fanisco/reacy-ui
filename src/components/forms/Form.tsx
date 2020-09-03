@@ -1,5 +1,5 @@
 import React, { FormEvent } from 'react';
-import {Forms} from '../../common/interfaces';
+import {Forms} from './interfaces';
 import {Group} from './Group';
 import {Field} from './Field';
 import {Input} from './Input';

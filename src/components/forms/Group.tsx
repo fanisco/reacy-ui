@@ -1,6 +1,6 @@
 import React from 'react';
-import {Forms} from '../../common/interfaces';
-import {bemClasses, defaultSize} from '../../common/bem';
+import {Forms} from './interfaces';
+import {bemClasses} from '../../common/bem';
 
 export const Group: React.FC<Forms.IGroup> = ({name, title, children, ...props}) => {
   const classBase = 'rcy-group';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Buttons} from '../../common/interfaces';
+import {Buttons} from './interfaces';
 import {bemClasses, defaultSize} from '../../common/bem';
 
 export const Anchor: React.FC<Buttons.IButton> = ({onClick, href, children, disabled = false, ...props}) => {
