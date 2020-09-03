@@ -1,25 +1,26 @@
-import React, {useContext, useRef} from 'react';
+import React, {useRef} from 'react';
 import {Popups, Lists, Buttons} from 'reacy-ui';
 
-import {UserCard} from './UserCard';
-import {Context} from '../state/Context';
-import {showUserCard} from '../state/actions';
+import {UserCardContainer} from '../containers/UserCardContainer';
+import {IUser} from '../types/IUser';
 
-const Users: React.FC<Popups.IOpenerProps> = ({popupManager, ...props}) => {
-  const {state, dispatch} = useContext(Context);
+const Users: React.FC<{
+  list: IUser[];
+  setCurrentUser: Function
+} & Popups.IOpenerProps> = ({list = [], setCurrentUser, popupManager}) => {
   const popup = useRef(popupManager.create({
-    component: UserCard
+    component: UserCardContainer
   }));
   return (
     <>
       <h1>Users</h1>
       <Lists.List>
-        {state.users.map((user, i) =>
+        {list.map((user, i) =>
           <Buttons.Button
             key={i}
             mods={['primary', 'inline']}
             onClick={() => {
-              showUserCard({dispatch, user});
+              setCurrentUser(user);
               popupManager.open(popup.current.id);
             }}>
             {user.name}

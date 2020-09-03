@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Lists} from 'reacy-ui';
+import {Lists, Buttons} from 'reacy-ui';
 
-import {RouteButton} from './RouteButton';
+// import {RouteButton} from './RouteButton';
 
 import {IPost} from '../types/IPost';
 
@@ -10,7 +10,7 @@ export const MiniPost: React.FC<IPost> = ({id, title, body, ...props}) => {
   return (
     <>
       <h4 className="rcy-ellipsis">
-        <RouteButton href={`/posts/${id}`} mods={['inline', 'underline', 'lg', 'primary', 'displayInline']}>{title}</RouteButton>
+        <Buttons.Anchor href={`/posts/${id}`} mods={['inline', 'underline', 'lg', 'primary', 'displayInline']}>{title}</Buttons.Anchor>
       </h4>
       {textVisible ? <p>{body}</p> : null}
       <Lists.Toolbar

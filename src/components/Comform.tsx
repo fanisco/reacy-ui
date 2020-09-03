@@ -3,7 +3,7 @@ import {Forms, Buttons} from 'reacy-ui';
 
 import './Comform.scss';
 
-export const Comform: React.FC<{onPostComment?: (comment: string) => void}> = ({onPostComment, ...props}) => {
+export const Comform: React.FC<{postComment: Function}> = ({postComment, ...props}) => {
   const [comment, setComment] = useState('');
   const [ctrlPressed, setCtrlPressed] = useState(false);
 
@@ -11,9 +11,11 @@ export const Comform: React.FC<{onPostComment?: (comment: string) => void}> = ({
     if (comment === '') {
       return;
     }
-    if (onPostComment) {
-      onPostComment(comment);
-    }
+    postComment({
+      postId: 1,
+      body: comment,
+      name: 'new comment'
+    });
     setComment('');
   };
 

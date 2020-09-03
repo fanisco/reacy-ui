@@ -1,17 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import {Popups} from 'reacy-ui';
 
-import App from './App';
-import {Provider} from './state/Context';
+import {compose, createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+
+import {AppContainer} from './containers/AppContainer';
+import {rootReducer} from './reducers/rootReducer';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 
+const store = createStore(rootReducer, compose(
+  applyMiddleware(thunk),
+  // @ts-ignore
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+));
+
 ReactDOM.render(
   <React.StrictMode>
-    <Provider>
+    <Provider store={store}>
       <Popups.Provider>
-        <App/>
+        <Router>
+          <AppContainer/>
+        </Router>
       </Popups.Provider>
     </Provider>
   </React.StrictMode>,

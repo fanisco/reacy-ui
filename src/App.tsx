@@ -1,30 +1,35 @@
-import React, {useEffect, useContext} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {Route, useLocation} from 'react-router-dom';
 import {Layout} from 'reacy-ui';
 
-import {Context} from './state/Context';
-import {fetchUsers} from './state/actions';
+import {UsersContainer} from './containers/UsersContainer';
+import {PostContainer} from './containers/PostContainer';
 
-import {Users} from './ui/Users';
-import {Post} from './ui/Post';
-
-import {IUser} from './types/IUser';
-
-function App() {
-  const {dispatch} = useContext(Context);
+export const App: React.FC<{
+  fetchUsers: Function;
+  fetchPost: Function;
+  fetchComments: Function
+}> = ({fetchUsers, fetchPost, fetchComments}) => {
+  const location = useLocation();
   useEffect(() => {
-    fetchUsers<IUser[]>({dispatch});
-  }, []);
+    switch (true) {
+      case location.pathname === '/':
+        fetchUsers();
+        break;
+      case location.pathname.includes('/posts/'):
+        fetchPost(1);
+        fetchComments(1);
+        break;
+    }
+  }, [location.pathname, fetchUsers, fetchPost, fetchComments]);
   return (
     <Layout.Container>
-      <Router>
-        <Route path="/posts/:id/" render={props => <Post id={props.match.params.id}/>}/>
-        <Route path="/" exact>
-          <Users/>
-        </Route>
-      </Router>
+      <Route path="/posts/:id/">
+        <PostContainer/>
+      </Route>
+      <Route path="/" exact>
+        <UsersContainer/>
+      </Route>
     </Layout.Container>
   );
 }
-
-export default App;
