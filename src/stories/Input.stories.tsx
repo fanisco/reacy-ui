@@ -4,7 +4,7 @@ import {Story, Meta} from '@storybook/react/types-6-0';
 import {Input, Interfaces} from '../components/forms';
 
 export default {
-  title: 'ReacyUI/Button',
+  title: 'Forms/Input',
   component: Input
 } as Meta;
 
