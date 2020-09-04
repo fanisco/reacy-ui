@@ -10,3 +10,5 @@
 * Popup manager zIndex
 ### 1.0.96
 * PopupBody & PopupOverlay
+### 1.1.0
+* Module compilation to named es6

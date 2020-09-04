@@ -1,6 +1,6 @@
 {
   "name": "reacy-ui",
-  "version": "1.0.95",
+  "version": "1.1.0",
   "description": "UI kit of React components",
   "author": "Fanil Zubairov <fannisco@gmail.com>",
   "license": "MIT",
@@ -28,7 +28,8 @@
   "dependencies": {
     "normalize.css": "^8.0.1",
     "react": "^16.10.2",
-    "react-contenteditable": "^3.3.5"
+    "react-contenteditable": "^3.3.5",
+    "tslib": "^2.0.1"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.5",
