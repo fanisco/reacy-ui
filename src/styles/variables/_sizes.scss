@@ -90,16 +90,27 @@ $column-width: (
   --rcy-radius-lg: #{$borderRadius_lg};
   --rcy-radius-xl: #{$borderRadius_xl};
 
+  --rcy-spacing-xs: #{$spacingX_xs};
+  --rcy-spacing-sm: #{$spacingX_sm};
+  --rcy-spacing-md: #{$spacingX_md};
+  --rcy-spacing-lg: #{$spacingX_lg};
+  --rcy-spacing-xl: #{$spacingX_xl};
+
+  --rcy-width-xs: var(--rcy-width-desktop-2);
+  --rcy-width-sm: var(--rcy-width-desktop-4);
+  --rcy-width-md: var(--rcy-width-desktop-6);
+  --rcy-width-lg: var(--rcy-width-desktop-8);
+  --rcy-width-xl: var(--rcy-width-desktop-12);
+
   // Responsive
   @each $size, $count in $columns {
     $margin: map_get($default-margin, $size);
     $gutter: map_get($default-gutter, $size);
     $width: map_get($column-width, $size);
     @for $n from 1 through $count {
-      --rcy-width-#{$size}-#{$n}: #{$n * ($width + $gutter) + $margin * 2};
+      --rcy-width-#{$size}-#{$n}: #{$n * ($width + $gutter)};
     }
     @include media-query($size) {
-      --rcy-container-width: var(--rcy-width-#{$size}-#{$count});
       --rcy-margin: #{$margin};
       --rcy-gutter: #{$gutter};
     }

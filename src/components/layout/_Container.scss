@@ -1,4 +1,22 @@
 $className: rcy-container;
+
+@mixin container() {
+  width: 100%;
+  max-width: calc(var(--rcy-width-xl) + var(--rcy-margin) * 2);
+  padding-left: var(--rcy-margin);
+  padding-right: var(--rcy-margin);
+}
+
+@mixin sizes() {
+  @each $size in map-keys($sizes) {
+    @at-root {
+      .#{$className}_#{$size} {
+        width: var(--rcy-width-#{$size});
+      }
+    }
+  }
+}
+
 .#{$className} {
   margin: 0 auto;
 
@@ -6,4 +24,5 @@ $className: rcy-container;
   flex-direction: column;
 
   @include container();
+  @include sizes();
 }
