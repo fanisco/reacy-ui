@@ -53,6 +53,8 @@ export class Form extends React.Component<Forms.IForm> {
     switch (item.type) {
         case 'string':
         case 'number':
+        case 'password':
+        case 'email':
           elem = <Input key={item.name} value={this.props.data[item.name]} {...(props as Forms.IInput)}/>;
           break;
         case 'textarea':
