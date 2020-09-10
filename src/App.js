@@ -11,16 +11,18 @@ import Basket from './ui/app/Basket';
 import Cart from './ui/app/Cart';
 import Checkout from './ui/app/Checkout';
 import BackButton from './ui/kit/buttons/BackButton';
+// import {Button} from 'reacy-ui';
 
 const App = () => {
     // const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
-    // const styles = ['default', 'primary', 'secondary', 'success'];
+    // const styles = ['default', 'primary', 'success', 'warning', 'danger'];
     // const additional = ['rounded', 'textCenter', 'shadow', 'outline'];
     // return (
     //     <div style={{
     //         display: 'grid',
-    //         gridTemplateColumns: 'repeat(4, 1fr)',
-    //         gridGap: '10px'
+    //         gridTemplateColumns: 'repeat(5, 1fr)',
+    //         gridGap: '10px',
+    //         padding: '10px'
     //     }}>
     //         {sizes.map((size, i) => {
     //             return styles.map(style => [
