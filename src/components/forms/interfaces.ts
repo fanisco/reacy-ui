@@ -1,20 +1,24 @@
 import {ReactElement} from 'react';
 import {Core} from '../../common/interfaces';
-import {HashMap} from '../../common/types';
+import {HashMap, Validator, ValidationResult} from '../../common/types';
 
 export namespace Forms {
   export interface IForm extends Core.IComponent {
-    data: HashMap<any>;
     fields: Array<FormItem>;
-    wrap?: boolean;
     groups?: Array<IGroup>;
     buttons?: Array<ReactElement>;
+    validators?: HashMap<Validator[]>;
     onSubmit?: () => void;
-    onChange: (name: any, value: any) => void;
+    onChange?: (data: HashMap<any>) => void;
   }
   export interface IGroup extends Core.IComponent {
     name: string;
     title?: string;
+  }
+  export interface IField extends Core.IComponent {
+    type: string;
+    title?: string;
+    errors?: ValidationResult[];
   }
   export interface IBase extends Core.IComponent {
     name: string;

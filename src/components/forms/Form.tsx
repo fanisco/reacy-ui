@@ -1,53 +1,25 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 import {Forms} from './interfaces';
 import {Group} from './Group';
 import {Field} from './Field';
 import {Input} from './Input';
 import {Checkbox} from './Checkbox';
 import {Textarea} from './Textarea';
-// import {Toggle} from './Toggle';
 import {Select} from './Select';
+import {useForm} from '../../hooks/useForm';
 
-export class Form extends React.Component<Forms.IForm> {
-  constructor(p: Forms.IForm) {
-    super(p);
-    this.fieldRender = this.fieldRender.bind(this);
-  }
+export const Form: React.FC<Forms.IForm> = ({fields, buttons, groups = [], ...props}) => {
+  const {onChange, onSubmit, values, errors} = useForm(
+    fields.map(field => field.name),
+    props.onChange,
+    props.onSubmit,
+    props.validators
+  );
 
-  onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (this.props.onSubmit) {
-      this.props.onSubmit();
-    }
-  }
-  
-  render() {
-    const {groups, fields, buttons} = this.props;
-    return (
-      <form className="rcy-form" onSubmit={this.onSubmit}>
-        {groups && groups.length ?
-          groups.map(group => (
-            <Group {...group} key={group.name}>{fields.filter(field => field.group === group.name).map(this.fieldRender)}</Group>
-          )) :
-          fields.map(this.fieldRender)
-        }
-        {buttons && buttons.length ?
-          buttons :
-          ''
-        }
-      </form>
-    );
-  }
-
-  fieldRender(item: Forms.FormItem) {
+  const fieldRender = (item: Forms.FormItem) => {
     const props = {
-        ...item,
-        mods: item.mods,
-        onChange: (value: any) => {
-          if (this.props.onChange) {
-            this.props.onChange(item.name, value);
-          }
-        }
+      ...item,
+      onChange
     };
     let elem: React.ReactNode;
     switch (item.type) {
@@ -55,21 +27,36 @@ export class Form extends React.Component<Forms.IForm> {
         case 'number':
         case 'password':
         case 'email':
-          elem = <Input key={item.name} value={this.props.data[item.name]} {...(props as Forms.IInput)}/>;
+          elem = <Input key={item.name} {...(props as Forms.IInput)}/>;
           break;
         case 'textarea':
-          elem = <Textarea key={item.name} value={this.props.data[item.name]} {...(props as Forms.IInput)}/>;
+          elem = <Textarea key={item.name} {...(props as Forms.IInput)}/>;
           break;
         case 'checkbox':
-          elem = <Checkbox key={item.name} value={this.props.data[item.name]} {...(props as Forms.ISwitch)}/>;
+          elem = <Checkbox key={item.name} {...(props as Forms.ISwitch)}/>;
           break;
       case 'select':
-          elem = <Select key={item.name} value={this.props.data[item.name]} {...(props as Forms.ISelect)}/>;
+          elem = <Select key={item.name} {...(props as Forms.ISelect)}/>;
           break;
-      // case 'toggle':
-      //     elem = <Toggle {...properties}/>;
-      //     break;
     }
-    return this.props.wrap ? <Field key={item.name} {...item}>{elem}</Field> : elem;
-  }
+    return (
+      <Field
+        key={item.name}
+        type={item.type}
+        title={item.title}
+        errors={errors[item.name]}
+      >{elem}</Field>
+    );
+  };
+  return (
+    <form className="rcy-form" onSubmit={onSubmit}>
+      {groups.length ?
+        groups.map(group => (
+          <Group {...group} key={group.name}>{fields.filter(field => field.group === group.name).map(fieldRender)}</Group>
+        )) :
+        fields.map(fieldRender)
+      }
+      {buttons}
+    </form>
+  );
 }
