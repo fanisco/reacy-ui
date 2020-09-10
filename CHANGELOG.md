@@ -12,3 +12,5 @@
 * PopupBody & PopupOverlay
 ### 1.1.0
 * Module compilation to named es6
+### 1.1.1
+* Alerts, inputs' placeholder, layout sizes
