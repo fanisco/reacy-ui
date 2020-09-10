@@ -16,6 +16,10 @@
   border-color: var($border);
   color: var($foreground);
 
+  &::placeholder {
+    color: var($border);
+  }
+
   &:hover {
     background-color: var($background);
     border-color: var($borderHover);
