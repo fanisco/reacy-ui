@@ -1,5 +1,5 @@
 import React from 'react';
-import {Misc} from '../../common/interfaces';
+import {Misc} from './interfaces';
 import {bemClasses, defaultMods} from '../../common/bem';
 
 export const Bubble: React.FC<Misc.IBubble> = ({children, ...props}) => {

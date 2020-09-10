@@ -1,0 +1,11 @@
+$className: rcy-alert;
+
+.#{$className} {
+  p {
+    margin-bottom: 0;
+  }
+
+  @include sizes-reference($className);
+  @include colorize-reference-default($className);
+  @include colorize-reference-various($className);
+}

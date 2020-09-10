@@ -1,5 +1,5 @@
 import React from 'react';
-import {Misc} from '../../common/interfaces';
+import {Misc} from './interfaces';
 import {bemClasses, defaultMods} from '../../common/bem';
 import {Button} from '../buttons';
 import {Icon} from './Icon';
