@@ -1,11 +1,11 @@
 import React from 'react';
 import {withRouter} from 'react-router';
-import {Button} from 'reacy-ui';
+import {Buttons} from 'reacy-ui';
 
 const SpaButton = (props) => {
   const {history, href} = props;
   return (
-    <Button
+    <Buttons.Button
       {...props}
       onClick={(e) => {
         e.preventDefault();

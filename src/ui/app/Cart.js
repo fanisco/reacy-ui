@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {Context} from '../../state/Context';
 import {cartItemAmount, cartItemRemove} from '../../state/actions';
-import {Table, Empty} from 'reacy-ui';
+import {Tables} from 'reacy-ui';
 import SpaButton from '../kit/buttons/SpaButton';
 import Amount from './Amount';
 import './Cart.scss';
@@ -35,7 +35,7 @@ const Cart = () => {
   const {state, dispatch} = useContext(Context);
   const {cart, products} = state;
   if (!cart.length) {
-    return <Empty heading="Your cart is empty" text="Looks like you didn't add any items to your shopping cart."/>
+    return <div heading="Your cart is empty" text="Looks like you didn't add any items to your shopping cart."/>
   }
   columns
     .find(column => column.id === 'amount')
@@ -50,7 +50,7 @@ const Cart = () => {
   return (
     <div className="cart">
       <h1>Cart</h1>
-      <Table
+      <Tables.Table
         columns={columns}
         rows={[...cart.map(item => {
           const product = products.find(product => product.id === item.id);

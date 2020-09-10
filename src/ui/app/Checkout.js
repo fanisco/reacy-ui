@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Form} from 'reacy-ui';
+import {Buttons, Forms} from 'reacy-ui';
 import './Cart.scss';
 
 const fields = [{
@@ -25,12 +25,13 @@ const Checkout = () => {
   return (
     <div className="checkout">
       <h1>Checkout</h1>
-      <Form fields={fields}
-            data={data}
-            wrap={true}
-            onChange={(name, value) => setData({...data, [name]: value})}
+      <Forms.Form
+        fields={fields}
+        data={data}
+        wrap={true}
+        onChange={(name, value) => setData({...data, [name]: value})}
       />
-      <Button mods={['primary', 'xl', 'shadow']}>Confirm</Button>
+      <Buttons.Button mods={['primary', 'xl', 'shadow']}>Confirm</Buttons.Button>
     </div>
   )
 };
