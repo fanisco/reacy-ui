@@ -1,4 +1,3 @@
-import React from 'react';
 import {Popup} from './Popup';
 import {IManager} from './TypeDefs';
 import {generateGuid} from '../../../common/generateGuid';
@@ -78,9 +77,9 @@ export class Manager implements IManager {
     }
   }
 
-  close(id: string): void {
+  close(popupId: string): void {
     const index = this.openPopups.findIndex(
-      ({id}) => id === id,
+      ({id}) => id === popupId,
     );
     if (index === -1) {
       return;

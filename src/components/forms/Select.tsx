@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-import {Core, Forms} from '../../common/interfaces';
+import {Core} from '../../common/interfaces';
+import {Forms} from './interfaces';
 import {bemClasses, defaultSize} from '../../common/bem';
 
 import {Dropdown} from '../popups';

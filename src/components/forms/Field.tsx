@@ -1,5 +1,4 @@
 import React from 'react';
-import {Forms} from '../../common/interfaces';
 import {bemClasses, defaultSize, filterMods} from '../../common/bem';
 import {SizeMods, StyleMods} from '../../common/mods';
 

@@ -1,5 +1,4 @@
 import {ReactElement} from 'react';
-import {HashMap} from './types';
 
 export namespace Core {
   export interface IListItem {
@@ -10,53 +9,6 @@ export namespace Core {
     mods?: string[];
     className?: string;
   }
-}
-
-export namespace Buttons {
-  export interface IButton extends Core.IComponent {
-    onClick?: (e: any) => void;
-    href?: string;
-    disabled?: boolean;
-    title?: string;
-  }
-}
-
-export namespace Forms {
-  export interface IForm extends Core.IComponent {
-    data: HashMap<any>;
-    fields: Array<FormItem>;
-    wrap?: boolean;
-    groups?: Array<IGroup>;
-    buttons?: Array<ReactElement>;
-    onSubmit?: () => void;
-    onChange: (name: any, value: any) => void;
-  }
-  export interface IGroup extends Core.IComponent {
-    name: string;
-    title?: string;
-  }
-  export interface IBase extends Core.IComponent {
-    name: string;
-    type: string;
-    value: any;
-    title?: string;
-    group?: string;
-    disabled?: boolean;
-    onChange?: (e: any) => void;
-  }
-  export interface IInput extends IBase {
-    placeholder?: string;
-    onKeyDown?: (e: any) => void;
-    onKeyUp?: (e: any) => void;
-    onKeyPress?: (e: any) => void;
-  }
-  export interface ISwitch extends IBase {
-    
-  }
-  export interface ISelect extends IBase {
-    items: Array<Core.IListItem>;
-  }
-  export type FormItem = Partial<IInput | ISwitch | ISelect>;
 }
 
 export namespace Layout {
@@ -75,7 +27,8 @@ export namespace Lists {
     itemClassName?: string;
     items: Array<Core.IListItem>;
   }
-  export interface IToolbarButton extends Buttons.IButton {
+  export interface IToolbarButton /*extends Buttons.IButton*/ {
+    [x: string]: any;
     anchor?: boolean;
     caption?: string;
   }
