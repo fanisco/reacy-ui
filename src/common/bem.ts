@@ -1,6 +1,10 @@
 import {SizeMods, StyleMods} from './mods';
 
 export const modSeparator = '_';
+
+/**
+ * @deprecated
+ */
 export const bemClasses = (base: string, mods?: string[], className?: string): string => {
   let result = base;
   if (mods && mods.length) {
