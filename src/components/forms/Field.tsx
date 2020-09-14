@@ -18,6 +18,11 @@ export const Field: React.FC<Forms.IField> = ({item, errors, mods = [], ...props
     defSize: SizeMods.md
   });
 
+  let placeholder: string;
+  if (['string', 'number', 'password', 'email', 'textarea'].includes(item.type)) {
+    placeholder = (item as Forms.IInput).placeholder;
+  }
+
   const onFocus = () => {
     setFocused(true);
   }
@@ -32,10 +37,10 @@ export const Field: React.FC<Forms.IField> = ({item, errors, mods = [], ...props
     case 'number':
     case 'password':
     case 'email':
-      input = <Input {...(item as Forms.IInput)} onFocus={onFocus} onBlur={onBlur} mods={[...mods]}/>;
+      input = <Input {...(item as Forms.IInput)} onFocus={onFocus} onBlur={onBlur} mods={[...mods, 'transparent']} placeholder={''}/>;
       break;
     case 'textarea':
-      input = <Textarea {...(item as Forms.IInput)} onFocus={onFocus} onBlur={onBlur} mods={[...mods]}/>;
+      input = <Textarea {...(item as Forms.IInput)} onFocus={onFocus} onBlur={onBlur} mods={[...mods, 'transparent']} placeholder={''}/>;
       break;
     case 'checkbox':
       input = <Checkbox {...(item as Forms.ISwitch)}/>;
@@ -48,6 +53,7 @@ export const Field: React.FC<Forms.IField> = ({item, errors, mods = [], ...props
     <div className={cName}>
       {item.title ? <span className={`${cBase}__caption`}>{item.title}</span> : null}
       {input}
+      {placeholder ? <span className={`${cBase}__placeholder`}>{placeholder}</span> : null}
       {errors ? <Alert mods={['danger']}>{errors}</Alert> : null}
     </div>
   );
