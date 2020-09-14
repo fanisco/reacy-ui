@@ -91,6 +91,9 @@
     .#{$className}_dashed {
       border-style: dashed;
     }
+    .#{$className}_transparent {
+      background-color: transparent;
+    }
   }
 }
 

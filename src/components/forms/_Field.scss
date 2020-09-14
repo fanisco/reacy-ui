@@ -1,5 +1,53 @@
+@mixin field-size(
+  $elementHeight,
+  $spacingX,
+  $spacingY,
+  $fontSize
+) {
+  margin-bottom: $spacingY;
+
+  & .#{$className}__caption {
+    margin-right: $spacingX / 2;
+    font-size: $fontSize - 4;
+  }
+  & .#{$className}__placeholder {
+    pointer-events: none;
+    height: $elementHeight;
+    padding: $spacingY $spacingX;
+    font-size: $fontSize;
+  }
+  &.#{$className}_focused .#{$className}__placeholder {
+    font-size: $fontSize - 4;
+  }
+}
+
+@mixin field-sizes() {
+  &_xs {
+    @include field-size($elementHeight_xs, $spacingX_xs, $spacingY_xs, $fontSize_xs);
+  }
+  &_sm {
+    @include field-size($elementHeight_sm, $spacingX_sm, $spacingY_sm, $fontSize_sm);
+  }
+  &_md {
+    @include field-size($elementHeight_md, $spacingX_md, $spacingY_md, $fontSize_md);
+  }
+  &_lg {
+    @include field-size($elementHeight_lg, $spacingX_lg, $spacingY_lg, $fontSize_lg);
+  }
+  &_xl {
+    @include field-size($elementHeight_xl, $spacingX_xl, $spacingY_xl, $fontSize_xl);
+  }
+}
+
+@mixin field-colorize($placeholderForeground) {
+  & .#{$className}__placeholder {
+    color: var($placeholderForeground);
+  }
+}
+
 $className: rcy-field;
 .#{$className} {
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -8,9 +56,11 @@ $className: rcy-field;
     align-items: center;
   }
 
-  @include sizes-field($className);
-
-  &__caption {
-
+  &__placeholder {
+    position: absolute;
+    top: 0;
   }
+
+  @include field-sizes();
+  @include field-colorize(--rcy-color-default-borderActive);
 }

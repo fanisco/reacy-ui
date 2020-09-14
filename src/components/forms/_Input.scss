@@ -9,9 +9,9 @@ $className: rcy-input;
 
   @include sizes();
   @include easing();
-  @include appearance();
   @include colorize-input-default();
   @include colorize-input-various();
+  @include appearance();
 
   @at-root {
     textarea#{&} {
