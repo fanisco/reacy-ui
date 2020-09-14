@@ -1,0 +1,10 @@
+// @import '~reacy-ui/lib/index.css';
+@import '~reacy-ui/src/index.scss';
+
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--rcy-color-l500);
+}
