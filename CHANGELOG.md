@@ -16,3 +16,5 @@
 * Alerts, inputs' placeholder, layout sizes
 ### 1.2.0
 * Forms validation and onChange callback
+### 1.2.1
+* Form field render
