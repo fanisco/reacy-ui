@@ -5,6 +5,10 @@ export namespace Core {
     id: string | number;
     caption: string;
   }
+  export interface IStyled {
+    blockSize?: string;
+    colorStyle?: string;
+  }
   export interface IComponent {
     mods?: string[];
     className?: string;

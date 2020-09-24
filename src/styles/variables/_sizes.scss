@@ -1,15 +1,15 @@
 // Sizes
-$fontSize_xs: 12px;
-$fontSize_sm: 14px;
-$fontSize_md: 16px;
-$fontSize_lg: 20px;
-$fontSize_xl: 24px;
+$fontSize_xs: 0.750rem;
+$fontSize_sm: 0.875rem;
+$fontSize_md: 1.000rem;
+$fontSize_lg: 1.250rem;
+$fontSize_xl: 1.500rem;
 
-$headingFontSize_xs: 16px;
-$headingFontSize_sm: 20px;
-$headingFontSize_md: 24px;
-$headingFontSize_lg: 28px;
-$headingFontSize_xl: 32px;
+$headingFontSize_xs: 1.000rem;
+$headingFontSize_sm: 1.250rem;
+$headingFontSize_md: 1.500rem;
+$headingFontSize_lg: 1.750rem;
+$headingFontSize_xl: 2.000rem;
 
 $spacingX_xs: 8px;
 $spacingX_sm: 10px;
@@ -47,6 +47,14 @@ $sizes: (
   md: 1,
   lg: 1,
   xl: 1,
+);
+
+$fontSizes: (
+  xs: 0.750rem,
+  sm: 0.875rem,
+  md: 1.000rem,
+  lg: 1.250rem,
+  xl: 1.500rem
 );
 
 // Responsivity & Grid

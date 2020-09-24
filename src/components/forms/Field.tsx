@@ -38,7 +38,7 @@ export const Field: React.FC<Forms.IField> = ({item, errors, mods = [], ...props
       input = <Textarea {...(item as Forms.IInput)} onFocus={onFocus} onBlur={onBlur} mods={[...mods]}/>;
       break;
     case 'checkbox':
-      input = <Checkbox {...(item as Forms.ISwitch)}/>;
+      input = <Checkbox {...(item as Forms.ICheckbox)}/>;
       break;
     case 'select':
       input = <Select {...(item as Forms.ISelect)}/>;
@@ -46,7 +46,6 @@ export const Field: React.FC<Forms.IField> = ({item, errors, mods = [], ...props
   }
   return (
     <div className={cName}>
-      {item.title ? <span className={`${cBase}__caption`}>{item.title}</span> : null}
       {input}
       {errors ? <Alert mods={['danger']}>{errors}</Alert> : null}
     </div>

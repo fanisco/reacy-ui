@@ -3,7 +3,7 @@ import {Core} from '../../common/interfaces';
 import {HashMap, Validator, ValidationResult} from '../../common/types';
 
 export namespace Forms {
-  export type FormItem = Partial<IInput | ISwitch | ISelect>;
+  export type FormItem = Partial<IInput | ICheckbox | ISelect>;
   export interface IForm extends Core.IComponent {
     fields: Array<FormItem>;
     groups?: Array<IGroup>;
@@ -16,7 +16,7 @@ export namespace Forms {
     name: string;
     title?: string;
   }
-  export interface IBase extends Core.IComponent {
+  export interface IBase extends Core.IComponent, Core.IStyled {
     name: string;
     type: string;
     value: any;
@@ -29,6 +29,9 @@ export namespace Forms {
     item: FormItem;
     errors?: ValidationResult[];
   }
+  export interface IStyledInput extends Core.IStyled {
+    focused?: boolean;
+  }
   export interface IInput extends IBase {
     placeholder?: string;
     onFocus?: (e: any) => void;
@@ -37,7 +40,10 @@ export namespace Forms {
     onKeyUp?: (e: any) => void;
     onKeyPress?: (e: any) => void;
   }
-  export interface ISwitch extends IBase {
+  export interface IStyledInput extends Core.IStyled {
+    focused?: boolean;
+  }
+  export interface ICheckbox extends IBase {
     
   }
   export interface ISelect extends IBase {

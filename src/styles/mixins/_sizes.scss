@@ -1,0 +1,55 @@
+@mixin font-sizes() {
+  @each $size in map-keys($sizes) {
+    @at-root {
+      .#{$className}_#{$size},
+      .#{$className}_font-#{$size} {
+        font-size: map-get($fontSizes, $size);
+      }
+    }
+  }
+}
+
+@mixin size-xs() {
+  height: $elementHeight_xs;
+  padding: $spacingY_xs $spacingX_xs;
+  border-radius: $borderRadius_xs;
+}
+@mixin size-sm() {
+  height: $elementHeight_sm;
+  padding: $spacingY_sm $spacingX_sm;
+  border-radius: $borderRadius_sm;
+}
+@mixin size-md() {
+  height: $elementHeight_md;
+  padding: $spacingY_md $spacingX_md;
+  border-radius: $borderRadius_md;
+}
+@mixin size-lg() {
+  height: $elementHeight_lg;
+  padding: $spacingY_lg $spacingX_lg;
+  border-radius: $borderRadius_lg;
+}
+@mixin size-xl() {
+  height: $elementHeight_xl;
+  padding: $spacingY_xl $spacingX_xl;
+  border-radius: $borderRadius_xl;
+}
+
+@mixin sizes() {
+  &_xs {
+    @include size-xs();
+  }
+  &_sm {
+    @include size-sm();
+  }
+  &_md {
+    @include size-md();
+  }
+  &_lg {
+    @include size-lg();
+  }
+  &_xl {
+    @include size-xl();
+  }
+  @include font-sizes();
+}

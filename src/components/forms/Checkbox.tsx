@@ -1,25 +1,78 @@
 import React from 'react';
+import {css} from '@emotion/core';
+import styled from '@emotion/styled';
+
 import {Forms} from './interfaces';
-import {bemClasses, defaultSize} from '../../common/bem';
+import {colors} from '../../styles/styles';
+import {sizes} from '../../styles/sizes';
 import {Icon} from '../misc';
 
-export const Checkbox: React.FC<Forms.ISwitch> = ({value, name, onChange, disabled = false, ...props}) => {
-  const classBase = 'rcy-checkbox';
-  const className = bemClasses(classBase, defaultSize(props.mods), props.className);
-  return (
-    <label className={className}>
-      <input className={`${classBase}__input`}
-             type="checkbox"
-             name={name}
-             checked={value}
-             disabled={disabled}
-             onChange={() => {
-               if (onChange) {
-                 onChange(!value)
-               }
-             }}
+const StyledRoot = styled.label`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const StyledTrigger = styled.div<Forms.IStyledInput>`
+  position: relative;
+  border: 1px solid;
+
+  ${({blockSize}: Forms.IStyledInput) => css`
+    width: ${sizes.fontSize[blockSize]};
+    height: ${sizes.fontSize[blockSize]};
+    border-radius: ${sizes.borderRadiusSmall[blockSize]};
+  `}
+
+  ${({colorStyle}: Forms.IStyledInput) => css`
+    background-color: ${colors[colorStyle].background};
+    border-color: ${colors[colorStyle].border};
+
+    &:hover {
+      background-color: ${colors[colorStyle].backgroundHover};
+      border-color: ${colors[colorStyle].borderHover};
+    }
+    &:active:focus {
+      background-color: ${colors[colorStyle].backgroundActive};
+      border-color: ${colors[colorStyle].borderActive};
+    }
+  `}
+`;
+
+const StyledIcon = styled(Icon)`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
+const StyledInput = styled.input`
+  display: none;
+`;
+
+const StyledText = styled.span<{checked: boolean}>`
+  ${({checked}) => checked && css`
+    margin-left: 0.5em;
+    pointer-events: none;
+  `}
+`;
+
+export const Checkbox: React.FC<Forms.ICheckbox> = ({name, value, title, onChange, disabled = false, blockSize = 'md', colorStyle = 'gray', ...props}) => {
+  return(
+    <StyledRoot>
+      <StyledTrigger
+        blockSize={blockSize}
+        colorStyle={colorStyle}
+      >
+        <StyledIcon name="check" align="top"/>
+      </StyledTrigger>
+      <StyledInput
+        name={name}
+        type="checkbox"
+        checked={value}
+        disabled={disabled}
+        onChange={onChange}
       />
-      <Icon name="check" align="top" className={`${classBase}__icon`}/>
-    </label>
-  )
+      <StyledText checked={value}>{title}</StyledText>
+    </StyledRoot>
+  );
 };

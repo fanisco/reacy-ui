@@ -1,8 +1,19 @@
 import React from 'react';
-import {Buttons} from './interfaces';
-import {bemClasses, defaultSize} from '../../common/bem';
 
-export const Anchor: React.FC<Buttons.IButton> = ({onClick, href, children, disabled = false, ...props}) => {
-  const className = bemClasses('rcy-button', defaultSize(props.mods), props.className);
-  return <a onClick={onClick} href={href} className={className} title={props.title}>{children}</a>;
+import {Buttons} from './interfaces';
+import {StyledButton} from './Button';
+
+export const StyledAnchor = StyledButton.withComponent('a');
+export const Anchor: React.FC<Buttons.IButton> = ({onClick, children, title, href, blockSize = 'md', colorStyle = 'gray'}) => {
+  return(
+    <StyledAnchor
+      onClick={onClick}
+      title={title}
+      href={href}
+      blockSize={blockSize}
+      colorStyle={colorStyle}
+    >
+      {children}
+    </StyledAnchor>
+  );
 };

@@ -1,32 +1,165 @@
-$className: rcy-button;
-.#{$className} {
-  display: inline-flex;
-  border: 1px solid;
-  align-items: center;
-  cursor: pointer;
-  text-decoration: none;
-
-  &_displayInline {
-    display: inline;
+@mixin button-colorize(
+  $foreground,
+  $foregroundHover,
+  $foregroundActive,
+  $background,
+  $backgroundHover,
+  $backgroundActive,
+  $border,
+  $borderHover,
+  $borderActive,
+  $outline,
+  $outlineHover,
+  $outlineActive,
+  $link,
+  $linkHover,
+  $linkActive
+) {
+  background-color: $background;
+  border-color: $border;
+  color: $foreground;
+  &:hover {
+    background-color: $backgroundHover;
+    border-color: $borderHover;
+    color: $foregroundHover;
+  }
+  &:active:focus {
+    background-color: $backgroundActive;
+    border-color: $borderActive;
+    color: $foregroundActive;
   }
 
-  &:focus { outline: 0 none; }
+  &_active {
+    background-color: $backgroundActive;
+    border-color: $borderActive;
+    color: $foregroundActive;
+  }
+
+  &.#{$className}_outline {
+    background-color: transparent;
+    border-color: $outline;
+    color: $link;
+    &:hover {
+      background-color: #{$backgroundHover}17;
+      border-color: $outlineHover;
+      color: $linkHover;
+    }
+    &:active:focus {
+      background-color: #{$backgroundActive}17;
+      border-color: $outlineActive;
+      color: $linkActive;
+    }
+  }
+
+  &.#{$className}_inline {
+    color: $link;
+    &:hover {
+      color: $linkHover;
+    }
+    &:active:focus {
+      color: $linkActive;
+    }
+  }
+
+  &.#{$className}_underline {
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    background-color: transparent;
+    border-color: $outline;
+    color: $link;
+    &:hover {
+      background-color: transparent;
+      border-color: $outlineHover;
+      color: $linkHover;
+    }
+    &:active:focus {
+      background-color: transparent;
+      border-color: $outlineActive;
+      color: $linkActive;
+    }
+  }
+
+  &.#{$className}_shadow {
+    box-shadow: 0 2px 4px rgba(96, 97, 112, 0.16),
+                0 0 1px rgba(40, 41, 61, 0.04);
+    &:hover {
+      box-shadow: 0 2px 4px #{$border}56,
+                  0 0 1px #{$border}34;
+    }
+  }
+}
+@mixin button-colorize-disabled(
+  $foregroundDisabled: map-get($colors_default, foregroundDisabled),
+  $backgroundDisabled: map-get($colors_default, backgroundDisabled),
+  $borderDisabled: map-get($colors_default, borderDisabled),
+  $linkDisabled: map-get($colors_default, linkDisabled)
+) {
+  &:disabled {
+    cursor: default;
+    &, &:hover, &:active:focus {
+      background-color: $backgroundDisabled;
+      border-color: $borderDisabled;
+      color: $foregroundDisabled;
+    }
+  }
+  .#{$className}_inline:disabled {
+    &, &:hover, &:active:focus {
+      background-color: transparent;
+      border-color: transparent;
+      color: $linkDisabled;
+    }
+  }
+}
+@mixin button-colorize-various() {
+  @include button-colorize(
+    map-get($colors_default, foreground),
+    map-get($colors_default, foregroundHover),
+    map-get($colors_default, foregroundActive),
+    map-get($colors_default, background),
+    map-get($colors_default, backgroundHover),
+    map-get($colors_default, backgroundActive),
+    map-get($colors_default, border),
+    map-get($colors_default, borderHover),
+    map-get($colors_default, borderActive),
+    map-get($colors_default, border),
+    map-get($colors_default, borderHover),
+    map-get($colors_default, borderActive),
+    map-get($colors_default, link),
+    map-get($colors_default, linkHover),
+    map-get($colors_default, linkActive)
+  );
+  @each $style, $set in $colors {
+    &_#{$style} {
+      @include button-colorize(
+        map-get($set, foreground),
+        map-get($set, foregroundHover),
+        map-get($set, foregroundActive),
+        map-get($set, background),
+        map-get($set, backgroundHover),
+        map-get($set, backgroundActive),
+        map-get($set, background),
+        map-get($set, backgroundHover),
+        map-get($set, backgroundActive),
+        map-get($set, border),
+        map-get($set, borderHover),
+        map-get($set, borderActive),
+        map-get($set, link),
+        map-get($set, linkHover),
+        map-get($set, linkActive)
+      );
+    }
+  }
+  @include button-colorize-disabled();
+}
+
+$className: rcy-button;
+.#{$className} {
 
   @include sizes();
   @include easing();
   @include appearance();
-  @include colorize-button-default();
-  @include colorize-button-various();
-  @include colorize-button-disabled();
-
-  // Style override
-  &_inline {
-    height: auto;
-    padding: 0;
-    border-width: 0;
-    &, &:hover, &:active:focus {
-      background-color: transparent;
-      border-color: transparent;
-    }
-  }
+  @include button-colorize-various();
 }
