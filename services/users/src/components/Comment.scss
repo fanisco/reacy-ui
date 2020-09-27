@@ -1,0 +1,32 @@
+.comment {
+  display: flex;
+  align-items: flex-end;
+
+  &__body {
+    position: relative;
+  }
+
+  &__author {
+    margin-right: 10px;
+  }
+
+  &__avatar {
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    background-color: var(--rcy-prime-a100);
+  }
+  &:hover &__actions {
+    opacity: 1;
+  }
+  &__action {
+    display: flex;
+  }
+}
