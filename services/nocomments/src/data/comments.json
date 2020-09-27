@@ -1,0 +1,29 @@
+{
+  "list": [
+    {"id": 1, "authorId": 1, "parentId": 0, "text": "I did not hit her! It’s not true! It’s bullshit! I did not hit her! I did not! (he throws a water bottle to the floor) Oh, hi Mark.", "date": 994330521000},
+    {"id": 2, "authorId": 2, "parentId": 1, "text": "(holding a football) Oh hey Johnny, what’s up?", "date": 994330521000},
+    {"id": 3, "authorId": 1, "parentId": 2, "text": "I have a problem with Lisa. She says that I hit her.", "date": 994330521000},
+    {"id": 4, "authorId": 2, "parentId": 3, "text": "What? Well did you?", "date": 994330521000},
+    {"id": 5, "authorId": 1, "parentId": 4, "text": "No, it’s not true! Don’t even ask! What’s new with you?", "date": 994330521000},
+    {"id": 6, "authorId": 2, "parentId": 5, "text": "Well I’m just sitting up here thinking, you know? I got a question for you.", "date": 994330521000},
+    {"id": 7, "authorId": 1, "parentId": 6, "text": "Yeah.", "date": 994330521000},
+    {"id": 8, "authorId": 2, "parentId": 7, "text": "You think girls like to cheat like guys do?", "date": 994330521000},
+    {"id": 9, "authorId": 1, "parentId": 8, "text": "What makes you say that?", "date": 994330521000},
+    {"id": 10, "authorId": 2, "parentId": 9, "text": "I dunno. I dunno, I’m just, I’m just thinking.", "date": 994330521000},
+    {"id": 11, "authorId": 1, "parentId": 10, "text": "I don’t have to worry about that because Lisa is loyal to me.", "date": 994330521000},
+    {"id": 12, "authorId": 2, "parentId": 11, "text": "Yeah man, you never know. People are very strange these days. I used to know a girl, she had a dozen guys. One of them found out about it, beat her up so bad she ended up in a hospital on Guerrero Street.", "date": 994330521000},
+    {"id": 13, "authorId": 1, "parentId": 12, "text": "A-ha-ha-ha! What a story, Mark!", "date": 994330521000},
+    {"id": 14, "authorId": 2, "parentId": 13, "text": "Yeah, you can say that again.", "date": 994330521000},
+    {"id": 15, "authorId": 1, "parentId": 14, "text": "I’m so happy I have you as my best friend, and I love Lisa so much.", "date": 994330521000},
+    {"id": 16, "authorId": 2, "parentId": 15, "text": "Yeah, man. Yeah, you are very lucky.", "date": 994330521000}
+  ],
+  "meta": {
+    "authors": [
+      {"id": 1, "name": "Johnny", "photo":  "/images/persons/johnny.jpg"},
+      {"id": 2, "name": "Mark", "photo":  "/images/persons/mark.jpg"},
+      {"id": 3, "name": "Denny"},
+      {"id": 4, "name": "Lisa"},
+      {"id": 4, "name": "Claudette"}
+    ]
+  }
+}

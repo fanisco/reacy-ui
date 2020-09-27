@@ -1,0 +1,17 @@
+export default {
+  primaryLight: '#5ea7f8',
+  primary: '#5D9CEC',
+  primaryText: '#4287DF',
+  accent: '#FF3D6F',
+  accentText: '#FF245D',
+  successLight: '#6dec5b',
+  success: '#48c836',
+  successText: '#249112',
+  base: '#333333',
+  dark: '#5C5C5C',
+  gray: '#7D7D7D',
+  ferrum: '#9D9D9D',
+  silver: '#CACACA',
+  alumie: '#ECECEC',
+  platin: '#f9f9f9',
+}
