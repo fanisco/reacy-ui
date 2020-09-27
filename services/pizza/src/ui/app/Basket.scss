@@ -1,0 +1,9 @@
+.basket {
+  display: flex;
+
+  &__amount {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #ffffff50;
+  }
+}

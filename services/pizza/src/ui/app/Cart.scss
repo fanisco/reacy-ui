@@ -1,0 +1,26 @@
+@import '../core/variables.scss';
+
+.cart {
+  &__footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item-product-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__item-product-name {
+    font: 18px/1.1 $ff-ancy;
+    font-weight: 400;
+  }
+
+  &__item-product-price,
+  &__item-product-total {
+    font: 18px/1.1 $ff-ancy;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,0 +1,48 @@
+@import '../core/variables.scss';
+
+.product {
+  display: grid;
+  grid-template-rows: 1fr 30px 54px 38px;
+
+  &__image {
+    max-width: 360px;
+    margin-right: -6.5%;
+
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    font: 20px/0.8 $ff-ancy;
+    font-weight: 400;
+  }
+
+  &__price {
+    width: 50%;
+    margin-right: 12px;
+
+    font: 18px/1.1 $ff-ancy;
+    font-weight: 400;
+  }
+
+  &__descr {
+    overflow: hidden;
+    padding-top: 6px;
+
+    color: $delta-color;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 6px;
+  }
+
+  &__add {
+    
+  }
+}

@@ -1,0 +1,45 @@
+@import '../core/variables.scss';
+
+.layout {
+  display: grid;
+  min-height: 100%;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer"
+  ;
+  grid-template-rows: 60px 1fr 60px;
+
+  &__header {
+    display: flex;
+    grid-area: header;
+    align-items: stretch;
+  }
+
+  &__basket {
+    align-self: flex-end;
+  }
+
+  &__content {
+    display: flex;
+    grid-area: content;
+    align-items: stretch;
+  }
+
+  &__footer {
+    display: flex;
+    grid-area: footer;
+    align-items: stretch;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1430px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
